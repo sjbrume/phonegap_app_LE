@@ -1,0 +1,8 @@
+body,html{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.input--no-border:before{
+    content: none !important;
+}
