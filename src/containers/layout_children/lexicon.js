@@ -35,11 +35,6 @@ export const lexicon = {
                 href: '/settings',
                 icon: <Settings/>
             },
-            exit: {
-                text: 'Выход',
-                href: '/exit',
-                icon: <Settings/>
-            }
         }
     },
     'UKR':{
@@ -68,11 +63,6 @@ export const lexicon = {
                 text: 'Налаштування',
                 href: '/settings',
                 icon: <Settings/>,
-            },
-            exit: {
-                text: 'Вихід',
-                href: '/exit',
-                icon: <Settings/>
             },
         }
     }

@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
+export class ComplaintsPage extends Component {
 
+    static propTypes = {};
 
-export class HomePage extends Component {
+    static defaultProps = {};
+
     constructor(props) {
         super(props);
         this.state = this.initialState;
@@ -12,20 +16,11 @@ export class HomePage extends Component {
         return {}
     }
 
-
     render() {
-        console.log(this);
         return (
             <div>
-                HomePage
+                Complaints
             </div>
         )
     }
 }
-
-//
-// {/*<div>*/}
-// {/*<Header/>*/}
-// {/*HomePage*/}
-// {/*/!*<LanguageSwitcher/>*!/*/}
-// {/*</div>*/}

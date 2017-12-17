@@ -5,21 +5,29 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import List from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
+import Button from 'material-ui/Button';
+
 import Hidden from 'material-ui/Hidden';
 import MenuIcon from 'material-ui-icons/Menu';
+import Search from 'material-ui-icons/Search';
+
 import {FormSearch} from "../../blocks/form/form_search";
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
+import {Link} from "react-router-dom";
 import Typography from 'material-ui/Typography';
 
 import {connect} from "react-redux";
 import {styles} from './style';
 
 import {lexicon} from './lexicon';
+import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
+import {Header} from "../../blocks/header/header";
 
 
 @connect(
     state => ({ // получаем данные из store
-        currentLocal: state.intl
+        currentLocal: state.intl,
+        menuPosition: state.menuPosition
     }), //
     dispatch => ({
         changeLang: (type, value) => {
@@ -46,6 +54,7 @@ export class LayoutMain extends Component {
         this.setState({mobileOpen: !this.state.mobileOpen});
     };
 
+
     createMenu() {
         const {classes, currentLocal} = this.props;
 
@@ -58,11 +67,11 @@ export class LayoutMain extends Component {
                     <ListItemIcon className={classes.colorWhite}>
                         {lexicon[currentLocal].menu[prop].icon}
                     </ListItemIcon>
-                    <a className={classes.colorWhite} href={lexicon[currentLocal].menu[prop].href}>
+                    <Link className={classes.colorWhite} to={lexicon[currentLocal].menu[prop].href}>
                         <Typography color="inherit">
                             {lexicon[currentLocal].menu[prop].text}
                         </Typography>
-                    </a>
+                    </Link>
                 </ListItem>
             );
             index++
@@ -72,33 +81,22 @@ export class LayoutMain extends Component {
     }
 
     render() {
-        const {classes, theme, children} = this.props;
-        console.log(this);
+        const {classes, theme, children, menuPosition} = this.props;
 
         return (
             <div className={classes.root}>
                 <div className={classes.appFrame}>
-                    <div className={classes.headerWrapper}>
-                        <AppBar position="static" className={classes.appBar} color="default">
-                            <Toolbar className={classes.toolbar}>
-                                <IconButton
-                                    onClick={this.handleDrawerToggle}
-                                    className={classes.menuButton}
-                                >
-                                    <MenuIcon/>
-                                </IconButton>
-                                <FormSearch/>
-                            </Toolbar>
-                        </AppBar>
-                    </div>
+
+                    <Header onClick={this.handleDrawerToggle}/>
+
                     {/* Mobile menu*/}
                     <Hidden mdUp>
                         <Drawer
                             type="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                            anchor={menuPosition}
                             open={this.state.mobileOpen}
                             classes={{
-                                paper: classes.drawerPaper,
+                                paper: menuPosition === MENU_LEFT ? classes.drawerPaperLeft : classes.drawerPaperBottom,
                             }}
                             onRequestClose={this.handleDrawerToggle}
                             ModalProps={{
@@ -110,6 +108,19 @@ export class LayoutMain extends Component {
                             </List>
                         </Drawer>
                     </Hidden>
+                    {
+                        menuPosition === MENU_BOTTOM && <Button
+                            onClick={this.handleDrawerToggle}
+                            fab
+                            color="primary"
+                            aria-label="add"
+                            className={classes.menuButtonBottom}
+                        >
+                            <MenuIcon/>
+                        </Button>
+                    }
+
+
                     {/* Desctop menu*/}
 
                     <Hidden mdDown implementation="css">
@@ -117,6 +128,7 @@ export class LayoutMain extends Component {
                             type="permanent"
                             open
                             classes={{
+                                docked: classes.drawerDocked,
                                 paper: classes.drawerPaper,
                             }}
                         >

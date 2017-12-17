@@ -1,8 +1,107 @@
-body,html{
+body, html {
     margin: 0 !important;
     padding: 0 !important;
+    height: 100%;
+
 }
 
-.input--no-border:before{
+#root {
+    height: 100%;
+    width: 100%;
+
+}
+
+.input--no-border:before {
     content: none !important;
+}
+
+.input_label {
+    display: block;
+    padding: 10px 40px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.input_radio {
+    position: absolute;
+    opacity: 0;
+}
+
+.input_radio:checked + .input_radio-dot {
+    opacity: 1;
+}
+
+.input_radio-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 8px 0;
+
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.input_radio-wrapper--margin-left-60{
+    margin-left: 60px;
+}
+
+.input_radio-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 28px !important;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.input_radio-dot {
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0;
+}
+
+.input_radio-dot svg {
+    /*width: 30px;*/
+    /*height: 30px;*/
+}
+
+
+.accordion_wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.accordion_header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.accordion_title{
+    line-height:30px;
+}
+
+.accordion_arrow{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.accordion_content{
+    display: none;
+    padding-bottom: 20px;
+}
+
+.accordion_content--active {
+    display: block;
 }

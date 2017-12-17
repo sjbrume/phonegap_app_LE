@@ -3,25 +3,26 @@ import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-
+import Search from 'material-ui-icons/Search';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import {FormSearch} from "../form/form_search";
+import {connect} from "react-redux";
+import {styles} from '../../containers/layout_main/style';
+import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
 
-const styles = {
-    headerWrapper: {
-        padding: '8px',
-        backgroundColor: '#0277bd'
-    },
-    toolbar:{
-        minHeight: 'auto',
-    },
-    menuButton: {
-        marginLeft: -12,
-        marginRight: 10,
-    },
-};
 
+@connect(
+    state => ({ // получаем данные из store
+        currentLocal: state.intl,
+        menuPosition: state.menuPosition
+    }), //
+    dispatch => ({
+        changeLang: (type, value) => {
+            dispatch({type: type, payload: value})
+        }
+    })
+)
 @withStyles(styles)
 export class Header extends Component {
 
@@ -39,16 +40,40 @@ export class Header extends Component {
     }
 
     render() {
-        const {classes} = this.props;
+        const {classes,menuPosition,onClick} = this.props;
         console.log(this);
         return (
             <div className={classes.headerWrapper}>
-                <AppBar position="static" color="default">
+                <AppBar position="static" className={classes.appBar} color="default">
                     <Toolbar className={classes.toolbar}>
-                        <IconButton className={classes.menuButton}>
-                            <MenuIcon/>
+
+                        {
+                            menuPosition === MENU_LEFT && <IconButton
+                                onClick={onClick}
+                                className={classes.menuButton}
+                            >
+                                <MenuIcon/>
+                            </IconButton>
+                        }
+
+                        {
+                            menuPosition === MENU_BOTTOM &&
+                            <IconButton
+                                className={classes.searchButtonMobile}
+                            >
+                                <Search/>
+                            </IconButton>
+                        }
+
+
+
+                        <IconButton
+                            className={classes.searchButton}
+                        >
+                            <Search/>
                         </IconButton>
-                        <FormSearch/>
+
+                        {/*<FormSearch/>*/}
                     </Toolbar>
                 </AppBar>
             </div>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
-import {InputAutocomplete} from "../input/input_autocomplete";
+// import {InputAutocomplete} from "../input/input_autocomplete";
 import {withStyles} from 'material-ui/styles';
 
 import {lexicon} from './lexicon';
@@ -52,12 +52,12 @@ export class FormSearch extends Component {
 
         return (
             <form className={classes.formFullWidth} onSubmit={handleSubmit(this.onSubmit)}>
-                <Field
+                {/*<Field*/}
 
-                    name="search"
-                    component={InputAutocomplete}
-                    placeholder={lexicon[currentLocal].search_placeholder}
-                />
+                    {/*name="search"*/}
+                    {/*component={InputAutocomplete}*/}
+                    {/*placeholder={lexicon[currentLocal].search_placeholder}*/}
+                {/*/>*/}
             </form>
         )
     }

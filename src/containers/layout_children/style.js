@@ -15,6 +15,11 @@ export const styles = theme => ({
         width: '100%',
         height: '100%',
     },
+    appBar:{
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        border: 'none',
+    },
 
     navIconHide: {
         [theme.breakpoints.up('md')]: {
@@ -31,33 +36,16 @@ export const styles = theme => ({
             height: '100%',
         },
     },
-    drawerPaperLeft: {
-        width: 250,
-        backgroundColor: '#0277bd',
-        [theme.breakpoints.up('md')]: {
-            width: drawerWidth,
-            position: 'relative',
-            height: '100%',
-        },
-    },
-    drawerPaperBottom: {
-        width: '100%',
-        backgroundColor: '#0277bd',
-        [theme.breakpoints.up('md')]: {
-            width: drawerWidth,
-            position: 'relative',
-            height: '100%',
-        },
-    },
     drawerDocked: {
         height: '100%'
     },
     content: {
         backgroundColor: theme.palette.background.default,
         width: '100%',
-        padding: theme.spacing.unit * 3,
+        paddingTop: 1,
+        overflow: 'auto',
         height: 'calc(100% - 56px)',
-        marginTop: 56,
+        marginTop: 64,
         [theme.breakpoints.up('sm')]: {
             height: 'calc(100% - 64px)',
             marginTop: 64,
@@ -73,7 +61,6 @@ export const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             width: `calc(100% - 256px)`,
             marginLeft: drawerWidth,
-
         },
     },
     toolbar: {
@@ -87,17 +74,6 @@ export const styles = theme => ({
             display: 'none',
         },
     },
-    menuButtonBottom:{
-        position: 'fixed',
-        bottom: '20px',
-        left: '50%',
-        transform:' translate(-50%, 0)',
-        display: 'inline-flex',
-        backgroundColor: '#0277bd',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
     searchButton: {
         marginLeft: -12,
         marginRight: 10,
@@ -106,16 +82,18 @@ export const styles = theme => ({
             display: 'inline-flex',
         },
     },
-    searchButtonMobile: {
+    arrowButton: {
         marginLeft: -12,
         marginRight: 10,
+        color: '#ffffff',
+        textDecoration: 'none',
         display: 'inline-flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
     },
     colorWhite: {
         color: '#ffffff',
         textDecoration: 'none'
-    }
+    },
+    flex: {
+        flex: 1,
+    },
 });
