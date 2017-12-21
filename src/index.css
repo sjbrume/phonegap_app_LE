@@ -105,3 +105,22 @@ body, html {
 .accordion_content--active {
     display: block;
 }
+
+.articles__list{
+    padding: 0;
+    margin: 0;
+}
+
+.articles__item{
+    display: block;
+    padding: 10px 40px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.articles__link {
+    text-decoration: none;
+}
+
+.article__wrapper {
+    padding: 15px;
+}

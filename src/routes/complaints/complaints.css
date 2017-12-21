@@ -1,0 +1,104 @@
+.complaints_wrapper{
+
+}
+
+.complaints_section{
+    padding: 0 20px 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.complaints_input-label {
+    display: block;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    line-height: 28px !important;
+    color: #7f7f7f;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.complaints_input {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+    background-color: #fafafa;
+    line-height: 28px !important;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.complaints_input-valid{
+    padding: 5px 0 ;
+    color: #cc181e;
+}
+.button_add-photo{
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    color: #575757;
+}
+
+.button_add-photo-text{
+    display: inline-block;
+    vertical-align: middle;
+}
+.button_add-photo-icon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.complaints_file-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.complaints_file-item {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.complaints_file-item-name{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.complaints_file-item-delete{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    color: #7f7f7f;
+
+}
+
+.preloader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.preloader__wrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1000;
+}

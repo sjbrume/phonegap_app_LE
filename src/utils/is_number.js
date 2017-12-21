@@ -1,0 +1,1 @@
+export const isNumber =  message => value => value && isNaN(Number(value)) ?message : undefined;

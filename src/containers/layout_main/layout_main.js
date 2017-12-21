@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
 import {withStyles} from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 import List from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
 
 import Hidden from 'material-ui/Hidden';
 import MenuIcon from 'material-ui-icons/Menu';
-import Search from 'material-ui-icons/Search';
 
-import {FormSearch} from "../../blocks/form/form_search";
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 import {Link} from "react-router-dom";
 import Typography from 'material-ui/Typography';

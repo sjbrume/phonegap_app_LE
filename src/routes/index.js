@@ -7,7 +7,8 @@ import {LayoutChildren} from '../containers/layout_children/layout_children';
 import {lexicon as MenuLexicon} from '../containers/layout_main/lexicon';
 import {connect} from "react-redux";
 
-import {AticlesPage} from './articles';
+import {ArticlesPage} from './articles';
+import {ArticlePage} from './article';
 import {ComplaintsPage} from "./complaints";
 import {ContactsPage} from "./contacts";
 import {SettingsPage} from "./settings";
@@ -68,7 +69,11 @@ export class RouterWrapper extends Component {
                             exact
                             path={MenuLexicon[currentLocal].menu.articles.href}
                             title={MenuLexicon[currentLocal].menu.articles.text}
-                            component={AticlesPage}
+                            component={ArticlesPage}
+                        />
+                        <ChildrenRoute
+                            path={'/article/:id'}
+                            component={ArticlePage}
                         />
                         <ChildrenRoute
                             exact

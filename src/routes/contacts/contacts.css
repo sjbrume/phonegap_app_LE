@@ -1,0 +1,50 @@
+.contacts_wrapper {
+
+}
+
+.contact_section {
+    padding: 0 30px;
+}
+
+.contact_title {
+    padding: 10px 20px 10px 0;
+    border-bottom: 2px solid #e0e0e0;
+    margin: 0;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.16667em;
+    color: #7f7f7f;
+}
+
+.contact_list {
+    padding: 0;
+    margin: 0 0 0 20px;
+}
+
+.contact_item {
+    padding: 10px 20px 10px 0;
+    border-bottom: 2px solid #e0e0e0;
+    margin: 0;
+    list-style: none;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.16667em;
+    color: #494949;
+}
+
+.contact_social-list {
+    font-size: 0;
+    text-align: center;
+    padding: 0 5px;
+    margin-top: 30px;
+}
+
+.contact_social-item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 5px;
+}
+
+.contact_social-link {
+    display: block;
+}

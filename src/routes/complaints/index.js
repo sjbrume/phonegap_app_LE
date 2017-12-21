@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import './complaints.css';
+import {FormComplaints} from "../../blocks/form/form_complaints/form_complaints";
 
 export class ComplaintsPage extends Component {
 
@@ -18,8 +19,8 @@ export class ComplaintsPage extends Component {
 
     render() {
         return (
-            <div>
-                Complaints
+            <div className="complaints_wrapper">
+                <FormComplaints/>
             </div>
         )
     }
