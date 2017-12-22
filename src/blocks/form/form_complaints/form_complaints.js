@@ -5,7 +5,7 @@ import Done from 'material-ui-icons/Done';
 import {lexicon} from './lexicon';
 import Button from 'material-ui/Button';
 import {InputFile} from "../../input/input_file";
-import List, { ListItem, } from 'material-ui/List';
+import List, {ListItem,} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 
@@ -19,7 +19,6 @@ import {isNumber} from "../../../utils/is_number";
 import {isEmail} from "../../../utils/is_email";
 
 const required = message => value => (value ? undefined : message);
-
 
 
 @reduxForm({
@@ -51,16 +50,16 @@ export class FormComplaints extends Component {
     }
 
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({open: true});
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
 
     async onSubmit(value) {
         console.log(value);
-        if(value.type === 'anonim' && value.message === 'Разработчики') {
+        if (value.type === 'anonim' && value.message === 'Разработчики') {
             this.handleClickOpen();
             return;
         }
@@ -74,7 +73,7 @@ export class FormComplaints extends Component {
         };
         options.body = new FormData();
 
-        const data = fetch('',options).then()
+        // const data = fetch('', options).then()
 
     }
 
@@ -100,6 +99,11 @@ export class FormComplaints extends Component {
                     </div>
                 )
             }
+            <div className="complaints_input-valid">
+                {touched &&
+                ((error && <span>{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
+            </div>
         </div>
     );
 
@@ -131,16 +135,15 @@ export class FormComplaints extends Component {
         </div>
     );
 
-    renderPreloader =() =>(<div className="preloader__wrapper">
+    renderPreloader = () => (<div className="preloader__wrapper">
         <CircularProgress className="preloader" style={{
-            display:'block',
-            color:'#0277bd'
-        }} size={60} thickness={7} />
+            display: 'block',
+            color: '#0277bd'
+        }} size={60} thickness={7}/>
     </div>);
 
     render() {
-        const {currentLocal, error, handleSubmit, pristine, reset, submitting, type, values} = this.props;
-        console.log(this.props);
+        const {currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 <div className="complaints_section">
@@ -153,18 +156,18 @@ export class FormComplaints extends Component {
                     >
                         <DialogTitle>{lexicon[currentLocal].develop.title}</DialogTitle>
                         <DialogContent>
-                            <DialogContentText >
+                            <DialogContentText>
                                 {lexicon[currentLocal].develop.desc}
                             </DialogContentText>
                             <List>
                                 <ListItem button>
                                     <a href="">Макареев Федор - React/Phonegap</a>
                                 </ListItem>
-                                <Divider light />
+                                <Divider light/>
                                 <ListItem button>
                                     <a href="">Боброва Александра - Дизайн</a>
                                 </ListItem>
-                                <Divider />
+                                <Divider/>
                                 <ListItem button>
                                     <a href="">Рагимов Артур - Бэкэнд</a>
                                 </ListItem>
@@ -218,7 +221,7 @@ export class FormComplaints extends Component {
                     />
                 </div>
                 {
-                    values && values.type && values.type === 'no_anonim'  &&
+                    values && values.type && values.type === 'no_anonim' &&
                     <div className="complaints_section">
                         <Field
                             component={this.renderField}
@@ -230,7 +233,7 @@ export class FormComplaints extends Component {
                     </div>
                 }
                 {
-                    values && values.type && values.type === 'no_anonim'  &&
+                    values && values.type && values.type === 'no_anonim' &&
                     <div className="complaints_section">
                         <Field
                             component={this.renderField}
@@ -241,8 +244,13 @@ export class FormComplaints extends Component {
                         />
                     </div>
                 }
+                {
+                    error && <div className="complaints_section"><div className="complaints_input-valid">{error}</div></div>
+                }
+
                 <div style={{padding: '20px'}} className="complaints_section">
-                    <Button type="submit" raised style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                    <Button disabled={pristine || submitting} type="submit" raised
+                            style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                         {lexicon[currentLocal].send}
                     </Button>
                 </div>

@@ -36,10 +36,9 @@ export class InputFile extends Component {
 
     onChange(e) {
         let errors = [];
-        const {input: {onChange, value},currentLocal} = this.props;
+        const {input: {onChange},currentLocal} = this.props;
         const files = this.state.files;
         for (let i = 0; i < e.target.files.length; i++) {
-            console.log(e.target.files[i]);
             if(e.target.files[i].type.indexOf("image/") === -1){
                 errors.push(`${lexicon[currentLocal].validation} ${e.target.files[i].name}`);
             } else {
@@ -53,7 +52,7 @@ export class InputFile extends Component {
 
 
     onRemoveFile(elem) {
-        const {input: {onChange, value}} = this.props;
+        const {input: {onChange}} = this.props;
 
         let newState = [];
         this.state.files.map((item, index) => {
@@ -67,7 +66,7 @@ export class InputFile extends Component {
 
 
     render() {
-        const {input, label, type, options, meta: {touched, warning}} = this.props;
+        const {input, label} = this.props;
         const {files, errors} = this.state;
         return (
             <div>

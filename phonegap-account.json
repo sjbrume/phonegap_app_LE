@@ -1,0 +1,7 @@
+{
+  "appId": "1234",
+  "user": {
+    "email": "your.email@example.org",
+    "password": "yourPassw0rd"
+  }
+}
