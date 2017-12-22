@@ -25,8 +25,8 @@ export class ArticlePage extends Component {
 
     async getArticles() {
 
-        const data = await fetch(`/assets/articles/${this.props.match.params.id}.html`).then((res) => {
-            // console.log(res);
+        const data = await fetch(`assets/articles/${this.props.match.params.id}.html`)
+            .then((res) => {
             return res.text();
         });
         this.setState({
