@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withStyles} from 'material-ui/styles';
+import withStyles from 'material-ui/styles/withStyles';
 import Drawer from 'material-ui/Drawer';
 import List from 'material-ui/List';
 import Button from 'material-ui/Button';

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
 // import {InputAutocomplete} from "../input/input_autocomplete";
-import {withStyles} from 'material-ui/styles';
+import withStyles from 'material-ui/styles/withStyles';
 
 import {lexicon} from './lexicon';
 import {connect} from "react-redux";
