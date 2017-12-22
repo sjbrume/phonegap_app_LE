@@ -63,8 +63,12 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && git add . && git commit -a -m'build and auto commit' && git push origin master",
-    "deploy": "git add . && git commit -a -m'build and auto commit' && git push origin master && gulp phonegap-build-debug",
+    "build": "node scripts/build.js",
+    "git:add":"git add . ",
+    "git:commit":"git commit -a -m'build and auto commit'",
+    "git:push":"git push origin master",
+    "gulp:build":"gulp phonegap-build-debug",
+    "deploy": "npm run git:add && git:commit && git:push && gulp:build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
