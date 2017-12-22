@@ -4,23 +4,24 @@ const config = required('./phonegap-account.json');
 
 // {dot: true} here to inlude .pgbomit file in zip
 gulp.task('phonegap-build', function () {
-    gulp.src('dist/**/*', {dot: true})
+    gulp.src('build/**/*', {dot: true})
         .pipe(phonegapBuild({
             "isRepository": "true",
-            "appId": "9876",
+            "appId": "2940124",
             "user": {
-                "token": "ABCD123409876XYZ"
+                "email": "mihailovaleksandrivanovich@gmail.com",
+                "password": "0970479070Aa"
             }
         }));
 });
 
 gulp.task('phonegap-build-debug', function () {
-    gulp.src('dist/**/*', {dot: true})
-        .pipe(phonegapeBuild({
-            "appId": "1234",
+    gulp.src('build/**/*', {dot: true})
+        .pipe(phonegapBuild({
+            "appId": "2940124",
             "user": {
-                "email": "your.email@example.org",
-                "password": "yourPassw0rd"
+                "email": "mihailovaleksandrivanovich@gmail.com",
+                "password": "0970479070Aa"
             }
         }));
 });
