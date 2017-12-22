@@ -1,5 +1,5 @@
 {
-  "name": "legal-work-app_react",
+  "name": "legalexcise",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -65,7 +65,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "git:add":"git add . ",
-    "git:commit":"git commit -a -m'build and auto commit'",
+    "git:commit":"git commit -a -m\"build and auto commit\"",
     "git:push":"git push origin master",
     "gulp:build":"gulp phonegap-build-debug",
     "deploy": "npm run git:add && git:commit && git:push && gulp:build",
