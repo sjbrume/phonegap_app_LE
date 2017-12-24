@@ -25,20 +25,16 @@ export class ArticlesPage extends Component {
                     <li className="articles__item">
 
                         <Link className="articles__link" to={"/article/265"}>
-                            <Typography type="subheading" gutterBottom>
-                                265 - Про застосування реєстраторів розрахункових операцій у сфері торгівлі,
-                                громадського
-                                харчування та послуг
-                            </Typography>
+                            265 - Про застосування реєстраторів розрахункових операцій у сфері торгівлі,
+                            громадського
+                            харчування та послуг
                         </Link>
                     </li>
                     <li className="articles__item">
                         <Link className="articles__link" to={"/article/481"}>
-                            <Typography type="subheading" gutterBottom>
-                                481 - Про державне регулювання виробництва і обігу спирту етилового, коньячного і
-                                плодового,
-                                алкогольних напоїв та тютюнових виробів
-                            </Typography>
+                            481 - Про державне регулювання виробництва і обігу спирту етилового, коньячного і
+                            плодового,
+                            алкогольних напоїв та тютюнових виробів
                         </Link>
                     </li>
                 </ul>
