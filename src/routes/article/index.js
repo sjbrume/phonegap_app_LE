@@ -24,11 +24,20 @@ export class ArticlePage extends Component {
     }
 
     async getArticles() {
+        const URL = `assets/articles/${this.props.match.params.id}.html`;
 
-        const data = await fetch(`assets/articles/${this.props.match.params.id}.html`)
-            .then((res) => {
-            return res.text();
+        const data = await new Promise(function(resolve, reject) {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function() {
+                resolve(xhr.responseText)
+            };
+            xhr.onerror = function() {
+                reject(new TypeError('Local request failed'))
+            };
+            xhr.open('GET', URL);
+            xhr.send(null)
         });
+
         this.setState({
             loading: false,
             text: data
