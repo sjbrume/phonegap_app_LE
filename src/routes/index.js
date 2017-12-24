@@ -16,7 +16,7 @@ import {ListOfPlacesPage} from "./list_of_places";
 
 
 document.addEventListener("backbutton", () => {
-    if (location.pathname === '/') {
+    if (window.location.pathname === '/') {
         console.log('backbutton');
         try {
             let confirmed = function (buttonIndex) {
