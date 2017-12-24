@@ -2,112 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/articles/265.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/articles/481.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/russia.federal-districts.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/russia.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/russia.locality.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/assets/russia.subjects.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/config.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/.pgbomit" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-hdpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-ldpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-mdpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-xhdpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-xxhdpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/android/drawable-xxxhdpi-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-40@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-50.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-50@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-60@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-60@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-72@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-76.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-76@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-small@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon-small@3x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/ios/icon@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square150x150Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square150x150Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square30x30Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square310x310Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square44x44Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square44x44Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square70x70Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square71x71Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Square71x71Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/StoreLogo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/StoreLogo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Wide310x150Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/windows/Wide310x150Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/wp8/ApplicationIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/icon/wp8/Background.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-hdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-ldpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-mdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-xhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-xxhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-land-xxxhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-hdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-ldpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-mdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-xhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-xxhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/android/drawable-port-xxxhdpi-screen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-568h@2x~iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-667h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-736h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-Landscape-736h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-Landscape@2x~ipad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-Landscape~ipad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-Portrait@2x~ipad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default-Portrait~ipad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default@2x~iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/ios/Default~iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/windows/SplashScreen.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/windows/SplashScreenPhone.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/res/screen/wp8/screen-portrait.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/splash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.26cceafe.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.26cceafe.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.24dc9287.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.24dc9287.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.987b8457.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.e9dbbe8a.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.6232f43d.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.d704bb3d.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.55536c8e.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.a1471d1d.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.210a7c78.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.d69924b9.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.5d4aeb4e.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.bafb105b.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.9680d5a0.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.d8bcbe72.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.28546717.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.de8b7431.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.510dec37.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.ffcc050b.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.037d8304.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.cf6613d1.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.010c1aee.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.846d1890.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.19b7a0ad.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.8c2ade50.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.7b770d6c.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.bc833e72.woff" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index.js" afterPath="$PROJECT_DIR$/src/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/config.xml" afterPath="$PROJECT_DIR$/build/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.xml" afterPath="$PROJECT_DIR$/public/config.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -121,8 +17,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="115">
+              <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -255,7 +151,6 @@
         <option value="$PROJECT_DIR$/src/blocks/input/input_file.js" />
         <option value="$PROJECT_DIR$/src/routes/home/index.js" />
         <option value="$PROJECT_DIR$/phonegap-account.json" />
-        <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/build/config.xml" />
         <option value="$PROJECT_DIR$/public/index.html" />
@@ -278,6 +173,7 @@
         <option value="$PROJECT_DIR$/src/containers/layout_main/layout_main.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/lexicon.js" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
+        <option value="$PROJECT_DIR$/public/config.xml" />
       </list>
     </option>
   </component>
@@ -331,6 +227,16 @@
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="build" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -354,18 +260,18 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/phonegap-account.json" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public\assets" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\utils" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\routes\contacts" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\routes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\blocks\form\form_complaints" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\blocks\switcher" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\containers\layout_main" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\containers\main-layout" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\build" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public\assets" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\utils" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\routes\contacts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -410,12 +316,12 @@
       <workItem from="1513920020881" duration="2012000" />
       <workItem from="1513961465874" duration="593000" />
       <workItem from="1514015526545" duration="43000" />
-      <workItem from="1514115337559" duration="18189000" />
+      <workItem from="1514115337559" duration="18367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84585000" />
+    <option name="totallyTimeSpent" value="84763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -588,13 +494,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/material-ui/styles/withStyles.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -620,14 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,10 +766,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="115">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
