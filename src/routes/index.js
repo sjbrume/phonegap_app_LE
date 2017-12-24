@@ -16,9 +16,9 @@ import {ListOfPlacesPage} from "./list_of_places";
 
 
 
-document.addEventListener("backbutton", () => {
-    console.log(BrowserHistory.location);
-}, false);
+// document.addEventListener("backbutton", () => {
+//     console.log(BrowserHistory);
+// }, false);
 
 
 const ChildrenRoute = ({component: Component, ...rest}) => {

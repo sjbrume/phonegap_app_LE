@@ -37,7 +37,20 @@ export const lexicon = {
             },
             exit: {
                 text: 'Выход',
-                href: '/exit',
+                onClick: () => {
+                    console.log('Выход');
+                    try{
+                        let confirmed = function (buttonIndex) {
+                            if (buttonIndex == 1) {
+                                console.log("navigator.app.exitApp");
+                                navigator.app.exitApp();
+                            }
+                        };
+                        navigator.notification.confirm('', confirmed, 'Exit?');
+                    } catch (err) {
+                        console.log(err);
+                    }
+                },
                 icon: <Settings/>
             }
         }
