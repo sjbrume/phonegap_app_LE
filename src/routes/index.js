@@ -15,6 +15,12 @@ import {SettingsPage} from "./settings";
 import {ListOfPlacesPage} from "./list_of_places";
 
 
+
+document.addEventListener("backbutton", () => {
+    console.log(BrowserHistory.location);
+}, false);
+
+
 const ChildrenRoute = ({component: Component, ...rest}) => {
     return (
         <Route {...rest} render={matchProps => (
