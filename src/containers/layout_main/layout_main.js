@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import withStyles from 'material-ui/styles/withStyles';
 import Drawer from 'material-ui/Drawer';
 import List from 'material-ui/List';
 import Button from 'material-ui/Button';
@@ -7,18 +6,17 @@ import Button from 'material-ui/Button';
 import Hidden from 'material-ui/Hidden';
 import MenuIcon from 'material-ui-icons/Menu';
 
-import {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
+import {ListItem, ListItemIcon} from 'material-ui/List';
 import {Link} from "react-router-dom";
 import Typography from 'material-ui/Typography';
 
 import {connect} from "react-redux";
-import {styles} from './style';
 
 import {lexicon} from './lexicon';
 import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
 import {Header} from "../../blocks/header/header";
 
-
+import './layout_main.css';
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,
@@ -30,7 +28,6 @@ import {Header} from "../../blocks/header/header";
         }
     })
 )
-@withStyles(styles, {withTheme: true})
 export class LayoutMain extends Component {
 
     constructor(props) {
@@ -51,7 +48,7 @@ export class LayoutMain extends Component {
 
 
     createMenu() {
-        const {classes, currentLocal} = this.props;
+        const {currentLocal} = this.props;
 
         const menu = [];
         let index = 0;
@@ -59,10 +56,10 @@ export class LayoutMain extends Component {
         for (let prop in lexicon[currentLocal].menu) {
             menu.push(
                 <ListItem key={index}>
-                    <ListItemIcon className={classes.colorWhite}>
+                    <ListItemIcon className={'fonts-white'}>
                         {lexicon[currentLocal].menu[prop].icon}
                     </ListItemIcon>
-                    <Link className={classes.colorWhite} to={lexicon[currentLocal].menu[prop].href}>
+                    <Link className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
                         <Typography color="inherit">
                             {lexicon[currentLocal].menu[prop].text}
                         </Typography>
@@ -76,11 +73,11 @@ export class LayoutMain extends Component {
     }
 
     render() {
-        const {classes, theme, children, menuPosition} = this.props;
+        const {children, menuPosition} = this.props;
 
         return (
-            <div className={classes.root}>
-                <div className={classes.appFrame}>
+            <div className={'layout-main_root'}>
+                <div className={'layout-main_app-frame'}>
 
                     <Header onClick={this.handleDrawerToggle}/>
 
@@ -91,7 +88,7 @@ export class LayoutMain extends Component {
                             anchor={menuPosition}
                             open={this.state.mobileOpen}
                             classes={{
-                                paper: menuPosition === MENU_LEFT ? classes.drawerPaperLeft : classes.drawerPaperBottom,
+                                paper: menuPosition === MENU_LEFT ? 'layout-main_drawer-paper' : 'layout-main_drawer-paper--bottom',
                             }}
                             onRequestClose={this.handleDrawerToggle}
                             ModalProps={{
@@ -109,7 +106,7 @@ export class LayoutMain extends Component {
                             fab
                             color="primary"
                             aria-label="add"
-                            className={classes.menuButtonBottom}
+                            className={'layout-main_menu-button-bottom'}
                         >
                             <MenuIcon/>
                         </Button>
@@ -123,8 +120,8 @@ export class LayoutMain extends Component {
                             type="permanent"
                             open
                             classes={{
-                                docked: classes.drawerDocked,
-                                paper: classes.drawerPaper,
+                                docked: 'layout-main_drawer-docked',
+                                paper: 'layout-main_drawer-paper',
                             }}
                         >
                             <List>
@@ -132,7 +129,7 @@ export class LayoutMain extends Component {
                             </List>
                         </Drawer>
                     </Hidden>
-                    <main className={classes.content}>
+                    <main className={'layout-main_content'}>
                         {children}
                     </main>
                 </div>

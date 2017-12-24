@@ -2,17 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
 // import {InputAutocomplete} from "../input/input_autocomplete";
-import withStyles from 'material-ui/styles/withStyles';
-
+import './form.css';
 import {lexicon} from './lexicon';
 import {connect} from "react-redux";
 
-
-const styles = {
-    formFullWidth: {
-        width: '100%',
-    },
-};
 
 @connect(
     state => ({ // получаем данные из store
@@ -24,7 +17,6 @@ const styles = {
         }
     })
 )
-@withStyles(styles)
 @reduxForm({
     form: 'FormSearch',
 })
@@ -48,10 +40,10 @@ export class FormSearch extends Component {
     }
 
     render() {
-        const {currentLocal, classes, error, handleSubmit, pristine, reset, submitting, roles, type} = this.props;
+        const {currentLocal, error, handleSubmit, pristine, reset, submitting, roles, type} = this.props;
 
         return (
-            <form className={classes.formFullWidth} onSubmit={handleSubmit(this.onSubmit)}>
+            <form className={'form_full-width'} onSubmit={handleSubmit(this.onSubmit)}>
                 {/*<Field*/}
 
                     {/*name="search"*/}

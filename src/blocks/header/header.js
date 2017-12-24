@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Search from 'material-ui-icons/Search';
@@ -8,7 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import {FormSearch} from "../form/form_search";
 import {connect} from "react-redux";
-import {styles} from '../../containers/layout_main/style';
+import '../../containers/layout_main/layout_main.css';
 import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
 
 
@@ -23,7 +22,6 @@ import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
         }
     })
 )
-@withStyles(styles)
 export class Header extends Component {
 
     static propTypes = {};
@@ -40,17 +38,17 @@ export class Header extends Component {
     }
 
     render() {
-        const {classes,menuPosition,onClick} = this.props;
+        const {menuPosition,onClick} = this.props;
         console.log(this);
         return (
-            <div className={classes.headerWrapper}>
-                <AppBar position="static" className={classes.appBar} color="default">
-                    <Toolbar className={classes.toolbar}>
+            <div className={'layout-main_header-wrapper'}>
+                <AppBar position="static" className={'layout-main_app-bar'} color="default">
+                    <Toolbar className={'layout-children_tool-bar'}>
 
                         {
                             menuPosition === MENU_LEFT && <IconButton
                                 onClick={onClick}
-                                className={classes.menuButton}
+                                className={'layout-main_menu-button'}
                             >
                                 <MenuIcon/>
                             </IconButton>
@@ -59,7 +57,7 @@ export class Header extends Component {
                         {
                             menuPosition === MENU_BOTTOM &&
                             <IconButton
-                                className={classes.searchButtonMobile}
+                                className={'layout-main_search-button-mobile'}
                             >
                                 <Search/>
                             </IconButton>
@@ -68,7 +66,7 @@ export class Header extends Component {
 
 
                         <IconButton
-                            className={classes.searchButton}
+                            className={'layout-main_search-button'}
                         >
                             <Search/>
                         </IconButton>

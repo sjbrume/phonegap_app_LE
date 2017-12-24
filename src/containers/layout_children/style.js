@@ -1,25 +1,25 @@
 const drawerWidth = 240;
 export const styles = theme => ({
-    root: {
-        width: '100%',
-        height: '100%',
-        // marginTop: theme.spacing.unit * 3,
-        marginTop: 0,
-
-        zIndex: 1,
-        overflow: 'hidden',
-    },
-    appFrame: {
-        position: 'relative',
-        display: 'flex',
-        width: '100%',
-        height: '100%',
-    },
-    appBar:{
-        backgroundColor: 'transparent',
-        boxShadow: 'none',
-        border: 'none',
-    },
+    // root: {
+    //     width: '100%',
+    //     height: '100%',
+    //     // marginTop: theme.spacing.unit * 3,
+    //     marginTop: 0,
+    //
+    //     zIndex: 1,
+    //     overflow: 'hidden',
+    // },
+    // appFrame: {
+    //     position: 'relative',
+    //     display: 'flex',
+    //     width: '100%',
+    //     height: '100%',
+    // },
+    // appBar:{
+    //     backgroundColor: 'transparent',
+    //     boxShadow: 'none',
+    //     border: 'none',
+    // },
 
     navIconHide: {
         [theme.breakpoints.up('md')]: {
@@ -82,13 +82,13 @@ export const styles = theme => ({
             display: 'inline-flex',
         },
     },
-    arrowButton: {
-        marginLeft: -12,
-        marginRight: 10,
-        color: '#ffffff',
-        textDecoration: 'none',
-        display: 'inline-flex',
-    },
+    // arrowButton: {
+    //     marginLeft: -12,
+    //     marginRight: 10,
+    //     color: '#ffffff',
+    //     textDecoration: 'none',
+    //     display: 'inline-flex',
+    // },
     colorWhite: {
         color: '#ffffff',
         textDecoration: 'none'
