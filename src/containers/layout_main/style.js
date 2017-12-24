@@ -89,6 +89,7 @@ export const styles = theme => ({
         left: '50%',
         transform:' translate(-50%, 0)',
         display: 'inline-flex',
+        zIndex: '1000',
         backgroundColor: '#0277bd',
         [theme.breakpoints.up('md')]: {
             display: 'none',
