@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import {BrowserHistory} from "../history";
 import {HomePage} from "./home";
 import {LayoutMain} from "../containers/layout_main/layout_main";
@@ -15,10 +15,22 @@ import {SettingsPage} from "./settings";
 import {ListOfPlacesPage} from "./list_of_places";
 
 
-
-// document.addEventListener("backbutton", () => {
-//     console.log(BrowserHistory);
-// }, false);
+document.addEventListener("backbutton", () => {
+    if (location.pathname === '/') {
+        console.log('backbutton');
+        try {
+            let confirmed = function (buttonIndex) {
+                if (buttonIndex === 1) {
+                    console.log("navigator.app.exitApp");
+                    navigator.app.exitApp();
+                }
+            };
+            navigator.notification.confirm('', confirmed, 'Exit?');
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}, false);
 
 
 const ChildrenRoute = ({component: Component, ...rest}) => {
@@ -56,7 +68,7 @@ export class RouterWrapper extends Component {
     render() {
         const {currentLocal} = this.props;
         return (
-            <HashRouter history={BrowserHistory} basename="/">
+            <Router history={BrowserHistory} basename="/">
                 <Route>
                     <Switch>
                         <MainRoute exact path="/" title="Главная" component={HomePage}/>
@@ -95,7 +107,7 @@ export class RouterWrapper extends Component {
                         />
                     </Switch>
                 </Route>
-            </HashRouter>
+            </Router>
         )
     }
 }

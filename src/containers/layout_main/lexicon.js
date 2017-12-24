@@ -41,7 +41,7 @@ export const lexicon = {
                     console.log('Выход');
                     try{
                         let confirmed = function (buttonIndex) {
-                            if (buttonIndex == 1) {
+                            if (buttonIndex === 1) {
                                 console.log("navigator.app.exitApp");
                                 navigator.app.exitApp();
                             }
