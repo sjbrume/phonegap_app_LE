@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "region_id": 2,
+      "id_code": 23,
+      "address": "address",
+      "lng":0.11,
+      "lat": 0.44,
+      "license": "MIT",
+      "company": "company",
+      "license_start_at": 32362362362,
+      "license_end_at": 32362362362,
+      "license_type": "alcohol",
+      "status": "active",
+      "geocoding_payload": "geocoding_payload",
+      "geocoding_at": 32362362362,
+      "created_at": 32362362362,
+      "update_at": 32362362362
+    }
+  ]
+}
