@@ -71,7 +71,7 @@ export class Header extends Component {
                             <Search/>
                         </IconButton>
 
-                        {/*<FormSearch/>*/}
+                        <FormSearch/>
                     </Toolbar>
                 </AppBar>
             </div>

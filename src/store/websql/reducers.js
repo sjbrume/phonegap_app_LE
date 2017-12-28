@@ -17,13 +17,30 @@ import {
     WEBSQL_VERSION_DB_ERROR,
     WEBSQL_VERSION_DB_LOADING,
     WEBSQL_VERSION_DB_SET,
-    WEBSQL_VERSION_DB_SUCCESS
+    WEBSQL_VERSION_DB_SUCCESS, WEBSQL_LIST_OF_PLACES_GET, WEBSQL_SEARCH_SET, WEBSQL_SEARCH_REMOVE
 } from "./action_types";
 
 export const websql = (state = {}, action) => {
-    console.log(state);
     switch (action.type) {
 
+        case WEBSQL_SEARCH_SET: {
+            console.log(WEBSQL_SEARCH_SET, action.payload);
+            return Object.assign({}, state, {
+                search_result: action.payload
+            })
+        }
+        case WEBSQL_SEARCH_REMOVE: {
+                console.log(WEBSQL_SEARCH_REMOVE, action.payload);
+                return Object.assign({}, state, {
+                    search_result: null
+                })
+            }
+        case WEBSQL_LIST_OF_PLACES_GET: {
+            console.log(WEBSQL_LIST_OF_PLACES_GET, action.payload);
+            return Object.assign({}, state, {
+                list_of_places: action.payload
+            })
+        }
         case WEBSQL_SET_DATA_LOADING: {
             console.log(WEBSQL_SET_DATA_LOADING, action.payload);
             return Object.assign({}, state, {

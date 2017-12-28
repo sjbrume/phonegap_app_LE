@@ -17,6 +17,10 @@ import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
 import {Header} from "../../blocks/header/header";
 
 import './layout_main.css';
+
+
+
+
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,

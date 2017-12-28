@@ -5,8 +5,35 @@ import {
     WEBSQL_DB_SUCCESS_CREATE,
     WEBSQL_VERSION_DB_ERROR,
     WEBSQL_VERSION_DB_LOADING, WEBSQL_VERSION_DB_SET,
-    WEBSQL_VERSION_DB_SUCCESS
+    WEBSQL_VERSION_DB_SUCCESS, WEBSQL_LIST_OF_PLACES_GET,
 } from "./action_types";
+import {DATA_URL, DB_NAME, DB_VERSION_URL, DROP_TABLE, TABLE_NAME, TIMEOUT} from "../../config";
+
+
+// TODO: это для бесконечного скрола на будующее
+// const list_places = (state) => {
+//     return (dispatch) => {
+//
+//         const MIN = state.websql.list_of_places.length;
+//         const MAX = state.websql.list_of_places.length + STEP;
+//         const OLD_LIST = state.websql.list_of_places;
+//
+//         state.websql.db.db.transaction((tx) => {
+//             tx.executeSql(`SELECT *
+//                            FROM ${TABLE_NAME}
+//                            WHERE ID > ? AND ID < ?`,
+//                 [MIN, MAX],
+//                 (sqlTransaction, sqlResultSet) => {
+//                     console.log(sqlTransaction, sqlResultSet);
+//                     dispatch({type: WEBSQL_LIST_OF_PLACES_GET, payload: [...OLD_LIST, ...sqlResultSet.rows]})
+//                 }, (sqlTransaction, sqlEerror) => {
+//                     console.log(sqlTransaction, sqlEerror);
+//                     // reject(sqlEerror);
+//                 });
+//         });
+//
+//     };
+// };
 
 const create_db = (version) => {
     console.log(version);
@@ -17,42 +44,53 @@ const create_db = (version) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 try {
-                    const DB = window.openDatabase('excise', version, '', 40 * 1024 * 1024);
+                    const DB = window.openDatabase(DB_NAME, version, '', 40 * 1024 * 1024);
                     create_table_db(DB);
                     dispatch({type: WEBSQL_DB_CREATE, payload: DB});
                     dispatch({type: WEBSQL_DB_LOADING, payload: false});
+                    // dispatch(list_places());
                     resolve(DB);
                 } catch (err) {
                     console.error(err);
                     reject(err);
                 }
-            }, 10000);
+            }, TIMEOUT);
         })
     }
 };
 
 const create_table_db = (DB) => {
     DB.transaction(function (tx) {
+        if (DROP_TABLE) {
+            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`)
+            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`)
+        };
 
-        tx.executeSql(`DROP TABLE IF EXISTS excisetest`);
 
-        tx.executeSql(`CREATE TABLE IF NOT EXISTS excisetest (
-          id                INTEGER,
-          region_id         INTEGER,
-          id_code           TEXT,
-          address           TEXT,
-          lng               REAL,
-          lat               REAL,
-          license           TEXT,
-          company           TEXT,
-          license_start_at  NUMERIC,
-          license_end_at    NUMERIC,
-          license_type      TEXT,
-          status            TEXT,
-          geocoding_payload TEXT,
-          geocoding_at      TEXT,
-          created_at        NUMERIC,
-          update_at         NUMERIC
+        // tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
+        //   ID         INTEGER PRIMARY KEY ASC,
+        //   aoguid     TEXT,
+        //   disid      TEXT,
+        //   name       TEXT,
+        //   okato      TEXT,
+        //   parentguid TEXT,
+        //   regioncode TEXT
+        // )`);
+
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
+          ID               INTEGER PRIMARY KEY ASC,
+          id               INTEGER,
+          region_id        INTEGER,
+          id_code          TEXT,
+          address          TEXT,
+          lng              REAL,
+          lat              REAL,
+          license          TEXT,
+          company          TEXT,
+          license_start_at TEXT,
+          license_end_at   TEXT,
+          license_type     TEXT,
+          status           TEXT
         )`);
 
     });
@@ -63,72 +101,89 @@ const set_db = (DB, data) => {
         dispatch({type: WEBSQL_SET_DATA_LOADING, payload: true});
         setTimeout(() => {
             try {
-                // DB.transaction(function (tx) {
-                //     data.map(item => {
-                //         let {
-                //             id,
-                //             region_id,
-                //             id_code,
-                //             address,
-                //             lng,
-                //             lat,
-                //             license,
-                //             company,
-                //             license_start_at,
-                //             license_end_at,
-                //             license_type,
-                //             status,
-                //             geocoding_payload,
-                //             geocoding_at,
-                //             created_at,
-                //             update_at,
-                //         } = item;
-                //         tx.executeSql(`
-                //               INSERT INTO excise2
-                //               ( id,
-                //                 region_id,
-                //                 id_code,
-                //                 address,
-                //                 lng,
-                //                 lat,
-                //                 license,
-                //                 company,
-                //                 license_start_at,
-                //                 license_end_at,
-                //                 license_type,
-                //                 status,
-                //                 geocoding_payload,
-                //                 geocoding_at,
-                //                 created_at,
-                //                 update_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-                //             `,
-                //             [
-                //                 id,
-                //                 region_id,
-                //                 id_code,
-                //                 address,
-                //                 lng,
-                //                 lat,
-                //                 license,
-                //                 company,
-                //                 license_start_at,
-                //                 license_end_at,
-                //                 license_type,
-                //                 status,
-                //                 geocoding_payload,
-                //                 geocoding_at,
-                //                 created_at,
-                //                 update_at,
-                //             ]);
-                //     });
-                // });
-                dispatch({type: WEBSQL_SET_DATA_LOADING, payload: false});
-                dispatch({type: WEBSQL_SET_DATA_SUCCESS, payload: true});
+
+                DB.transaction(async (tx) => {
+                    let promises = [];
+                    // data.map(item => {
+                    //     let {aoguid, disid, name, okato, parentguid, regioncode} = item;
+                    //     promises.push(
+                    //         new Promise((resolve, reject) => {
+                    //             tx.executeSql(`INSERT INTO ${TABLE_NAME} (aoguid,disid,name,okato,parentguid,regioncode) VALUES (?,?,?,?,?,?)`,
+                    //                 [aoguid, disid, name, okato, parentguid, regioncode],
+                    //                 (sqlTransaction, sqlResultSet) => {
+                    //                     resolve()
+                    //                 })
+                    //         })
+                    //     )
+                    // });
+                    data.map(item => {
+                        let {
+                            id,
+                            region_id,
+                            id_code,
+                            address,
+                            lng,
+                            lat,
+                            license,
+                            company,
+                            license_start_at,
+                            license_end_at,
+                            license_type,
+                            status,
+                        } = item;
+                        promises.push(
+                            new Promise((resolve, reject) => {
+                                tx.executeSql(`INSERT INTO ${TABLE_NAME} (
+                                      id,
+                                      region_id,
+                                      id_code,
+                                      address,
+                                      lng,
+                                      lat,
+                                      license,
+                                      company,
+                                      license_start_at,
+                                      license_end_at,
+                                      license_type,
+                                      status
+                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                    [id,
+                                        region_id,
+                                        id_code,
+                                        address,
+                                        lng,
+                                        lat,
+                                        license,
+                                        company,
+                                        license_start_at,
+                                        license_end_at,
+                                        license_type,
+                                        status],
+                                    (sqlTransaction, sqlResultSet) => {
+                                        resolve()
+                                    })
+                            })
+                        )
+                    });
+
+                    Promise.all(promises).then(value => {
+                        console.log('Promise.all', value);
+                        dispatch({type: WEBSQL_SET_DATA_LOADING, payload: false});
+                        dispatch({type: WEBSQL_SET_DATA_SUCCESS, payload: true});
+                    }, reason => {
+                        dispatch({type: WEBSQL_SET_DATA_LOADING, payload: false});
+                        dispatch({type: WEBSQL_SET_DATA_ERROR, payload: true});
+                    });
+
+
+                });
+
+
             } catch (err) {
                 console.error(err);
                 dispatch({type: WEBSQL_SET_DATA_ERROR, payload: true});
             }
-        }, 10000);
+        }, TIMEOUT);
     }
 };
 
@@ -138,24 +193,47 @@ const update_db = () => {
         console.log('update_db');
         dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: true});
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // переведёт промис в состояние fulfilled с результатом "result"
-                dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
-                resolve("0.0.1");
-            }, 5000);
+
+            dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false})
+            resolve(1514451431)
+            // let xhr = new XMLHttpRequest;
+            //
+            //
+            // xhr.onload = function () {
+            //     dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
+            //     resolve(JSON.parse(xhr.responseText))
+            // };
+            // xhr.onerror = function () {
+            //     dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
+            //     reject(xhr)
+            // };
+            // xhr.open('GET', DB_VERSION_URL, true);
+            // xhr.setRequestHeader("Content-Type","application/json");
+            // xhr.setRequestHeader("Accept","application/json");
+            // xhr.send(null)
         })
     }
 };
 
 const download_db = () => {
     return (dispatch) => {
-        console.log('update_db');
+        console.log('download_db');
         dispatch({type: WEBSQL_DOWNLOAD_DATA_LOADING, payload: true});
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
+
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
                 dispatch({type: WEBSQL_DOWNLOAD_DATA_LOADING, payload: false});
-                resolve("result");
-            }, 5000);
+                resolve(JSON.parse(xhr.responseText))
+            };
+            xhr.onerror = function () {
+                dispatch({type: WEBSQL_DOWNLOAD_DATA_LOADING, payload: false});
+                reject(xhr)
+            };
+            xhr.open('GET', DATA_URL);
+            xhr.setRequestHeader("Content-Type","application/json");
+            xhr.setRequestHeader("Accept","application/json");
+            xhr.send(null)
         })
     }
 };
@@ -223,7 +301,7 @@ const first_init = (dispatch) => {
 
             // TODO шаг 6: получаю данные
             dispatch(download_db()).then((data) => {
-                console.log(data);
+                console.log('download_db', data);
                 // TODO шаг 7: отмечаю успешный запрос
                 dispatch({type: WEBSQL_DOWNLOAD_DATA_SUCCESS, payload: true});
 
@@ -250,9 +328,27 @@ const first_init = (dispatch) => {
     })
 };
 
+const get_data = (db) => {
+    console.log('get_data');
+    db.transaction(function (tx) {
+        let sqlResultSet = tx.executeSql(`SELECT *
+                                          FROM ${TABLE_NAME}
+                                          WHERE ID < ?`, [30], (sqlTransaction, sqlResultSet) => {
+            console.log(sqlTransaction, sqlResultSet);
+        });
+        console.log(sqlResultSet);
+    });
+    // return (dispatch) => {
+    //
+    //
+    // }
+};
+
+
 export {
     update_db,
     create_db,
     download_db,
-    init_db
+    init_db,
+    get_data
 }

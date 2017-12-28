@@ -3,10 +3,16 @@ export const lexicon = {
         anonim: 'Анонимно',
         no_anonim: 'Не анонимно',
         fio: 'ФИО',
+        company: 'Компания',
         message: 'Суть жалобы',
         photo: 'Добавить фото',
         phone: 'Телефон',
         send: 'Отправить',
+        submitMessage: {
+            success: 'Сообщение доставлено',
+            error: 'Во время отправки сообщения произошла ошибка'
+        },
+
         validation: {
             required: 'Обязательно для заполнения'  ,
             phone:'Только цифры',
@@ -23,10 +29,15 @@ export const lexicon = {
         anonim: 'Анонімно',
         no_anonim: 'Чи не анонімно',
         fio: 'ФІО',
+        company: 'Компания',
         message: 'Суть скарги',
         photo: 'Додати фото',
         phone: 'Телефон',
         send: 'Відправити',
+        submitMessage: {
+            success: 'Повідомлення доставлено\n',
+            error: 'Під час відправки повідомлення сталася помилка'
+        },
         validation: {
             required: 'Обов\'язкове для заповнення'  ,
             phone:'Тільки цифри',

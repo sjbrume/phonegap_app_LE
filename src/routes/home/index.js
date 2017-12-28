@@ -1,23 +1,59 @@
 import React, {Component} from 'react';
 import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
+import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer"
+import {compose, withProps, withHandlers} from "recompose";
+import Drawer from 'material-ui/Drawer';
+import {mock} from './mock';
 import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
+import {lexicon} from './lexicon';
+import {WEBSQL_SEARCH_REMOVE} from "../../store/websql/action_types";
+import Error from 'material-ui-icons/Error';
+import {TABLE_NAME} from "../../config";
 
 // https://habrahabr.ru/post/213515/
 // https://habrahabr.ru/post/84654/
 // https://tomchentw.github.io/react-google-maps/
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-    <GoogleMap
-        defaultZoom={10}
-        defaultCenter={{lat: 46.484583, lng: 30.7326}}
-    >
-        {props.isMarkerShown && <Marker position={{lat: 46.484583, lng: 30.7326}}/>}
-    </GoogleMap>
-));
 
+const MapWithAMarkerClusterer = compose(
+    withProps({
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
+        loadingElement: <div style={{height: `100%`}}/>,
+        containerElement: <div style={{height: `calc(100vh - 64px)`}}/>,
+        mapElement: <div style={{height: `100%`}}/>,
+    }),
+    withHandlers({
+        onMarkerClustererClick: () => (markerClusterer) => {
+            const clickedMarkers = markerClusterer.getMarkers()
+            console.log(`Current clicked markers length: ${clickedMarkers.length}`)
+            console.log(clickedMarkers)
+        },
+    }),
+    withScriptjs,
+    withGoogleMap
+)(props =>
+    <GoogleMap
+        defaultZoom={props.zoom}
+        defaultCenter={props.center}
+        center={props.center}
+        zoom={props.zoom}
+    >
+        <MarkerClusterer
+            onClick={props.onMarkerClustererClick}
+            averageCenter
+            enableRetinaIcons
+            gridSize={60}
+        >
+            {props.markers}
+
+        </MarkerClusterer>
+    </GoogleMap>
+);
 
 function mapStateToProps(state) {
     return {
+        currentLocal: state.intl,
+        search_result: state.websql.search_result,
         db: {
             db: state.websql.db.db,
             loading: state.websql.db.loading,
@@ -43,8 +79,15 @@ function mapStateToProps(state) {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch: (type, payload) => {
+            dispatch({type, payload})
+        }
+    }
+}
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export class HomePage extends Component {
 
     static API_KEY = 'AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0';
@@ -53,23 +96,17 @@ export class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.createWebSQL = this.createWebSQL.bind(this);
-        this.createWebSQLTable = this.createWebSQLTable.bind(this);
-        this.addToWebSQL = this.addToWebSQL.bind(this);
-        this.getArticles = this.getArticles.bind(this);
         this.createLoadingPanel = this.createLoadingPanel.bind(this);
         this.renderLoading = this.renderLoading.bind(this);
+        this.getMarkers = this.getMarkers.bind(this);
+        this.toggleDescription = this.toggleDescription.bind(this);
     }
 
     get initialState() {
         return {
-            db: null,
-            db_config: {
-                name: 'excise',
-                version: '0.0.1',
-                description: 'База данных адресов',
-                size: 20 * 1024 * 1024
-            }
+            bottom: false,
+            description: false,
+            markers: []
         }
     }
 
@@ -77,99 +114,101 @@ export class HomePage extends Component {
         // this.createWebSQL();
     }
 
-    async getArticles() {
-        const URL = `assets/russia.json`;
-
-        const {data} = await new Promise(function (resolve, reject) {
-            let xhr = new XMLHttpRequest;
-            xhr.onload = function () {
-                resolve(JSON.parse(xhr.responseText))
-            };
-            xhr.onerror = function () {
-                reject(new TypeError('Local request failed'))
-            };
-            xhr.open('GET', URL);
-            xhr.send(null)
-        });
-
-        this.addToWebSQL(data)
-    }
-
-    createWebSQL() {
-        const {name, version, description, size} = this.state.db_config;
-        this.DB = window.openDatabase(name, version, description, size);
-        return this.createWebSQLTable();
-    }
-
-    addToWebSQL(obj) {
-        console.log(obj.length);
-        console.time('test');
-
-        this.DB.transaction(function (tx) {
-
-            obj.map(item => {
-                let {aoguid, disid, name, okato, parentguid, regioncode} = item;
-                tx.executeSql("INSERT INTO excise2 (aoguid,disid,name,okato,parentguid,regioncode) VALUES (?,?,?,?,?,?)",
-                    [aoguid, disid, name, okato, parentguid, regioncode]);
-            });
-        });
-        console.timeEnd('test');
-
-    }
-
-    createWebSQLTable() {
-        this.DB.transaction(function (tx) {
-            // tx.executeSql(`DROP TABLE IF EXISTS excise`);
-            // tx.executeSql(`DROP TABLE IF EXISTS excise2`);
-
-            tx.executeSql(`CREATE TABLE IF NOT EXISTS excise2 (
-              ID         INTEGER PRIMARY KEY ASC,
-              aoguid     TEXT,
-              disid      TEXT,
-              name       TEXT,
-              okato      TEXT,
-              parentguid TEXT,
-              regioncode TEXT
-            )`);
-
-        });
-    }
+    componentWillReceiveProps(nextProps) {
+        const {db, data, set, search_result} = nextProps;
+        console.log(nextProps);
+        if (search_result !== this.props.search_result) {
+            console.log(this.props.search_result);
+            this.toggleDescription(true, search_result);
+            return true
+        }
+        if (db !== this.props.db.db && set.success) {
+            const result = this.getMarkers();
+        }
+    };
 
     createLoadingPanel() {
-        const {db, data, set, version} = this.props;
+        const {db, data, set, version, currentLocal} = this.props;
 
         if (version.loading) {
-            return this.renderLoading('Проверка версии базы данных ...')
+            return this.renderLoading(lexicon[currentLocal].loading.version, true)
         } else if (!version.loading && version.error) {
-            return this.renderLoading('Ошибка при проверке версии базы данных')
+            return this.renderLoading(lexicon[currentLocal].error.version, false)
         }
 
         if (db.loading) {
-            return this.renderLoading('Создание базы данных...')
+            return this.renderLoading(lexicon[currentLocal].loading.db, true)
         } else if (!db.loading && db.error) {
-            return this.renderLoading('Ошибка при cоздании базы данных...')
+            return this.renderLoading(lexicon[currentLocal].error.db, false)
         }
 
         if (data.loading) {
-            return this.renderLoading('Получение данных...')
+            return this.renderLoading(lexicon[currentLocal].loading.data, true)
         } else if (!data.loading && data.error) {
-            return this.renderLoading('Ошибка при получении данных')
+            return this.renderLoading(lexicon[currentLocal].error.data, false)
         }
         if (set.loading) {
-            return this.renderLoading('Запись данных')
+            return this.renderLoading(lexicon[currentLocal].loading.set, true)
         } else if (!set.loading && set.error) {
-            return this.renderLoading('Ошибка при записи данных')
+            return this.renderLoading(lexicon[currentLocal].error.set, false)
         }
         return null
     }
 
-    renderLoading = (content) => (<div className="loading-panel_wrapper">
+    async getMarkers() {
+        const {db} = this.props;
+        const markers = [];
+        const data = await new Promise((resolve, reject) => {
+            db.db.transaction(function (tx) {
+                let sqlResultSet = tx.executeSql(`SELECT *
+                                                  FROM ${TABLE_NAME}`, [],
+                    (sqlTransaction, sqlResultSet) => {
+                        console.log(sqlTransaction, sqlResultSet);
+                        resolve(Object.values(sqlResultSet.rows))
+                    }, (sqlTransaction, sqlEerror) => {
+                        console.log(sqlTransaction, sqlEerror);
+                        reject(sqlEerror);
+                    });
+                console.log(sqlResultSet);
+            });
+        });
+
+        console.log(data);
+        data.length && data.map((marker, index) => {
+            if(marker.lng && marker.lat) {
+                markers.push(<Marker
+                    key={marker.id}
+                    position={{lat: marker.lat, lng: marker.lng}}
+                    onClick={() => this.props.toggleDescription(true, marker)}
+                />)
+            }
+        })
+
+
+        this.setState({markers})
+    }
+
+    renderLoading = (content, load) => (<div className="loading-panel_wrapper">
         <div>
-            <CircularProgress style={{
-                display: 'block',
-                color: '#0277bd',
-                margin: '0 auto'
-            }} size={60} thickness={7}/>
+
+            {
+                load &&
+                <CircularProgress style={{
+                    display: 'block',
+                    color: '#0277bd',
+                    margin: '0 auto'
+                }} size={60} thickness={7}/>
+            }
+            {
+                !load &&
+                <Error style={{
+                    color: '#F44336',
+                    display: 'block',
+                    width: '60px',
+                    height: '60px',
+                    margin: '0 auto'
+                }}/>
+            }
             <div className="loading-panel_content">
                 {
                     content
@@ -178,31 +217,80 @@ export class HomePage extends Component {
         </div>
     </div>);
 
+    toggleDescription(open, data) {
+        console.log('openDescription', data);
+        const {currentLocal} = this.props;
+        if (data) {
+            const description = (
+                <div className="places-description_wrapper">
+                    <h3 className="places-description_title">
+                        {lexicon[currentLocal].company_desc.company}: {data.company}
+                    </h3>
+                    <p className="places-description_text">
+                        {lexicon[currentLocal].company_desc.license_type}: {data.license_type === 'alcohol' ? lexicon[currentLocal].company_desc.alcohol : lexicon[currentLocal].company_desc.tobacco}
+                        <br/>
+                        {lexicon[currentLocal].company_desc.license_number}: {data.license} <br/>
+                        {lexicon[currentLocal].company_desc.license_start_at}/{lexicon[currentLocal].company_desc.license_end_at}: {data.license_start_at}
+                        — {data.license_end_at}
+                    </p>
+                </div>
+            );
+            this.setState({
+                'bottom': open,
+                description
+            });
+        } else {
+            this.setState({
+                'bottom': open,
+                description: null
+            });
+            if (this.props.search_result) {
+                this.props.dispatch(WEBSQL_SEARCH_REMOVE, null)
+            }
+        }
+
+    }
+
+
     render() {
-        console.log(this.props);
-        const {db, data, set, version} = this.props;
+        const {db, data, set, version, currentLocal} = this.props;
 
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
         }
         if (version.error) {
-            return (<div>Ошибка при проверке версии базы данных</div>)
+            return (<div>{lexicon[currentLocal].error.version}</div>)
         } else if (db.error) {
-            return (<div>Ошибка при cоздании базы данных</div>)
+            return (<div>{lexicon[currentLocal].error.db}</div>)
         } else if (data.error) {
-            return (<div>Ошибка при получении данных</div>)
+            return (<div>{lexicon[currentLocal].error.data}</div>)
         } else if (set.error) {
-            return (<div>Ошибка при записи данных</div>)
+            return (<div>{lexicon[currentLocal].error.set}</div>)
         }
         return (
             <div>
-                <MyMapComponent
-                    isMarkerShown
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0"
-                    loadingElement={<div style={{height: `100%`}}/>}
-                    containerElement={<div style={{height: `calc(100vh - 64px)`}}/>}
-                    mapElement={<div style={{height: `100%`}}/>}
-                />
+
+                <MapWithAMarkerClusterer
+
+                    center={{
+                        lat: this.props.search_result ? this.props.search_result.lat : 46.484583,
+                        lng: this.props.search_result ? this.props.search_result.lng : 30.7326,
+                    }}
+
+                    zoom={this.props.search_result ? 14 : 10}
+
+                    toggleDescription={this.toggleDescription} markers={this.state.markers}/>
+
+                <Drawer
+                    onClick={() => this.toggleDescription(false, null)}
+                    onKeyDown={() => this.toggleDescription(false, null)}
+                    anchor="bottom"
+                    open={this.state.bottom}
+                    onClose={() => this.toggleDescription(false, null)}
+                >
+                    {this.state.description}
+                </Drawer>
+
             </div>
         )
     }

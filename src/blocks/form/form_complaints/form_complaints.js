@@ -17,12 +17,34 @@ import Dialog, {
 } from 'material-ui/Dialog';
 import {isNumber} from "../../../utils/is_number";
 import {isEmail} from "../../../utils/is_email";
+import {Store} from '../../../store/store';
 
-const required = message => value => (value ? undefined : message);
+const required = message => value => {
+    console.log(value);
+    return value ? undefined : message
+};
 
+const sync_validate = values => {
+    const errors = {};
+    console.log(values);
+    if (!values.type) {
+        errors.type = lexicon[Store.getState().intl].validation.required
+    }
+    if (!values.company) {
+        errors.company = lexicon[Store.getState().intl].validation.required
+    }
+    if (!values.message) {
+        errors.message = lexicon[Store.getState().intl].validation.required
+    }
+    return errors
+}
+
+
+const COMPLAINTS_URL = 'http://185.25.117.8/complaint';
 
 @reduxForm({
     form: 'FormComplaints',
+    validate: sync_validate
 })
 @connect(
     state => ({ // получаем данные из store
@@ -40,12 +62,15 @@ export class FormComplaints extends Component {
         super(props);
         this.state = this.initialState;
         this.onSubmit = this.onSubmit.bind(this);
+        this.renderMessageDialog = this.renderMessageDialog.bind(this);
     }
 
     get initialState() {
         return {
             open: false,
-            loading: false
+            loading: false,
+            openMessageDialog: false,
+            submitSuccess: false
         }
     }
 
@@ -63,16 +88,52 @@ export class FormComplaints extends Component {
             this.handleClickOpen();
             return;
         }
+        if (!value.message) return;
+        if (!value.company) return;
+        if (value.type === 'no_anonim' && !value.name) return;
 
-        const options = {
-            method: 'POST',
-            mode: 'cors',
-            header: {
-                'Content-type': 'multipart/form-data'
+        this.setState({loading: true});
+        let formData = new FormData();
+        const resetForm = this.props.reset;
+
+
+        for (let prop in value) {
+            if (prop === 'image') {
+                for (let i = 0; i < value[prop].length; i++) {
+                    formData.append('image[]', value[prop][i]);
+                }
+            } else {
+                formData.append(prop, value[prop]);
             }
-        };
-        options.body = new FormData();
+        }
 
+        const data = await new Promise((resolve, reject) => {
+            let request = new XMLHttpRequest();
+            request.open("POST", COMPLAINTS_URL);
+            request.onload = function () {
+                console.log(request);
+
+                resolve(request)
+            };
+            request.onerror = function () {
+                console.log(request);
+                reject(request)
+            };
+            request.send(formData);
+        })
+            .then((res) => res)
+            .catch((err) => {
+                console.log(err);
+                return err
+            })
+        console.log(data);
+        if (data.status >= 200 || data.status < 300) {
+            resetForm();
+            this.setState({loading: false, openMessageDialog: true, submitSuccess: true});
+        } else {
+
+            this.setState({loading: false, openMessageDialog: true});
+        }
         // const data = fetch('', options).then()
 
     }
@@ -142,10 +203,45 @@ export class FormComplaints extends Component {
         }} size={60} thickness={7}/>
     </div>);
 
+    renderMessageDialog() {
+        const {currentLocal} = this.props;
+
+        return (<Dialog
+            open={this.state.openMessageDialog}
+            onClose={() => {
+                this.setState({openMessageDialog: false})
+            }}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+            <DialogContent>
+                {
+                    this.state.submitSuccess && <DialogContentText>
+                        {lexicon[currentLocal].submitMessage.success}
+                    </DialogContentText>
+                }
+                {
+                    !this.state.submitSuccess && <DialogContentText>
+                        {lexicon[currentLocal].submitMessage.error}
+                    </DialogContentText>
+                }
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={() => {
+                    this.setState({openMessageDialog: false})
+                }} color="primary">
+                    {lexicon[currentLocal].develop.close}
+                </Button>
+            </DialogActions>
+        </Dialog>)
+    }
+
     render() {
         const {currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
+        console.log(this.props);
+        const Required = required(lexicon[currentLocal].validation.required);
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)}>
+            <form onSubmit={handleSubmit(this.onSubmit)} required>
                 <div className="complaints_section">
                     {this.state.loading && this.renderPreloader()}
                     <Dialog
@@ -180,10 +276,14 @@ export class FormComplaints extends Component {
                         </DialogActions>
                     </Dialog>
 
+                    {
+                        this.state.openMessageDialog && this.renderMessageDialog()
+                    }
+
                     <Field
                         component={this.radioButtonGenerator}
                         name={'type'}
-                        validate={[required(lexicon[currentLocal].validation.required)]}
+                        validate={[Required]}
                         options={[
                             {
                                 title: lexicon[currentLocal].anonim,
@@ -200,22 +300,29 @@ export class FormComplaints extends Component {
                             component={this.renderField}
                             name={'name'}
                             type="text"
-                            validate={[required(lexicon[currentLocal].validation.required)]}
+                            validate={[Required]}
                             label={lexicon[currentLocal].fio}
                         />
                     }
                 </div>
                 <div className="complaints_section">
                     <Field
+                        component={this.renderField}
+                        name={'company'}
+                        type="text"
+                        validate={required(lexicon[currentLocal].validation.required)}
+                        label={lexicon[currentLocal].company}
+                    />
+                    <Field
                         component={this.renderTextarea}
                         name={'message'}
                         type="textarea"
-                        validate={[required(lexicon[currentLocal].validation.required)]}
+                        validate={required(lexicon[currentLocal].validation.required)}
                         label={lexicon[currentLocal].message}
                     />
                     <Field
                         component={InputFile}
-                        name={'file'}
+                        name={'image'}
                         type="textarea"
                         label={lexicon[currentLocal].photo}
                     />
@@ -227,7 +334,7 @@ export class FormComplaints extends Component {
                             component={this.renderField}
                             name={'phone'}
                             type="tel"
-                            validate={[isNumber(lexicon[currentLocal].validation.phone)]}
+                            validate={isNumber(lexicon[currentLocal].validation.phone)}
                             label={lexicon[currentLocal].phone}
                         />
                     </div>
@@ -239,20 +346,25 @@ export class FormComplaints extends Component {
                             component={this.renderField}
                             name={'email'}
                             type="email"
-                            validate={[isEmail(lexicon[currentLocal].validation.email)]}
+                            validate={isEmail(lexicon[currentLocal].validation.email)}
                             label={'E-mail'}
                         />
                     </div>
                 }
                 {
-                    error && <div className="complaints_section"><div className="complaints_input-valid">{error}</div></div>
+                    error && <div className="complaints_section">
+                        <div className="complaints_input-valid">{error}</div>
+                    </div>
                 }
 
                 <div style={{padding: '20px'}} className="complaints_section">
-                    <Button disabled={pristine || submitting} type="submit" raised
-                            style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                        {lexicon[currentLocal].send}
-                    </Button>
+                    {
+                        values && values.type &&
+                        <Button disabled={pristine || submitting} type="submit" raised
+                                style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                            {lexicon[currentLocal].send}
+                        </Button>
+                    }
                 </div>
             </form>
         )

@@ -154,3 +154,20 @@ body, html {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.5em;
 }
+
+/*.places-description_wrapper{*/
+    /*padding: 20px 30px;*/
+/*}*/
+
+.places-description_title {
+    color: #424242;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.places-description_text{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: #828181;
+    line-height: 1.5em;
+    font-size: 1rem;
+    font-weight: 400;
+}

@@ -1,56 +1,136 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Field, reduxForm} from "redux-form";
-// import {InputAutocomplete} from "../input/input_autocomplete";
-import './form.css';
 import {lexicon} from './lexicon';
 import {connect} from "react-redux";
+import Select from 'react-select';
+
+// Be sure to include styles at some point, probably during your bootstrapping
+import 'react-select/dist/react-select.css';
+import './form.css';
+import {WEBSQL_SEARCH_REMOVE, WEBSQL_SEARCH_SET} from "../../store/websql/action_types";
+import {toTimestamp} from "../../utils/to_timestamp";
+import {TABLE_NAME} from "../../config";
 
 
-@connect(
-    state => ({ // получаем данные из store
-        currentLocal: state.intl
-    }), //
-    dispatch => ({
-        changeLang: (type, value) => {
-            dispatch({type: type, payload: value})
+function mapStateToProps(state) {
+    return {
+        currentLocal: state.intl,
+        list_of_places: state.websql.list_of_places,
+
+        db: {
+            db: state.websql.db.db,
+            loading: state.websql.db.loading,
+            error: state.websql.db.error,
+            success: state.websql.db.success,
+        },
+        data: {
+            loading: state.websql.data.loading,
+            error: state.websql.data.error,
+            success: state.websql.data.success,
+        },
+        set: {
+            loading: state.websql.set.loading,
+            error: state.websql.set.error,
+            success: state.websql.set.success,
         }
-    })
-)
-@reduxForm({
-    form: 'FormSearch',
-})
+    }
+}
+//
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch: (type,payload) => {
+            dispatch({type,payload})
+        }
+    }
+}
+@connect(mapStateToProps,mapDispatchToProps)
 export class FormSearch extends Component {
-
-    static propTypes = {};
-
-    static defaultProps = {};
 
     constructor(props) {
         super(props);
         this.state = this.initialState;
+        this.onChange = this.onChange.bind(this);
+        this.getOptions = this.getOptions.bind(this);
     }
 
     get initialState() {
-        return {}
+        const {disabled} = this.props;
+        return {
+            value: '',
+            options: [],
+        }
     }
 
-    onSubmit() {
 
+    onChange(value) {
+        console.log(value);
+        this.setState({
+            value: value
+        });
+        if(value){
+            const query = `SELECT * FROM ${TABLE_NAME} WHERE ID = '${value.ID}';`;
+            this.props.db.db.transaction((tx) => {
+                tx.executeSql(query,
+                    [],
+                    (sqlTransaction, sqlResultSet) => {
+                        console.log(sqlResultSet.rows);
+                        // this.props.dispatch(WEBSQL_SEARCH_SET,sqlResultSet.rows[0])
+                        this.props.dispatch(WEBSQL_SEARCH_SET,sqlResultSet.rows[0])
+                    }, (sqlTransaction, sqlEerror) => {
+                        console.log(sqlTransaction, sqlEerror);
+                    })
+            })
+        } else {
+            this.props.dispatch(WEBSQL_SEARCH_REMOVE,null)
+        }
+    }
+
+    getOptions(substr) {
+        if (!substr || substr.length < 3) {
+            return Promise.resolve({options: []});
+        }
+        const query = `SELECT company, ID FROM ${TABLE_NAME} WHERE company LIKE '%${substr}%';`;
+
+        return new Promise((resolve, reject) => {
+            this.props.db.db.transaction((tx) => {
+                tx.executeSql(query,
+                    [],
+                    (sqlTransaction, sqlResultSet) => {
+                        console.log(sqlResultSet.rows);
+                        resolve(Object.values(sqlResultSet.rows))
+                    }, (sqlTransaction, sqlEerror) => {
+                        console.log(sqlTransaction, sqlEerror);
+                        reject(sqlEerror);
+                    })
+            })
+        })
+            .then((res) => {
+                return {options: res}
+            })
+    }
+
+    addSearch(data){
+        console.log(data);
     }
 
     render() {
-        const {currentLocal, error, handleSubmit, pristine, reset, submitting, roles, type} = this.props;
-
+        const {value} = this.state;
         return (
-            <form className={'form_full-width'} onSubmit={handleSubmit(this.onSubmit)}>
-                {/*<Field*/}
-
-                    {/*name="search"*/}
-                    {/*component={InputAutocomplete}*/}
-                    {/*placeholder={lexicon[currentLocal].search_placeholder}*/}
-                {/*/>*/}
-            </form>
+            <div style={{
+                width: '100%',
+                position: 'relative',
+                zIndex: 1000
+            }}>
+                <Select.Async
+                    value={value}
+                    labelKey="company"
+                    valueKey="ID"
+                    autoload={false}
+                    onChange={this.onChange}
+                    onValueClick={this.addSearch}
+                    loadOptions={this.getOptions}
+                />
+            </div>
         )
     }
 }

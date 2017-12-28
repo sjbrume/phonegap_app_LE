@@ -12,6 +12,8 @@ const initialState = localStorage.getItem('reduxState') ? JSON.parse(localStorag
     intl: UKR,
     menuPosition: MENU_LEFT,
     websql: {
+        search_result: null,
+        list_of_places:[],
         db: {
             db: null,
             loading: false,
@@ -42,7 +44,7 @@ const Store = createStoreMiddleware(
     initialState,
     composeWithDevTools(),
 );
-Store.subscribe(()=>{
-    localStorage.setItem('reduxState', JSON.stringify(Store.getState()))
-});
+// Store.subscribe(()=>{
+//     localStorage.setItem('reduxState', JSON.stringify(Store.getState()))
+// });
 export {Store};

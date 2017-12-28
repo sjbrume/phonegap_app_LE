@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import Typography from 'material-ui/Typography';
 
 export class ArticlesPage extends Component {
 
@@ -16,7 +15,6 @@ export class ArticlesPage extends Component {
     get initialState() {
         return {}
     }
-
 
     render() {
         return (
