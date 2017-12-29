@@ -159,18 +159,22 @@ export class HomePage extends Component {
         const {db} = this.props;
         const markers = [];
         const data = await new Promise((resolve, reject) => {
-            db.db.transaction(function (tx) {
-                let sqlResultSet = tx.executeSql(`SELECT *
-                                                  FROM ${TABLE_NAME}`, [],
-                    (sqlTransaction, sqlResultSet) => {
-                        console.log(sqlTransaction, sqlResultSet);
-                        resolve(Object.values(sqlResultSet.rows))
-                    }, (sqlTransaction, sqlEerror) => {
-                        console.log(sqlTransaction, sqlEerror);
-                        reject(sqlEerror);
-                    });
-                console.log(sqlResultSet);
-            });
+            try {
+                ('db' in db) && db.db.transaction((tx) => {
+                    let sqlResultSet = tx.executeSql(`SELECT *
+                                                      FROM ${TABLE_NAME}`, [],
+                        (sqlTransaction, sqlResultSet) => {
+                            console.log(sqlTransaction, sqlResultSet);
+                            resolve(Object.values(sqlResultSet.rows))
+                        }, (sqlTransaction, sqlEerror) => {
+                            console.log(sqlTransaction, sqlEerror);
+                            reject(sqlEerror);
+                        });
+                    console.log(sqlResultSet);
+                });
+            }catch (err){
+                console.log(err);
+            }
         });
 
         console.log(data);
@@ -179,7 +183,7 @@ export class HomePage extends Component {
                 markers.push(<Marker
                     key={marker.id}
                     position={{lat: marker.lat, lng: marker.lng}}
-                    onClick={() => this.props.toggleDescription(true, marker)}
+                    onClick={() => this.toggleDescription(true, marker)}
                 />)
             }
         })
@@ -222,7 +226,9 @@ export class HomePage extends Component {
         const {currentLocal} = this.props;
         if (data) {
             const description = (
-                <div className="places-description_wrapper">
+                <div className="places-description_wrapper" style={{
+                    padding: '0 15px'
+                }}>
                     <h3 className="places-description_title">
                         {lexicon[currentLocal].company_desc.company}: {data.company}
                     </h3>

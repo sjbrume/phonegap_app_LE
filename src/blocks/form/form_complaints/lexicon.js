@@ -16,7 +16,9 @@ export const lexicon = {
         validation: {
             required: 'Обязательно для заполнения'  ,
             phone:'Только цифры',
-            email:'Некорректный email'
+            email:'Некорректный email',
+            size: 'Максимальный размер всех файлов 50мб',
+            countFile: 'Максимальное кол-во файлов 20'
         },
         develop: {
             title: 'Приложение разработали:',
@@ -41,7 +43,7 @@ export const lexicon = {
         validation: {
             required: 'Обов\'язкове для заповнення'  ,
             phone:'Тільки цифри',
-            email:'Некоректний email'
+            email:'Некоректний email',
         },
         develop: {
             title: 'Додаток розробили:',

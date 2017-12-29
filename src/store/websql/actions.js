@@ -7,7 +7,7 @@ import {
     WEBSQL_VERSION_DB_LOADING, WEBSQL_VERSION_DB_SET,
     WEBSQL_VERSION_DB_SUCCESS, WEBSQL_LIST_OF_PLACES_GET,
 } from "./action_types";
-import {DATA_URL, DB_NAME, DB_VERSION_URL, DROP_TABLE, TABLE_NAME, TIMEOUT} from "../../config";
+import {DATA_URL, DB_NAME, DB_VERSION_URL, DROP_TABLE, HARD_CODE_MODE, TABLE_NAME, TIMEOUT} from "../../config";
 
 
 // TODO: это для бесконечного скрола на будующее
@@ -44,7 +44,7 @@ const create_db = (version) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 try {
-                    const DB = window.openDatabase(DB_NAME, version, '', 40 * 1024 * 1024);
+                    const DB = window.openDatabase(version, version, '', 40 * 1024 * 1024);
                     create_table_db(DB);
                     dispatch({type: WEBSQL_DB_CREATE, payload: DB});
                     dispatch({type: WEBSQL_DB_LOADING, payload: false});
@@ -60,40 +60,37 @@ const create_db = (version) => {
 };
 
 const create_table_db = (DB) => {
+
     DB.transaction(function (tx) {
         if (DROP_TABLE) {
-            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`)
-            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`)
-        };
+            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
+            tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
+        }
 
-
-        // tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
-        //   ID         INTEGER PRIMARY KEY ASC,
-        //   aoguid     TEXT,
-        //   disid      TEXT,
-        //   name       TEXT,
-        //   okato      TEXT,
-        //   parentguid TEXT,
-        //   regioncode TEXT
-        // )`);
-
+        console.log('create_table_db');
         tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
-          ID               INTEGER PRIMARY KEY ASC,
-          id               INTEGER,
-          region_id        INTEGER,
-          id_code          TEXT,
-          address          TEXT,
-          lng              REAL,
-          lat              REAL,
-          license          TEXT,
-          company          TEXT,
-          license_start_at TEXT,
-          license_end_at   TEXT,
-          license_type     TEXT,
-          status           TEXT
-        )`);
+              id               INTEGER,
+              region_id        INTEGER,
+              id_code          TEXT,
+              address          TEXT,
+              lng              REAL,
+              lat              REAL,
+              license          TEXT,
+              company          TEXT,
+              license_start_at TEXT,
+              license_end_at   TEXT,
+              license_type     TEXT,
+              status           TEXT
+            )`, [],
+            (sqlTransaction, sqlResultSet) => {
+                console.log(sqlResultSet);
+            },
+            (sqlTransaction, sqlError) => {
+                console.error('create_table_db: ',sqlError);
 
+            });
     });
+
 };
 
 const set_db = (DB, data) => {
@@ -160,7 +157,10 @@ const set_db = (DB, data) => {
                                         license_type,
                                         status],
                                     (sqlTransaction, sqlResultSet) => {
-                                        resolve()
+                                        resolve(sqlResultSet)
+                                    },
+                                    (sqlTransaction, sqlError) => {
+                                        reject(sqlError)
                                     })
                             })
                         )
@@ -170,7 +170,8 @@ const set_db = (DB, data) => {
                         console.log('Promise.all', value);
                         dispatch({type: WEBSQL_SET_DATA_LOADING, payload: false});
                         dispatch({type: WEBSQL_SET_DATA_SUCCESS, payload: true});
-                    }, reason => {
+                    }, error => {
+                        console.error('Promise.all', error);
                         dispatch({type: WEBSQL_SET_DATA_LOADING, payload: false});
                         dispatch({type: WEBSQL_SET_DATA_ERROR, payload: true});
                     });
@@ -193,24 +194,30 @@ const update_db = () => {
         console.log('update_db');
         dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: true});
         return new Promise((resolve, reject) => {
+            if (HARD_CODE_MODE) {
+                dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false})
+                resolve(1514451431)
+            } else {
+                let xhr = new XMLHttpRequest;
 
-            dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false})
-            resolve(1514451431)
-            // let xhr = new XMLHttpRequest;
-            //
-            //
-            // xhr.onload = function () {
-            //     dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
-            //     resolve(JSON.parse(xhr.responseText))
-            // };
-            // xhr.onerror = function () {
-            //     dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
-            //     reject(xhr)
-            // };
-            // xhr.open('GET', DB_VERSION_URL, true);
-            // xhr.setRequestHeader("Content-Type","application/json");
-            // xhr.setRequestHeader("Accept","application/json");
-            // xhr.send(null)
+
+                xhr.onload = function () {
+                    dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
+                    let v = JSON.parse(xhr.responseText);
+                    console.log(v);
+                    resolve(v.timestamp)
+                };
+                xhr.onerror = function () {
+                    dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
+                    reject(xhr)
+                };
+                xhr.open('GET', DB_VERSION_URL, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.send(null)
+            }
+
+
         })
     }
 };
@@ -231,8 +238,8 @@ const download_db = () => {
                 reject(xhr)
             };
             xhr.open('GET', DATA_URL);
-            xhr.setRequestHeader("Content-Type","application/json");
-            xhr.setRequestHeader("Accept","application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Accept", "application/json");
             xhr.send(null)
         })
     }

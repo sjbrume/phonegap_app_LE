@@ -68,10 +68,9 @@ export class FormSearch extends Component {
             value: value
         });
         if(value){
-            const query = `SELECT * FROM ${TABLE_NAME} WHERE ID = '${value.ID}';`;
             this.props.db.db.transaction((tx) => {
-                tx.executeSql(query,
-                    [],
+                tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE id = ?;`,
+                    [value.id],
                     (sqlTransaction, sqlResultSet) => {
                         console.log(sqlResultSet.rows);
                         // this.props.dispatch(WEBSQL_SEARCH_SET,sqlResultSet.rows[0])

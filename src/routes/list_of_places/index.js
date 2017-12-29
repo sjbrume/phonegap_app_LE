@@ -110,7 +110,7 @@ export class ListOfPlacesPage extends Component {
     }
 
     componentDidMount() {
-
+        this.generateDivs()
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -176,17 +176,21 @@ export class ListOfPlacesPage extends Component {
         const MAX = this.state.min + this.state.step;
 
         const Data = await new Promise((resolve, reject) => {
-            db.db.transaction((tx) => {
-                tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ?`,
-                    [MIN, MAX],
-                    (sqlTransaction, sqlResultSet) => {
-                        console.log(sqlTransaction, sqlResultSet);
-                        resolve(sqlResultSet.rows)
-                    }, (sqlTransaction, sqlEerror) => {
-                        console.log(sqlTransaction, sqlEerror);
-                        reject(sqlEerror);
-                    });
-            });
+           try {
+               db.db.transaction((tx) => {
+                   tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ?`,
+                       [MIN, MAX],
+                       (sqlTransaction, sqlResultSet) => {
+                           console.log(sqlTransaction, sqlResultSet);
+                           resolve(sqlResultSet.rows)
+                       }, (sqlTransaction, sqlEerror) => {
+                           console.log(sqlTransaction, sqlEerror);
+                           reject(sqlEerror);
+                       });
+               });
+           } catch (err) {
+               console.error ('generateDivs: ',err);
+           }
         });
 
         for(let i = 0; i < Data.length; i++) {
