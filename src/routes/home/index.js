@@ -260,7 +260,7 @@ export class HomePage extends Component {
 
     render() {
         const {db, data, set, version, currentLocal} = this.props;
-
+        console.log('Home page index',this.props)
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
         }
