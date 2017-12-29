@@ -2,7 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.d3a2d0ba.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.d3a2d0ba.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.45781fd7.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.45781fd7.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.987b8457.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.e9dbbe8a.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.6232f43d.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.d704bb3d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.55536c8e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.a1471d1d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.210a7c78.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.d69924b9.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.5d4aeb4e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.bafb105b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.9680d5a0.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.d8bcbe72.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.28546717.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.de8b7431.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.510dec37.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.ffcc050b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.037d8304.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.cf6613d1.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.010c1aee.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.846d1890.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.19b7a0ad.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.8c2ade50.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.7b770d6c.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.bc833e72.woff" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/config.xml" afterPath="$PROJECT_DIR$/build/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/websql/actions.js" afterPath="$PROJECT_DIR$/src/store/websql/actions.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +59,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="actions.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/store/websql/actions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+              <folding>
+                <element signature="e#554#602#0" expanded="false" />
+                <element signature="e#3678#3699#0" expanded="false" />
+                <marker date="1514543170608" expanded="true" signature="939:1050" ph="SELECT * FRO... excise2" />
+                <marker date="1514543170608" expanded="true" signature="2471:2505" ph="DROP TABLE I... " />
+                <marker date="1514543170608" expanded="true" signature="2536:2570" ph="DROP TABLE I... " />
+                <marker date="1514543170608" expanded="true" signature="2648:3153" ph="CREATE TABLE... ${TABLE_NAME}" />
+                <marker date="1514543170608" expanded="true" signature="3950:4044" ph="INSERT INTO ${TABLE_NAME}... " />
+                <marker date="1514543170608" expanded="true" signature="5105:5786" ph="INSERT INTO ${TABLE_NAME}... " />
+                <marker date="1514543170608" expanded="true" signature="13100:13224" ph="SELECT * FRO... ${TABLE_NAME}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="72" lean-forward="false" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+            <state relative-caret-position="255">
+              <caret line="21" column="71" lean-forward="false" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+              <folding>
+                <marker date="1514543319177" expanded="true" signature="1605:3325" ph="..." />
+                <marker date="1514543319177" expanded="true" signature="3351:5942" ph="..." />
+                <marker date="1514543319177" expanded="true" signature="5968:6282" ph="..." />
+                <marker date="1514543319177" expanded="true" signature="6312:8091" ph="..." />
+                <marker date="1514543319177" expanded="true" signature="8365:8422" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -112,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/utils/is_number.js" />
         <option value="$PROJECT_DIR$/phonegap-account.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/config/paths.js" />
         <option value="$PROJECT_DIR$/src/routes/article/index.js" />
@@ -143,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/store/websql/action_types.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/config.js" />
-        <option value="$PROJECT_DIR$/src/store/websql/actions.js" />
         <option value="$PROJECT_DIR$/src/blocks/form/form_search.js" />
         <option value="$PROJECT_DIR$/src/routes/home/index.js" />
         <option value="$PROJECT_DIR$/src/routes/list_of_places/index.js" />
@@ -152,6 +220,8 @@
         <option value="$PROJECT_DIR$/src/blocks/input/input_file.js" />
         <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/build/config.xml" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/src/store/websql/actions.js" />
       </list>
     </option>
   </component>
@@ -207,12 +277,20 @@
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="build" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="store" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="store" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="websql" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -306,12 +384,12 @@
       <workItem from="1514431138978" duration="8132000" />
       <workItem from="1514440306307" duration="37137000" />
       <workItem from="1514530623395" duration="214000" />
-      <workItem from="1514530893530" duration="10411000" />
+      <workItem from="1514530893530" duration="11130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171968000" />
+    <option name="totallyTimeSpent" value="172687000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -377,14 +455,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/layout_children/style.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="96" column="15" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/layout_main/style.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -639,37 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/websql/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="69" column="39" lean-forward="true" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#438#0" expanded="false" />
-            <element signature="e#554#602#0" expanded="false" />
-            <element signature="e#3677#3698#0" expanded="false" />
-            <marker date="1514533803869" expanded="true" signature="939:1050" ph="SELECT * FRO... excise2" />
-            <marker date="1514533803869" expanded="true" signature="2471:2505" ph="DROP TABLE I... " />
-            <marker date="1514533803869" expanded="true" signature="2536:2570" ph="DROP TABLE I... " />
-            <marker date="1514533803869" expanded="true" signature="2648:3153" ph="CREATE TABLE... ${TABLE_NAME}" />
-            <marker date="1514533803869" expanded="true" signature="3949:4043" ph="INSERT INTO ${TABLE_NAME}... " />
-            <marker date="1514533803869" expanded="true" signature="5104:5785" ph="INSERT INTO ${TABLE_NAME}... " />
-            <marker date="1514533803869" expanded="true" signature="12986:13110" ph="SELECT * FRO... ${TABLE_NAME}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/websql/action_types.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -753,9 +796,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="72" lean-forward="false" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+        <state relative-caret-position="255">
+          <caret line="21" column="71" lean-forward="false" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+          <folding>
+            <marker date="1514543319177" expanded="true" signature="1605:3325" ph="..." />
+            <marker date="1514543319177" expanded="true" signature="3351:5942" ph="..." />
+            <marker date="1514543319177" expanded="true" signature="5968:6282" ph="..." />
+            <marker date="1514543319177" expanded="true" signature="6312:8091" ph="..." />
+            <marker date="1514543319177" expanded="true" signature="8365:8422" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/websql/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+          <folding>
+            <element signature="e#554#602#0" expanded="false" />
+            <element signature="e#3678#3699#0" expanded="false" />
+            <marker date="1514543170608" expanded="true" signature="939:1050" ph="SELECT * FRO... excise2" />
+            <marker date="1514543170608" expanded="true" signature="2471:2505" ph="DROP TABLE I... " />
+            <marker date="1514543170608" expanded="true" signature="2536:2570" ph="DROP TABLE I... " />
+            <marker date="1514543170608" expanded="true" signature="2648:3153" ph="CREATE TABLE... ${TABLE_NAME}" />
+            <marker date="1514543170608" expanded="true" signature="3950:4044" ph="INSERT INTO ${TABLE_NAME}... " />
+            <marker date="1514543170608" expanded="true" signature="5105:5786" ph="INSERT INTO ${TABLE_NAME}... " />
+            <marker date="1514543170608" expanded="true" signature="13100:13224" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
         </state>
       </provider>
     </entry>

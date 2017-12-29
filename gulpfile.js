@@ -22,7 +22,7 @@ gulp.task('phonegap-build-debug', function () {
             "isRepository": "true",
             "platforms": ['android'],
             "download": {
-                "android": 'dist/'
+                "android": 'dist/android.apk'
             },
             "user": {
                 "email": "mihailovaleksandrivanovich@gmail.com",

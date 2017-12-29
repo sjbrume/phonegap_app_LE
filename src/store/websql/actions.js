@@ -86,7 +86,7 @@ const create_table_db = (DB) => {
                 console.log(sqlResultSet);
             },
             (sqlTransaction, sqlError) => {
-                console.error('create_table_db: ',sqlError);
+                console.error('create_table_db: ', sqlError);
 
             });
     });
@@ -249,7 +249,8 @@ const init_db = (store) => {
     return (dispatch) => {
         console.log('INIT DB');
         console.log('INIT DB - store', store);
-        const {version: {version: currentVersion}, db} = store;
+        const currentVersion = store && 'version' in store && 'version' in store.version ? store.version.version : null;
+        const db = store && store.db ? store.db : null;
         if (currentVersion) {
 
             console.log(`ВЕРСИЯ БАЗЫ ДАННЫХ: ${currentVersion}`);
