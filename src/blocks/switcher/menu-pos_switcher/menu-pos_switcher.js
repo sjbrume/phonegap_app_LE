@@ -22,7 +22,6 @@ export class MenuPosSwitcher extends Component {
     }
 
     get initialState() {
-        const {currentLocal} = this.props;
 
         return {
 

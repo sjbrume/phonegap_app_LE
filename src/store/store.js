@@ -14,6 +14,9 @@ const initialState = localStorage.getItem('reduxState') ?
         }) : {
         intl: UKR,
         menuPosition: MENU_LEFT,
+        map: {
+            clustering: true
+        },
         websql: {
             search_result: null,
             list_of_places: [],

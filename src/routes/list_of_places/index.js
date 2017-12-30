@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {connect} from "react-redux";
-import {Store} from '../../store/store';
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {TABLE_NAME} from "../../config";
 import {lexicon} from '../home/lexicon';

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {lexicon} from './lexicon';
 import {connect} from "react-redux";
 import Select from 'react-select';
 
@@ -8,7 +6,6 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import './form.css';
 import {WEBSQL_SEARCH_REMOVE, WEBSQL_SEARCH_SET} from "../../store/websql/action_types";
-import {toTimestamp} from "../../utils/to_timestamp";
 import {TABLE_NAME} from "../../config";
 
 
@@ -54,7 +51,6 @@ export class FormSearch extends Component {
     }
 
     get initialState() {
-        const {disabled} = this.props;
         return {
             value: '',
             options: [],

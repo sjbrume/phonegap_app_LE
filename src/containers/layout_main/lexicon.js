@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Error from 'material-ui-icons/Error';
 import Warning from 'material-ui-icons/Warning';
 import ViewHeadline from 'material-ui-icons/ViewHeadline';

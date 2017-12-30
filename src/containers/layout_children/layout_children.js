@@ -14,7 +14,7 @@ import Hidden from "material-ui/es/Hidden/Hidden";
 import Drawer from "material-ui/es/Drawer/Drawer";
 import List from 'material-ui/List';
 
-import {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
+import {ListItem, ListItemIcon} from 'material-ui/List';
 import {lexicon} from "./lexicon";
 import '../layout_main/layout_main.css';
 
@@ -82,7 +82,7 @@ export class LayoutChildren extends Component {
 
 
     render() {
-        const {classes, title, children} = this.props;
+        const {title, children} = this.props;
         console.log(this);
 
         return (

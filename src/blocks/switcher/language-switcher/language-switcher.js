@@ -21,7 +21,6 @@ export class LanguageSwitcher extends Component {
     }
 
     get initialState() {
-        const {currentLocal} = this.props;
 
         return {
 

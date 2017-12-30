@@ -1,57 +1,24 @@
 import React, {Component} from 'react';
-import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
-import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer"
-import {compose, withProps, withHandlers} from "recompose";
+import {Marker} from "react-google-maps"
 import Drawer from 'material-ui/Drawer';
-import {mock} from './mock';
 import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {lexicon} from './lexicon';
 import {WEBSQL_SEARCH_REMOVE} from "../../store/websql/action_types";
 import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
+import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
+import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
 
 // https://habrahabr.ru/post/213515/
 // https://habrahabr.ru/post/84654/
 // https://tomchentw.github.io/react-google-maps/
 
-const MapWithAMarkerClusterer = compose(
-    withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
-        loadingElement: <div style={{height: `100%`}}/>,
-        containerElement: <div style={{height: `calc(100vh - 64px)`}}/>,
-        mapElement: <div style={{height: `100%`}}/>,
-    }),
-    withHandlers({
-        onMarkerClustererClick: () => (markerClusterer) => {
-            const clickedMarkers = markerClusterer.getMarkers()
-            console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-            console.log(clickedMarkers)
-        },
-    }),
-    withScriptjs,
-    withGoogleMap
-)(props =>
-    <GoogleMap
-        defaultZoom={props.zoom}
-        defaultCenter={props.center}
-        center={props.center}
-        zoom={props.zoom}
-    >
-        <MarkerClusterer
-            onClick={props.onMarkerClustererClick}
-            averageCenter
-            enableRetinaIcons
-            gridSize={60}
-        >
-            {props.markers}
 
-        </MarkerClusterer>
-    </GoogleMap>
-);
 
 function mapStateToProps(state) {
     return {
+        clustering: state.map.clustering,
         currentLocal: state.intl,
         search_result: state.websql.search_result,
         db: {
@@ -115,7 +82,7 @@ export class HomePage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const {db, data, set, search_result} = nextProps;
+        const {db, set, search_result} = nextProps;
         console.log(nextProps);
         if (search_result !== this.props.search_result) {
             console.log(this.props.search_result);
@@ -123,7 +90,8 @@ export class HomePage extends Component {
             return true
         }
         if (db !== this.props.db.db && set.success) {
-            const result = this.getMarkers();
+            let result = this.getMarkers();
+            console.log(result);
         }
     };
 
@@ -158,38 +126,43 @@ export class HomePage extends Component {
     async getMarkers() {
         const {db} = this.props;
         const markers = [];
-        const data = await new Promise((resolve, reject) => {
-            try {
-                ('db' in db) && db.db.transaction((tx) => {
-                    let sqlResultSet = tx.executeSql(`SELECT *
-                                                      FROM ${TABLE_NAME}`, [],
-                        (sqlTransaction, sqlResultSet) => {
-                            console.log(sqlTransaction, sqlResultSet);
-                            resolve(Object.values(sqlResultSet.rows))
-                        }, (sqlTransaction, sqlEerror) => {
-                            console.log(sqlTransaction, sqlEerror);
-                            reject(sqlEerror);
-                        });
-                    console.log(sqlResultSet);
-                });
-            }catch (err){
-                console.log(err);
+        if (this.state.markers.length === 0) {
+            const data = await new Promise((resolve, reject) => {
+                try {
+                    ('db' in db) && db.db.transaction((tx) => {
+                        let sqlResultSet = tx.executeSql(`SELECT *
+                                                          FROM ${TABLE_NAME}`, [],
+                            (sqlTransaction, sqlResultSet) => {
+                                console.log(sqlTransaction, sqlResultSet);
+                                resolve(Object.values(sqlResultSet.rows))
+                            }, (sqlTransaction, sqlEerror) => {
+                                console.log(sqlTransaction, sqlEerror);
+                                reject(sqlEerror);
+                            });
+                        console.log(sqlResultSet);
+                    });
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+
+            console.log(data);
+            let length = data && data.length ? data.length : 0;
+
+            this.props.dispatch(MAP_CLUSTERING_LOAD, true);
+
+            for (let i = 0; i < length; i++) {
+                if (data[i].lng && data[i].lat) {
+                    markers.push(<Marker
+                        key={i}
+                        position={{lat: data[i].lat, lng: data[i].lng}}
+                        onClick={() => this.toggleDescription(true, data[i])}
+                    />)
+                }
             }
-        });
 
-        console.log(data);
-        data.length && data.map((marker, index) => {
-            if(marker.lng && marker.lat) {
-                markers.push(<Marker
-                    key={marker.id}
-                    position={{lat: marker.lat, lng: marker.lng}}
-                    onClick={() => this.toggleDescription(true, marker)}
-                />)
-            }
-        })
-
-
-        this.setState({markers})
+            this.setState({markers})
+        }
     }
 
     renderLoading = (content, load) => (<div className="loading-panel_wrapper">
@@ -260,7 +233,7 @@ export class HomePage extends Component {
 
     render() {
         const {db, data, set, version, currentLocal} = this.props;
-        console.log('Home page index',this.props)
+        console.log('Home page index', this.props);
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
         }
@@ -276,7 +249,11 @@ export class HomePage extends Component {
         return (
             <div>
 
-                <MapWithAMarkerClusterer
+                <MapWithAMarkerClusters
+
+                    clusteringStatus={this.props.clustering}
+
+                    dispatch={this.props.dispatch}
 
                     center={{
                         lat: this.props.search_result ? this.props.search_result.lat : 46.484583,
@@ -296,6 +273,21 @@ export class HomePage extends Component {
                 >
                     {this.state.description}
                 </Drawer>
+                {
+                    this.props.clustering &&
+                    <div className="loading-panel_wrapper">
+                        <div>
+                            <CircularProgress style={{
+                                display: 'block',
+                                color: '#0277bd',
+                                margin: '0 auto'
+                            }} size={60} thickness={7}/>
+                            <div className="loading-panel_content">
+                                Загрузка карты...
+                            </div>
+                        </div>
+                    </div>
+                }
 
             </div>
         )

@@ -5,9 +5,9 @@ import {
     WEBSQL_DB_SUCCESS_CREATE,
     WEBSQL_VERSION_DB_ERROR,
     WEBSQL_VERSION_DB_LOADING, WEBSQL_VERSION_DB_SET,
-    WEBSQL_VERSION_DB_SUCCESS, WEBSQL_LIST_OF_PLACES_GET,
+    WEBSQL_VERSION_DB_SUCCESS,
 } from "./action_types";
-import {DATA_URL, DB_NAME, DB_VERSION_URL, DROP_TABLE, HARD_CODE_MODE, TABLE_NAME, TIMEOUT} from "../../config";
+import {DATA_URL, DB_VERSION_URL, DROP_TABLE, HARD_CODE_MODE, TABLE_NAME, TIMEOUT} from "../../config";
 
 
 // TODO: это для бесконечного скрола на будующее
@@ -66,7 +66,8 @@ const create_table_db = (DB) => {
             tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
             tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
         }
-
+        // tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
+        // tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`);
         console.log('create_table_db');
         tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
               id               INTEGER,
@@ -101,70 +102,86 @@ const set_db = (DB, data) => {
 
                 DB.transaction(async (tx) => {
                     let promises = [];
-                    // data.map(item => {
-                    //     let {aoguid, disid, name, okato, parentguid, regioncode} = item;
-                    //     promises.push(
-                    //         new Promise((resolve, reject) => {
-                    //             tx.executeSql(`INSERT INTO ${TABLE_NAME} (aoguid,disid,name,okato,parentguid,regioncode) VALUES (?,?,?,?,?,?)`,
-                    //                 [aoguid, disid, name, okato, parentguid, regioncode],
-                    //                 (sqlTransaction, sqlResultSet) => {
-                    //                     resolve()
-                    //                 })
-                    //         })
-                    //     )
-                    // });
-                    data.map(item => {
-                        let {
-                            id,
-                            region_id,
-                            id_code,
-                            address,
-                            lng,
-                            lat,
-                            license,
-                            company,
-                            license_start_at,
-                            license_end_at,
-                            license_type,
-                            status,
-                        } = item;
-                        promises.push(
-                            new Promise((resolve, reject) => {
-                                tx.executeSql(`INSERT INTO ${TABLE_NAME} (
-                                      id,
-                                      region_id,
-                                      id_code,
-                                      address,
-                                      lng,
-                                      lat,
-                                      license,
-                                      company,
-                                      license_start_at,
-                                      license_end_at,
-                                      license_type,
-                                      status
-                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                                    [id,
-                                        region_id,
-                                        id_code,
-                                        address,
-                                        lng,
-                                        lat,
-                                        license,
-                                        company,
-                                        license_start_at,
-                                        license_end_at,
-                                        license_type,
-                                        status],
-                                    (sqlTransaction, sqlResultSet) => {
-                                        resolve(sqlResultSet)
-                                    },
-                                    (sqlTransaction, sqlError) => {
-                                        reject(sqlError)
-                                    })
-                            })
-                        )
-                    });
+
+                    tx.executeSql(`DROP TABLE IF EXISTS ${TABLE_NAME}`, [],
+                        (sqlTransaction, sqlResultSet) => {
+                            tx.executeSql(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
+                                  id               INTEGER,
+                                  region_id        INTEGER,
+                                  id_code          TEXT,
+                                  address          TEXT,
+                                  lng              REAL,
+                                  lat              REAL,
+                                  license          TEXT,
+                                  company          TEXT,
+                                  license_start_at TEXT,
+                                  license_end_at   TEXT,
+                                  license_type     TEXT,
+                                  status           TEXT
+                                )`, [],
+                                (sqlTransaction, sqlResultSet) => {
+                                    console.log(sqlResultSet);
+                                    data.map(item => {
+                                        let {
+                                            id,
+                                            region_id,
+                                            id_code,
+                                            address,
+                                            lng,
+                                            lat,
+                                            license,
+                                            company,
+                                            license_start_at,
+                                            license_end_at,
+                                            license_type,
+                                            status,
+                                        } = item;
+                                        promises.push(
+                                            new Promise((resolve, reject) => {
+                                                tx.executeSql(`INSERT INTO ${TABLE_NAME} (
+                                                      id,
+                                                      region_id,
+                                                      id_code,
+                                                      address,
+                                                      lng,
+                                                      lat,
+                                                      license,
+                                                      company,
+                                                      license_start_at,
+                                                      license_end_at,
+                                                      license_type,
+                                                      status
+                                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                    [id,
+                                                        region_id,
+                                                        id_code,
+                                                        address,
+                                                        lng,
+                                                        lat,
+                                                        license,
+                                                        company,
+                                                        license_start_at,
+                                                        license_end_at,
+                                                        license_type,
+                                                        status],
+                                                    (sqlTransaction, sqlResultSet) => {
+                                                        resolve(sqlResultSet)
+                                                    },
+                                                    (sqlTransaction, sqlError) => {
+                                                        reject(sqlError)
+                                                    })
+                                            })
+                                        )
+                                    });
+                                },
+                                (sqlTransaction, sqlError) => {
+                                    console.error('create_table_db: ', sqlError);
+                                });
+                        },
+                        (sqlTransaction, sqlError) => {
+                            console.error('create_table_db: ', sqlError);
+                        });
+
 
                     Promise.all(promises).then(value => {
                         console.log('Promise.all', value);
@@ -276,8 +293,20 @@ const init_db = (store) => {
                     first_init(dispatch);
                 }
             }).catch((error) => {
+                // TODO шаг 2: Ошибка
                 console.error(error);
-                dispatch({type: WEBSQL_VERSION_DB_ERROR, payload: true});
+                // TODO шаг 3: Инициализируем БД
+                dispatch(create_db(currentVersion))
+                    .then((DB) => {
+                        // TODO шаг 4: база создана и таблица созданы
+                        dispatch({type: WEBSQL_DB_SUCCESS_CREATE, payload: true});
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        // TODO шаг 4: база не создана
+                        dispatch({type: WEBSQL_DB_ERROR_CREATE, payload: true});
+                    })
+                // dispatch({type: WEBSQL_VERSION_DB_ERROR, payload: true});
             })
 
         } else {

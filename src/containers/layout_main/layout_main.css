@@ -64,7 +64,7 @@ svg {
     left: 50% !important;
     transform: translate(-50%, 0) !important;
     display: inline-flex !important;
-    z-index: 1000 !important;
+    z-index: 1001 !important;
     background-color: #0277bd !important;
 }
 
