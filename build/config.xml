@@ -6,21 +6,22 @@
     </description>
     <author email="fmakareev@gmail.com" href="">
         Fedor Makarev, Alexandra Bobrova, Artur Ragimov
-    </author>
+    </author>/>
     <content src="index.html" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
     <preference name="KeepRunning" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <content src="index.html" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-minSdkVersion" value="14" />
+
+    <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1" />
 
     <plugin name="cordova-plugin-file" source="npm" spec="6.0.0" />
     <plugin name="cordova-plugin-console" source="npm" spec="1.1.0" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="2.0.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="1.3.3" />
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="5.0.0" />
+    <plugin name="cordova.plugins.diagnostic" spec="3" />
 
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
