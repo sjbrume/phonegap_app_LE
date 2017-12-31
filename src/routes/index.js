@@ -68,7 +68,7 @@ export class RouterWrapper extends Component {
     render() {
         const {currentLocal} = this.props;
         return (
-            <Router history={BrowserHistory} basename={window.location.href +'/'}>
+            <Router history={BrowserHistory}>
                 <Route>
                     <Switch>
                         <MainRoute exact path="/" title="Главная" component={HomePage}/>
