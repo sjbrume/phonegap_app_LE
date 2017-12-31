@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {BrowserHistory} from "../history";
 import {HomePage} from "./home";
 import {LayoutMain} from "../containers/layout_main/layout_main";
@@ -68,7 +68,7 @@ export class RouterWrapper extends Component {
     render() {
         const {currentLocal} = this.props;
         return (
-            <HashRouter history={BrowserHistory} basename="/">
+            <Router history={BrowserHistory} basename={window.location.href +'/'}>
                 <Route>
                     <Switch>
                         <MainRoute exact path="/" title="Главная" component={HomePage}/>
@@ -107,7 +107,7 @@ export class RouterWrapper extends Component {
                         />
                     </Switch>
                 </Route>
-            </HashRouter>
+            </Router>
         )
     }
 }
