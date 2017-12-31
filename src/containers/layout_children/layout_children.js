@@ -10,8 +10,8 @@ import ArrowBack from 'material-ui-icons/ArrowBack';
 
 import Typography from 'material-ui/Typography';
 
-import Hidden from "material-ui/es/Hidden/Hidden";
-import Drawer from "material-ui/es/Drawer/Drawer";
+import Hidden from "material-ui/Hidden/Hidden";
+import Drawer from "material-ui/Drawer/Drawer";
 import List from 'material-ui/List';
 
 import {ListItem, ListItemIcon} from 'material-ui/List';
