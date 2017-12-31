@@ -134,7 +134,7 @@ export class HomePage extends Component {
                                                           FROM ${TABLE_NAME}`, [],
                             (sqlTransaction, sqlResultSet) => {
                                 console.log(sqlTransaction, sqlResultSet);
-                                resolve(Object.values(sqlResultSet.rows))
+                                resolve(sqlResultSet.rows)
                             }, (sqlTransaction, sqlEerror) => {
                                 console.log(sqlTransaction, sqlEerror);
                                 reject(sqlEerror);
