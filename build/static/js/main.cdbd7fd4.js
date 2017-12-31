@@ -1,3 +1,6 @@
+try{
+
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73510,3 +73513,7 @@ dispatch({type:__WEBPACK_IMPORTED_MODULE_1__action_types__["o" /* WEBSQL_VERSION
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.cdbd7fd4.js.map
+} catch(err){
+    alert(JSON.stringify(err))
+
+}
