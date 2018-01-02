@@ -16,6 +16,7 @@
     <plugin name="cordova-plugin-file" source="npm" spec="6.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova.plugins.diagnostic" spec="3" />
+    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~5.0.1" />
 
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
@@ -65,6 +66,8 @@
         <splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
     </platform>
+    <splash src="splash.png" />
+    <preference name="SplashScreenDelay" value="7000" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
