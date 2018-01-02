@@ -10,12 +10,17 @@ let createStoreMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 const initialState = localStorage.getItem('reduxState') ?
     Object.assign({},
         JSON.parse(localStorage.getItem('reduxState')), {
-            form: {}
+            form: {},
+            map: {
+                clustering: true,
+                filter: 'alcohol'
+            },
         }) : {
         intl: UKR,
         menuPosition: MENU_LEFT,
         map: {
-            clustering: true
+            clustering: true,
+            filter: 'alcohol'
         },
         websql: {
             search_result: null,

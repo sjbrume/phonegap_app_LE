@@ -36,22 +36,28 @@ export const MapWithAMarkerClusters = compose(
         center={props.center}
         zoom={props.zoom}
     >
-        <MarkerClusterer
-            onClick={props.onMarkerClusterClick}
-            onClusteringBegin={() => {
+        {
+            props.markers.length > 0 && <MarkerClusterer
+                onClick={props.onMarkerClusterClick}
+                onClusteringBegin={() => {
+                    // if(!props.clusteringStatus){
+                    //     props.dispatch(MAP_CLUSTERING_LOAD, true);
+                    // }
+                }}
+                onClusteringEnd={() => {
+                    // if(props.clusteringStatus){
+                    //     props.dispatch(MAP_CLUSTERING_LOAD, false);
+                    // }
+                }}
 
-            }}
-            onClusteringEnd={() => {
-                if(props.clusteringStatus){
-                    props.dispatch(MAP_CLUSTERING_LOAD, false);
-                }
-            }}
-            averageCenter
-            enableRetinaIcons
-            gridSize={60}
-        >
-            {props.markers}
+                averageCenter
+                enableRetinaIcons
+                gridSize={60}
+            >
+                {props.markers}
 
-        </MarkerClusterer>
+            </MarkerClusterer>
+        }
+
     </GoogleMap>
 );

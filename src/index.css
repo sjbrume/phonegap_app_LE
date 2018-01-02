@@ -171,3 +171,59 @@ body, html {
     font-size: 1rem;
     font-weight: 400;
 }
+
+.cluster img{
+    display: none !important;
+}
+.cluster {
+    background-image: url(./cluster.png);
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.map-filter_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.map-filter_toggle{
+    position: relative;
+    display: inline-block;
+    padding: 11px;
+    margin: 0;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 11px;
+    color: rgb(86, 86, 86);
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
+}
+.map-filter_input {
+    position: absolute;
+    display: none;
+}
+
+.map-filter_input:checked + .map-filter_toggle{
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+}
+
+.map-filter_toggle:first-child{
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+.map-filter_toggle:last-child{
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.map-filter_toggle.active{
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+}

@@ -9,16 +9,19 @@ import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
 import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
+import {Link} from "react-router-dom";
+import {Button} from "material-ui";
+import {MapFilter} from "./map-flter";
 
 // https://habrahabr.ru/post/213515/
 // https://habrahabr.ru/post/84654/
 // https://tomchentw.github.io/react-google-maps/
 
 
-
 function mapStateToProps(state) {
     return {
         clustering: state.map.clustering,
+        filter: state.map.filter,
         currentLocal: state.intl,
         search_result: state.websql.search_result,
         db: {
@@ -82,7 +85,7 @@ export class HomePage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const {db, set, search_result} = nextProps;
+        const {db, set, search_result, filter} = nextProps;
         console.log(nextProps);
         if (search_result !== this.props.search_result) {
             console.log(this.props.search_result);
@@ -90,8 +93,14 @@ export class HomePage extends Component {
             return true
         }
         if (db !== this.props.db.db && set.success) {
-            let result = this.getMarkers();
-            console.log(result);
+            if (this.state.markers.length === 0) {
+                let result = this.getMarkers();
+                console.log(result);
+            }
+        }
+        if (filter !== this.props.filter && set.success) {
+            console.log(nextProps, this.props);
+            let result = this.getMarkers(nextProps.filter);
         }
     };
 
@@ -123,46 +132,46 @@ export class HomePage extends Component {
         return null
     }
 
-    async getMarkers() {
+    async getMarkers(filter = 'alcohol') {
         const {db} = this.props;
         const markers = [];
-        if (this.state.markers.length === 0) {
-            const data = await new Promise((resolve, reject) => {
-                try {
-                    ('db' in db) && db.db.transaction((tx) => {
-                        let sqlResultSet = tx.executeSql(`SELECT *
-                                                          FROM ${TABLE_NAME}`, [],
-                            (sqlTransaction, sqlResultSet) => {
-                                console.log(sqlTransaction, sqlResultSet);
-                                resolve(sqlResultSet.rows)
-                            }, (sqlTransaction, sqlEerror) => {
-                                console.log(sqlTransaction, sqlEerror);
-                                reject(sqlEerror);
-                            });
-                        console.log(sqlResultSet);
-                    });
-                } catch (err) {
-                    console.log(err);
-                }
-            });
+        const data = await new Promise((resolve, reject) => {
+            try {
 
-            console.log(data);
-            let length = data && data.length ? data.length : 0;
-
-            this.props.dispatch(MAP_CLUSTERING_LOAD, true);
-
-            for (let i = 0; i < length; i++) {
-                if (data[i].lng && data[i].lat) {
-                    markers.push(<Marker
-                        key={i}
-                        position={{lat: data[i].lat, lng: data[i].lng}}
-                        onClick={() => this.toggleDescription(true, data[i])}
-                    />)
-                }
+                ('db' in db) && db.db.transaction((tx) => {
+                    let sqlResultSet = tx.executeSql(`SELECT *
+                                                      FROM ${TABLE_NAME}
+                                                      WHERE license_type = ?`, [filter],
+                        (sqlTransaction, sqlResultSet) => {
+                            console.log(sqlTransaction, sqlResultSet);
+                            resolve(sqlResultSet.rows)
+                        }, (sqlTransaction, sqlEerror) => {
+                            console.log(sqlTransaction, sqlEerror);
+                            reject(sqlEerror);
+                        });
+                    console.log(sqlResultSet);
+                });
+            } catch (err) {
+                console.log(err);
             }
+        });
 
-            this.setState({markers})
+        console.log(data[0]);
+        let length = data && data.length ? data.length : 0;
+
+        for (let i = 0; i < length; i++) {
+            if (data[i].lng && data[i].lat) {
+                markers.push(<Marker
+                    key={i}
+                    position={{lat: data[i].lat, lng: data[i].lng}}
+                    onClick={() => this.toggleDescription(true, data[i])}
+                />)
+            }
         }
+
+        this.setState({markers});
+        this.props.dispatch(MAP_CLUSTERING_LOAD, false);
+
     }
 
     renderLoading = (content, load) => (<div className="loading-panel_wrapper">
@@ -212,6 +221,13 @@ export class HomePage extends Component {
                         {lexicon[currentLocal].company_desc.license_start_at}/{lexicon[currentLocal].company_desc.license_end_at}: {data.license_start_at}
                         — {data.license_end_at}
                     </p>
+                    <Button type="button" raised
+                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}} color="primary">
+                        <Link className={'fonts-white'} to={'/complaints/' + data.id}>
+                            Сообщить о нарушении
+                        </Link>
+                    </Button>
+
                 </div>
             );
             this.setState({
@@ -233,7 +249,7 @@ export class HomePage extends Component {
 
     render() {
         const {db, data, set, version, currentLocal} = this.props;
-        console.log('Home page index', this.props);
+        console.log('Home page index', this);
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
         }
@@ -248,21 +264,24 @@ export class HomePage extends Component {
         }
         return (
             <div>
+                {
+                    !this.props.clustering &&
+                    <MapWithAMarkerClusters
 
-                <MapWithAMarkerClusters
+                        clusteringStatus={this.props.clustering}
 
-                    clusteringStatus={this.props.clustering}
+                        dispatch={this.props.dispatch}
 
-                    dispatch={this.props.dispatch}
+                        center={{
+                            lat: this.props.search_result ? this.props.search_result.lat : 46.484583,
+                            lng: this.props.search_result ? this.props.search_result.lng : 30.7326,
+                        }}
 
-                    center={{
-                        lat: this.props.search_result ? this.props.search_result.lat : 46.484583,
-                        lng: this.props.search_result ? this.props.search_result.lng : 30.7326,
-                    }}
+                        zoom={this.props.search_result ? 14 : 10}
 
-                    zoom={this.props.search_result ? 14 : 10}
-
-                    toggleDescription={this.toggleDescription} markers={this.state.markers}/>
+                        toggleDescription={this.toggleDescription} markers={this.state.markers}/>
+                }
+                <MapFilter/>
 
                 <Drawer
                     onClick={() => this.toggleDescription(false, null)}
@@ -272,6 +291,7 @@ export class HomePage extends Component {
                     onClose={() => this.toggleDescription(false, null)}
                 >
                     {this.state.description}
+
                 </Drawer>
                 {
                     this.props.clustering &&

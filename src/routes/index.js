@@ -85,6 +85,12 @@ export class RouterWrapper extends Component {
                         />
                         <ChildrenRoute
                             exact
+                            path={MenuLexicon[currentLocal].menu.complaints.href + '/:id'}
+                            title={MenuLexicon[currentLocal].menu.complaints.text}
+                            component={ComplaintsPage}
+                        />
+                        <ChildrenRoute
+                            exact
                             path={MenuLexicon[currentLocal].menu.articles.href}
                             title={MenuLexicon[currentLocal].menu.articles.text}
                             component={ArticlesPage}
