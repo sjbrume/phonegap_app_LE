@@ -21,9 +21,6 @@ gulp.task('phonegap-build-debug', function () {
             "appId": "2940124",
             "isRepository": "true",
             "platforms": ['android'],
-            "download": {
-                "android": 'dist/android.apk'
-            },
             "user": {
                 "email": "mihailovaleksandrivanovich@gmail.com",
                 "password": "0970479070Aa"

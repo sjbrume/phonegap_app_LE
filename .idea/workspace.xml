@@ -2,27 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square150x150Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square150x150Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square30x30Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square310x310Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square44x44Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square44x44Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square70x70Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square71x71Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Square71x71Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/StoreLogo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/StoreLogo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Wide310x150Logo.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/windows/Wide310x150Logo.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/wp8/ApplicationIcon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/icon/wp8/Background.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/screen/windows/SplashScreen.scale-100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/screen/windows/SplashScreenPhone.scale-240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/res/screen/wp8/screen-portrait.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.xml" afterPath="$PROJECT_DIR$/public/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-hdpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-hdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-ldpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-ldpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-mdpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-mdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-xhdpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-xhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-xxhdpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-xxhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/android/drawable-xxxhdpi-icon.png" afterPath="$PROJECT_DIR$/public/res/icon/android/drawable-xxxhdpi-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-40.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-40@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-40@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-50.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-50.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-50@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-50@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-60.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-60.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-60@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-60@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-60@3x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-60@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-72.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-72.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-72@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-72@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-76.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-76.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-76@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-76@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-small.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-small.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-small@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-small@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon-small@3x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon-small@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/icon/ios/icon@2x.png" afterPath="$PROJECT_DIR$/public/res/icon/ios/icon@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-hdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-hdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-ldpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-ldpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-mdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-mdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-land-xxxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-hdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-hdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-ldpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-ldpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-mdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-mdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xxhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xxxhdpi-screen.png" afterPath="$PROJECT_DIR$/public/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-568h@2x~iphone.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-568h@2x~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-667h.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-667h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-736h.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-736h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape-736h.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape-736h.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape@2x~ipad.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape@2x~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape~ipad.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-Landscape~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-Portrait@2x~ipad.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-Portrait@2x~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default-Portrait~ipad.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default-Portrait~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default@2x~iphone.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default@2x~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/res/screen/ios/Default~iphone.png" afterPath="$PROJECT_DIR$/public/res/screen/ios/Default~iphone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -89,6 +113,16 @@
                 <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
                 <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -180,7 +214,6 @@
         <option value="$PROJECT_DIR$/src/config.js" />
         <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
         <option value="$PROJECT_DIR$/src/blocks/input/input_file.js" />
-        <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusterer.js" />
         <option value="$PROJECT_DIR$/src/store/reducers.js" />
@@ -210,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
       </list>
     </option>
   </component>
@@ -372,12 +406,12 @@
       <workItem from="1514722444294" duration="5577000" />
       <workItem from="1514731864709" duration="725000" />
       <workItem from="1514887773974" duration="14147000" />
-      <workItem from="1514917921611" duration="853000" />
+      <workItem from="1514917921611" duration="1945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210420000" />
+    <option name="totallyTimeSpent" value="211512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -602,13 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/static/js/main.cdbd7fd4.js" />
     <entry file="file://$PROJECT_DIR$/src/containers/layout_children/lexicon.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -798,6 +825,14 @@
             <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
             <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
