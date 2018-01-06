@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/webpack.config.dev.js" afterPath="$PROJECT_DIR$/config/webpack.config.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" afterPath="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,87 +41,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="88" column="61" lean-forward="false" selection-start-line="88" selection-start-column="61" selection-end-line="88" selection-end-column="61" />
+            <state relative-caret-position="0">
+              <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#772#1183#0" expanded="false" />
                 <element signature="e#1259#2026#0" expanded="false" />
-                <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
+                <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="e#4738#5741#0" expanded="false" />
+                <element signature="n#!!block;n#searchLocation#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="e#7512#8178#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webpack.config.prod.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/webpack.config.prod.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="127" column="15" lean-forward="false" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="158" lean-forward="false" selection-start-line="6" selection-start-column="158" selection-end-line="6" selection-end-column="158" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form_complaints.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form_complaints.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="420" column="49" lean-forward="true" selection-start-line="420" selection-start-column="49" selection-end-line="420" selection-end-column="49" />
               <folding>
+                <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
-                <element signature="e#2397#2441#0" expanded="false" />
-                <element signature="e#2468#2513#0" expanded="false" />
+                <element signature="e#2616#2660#0" expanded="false" />
+                <element signature="e#2687#2732#0" expanded="false" />
                 <element signature="n#!!block;n#onSubmit#0;n#FormComplaints#0" expanded="false" />
-                <element signature="e#4343#5351#0" expanded="false" />
-                <element signature="e#5436#5918#0" expanded="false" />
-                <element signature="e#6022#6589#0" expanded="false" />
-                <element signature="e#6622#6822#0" expanded="false" />
+                <element signature="e#4562#5470#0" expanded="false" />
+                <element signature="e#5555#5997#0" expanded="false" />
+                <element signature="e#6102#6621#0" expanded="false" />
+                <element signature="e#6654#6854#0" expanded="false" />
                 <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
                 <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
-                <element signature="e#8760#11803#0" expanded="false" />
-                <element signature="e#8884#10456#0" expanded="false" />
-                <element signature="e#10478#10625#0" expanded="false" />
-                <element signature="e#10775#11347#0" expanded="false" />
-                <element signature="e#11474#11758#0" expanded="false" />
-                <element signature="e#11820#12779#0" expanded="false" />
-                <element signature="e#12874#13287#0" expanded="false" />
-                <element signature="e#13400#13794#0" expanded="false" />
-                <element signature="e#13860#14001#0" expanded="false" />
-                <element signature="e#14037#15320#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/complaints/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!block;n#componentWillReceiveProps#0;n#ComplaintsPage#0" expanded="false" />
-                <element signature="n#!!block;n#componentWillMount#0;n#ComplaintsPage#0" expanded="false" />
-                <element signature="e#3597#4138#0" expanded="false" />
-                <marker date="1515240860475" expanded="true" signature="2559:2677" ph="SELECT * FRO... ${TABLE_NAME}" />
+                <element signature="e#8795#11838#0" expanded="false" />
+                <element signature="e#8919#10491#0" expanded="false" />
+                <element signature="e#10513#10660#0" expanded="false" />
+                <element signature="e#10810#11382#0" expanded="false" />
+                <element signature="e#11509#11793#0" expanded="false" />
+                <element signature="e#11855#12814#0" expanded="false" />
+                <element signature="e#12909#13322#0" expanded="false" />
+                <element signature="e#13435#13829#0" expanded="false" />
+                <element signature="e#13895#14036#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -191,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/routes/article/index.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/style.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_children/style.js" />
         <option value="$PROJECT_DIR$/public/assets/russia.federal-districts.json" />
@@ -237,11 +203,12 @@
         <option value="$PROJECT_DIR$/src/store/reducers.js" />
         <option value="$PROJECT_DIR$/src/routes/home/index.js" />
         <option value="$PROJECT_DIR$/src/routes/complaints/index.js" />
-        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/config/webpack.config.dev.js" />
+        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
       </list>
     </option>
   </component>
@@ -264,7 +231,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -491,15 +458,15 @@
       <workItem from="1514731864709" duration="725000" />
       <workItem from="1514887773974" duration="14147000" />
       <workItem from="1514917921611" duration="4471000" />
-      <workItem from="1515228615410" duration="24477000" />
+      <workItem from="1515228615410" duration="25986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238515000" />
+    <option name="totallyTimeSpent" value="240024000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16187595" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -509,7 +476,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41571194" sideWeight="0.48487142" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16693944" sideWeight="0.48487142" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -562,13 +529,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/material-ui/SvgIcon/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/material-ui-icons/Error.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -900,47 +860,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#2397#2441#0" expanded="false" />
-            <element signature="e#2468#2513#0" expanded="false" />
-            <element signature="n#!!block;n#onSubmit#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#4343#5351#0" expanded="false" />
-            <element signature="e#5436#5918#0" expanded="false" />
-            <element signature="e#6022#6589#0" expanded="false" />
-            <element signature="e#6622#6822#0" expanded="false" />
-            <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
-            <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#8760#11803#0" expanded="false" />
-            <element signature="e#8884#10456#0" expanded="false" />
-            <element signature="e#10478#10625#0" expanded="false" />
-            <element signature="e#10775#11347#0" expanded="false" />
-            <element signature="e#11474#11758#0" expanded="false" />
-            <element signature="e#11820#12779#0" expanded="false" />
-            <element signature="e#12874#13287#0" expanded="false" />
-            <element signature="e#13400#13794#0" expanded="false" />
-            <element signature="e#13860#14001#0" expanded="false" />
-            <element signature="e#14037#15320#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/paths.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="158" lean-forward="false" selection-start-line="6" selection-start-column="158" selection-end-line="6" selection-end-column="158" />
           <folding />
         </state>
       </provider>
@@ -964,20 +887,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/webpack.config.dev.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="123" column="11" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="123" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="88" column="61" lean-forward="false" selection-start-line="88" selection-start-column="61" selection-end-line="88" selection-end-column="61" />
+        <state relative-caret-position="0">
+          <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#772#1183#0" expanded="false" />
             <element signature="e#1259#2026#0" expanded="false" />
-            <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
-            <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
+            <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#4738#5741#0" expanded="false" />
+            <element signature="n#!!block;n#searchLocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#7512#8178#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="420" column="49" lean-forward="true" selection-start-line="420" selection-start-column="49" selection-end-line="420" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
+            <element signature="e#2616#2660#0" expanded="false" />
+            <element signature="e#2687#2732#0" expanded="false" />
+            <element signature="n#!!block;n#onSubmit#0;n#FormComplaints#0" expanded="false" />
+            <element signature="e#4562#5470#0" expanded="false" />
+            <element signature="e#5555#5997#0" expanded="false" />
+            <element signature="e#6102#6621#0" expanded="false" />
+            <element signature="e#6654#6854#0" expanded="false" />
+            <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
+            <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
+            <element signature="e#8795#11838#0" expanded="false" />
+            <element signature="e#8919#10491#0" expanded="false" />
+            <element signature="e#10513#10660#0" expanded="false" />
+            <element signature="e#10810#11382#0" expanded="false" />
+            <element signature="e#11509#11793#0" expanded="false" />
+            <element signature="e#11855#12814#0" expanded="false" />
+            <element signature="e#12909#13322#0" expanded="false" />
+            <element signature="e#13435#13829#0" expanded="false" />
+            <element signature="e#13895#14036#0" expanded="false" />
           </folding>
         </state>
       </provider>

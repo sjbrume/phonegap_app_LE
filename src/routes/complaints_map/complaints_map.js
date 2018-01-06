@@ -257,6 +257,10 @@ export class ComplaintsMap extends Component {
                 lng: Longitude,
             }
         });
+        this.props.dispatch(FORM_ADD_LATLNG, {
+            lat: Latitude,
+            lng: Longitude,
+        });
     }
 
     onMapError(error) {

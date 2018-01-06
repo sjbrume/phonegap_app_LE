@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Field, getFormValues, reduxForm} from "redux-form";
 import Done from 'material-ui-icons/Done';
+import Clear from 'material-ui-icons/Clear';
 import {lexicon} from './lexicon';
 import Button from 'material-ui/Button';
 import {InputFile} from "../../input/input_file";
@@ -22,6 +23,7 @@ import {isEmail} from "../../../utils/is_email";
 import {Store} from '../../../store/store';
 import {Link} from "react-router-dom";
 import {ComplaintsMap} from "../../../routes/complaints_map/complaints_map";
+import {FORM_REMOVE_LATLNG} from "../../../store/reducers";
 
 const required = message => value => {
     console.log(value);
@@ -54,6 +56,11 @@ const COMPLAINTS_URL = 'http://185.25.117.8/complaint';
     state => ({ // получаем данные из store
         currentLocal: state.intl,
         values: getFormValues('FormComplaints')(state),
+    }),
+    dispatch => ({
+        dispatch: (type, payload) => {
+            dispatch({type, payload})
+        }
     })
 )
 export class FormComplaints extends Component {
@@ -146,59 +153,59 @@ export class FormComplaints extends Component {
     }
 
     radioButtonGenerator = ({input, type, options, meta: {touched, error, warning}}) => (<div>
-            {
-                options.map(o =>
-                    <div key={o.value} className="input_radio-wrapper">
-                        <label htmlFor={o.value} className="input_radio-text">
-                            {o.title}
-                        </label>
-                        <input className="input_radio"
-                               type="radio"
-                               id={o.value}
-                               {...input}
-                               value={o.value}
-                               checked={o.value === input.value}
-                        />
+        {
+            options.map(o =>
+                <div key={o.value} className="input_radio-wrapper">
+                    <label htmlFor={o.value} className="input_radio-text">
+                        {o.title}
+                    </label>
+                    <input className="input_radio"
+                           type="radio"
+                           id={o.value}
+                           {...input}
+                           value={o.value}
+                           checked={o.value === input.value}
+                    />
 
-                        <div className="input_radio-dot">
-                            <Done/>
-                        </div>
+                    <div className="input_radio-dot">
+                        <Done/>
                     </div>
-                )
-            }
+                </div>
+            )
+        }
+        <div className="complaints_input-valid">
+            {touched &&
+            ((error && <span>{error}</span>) ||
+                (warning && <span>{warning}</span>))}
+        </div>
+    </div>);
+
+    renderTextarea = ({input, label, type, meta: {touched, error, warning}}) => (<div>
+        <label className="complaints_input-label"> {label}</label>
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <textarea className="complaints_input" {...input} type={type}/>
             <div className="complaints_input-valid">
                 {touched &&
                 ((error && <span>{error}</span>) ||
                     (warning && <span>{warning}</span>))}
             </div>
-        </div>);
+        </div>
+    </div>);
 
-    renderTextarea = ({input, label, type, meta: {touched, error, warning}}) => (<div>
-            <label className="complaints_input-label"> {label}</label>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                <textarea className="complaints_input" {...input} type={type}/>
-                <div className="complaints_input-valid">
-                    {touched &&
-                    ((error && <span>{error}</span>) ||
-                        (warning && <span>{warning}</span>))}
-                </div>
+    renderField = ({input, label, type, meta: {touched, error, warning}, disabled, placeholder}) => (<div>
+        {
+            label && <label className="complaints_input-label"> {label}</label>
+        }
+
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <input className="complaints_input" disabled={disabled} {...input} placeholder={placeholder} type={type}/>
+            <div className="complaints_input-valid">
+                {touched &&
+                ((error && <span>{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
             </div>
-        </div>);
-
-    renderField = ({input, label, type, meta: {touched, error, warning}, disabled,placeholder}) => (<div>
-            {
-                label && <label className="complaints_input-label"> {label}</label>
-            }
-
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                <input className="complaints_input" disabled={disabled} {...input} placeholder={placeholder} type={type}/>
-                <div className="complaints_input-valid">
-                    {touched &&
-                    ((error && <span>{error}</span>) ||
-                        (warning && <span>{warning}</span>))}
-                </div>
-            </div>
-        </div>);
+        </div>
+    </div>);
 
     renderPreloader = () => (<div className="preloader__wrapper">
         <CircularProgress className="preloader" style={{
@@ -240,13 +247,13 @@ export class FormComplaints extends Component {
         </Dialog>)
     }
 
-    modalMapHandle(isOpen){
+    modalMapHandle(isOpen) {
         this.setState({modalMap: isOpen})
     }
 
     disabledSubmit() {
         const {pristine, submitting, values} = this.props;
-        if(values && values.type && values.type === 'no_anonim'){
+        if (values && values.type && values.type === 'no_anonim') {
             return !(values && ('type' in values) && ('message' in values) && ('company' in values) && ('name' in values));
         } else {
             return !(values && ('type' in values) && ('message' in values) && ('company' in values));
@@ -402,21 +409,45 @@ export class FormComplaints extends Component {
                         />
                     }
 
-                    <Button  type="button" raised
-                             onClick={()=>{
-                                 this.setState({modalMap: true})
-                             }}
-                             style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 8px 0'}} color="primary">
+                    <Button type="button" raised
+                            onClick={() => {
+                                this.setState({modalMap: true})
+                            }}
+                            style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 0 0'}}
+                            color="primary">
                         Прикрепить координаты
                     </Button>
+                    {
+                        (values && values.lng) &&
+                        <Button raised type="button"
+                                style={{
+                                    verticalAlign: 'middle',
+                                    backgroundColor: '#ff4081',
+                                    color: '#334148',
+                                    padding: '8px',
+                                    width: 'auto',
+                                    minWidth: 'inherit'
+                                }}
+                                color="accent"
+                                onClick={() => {
+                                    delete this.props.values.lat;
+                                    delete this.props.values.lng;
+                                    this.props.dispatch(FORM_REMOVE_LATLNG, this.props.values);
+                                }}>
+                            <Clear style={{
+                                width: '20px',
+                                height: '20px'
+                            }}/>
+                        </Button>
+                    }
                 </div>
 
                 <div style={{padding: '20px'}} className="complaints_section">
 
-                        <Button disabled={this.disabledSubmit()} type="submit" raised
-                                style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                            {lexicon[currentLocal].send}
-                        </Button>
+                    <Button disabled={this.disabledSubmit()} type="submit" raised
+                            style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                        {lexicon[currentLocal].send}
+                    </Button>
 
                 </div>
             </form>
