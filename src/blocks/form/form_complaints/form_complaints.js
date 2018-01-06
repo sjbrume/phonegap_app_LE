@@ -68,6 +68,7 @@ export class FormComplaints extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.renderMessageDialog = this.renderMessageDialog.bind(this);
         this.modalMapHandle = this.modalMapHandle.bind(this);
+        this.disabledSubmit = this.disabledSubmit.bind(this);
     }
 
     get initialState() {
@@ -94,9 +95,9 @@ export class FormComplaints extends Component {
             this.handleClickOpen();
             return;
         }
-        if (!value.message) return;
-        if (!value.company) return;
-        if (value.type === 'no_anonim' && !value.name) return;
+        // if (!value.message) return;
+        // if (!value.company) return;
+        // if (value.type === 'no_anonim' && !value.name) return;
 
         this.setState({loading: true});
         let formData = new FormData();
@@ -144,8 +145,7 @@ export class FormComplaints extends Component {
 
     }
 
-    radioButtonGenerator = ({input, type, options, meta: {touched, error, warning}}) => (
-        <div>
+    radioButtonGenerator = ({input, type, options, meta: {touched, error, warning}}) => (<div>
             {
                 options.map(o =>
                     <div key={o.value} className="input_radio-wrapper">
@@ -171,11 +171,9 @@ export class FormComplaints extends Component {
                 ((error && <span>{error}</span>) ||
                     (warning && <span>{warning}</span>))}
             </div>
-        </div>
-    );
+        </div>);
 
-    renderTextarea = ({input, label, type, meta: {touched, error, warning}}) => (
-        <div>
+    renderTextarea = ({input, label, type, meta: {touched, error, warning}}) => (<div>
             <label className="complaints_input-label"> {label}</label>
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 <textarea className="complaints_input" {...input} type={type}/>
@@ -185,11 +183,9 @@ export class FormComplaints extends Component {
                         (warning && <span>{warning}</span>))}
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 
-    renderField = ({input, label, type, meta: {touched, error, warning}, disabled,placeholder}) => (
-        <div>
+    renderField = ({input, label, type, meta: {touched, error, warning}, disabled,placeholder}) => (<div>
             {
                 label && <label className="complaints_input-label"> {label}</label>
             }
@@ -202,8 +198,7 @@ export class FormComplaints extends Component {
                         (warning && <span>{warning}</span>))}
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 
     renderPreloader = () => (<div className="preloader__wrapper">
         <CircularProgress className="preloader" style={{
@@ -249,9 +244,18 @@ export class FormComplaints extends Component {
         this.setState({modalMap: isOpen})
     }
 
+    disabledSubmit() {
+        const {pristine, submitting, values} = this.props;
+        if(values && values.type && values.type === 'no_anonim'){
+            return !(values && ('type' in values) && ('message' in values) && ('company' in values) && ('name' in values));
+        } else {
+            return !(values && ('type' in values) && ('message' in values) && ('company' in values));
+        }
+
+    }
+
     render() {
-        const {currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
-        console.log(this.props);
+        const {params, currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
         const Required = required(lexicon[currentLocal].validation.required);
         return (
             <form onSubmit={handleSubmit(this.onSubmit)} required>
@@ -378,20 +382,27 @@ export class FormComplaints extends Component {
 
                 <div style={{padding: '20px'}} className="complaints_section">
 
-                    <Field
-                        component={this.renderField}
-                        name={'lat'}
-                        type="text"
-                        placeholder={'lat'}
-                        disabled={true}
-                    />
-                    <Field
-                        component={this.renderField}
-                        name={'lng'}
-                        type="text"
-                        placeholder={'lng'}
-                        disabled={true}
-                    />
+                    {
+                        ('id' in params) || (values && values.lat) &&
+                        <Field
+                            component={this.renderField}
+                            name={'lat'}
+                            type="text"
+                            placeholder={'lat'}
+                            disabled={true}
+                        />
+                    }
+
+                    {
+                        ('id' in params) || (values && values.lng) &&
+                        <Field
+                            component={this.renderField}
+                            name={'lng'}
+                            type="text"
+                            placeholder={'lng'}
+                            disabled={true}
+                        />
+                    }
 
                     <Button  type="button" raised
                              onClick={()=>{
@@ -404,7 +415,7 @@ export class FormComplaints extends Component {
 
                 <div style={{padding: '20px'}} className="complaints_section">
 
-                        <Button disabled={pristine || submitting} type="submit" raised
+                        <Button disabled={this.disabledSubmit()} type="submit" raised
                                 style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                             {lexicon[currentLocal].send}
                         </Button>

@@ -110,12 +110,10 @@ export class ComplaintsPage extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.id);
         return (
             <div className="complaints_wrapper">
                 {
-                    this.state.loading &&
-                    <div className="loading-panel_wrapper">
+                    this.state.loading && <div className="loading-panel_wrapper">
                         <div>
                             <CircularProgress style={{
                                 display: 'block',
@@ -130,7 +128,7 @@ export class ComplaintsPage extends Component {
                 }
                 {
                     !this.state.loading &&
-                    <FormComplaints initialValues={{
+                    <FormComplaints params={this.props.match.params} initialValues={{
                         company: this.state.company && this.state.company.company ? this.state.company.company : ''
                     }}/>
                 }
