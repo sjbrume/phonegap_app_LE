@@ -12,12 +12,18 @@ import IconButton from 'material-ui/IconButton';
 import ArrowBack from 'material-ui-icons/ArrowBack';
 import {FORM_ADD_LATLNG, FORM_REMOVE_LATLNG} from "../../store/reducers";
 
+import LocationSearching from 'material-ui-icons/LocationSearching';
+
 
 const MapWithAMarkerClusters = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
         loadingElement: (<div></div>),
-        containerElement: <div style={{height: `calc(100vh - 118px)`, marginTop: '64px'}}/>,
+        containerElement: <div style={{
+            height: `calc(100vh - 118px)`,
+            marginTop: '64px',
+            position: 'relative'
+        }}/>,
         mapElement: <div style={{height: `100%`}}/>,
     }),
     withHandlers({
@@ -36,7 +42,21 @@ const MapWithAMarkerClusters = compose(
         <Marker
             position={props.markerPos}
         />
-
+        <button onClick={props.searchLocation} type="button" style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            zIndex: 100,
+            border: 'none',
+            margin: '10px 10px 30px 10px',
+            backgroundColor: 'rgb(255, 255, 255)',
+            borderRadius: '2px',
+            padding: '8px',
+            lineHeight: 0,
+            boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px -1px'
+        }}>
+            <LocationSearching/>
+        </button>
     </GoogleMap>
 );
 
@@ -64,6 +84,7 @@ export class ComplaintsMap extends Component {
         this.onClickMap = this.onClickMap.bind(this);
         this.onSave = this.onSave.bind(this);
         this.onCancel = this.onCancel.bind(this);
+        this.searchLocation = this.searchLocation.bind(this);
     }
 
     get initialState() {
@@ -108,6 +129,28 @@ export class ComplaintsMap extends Component {
         this.props.toggleHandle(false)
     }
 
+    searchLocation() {
+        try{
+
+            navigator.geolocation.getCurrentPosition
+            (this.onMapSuccess, this.onMapError, { enableHighAccuracy: true });
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    onMapSuccess(position){
+        console.log(position);
+        const Latitude = position.coords.latitude;
+        const Longitude = position.coords.longitude;
+    }
+
+    onMapError(error){
+        console.log('code: ' + error.code + '\n' +
+            'message: ' + error.message + '\n');
+    }
+
     render() {
         console.log(this.props);
         return (
@@ -149,6 +192,7 @@ export class ComplaintsMap extends Component {
                         lat: this.state.markerPos.lat ? this.state.markerPos.lat: 46.484583,
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng: 30.7326,
                     }}
+                    searchLocation={this.searchLocation}
                 />
                 <div style={{padding: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}
                      className="complaints_section">

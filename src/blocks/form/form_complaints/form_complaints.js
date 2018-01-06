@@ -350,8 +350,7 @@ export class FormComplaints extends Component {
                     />
                 </div>
                 {
-                    values && values.type && values.type === 'no_anonim' &&
-                    <div className="complaints_section">
+                    values && values.type && values.type === 'no_anonim' && <div className="complaints_section">
                         <Field
                             component={this.renderField}
                             name={'phone'}
@@ -363,8 +362,7 @@ export class FormComplaints extends Component {
                     </div>
                 }
                 {
-                    values && values.type && values.type === 'no_anonim' &&
-                    <div className="complaints_section">
+                    values && values.type && values.type === 'no_anonim' && <div className="complaints_section">
                         <Field
                             component={this.renderField}
                             name={'email'}

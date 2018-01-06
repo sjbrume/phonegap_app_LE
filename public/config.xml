@@ -16,6 +16,9 @@
     <plugin name="cordova-plugin-file" source="npm" spec="6.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova.plugins.diagnostic" spec="3" />
+
+    <plugin name="cordova-plugin-geolocation" source="npm" spec="4.0.1" />
+
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~5.0.1" />
 
     <platform name="android">
