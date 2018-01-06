@@ -131,6 +131,7 @@ export class ComplaintsMap extends Component {
     }
 
     isLocationAuthorized() {
+        const onGeolocation = this.onGeolocation;
         cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
             console.log("Location is " + (enabled ? "enabled" : "disabled"));
 
@@ -140,6 +141,8 @@ export class ComplaintsMap extends Component {
                 }, (error) => {
                     console.error(error);
                 });
+            } else {
+                onGeolocation()
             }
         }, (error) => {
             console.error("The following error occurred: " + error);
@@ -160,7 +163,7 @@ export class ComplaintsMap extends Component {
                             break;
 
                         case "network":
-                            if('latitude' in jsonObject){
+                            if ('latitude' in jsonObject) {
                                 onMapSuccess(jsonObject);
                                 AdvancedGeolocation.stop();
                             }
