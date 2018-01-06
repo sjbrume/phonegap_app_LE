@@ -35,6 +35,11 @@ export const MapWithAMarkerClusters = compose(
         defaultCenter={props.center}
         center={props.center}
         zoom={props.zoom}
+        // onClick={(event) => {
+        //     console.log(event)
+        //     console.log('lng:',event.latLng.lng());
+        //     console.log('lat:',event.latLng.lat());
+        // }}
     >
         {
             props.markers.length > 0 && <MarkerClusterer

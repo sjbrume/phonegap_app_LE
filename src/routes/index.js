@@ -13,6 +13,7 @@ import {ComplaintsPage} from "./complaints";
 import {ContactsPage} from "./contacts";
 import {SettingsPage} from "./settings";
 import {ListOfPlacesPage} from "./list_of_places";
+import {ComplaintsMap} from "./complaints_map/complaints_map";
 
 
 document.addEventListener("backbutton", () => {
@@ -82,6 +83,12 @@ export class RouterWrapper extends Component {
                             path={MenuLexicon[currentLocal].menu.complaints.href}
                             title={MenuLexicon[currentLocal].menu.complaints.text}
                             component={ComplaintsPage}
+                        />
+                        <ChildrenRoute
+                            exact
+                            path={MenuLexicon[currentLocal].menu.complaints_map.href}
+                            title={MenuLexicon[currentLocal].menu.complaints_map.text}
+                            component={ComplaintsMap}
                         />
                         <ChildrenRoute
                             exact

@@ -38,7 +38,6 @@ export class Header extends Component {
 
     render() {
         const {menuPosition,onClick} = this.props;
-        console.log(this);
         return (
             <div className={'layout-main_header-wrapper'}>
                 <AppBar position="static" className={'layout-main_app-bar'} color="default">

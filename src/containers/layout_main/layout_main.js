@@ -19,8 +19,6 @@ import {Header} from "../../blocks/header/header";
 import './layout_main.css';
 
 
-
-
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,
@@ -58,33 +56,38 @@ export class LayoutMain extends Component {
         let index = 0;
 
         for (let prop in lexicon[currentLocal].menu) {
-            if('href' in lexicon[currentLocal].menu[prop]){
-                menu.push(
-                    <ListItem key={index}>
-                        <ListItemIcon className={'fonts-white'}>
-                            {lexicon[currentLocal].menu[prop].icon}
-                        </ListItemIcon>
-                        <Link className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
-                            <Typography color="inherit">
-                                {lexicon[currentLocal].menu[prop].text}
-                            </Typography>
-                        </Link>
-                    </ListItem>
-                );
-            } else {
-                menu.push(
-                    <ListItem key={index}>
-                        <ListItemIcon className={'fonts-white'}>
-                            {lexicon[currentLocal].menu[prop].icon}
-                        </ListItemIcon>
-                        <button type="button" style={{backgroundColor: 'transparent', border: 'none'}} className={'fonts-white'} onClick={lexicon[currentLocal].menu[prop].onClick}>
-                            <Typography color="inherit">
-                                {lexicon[currentLocal].menu[prop].text}
-                            </Typography>
-                        </button>
-                    </ListItem>
-                );
+            if (!lexicon[currentLocal].menu[prop].menu_hidden) {
+                if ('href' in lexicon[currentLocal].menu[prop]) {
+                    menu.push(
+                        <ListItem key={index}>
+                            <ListItemIcon className={'fonts-white'}>
+                                {lexicon[currentLocal].menu[prop].icon}
+                            </ListItemIcon>
+                            <Link className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
+                                <Typography color="inherit">
+                                    {lexicon[currentLocal].menu[prop].text}
+                                </Typography>
+                            </Link>
+                        </ListItem>
+                    );
+                } else {
+                    menu.push(
+                        <ListItem key={index}>
+                            <ListItemIcon className={'fonts-white'}>
+                                {lexicon[currentLocal].menu[prop].icon}
+                            </ListItemIcon>
+                            <button type="button" style={{backgroundColor: 'transparent', border: 'none'}}
+                                    className={'fonts-white'} onClick={lexicon[currentLocal].menu[prop].onClick}>
+                                <Typography color="inherit">
+                                    {lexicon[currentLocal].menu[prop].text}
+                                </Typography>
+                            </button>
+                        </ListItem>
+                    );
+                }
+
             }
+
             index++
         }
 

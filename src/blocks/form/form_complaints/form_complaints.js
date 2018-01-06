@@ -9,6 +9,8 @@ import List, {ListItem,} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 
+import Modal from 'material-ui/Modal';
+
 import Dialog, {
     DialogActions,
     DialogContent,
@@ -18,6 +20,8 @@ import Dialog, {
 import {isNumber} from "../../../utils/is_number";
 import {isEmail} from "../../../utils/is_email";
 import {Store} from '../../../store/store';
+import {Link} from "react-router-dom";
+import {ComplaintsMap} from "../../../routes/complaints_map/complaints_map";
 
 const required = message => value => {
     console.log(value);
@@ -63,6 +67,7 @@ export class FormComplaints extends Component {
         this.state = this.initialState;
         this.onSubmit = this.onSubmit.bind(this);
         this.renderMessageDialog = this.renderMessageDialog.bind(this);
+        this.modalMapHandle = this.modalMapHandle.bind(this);
     }
 
     get initialState() {
@@ -70,7 +75,8 @@ export class FormComplaints extends Component {
             open: false,
             loading: false,
             openMessageDialog: false,
-            submitSuccess: false
+            submitSuccess: false,
+            modalMap: false,
         }
     }
 
@@ -182,11 +188,14 @@ export class FormComplaints extends Component {
         </div>
     );
 
-    renderField = ({input, label, type, meta: {touched, error, warning}}) => (
+    renderField = ({input, label, type, meta: {touched, error, warning}, disabled,placeholder}) => (
         <div>
-            <label className="complaints_input-label"> {label}</label>
+            {
+                label && <label className="complaints_input-label"> {label}</label>
+            }
+
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                <input className="complaints_input" {...input} placeholder={label} type={type}/>
+                <input className="complaints_input" disabled={disabled} {...input} placeholder={placeholder} type={type}/>
                 <div className="complaints_input-valid">
                     {touched &&
                     ((error && <span>{error}</span>) ||
@@ -236,6 +245,10 @@ export class FormComplaints extends Component {
         </Dialog>)
     }
 
+    modalMapHandle(isOpen){
+        this.setState({modalMap: isOpen})
+    }
+
     render() {
         const {currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
         console.log(this.props);
@@ -275,6 +288,11 @@ export class FormComplaints extends Component {
                             </Button>
                         </DialogActions>
                     </Dialog>
+
+                    <ComplaintsMap
+                        open={this.state.modalMap}
+                        toggleHandle={this.modalMapHandle}
+                    />
 
                     {
                         this.state.openMessageDialog && this.renderMessageDialog()
@@ -336,6 +354,7 @@ export class FormComplaints extends Component {
                             type="tel"
                             validate={isNumber(lexicon[currentLocal].validation.phone)}
                             label={lexicon[currentLocal].phone}
+
                         />
                     </div>
                 }
@@ -358,13 +377,38 @@ export class FormComplaints extends Component {
                 }
 
                 <div style={{padding: '20px'}} className="complaints_section">
-                    {
-                        values && values.type &&
+
+                    <Field
+                        component={this.renderField}
+                        name={'lat'}
+                        type="text"
+                        placeholder={'lat'}
+                        disabled={true}
+                    />
+                    <Field
+                        component={this.renderField}
+                        name={'lng'}
+                        type="text"
+                        placeholder={'lng'}
+                        disabled={true}
+                    />
+
+                    <Button  type="button" raised
+                             onClick={()=>{
+                                 this.setState({modalMap: true})
+                             }}
+                             style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 8px 0'}} color="primary">
+                        Прикрепить координаты
+                    </Button>
+                </div>
+
+                <div style={{padding: '20px'}} className="complaints_section">
+
                         <Button disabled={pristine || submitting} type="submit" raised
                                 style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                             {lexicon[currentLocal].send}
                         </Button>
-                    }
+
                 </div>
             </form>
         )

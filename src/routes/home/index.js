@@ -13,10 +13,6 @@ import {Link} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 
-// https://habrahabr.ru/post/213515/
-// https://habrahabr.ru/post/84654/
-// https://tomchentw.github.io/react-google-maps/
-
 
 function mapStateToProps(state) {
     return {
