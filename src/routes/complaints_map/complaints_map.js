@@ -86,6 +86,7 @@ export class ComplaintsMap extends Component {
         this.onMapSuccess = this.onMapSuccess.bind(this);
         this.onGeolocation = this.onGeolocation.bind(this);
         this.searchLocation = this.searchLocation.bind(this);
+        this.isLocationAuthorized = this.isLocationAuthorized.bind(this);
     }
 
     get initialState() {
