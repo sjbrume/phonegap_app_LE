@@ -137,24 +137,7 @@ export class ComplaintsMap extends Component {
                 if (canRequest) {
                     cordova.plugins.locationAccuracy.request(function () {
                             console.log("Request successful");
-                            cordova.plugins.diagnostic.isLocationAuthorized(function (enabled) {
-                                console.log("Location is " + (enabled ? "enabled" : "disabled"));
-
-                                navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true,
-                                    timeout: 20000,
-                                    maximumAge: 0});
-
-                                if (!enabled) {
-                                    cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
-                                        console.log("Authorization status is now: " + status);
-                                    }, function (error) {
-                                        console.error(error);
-                                    });
-                                }
-                            }, function (error) {
-                                console.error("The following error occurred: " + error);
-                            });
-
+                            this.onGeolocation();
 
                         }, function (error) {
                             console.error("Request failed");
@@ -176,6 +159,65 @@ export class ComplaintsMap extends Component {
         } catch (err) {
             console.log(err)
         }
+    }
+
+    onGeolocation() {
+        AdvancedGeolocation.start(function (success) {
+
+                try {
+                    const jsonObject = JSON.parse(success);
+                    console.log(jsonObject);
+                    switch (jsonObject.provider) {
+                        case "gps":
+                            //TODO
+                            break;
+
+                        case "network":
+                            //TODO
+                            break;
+
+                        case "satellite":
+                            //TODO
+                            break;
+
+                        case "cell_info":
+                            //TODO
+                            break;
+
+                        case "cell_location":
+                            //TODO
+                            break;
+
+                        case "signal_strength":
+                            //TODO
+                            break;
+                    }
+                }
+                catch (exc) {
+                    console.log("Invalid JSON: " + exc);
+                }
+            },
+            function (error) {
+                console.log("ERROR! " + JSON.stringify(error));
+            },
+            ////////////////////////////////////////////
+            //
+            // REQUIRED:
+            // These are required Configuration options!
+            // See API Reference for additional details.
+            //
+            ////////////////////////////////////////////
+            {
+                "minTime": 500,         // Min time interval between updates (ms)
+                "minDistance": 1,       // Min distance between updates (meters)
+                "noWarn": true,         // Native location provider warnings
+                "providers": "all",     // Return GPS, NETWORK and CELL locations
+                "useCache": true,       // Return GPS and NETWORK cached locations
+                "satelliteData": false, // Return of GPS satellite info
+                "buffer": false,        // Buffer location data
+                "bufferSize": 0,        // Max elements in buffer
+                "signalStrength": false // Return cell signal strength data
+            });
     }
 
     onMapSuccess(position) {
