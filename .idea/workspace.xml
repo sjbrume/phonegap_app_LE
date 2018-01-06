@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.274e1657.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.274e1657.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="$PROJECT_DIR$/build/asset-manifest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/config.xml" afterPath="$PROJECT_DIR$/build/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/index.html" afterPath="$PROJECT_DIR$/build/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="$PROJECT_DIR$/build/service-worker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/webpack.config.prod.js" afterPath="$PROJECT_DIR$/config/webpack.config.prod.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.xml" afterPath="$PROJECT_DIR$/public/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
     </list>
@@ -40,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="136" column="69" lean-forward="false" selection-start-line="136" selection-start-column="51" selection-end-line="136" selection-end-column="69" />
+            <state relative-caret-position="95">
+              <caret line="133" column="12" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#772#1183#0" expanded="false" />
@@ -53,6 +60,29 @@
                 <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.config.prod.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/webpack.config.prod.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="124" column="34" lean-forward="false" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
+                <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,7 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Белгородская обл</find>
       <find>WEBSQL_LOADING_DB</find>
       <find>WEBSQL_SUCCESS_CREATE_DB</find>
       <find>WEBSQL_CREATE_DB</find>
@@ -150,6 +179,7 @@
       <find>getMarkers</find>
       <find>toba</find>
       <find>MAP_CLUSTERING_LOAD</find>
+      <find>eslintFormatter</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -171,7 +201,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/routes/article/index.js" />
-        <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/style.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_children/style.js" />
         <option value="$PROJECT_DIR$/public/assets/russia.federal-districts.json" />
@@ -221,6 +250,7 @@
         <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
         <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
+        <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
       </list>
     </option>
   </component>
@@ -243,7 +273,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -273,6 +303,11 @@
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
@@ -388,19 +423,19 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/phonegap-account.json" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public\assets\img" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\store\map" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\build" />
-      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public\assets" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\blocks\form\form_complaints" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\blocks\switcher" />
       <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\containers\layout_main" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public\assets\img" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\src\store\map" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\build" />
+      <recent name="D:\Development\WebDev\job\phonegap.app\LegalExcise\public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,15 +500,15 @@
       <workItem from="1514731864709" duration="725000" />
       <workItem from="1514887773974" duration="14147000" />
       <workItem from="1514917921611" duration="4471000" />
-      <workItem from="1515228615410" duration="15123000" />
+      <workItem from="1515228615410" duration="17322000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229161000" />
+    <option name="totallyTimeSpent" value="231360000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16187595" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -536,20 +571,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/blocks/form/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/home/mock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/material-ui/SvgIcon/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -737,6 +758,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!block;n#jest#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -923,8 +947,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="88" lean-forward="true" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
+        <state relative-caret-position="170">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
             <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
@@ -934,8 +958,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="136" column="69" lean-forward="false" selection-start-line="136" selection-start-column="51" selection-end-line="136" selection-end-column="69" />
+        <state relative-caret-position="95">
+          <caret line="133" column="12" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#772#1183#0" expanded="false" />
@@ -945,6 +969,22 @@
             <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/paths.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/webpack.config.prod.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="124" column="34" lean-forward="false" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
