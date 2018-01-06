@@ -85,6 +85,7 @@ export class ComplaintsMap extends Component {
         this.onSave = this.onSave.bind(this);
         this.onCancel = this.onCancel.bind(this);
         this.searchLocation = this.searchLocation.bind(this);
+        this.onMapSuccess = this.onMapSuccess.bind(this);
     }
 
     get initialState() {
@@ -144,6 +145,12 @@ export class ComplaintsMap extends Component {
         console.log(position);
         const Latitude = position.coords.latitude;
         const Longitude = position.coords.longitude;
+        this.setState({
+            markerPos: {
+                lat: Latitude,
+                lng: Longitude,
+            }
+        });
     }
 
     onMapError(error){

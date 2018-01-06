@@ -18,6 +18,7 @@
     <plugin name="cordova.plugins.diagnostic" spec="3" />
 
     <plugin name="cordova-plugin-geolocation" source="npm" spec="4.0.1" />
+    <plugin name="cordova-plugin-request-location-accuracy" source="npm" spec="2.2.2" />
 
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~5.0.1" />
 
