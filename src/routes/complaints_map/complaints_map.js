@@ -139,7 +139,9 @@ export class ComplaintsMap extends Component {
                             console.log("Request successful");
                             cordova.plugins.diagnostic.isLocationAuthorized(function (enabled) {
                                 console.log("Location is " + (enabled ? "enabled" : "disabled"));
-                                navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, {enableHighAccuracy: true});
+                                navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true,
+                                    timeout: 20000,
+                                    maximumAge: 0});
                                 if (!enabled) {
                                     cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
                                         console.log("Authorization status is now: " + status);
