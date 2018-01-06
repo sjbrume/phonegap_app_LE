@@ -26,9 +26,7 @@ const MapWithAMarkerClusters = compose(
         }}/>,
         mapElement: <div style={{height: `100%`}}/>,
     }),
-    withHandlers({
-
-    }),
+    withHandlers({}),
     withScriptjs,
     withGoogleMap
 )(props =>
@@ -97,7 +95,7 @@ export class ComplaintsMap extends Component {
         }
     }
 
-    onClickMap(event){
+    onClickMap(event) {
         this.setState({
             markerPos: {
                 lat: event.latLng.lat(),
@@ -112,12 +110,12 @@ export class ComplaintsMap extends Component {
         return event
     }
 
-    onSave(){
+    onSave() {
 
         this.props.toggleHandle(false)
     }
 
-    onCancel(){
+    onCancel() {
         delete this.props.values.lat;
         delete this.props.values.lng;
         this.props.dispatch(FORM_REMOVE_LATLNG, this.props.values);
@@ -131,23 +129,36 @@ export class ComplaintsMap extends Component {
     }
 
     searchLocation() {
-        try{
+        try {
             const onMapSuccess = this.onMapSuccess;
             const onMapError = this.onMapError;
 
-            cordova.plugins.locationAccuracy.canRequest(function(canRequest){
-                if(canRequest){
-                    cordova.plugins.locationAccuracy.request(function(){
+            cordova.plugins.locationAccuracy.canRequest(function (canRequest) {
+                if (canRequest) {
+                    cordova.plugins.locationAccuracy.request(function () {
                             console.log("Request successful");
-                            navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true });
+                            cordova.plugins.diagnostic.isLocationAuthorized(function (enabled) {
+                                console.log("Location is " + (enabled ? "enabled" : "disabled"));
+                                navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, {enableHighAccuracy: true});
+                                if (!enabled) {
+                                    cordova.plugins.diagnostic.requestLocationAuthorization(function (status) {
+                                        console.log("Authorization status is now: " + status);
+                                    }, function (error) {
+                                        console.error(error);
+                                    });
+                                }
+                            }, function (error) {
+                                console.error("The following error occurred: " + error);
+                            });
 
-                        }, function (error){
+
+                        }, function (error) {
                             console.error("Request failed");
-                            if(error){
+                            if (error) {
                                 // Android only
-                                console.error("error code="+error.code+"; error message="+error.message);
-                                if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
-                                    if(window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")){
+                                console.error("error code=" + error.code + "; error message=" + error.message);
+                                if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
+                                    if (window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")) {
                                         cordova.plugins.diagnostic.switchToLocationSettings();
                                     }
                                 }
@@ -158,12 +169,12 @@ export class ComplaintsMap extends Component {
             });
 
 
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
     }
 
-    onMapSuccess(position){
+    onMapSuccess(position) {
         console.log(position);
         const Latitude = position.coords.latitude;
         const Longitude = position.coords.longitude;
@@ -175,7 +186,7 @@ export class ComplaintsMap extends Component {
         });
     }
 
-    onMapError(error){
+    onMapError(error) {
         console.log('code: ' + error.code + '\n' +
             'message: ' + error.message + '\n');
     }
@@ -186,7 +197,9 @@ export class ComplaintsMap extends Component {
             <Dialog
                 fullScreen
                 open={this.props.open}
-                onClose={()=>{this.props.toggleHandle(false)}}
+                onClose={() => {
+                    this.props.toggleHandle(false)
+                }}
                 style={{
                     width: '100%',
                     margin: '0'
@@ -199,7 +212,9 @@ export class ComplaintsMap extends Component {
                     <AppBar position="static" className={'layout-children_app-bar'}>
                         <Toolbar className={'layout-children_tool-bar'}>
                             <IconButton
-                                onClick={()=>{this.props.toggleHandle(false)}}
+                                onClick={() => {
+                                    this.props.toggleHandle(false)
+                                }}
                                 className={'layout-children_arrow-button'}
                             >
                                 <ArrowBack/>
@@ -212,23 +227,25 @@ export class ComplaintsMap extends Component {
                 </div>
                 <MapWithAMarkerClusters
                     center={{
-                        lat: this.state.markerPos.lat ? this.state.markerPos.lat: 46.484583,
-                        lng: this.state.markerPos.lng ? this.state.markerPos.lng: 30.7326,
+                        lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
+                        lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
                     }}
                     onClickMap={this.onClickMap}
                     zoom={10}
                     markerPos={{
-                        lat: this.state.markerPos.lat ? this.state.markerPos.lat: 46.484583,
-                        lng: this.state.markerPos.lng ? this.state.markerPos.lng: 30.7326,
+                        lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
+                        lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
                     }}
                     searchLocation={this.searchLocation}
                 />
                 <div style={{padding: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}
                      className="complaints_section">
-                    <Button type="button" raised onClick={this.onCancel} style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                            Отмена
+                    <Button type="button" raised onClick={this.onCancel}
+                            style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                        Отмена
                     </Button>
-                    <Button type="button" raised onClick={this.onSave} style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                    <Button type="button" raised onClick={this.onSave}
+                            style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                         Ок
                     </Button>
                 </div>
