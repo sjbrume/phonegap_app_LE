@@ -132,12 +132,14 @@ export class ComplaintsMap extends Component {
 
     searchLocation() {
         try{
+            const onMapSuccess = this.onMapSuccess;
+            const onMapError = this.onMapError;
 
             cordova.plugins.locationAccuracy.canRequest(function(canRequest){
                 if(canRequest){
                     cordova.plugins.locationAccuracy.request(function(){
                             console.log("Request successful");
-                            navigator.geolocation.getCurrentPosition(this.onMapSuccess, this.onMapError, { enableHighAccuracy: true });
+                            navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true });
 
                         }, function (error){
                             console.error("Request failed");
