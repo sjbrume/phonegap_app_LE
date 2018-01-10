@@ -215,36 +215,59 @@ export class ComplaintsMap extends Component {
     }
 
     searchLocation() {
-        try {
-            const isLocationAuthorized = this.isLocationAuthorized;
+       const onMapSuccess = this.onMapSuccess;
+        try{
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position);
+                onMapSuccess(position);
+                alert('Latitude: '          + position.coords.latitude          + '\n' +
+                    'Longitude: '         + position.coords.longitude         + '\n' +
+                    'Altitude: '          + position.coords.altitude          + '\n' +
+                    'Accuracy: '          + position.coords.accuracy          + '\n' +
+                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                    'Heading: '           + position.coords.heading           + '\n' +
+                    'Speed: '             + position.coords.speed             + '\n' +
+                    'Timestamp: '         + position.timestamp                + '\n');
 
-            cordova.plugins.locationAccuracy.canRequest((canRequest) => {
-                if (canRequest) {
-                    cordova.plugins.locationAccuracy.request(() => {
-                            console.log("Request successful");
-
-                            isLocationAuthorized()
-
-                        }, (error) => {
-                            console.error("Request failed");
-                            if (error) {
-                                // Android only
-                                console.error("error code=" + error.code + "; error message=" + error.message);
-                                if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
-                                    if (window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")) {
-                                        cordova.plugins.diagnostic.switchToLocationSettings();
-                                    }
-                                }
-                            }
-                        }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
-                    );
-                }
+            }, (error) => {
+                alert('code: '    + error.code    + '\n' +
+                    'message: ' + error.message + '\n');
             });
 
+        } catch(err){
 
-        } catch (err) {
-            console.log(err)
         }
+
+        // try {
+        //     const isLocationAuthorized = this.isLocationAuthorized;
+        //
+        //     cordova.plugins.locationAccuracy.canRequest((canRequest) => {
+        //         if (canRequest) {
+        //             cordova.plugins.locationAccuracy.request(() => {
+        //                     console.log("Request successful");
+        //
+        //                     isLocationAuthorized()
+        //
+        //                 }, (error) => {
+        //                     console.error("Request failed");
+        //                     if (error) {
+        //                         // Android only
+        //                         console.error("error code=" + error.code + "; error message=" + error.message);
+        //                         if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
+        //                             if (window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")) {
+        //                                 cordova.plugins.diagnostic.switchToLocationSettings();
+        //                             }
+        //                         }
+        //                     }
+        //                 }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
+        //             );
+        //         }
+        //     });
+        //
+        //
+        // } catch (err) {
+        //     console.log(err)
+        // }
     }
 
     onMapSuccess(position) {

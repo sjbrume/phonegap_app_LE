@@ -35,6 +35,12 @@ import {DATA_URL, DB_VERSION_URL, DROP_TABLE, HARD_CODE_MODE, TABLE_NAME, TIMEOU
 //     };
 // };
 
+// Function:
+//  Создание базы данных
+// Returns:
+//  Функци обратного вызова
+// Parameters:
+//  version - версия базы данных
 const create_db = (version) => {
     console.log(version);
 
@@ -58,7 +64,12 @@ const create_db = (version) => {
         })
     }
 };
-
+// Function:
+//  Создание таблицы в базе данных
+// Returns:
+//  Ничего
+// Parameters:
+//  DB - экземпляр базы данных
 const create_table_db = (DB) => {
 
     DB.transaction(function (tx) {
@@ -93,7 +104,13 @@ const create_table_db = (DB) => {
     });
 
 };
-
+// Function:
+//  Запись в базу анных
+// Returns:
+//  Возвращает Функцию обратного вызова
+// Parameters:
+//  DB - экземпляр базы данных
+//  data - массив данных для базы
 const set_db = (DB, data) => {
     return (dispatch) => {
         dispatch({type: WEBSQL_SET_DATA_LOADING, payload: true});
@@ -204,7 +221,10 @@ const set_db = (DB, data) => {
         }, TIMEOUT);
     }
 };
-
+// Function:
+//  Проверка версии базы данных на сервере
+// Returns:
+//  Функцию обратного вызова
 const update_db = () => {
 
     return (dispatch) => {
@@ -238,7 +258,10 @@ const update_db = () => {
         })
     }
 };
-
+// Function:
+//  Загрузка данных для базы данных
+// Returns:
+//  функцию обратного вызова
 const download_db = () => {
     return (dispatch) => {
         console.log('download_db');
@@ -261,13 +284,21 @@ const download_db = () => {
         })
     }
 };
-
+// Function: init_db
+//  Асинхронная функция обратного вызова инициализации базы данных приложения вызываемая через Store.dispatch(
+// Parameters:
+//  store - экземпляр данных redux хранилища
+// Returns:
+//  Возвращает функцию обратного вызова
+//
 const init_db = (store) => {
+
     return (dispatch) => {
         console.log('INIT DB');
-        console.log('INIT DB - store', store);
+
         const currentVersion = store && 'version' in store && 'version' in store.version ? store.version.version : null;
         const db = store && store.db ? store.db : null;
+
         if (currentVersion) {
 
             console.log(`ВЕРСИЯ БАЗЫ ДАННЫХ: ${currentVersion}`);
@@ -317,6 +348,12 @@ const init_db = (store) => {
     }
 };
 
+// Function:
+//  функция первой инициализации базы данных
+// Returns:
+//  ничего
+// Parameters:
+//  dispatch - метод redux
 const first_init = (dispatch) => {
     console.log('FIRST INIT');
     // TODO: выполняется первый раз при инициализации

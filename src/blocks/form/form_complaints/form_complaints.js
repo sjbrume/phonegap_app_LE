@@ -213,7 +213,7 @@ export class FormComplaints extends Component {
             color: '#0277bd'
         }} size={60} thickness={7}/>
     </div>);
-
+    
     renderMessageDialog() {
         const {currentLocal} = this.props;
 
