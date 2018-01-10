@@ -345,11 +345,11 @@ export class HomePage extends Component {
                         dispatch={this.props.dispatch}
 
                         center={{
-                            lat: search_result.lat || my_location.lat ? search_result.lat || my_location.lat : 46.484583,
-                            lng: search_result.lng || my_location.lng ? search_result.lng || my_location.lng : 30.7326,
+                            lat: search_result || my_location.lat ? my_location.lat || search_result.lat : 46.484583,
+                            lng: search_result || my_location.lng ? my_location.lng || search_result.lng : 30.7326,
                         }}
 
-                        zoom={search_result.lat || my_location.lat ? 14 : 10}
+                        zoom={search_result || my_location.lat ? 14 : 10}
 
                         MyLocation={my_location.lat}
 
