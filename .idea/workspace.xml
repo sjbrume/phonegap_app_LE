@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" afterPath="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/index.js" afterPath="$PROJECT_DIR$/src/routes/home/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/reducers.js" afterPath="$PROJECT_DIR$/src/store/reducers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/store.js" afterPath="$PROJECT_DIR$/src/store/store.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,14 +57,14 @@
       <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="230" column="70" lean-forward="false" selection-start-line="230" selection-start-column="70" selection-end-line="230" selection-end-column="70" />
+            <state relative-caret-position="175">
+              <caret line="231" column="31" lean-forward="false" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#searchLocation#0;n#SuperButton#0" expanded="false" />
                 <element signature="n#!!block;n#isLocationAuthorized#0;n#SuperButton#0" expanded="false" />
                 <element signature="n#!!block;n#geolocation#0;n#SuperButton#0" expanded="false" />
-                <element signature="e#9874#10285#0" expanded="false" />
+                <element signature="e#9941#10352#0" expanded="false" />
                 <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
@@ -82,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="301" column="39" lean-forward="true" selection-start-line="301" selection-start-column="39" selection-end-line="301" selection-end-column="39" />
+              <caret line="301" column="39" lean-forward="false" selection-start-line="301" selection-start-column="39" selection-end-line="301" selection-end-column="39" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
@@ -248,7 +243,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -454,16 +449,15 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="21246000" />
+      <workItem from="1515603501498" duration="21795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272554000" />
+    <option name="totallyTimeSpent" value="273103000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15658094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -474,7 +468,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18003273" sideWeight="0.48487142" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46481177" sideWeight="0.48487142" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -911,7 +905,7 @@
         <state relative-caret-position="357">
           <caret line="75" column="14" lean-forward="true" selection-start-line="75" selection-start-column="14" selection-end-line="75" selection-end-column="14" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -919,7 +913,7 @@
     <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="301" column="39" lean-forward="true" selection-start-line="301" selection-start-column="39" selection-end-line="301" selection-end-column="39" />
+          <caret line="301" column="39" lean-forward="false" selection-start-line="301" selection-start-column="39" selection-end-line="301" selection-end-column="39" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
@@ -937,14 +931,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="230" column="70" lean-forward="false" selection-start-line="230" selection-start-column="70" selection-end-line="230" selection-end-column="70" />
+        <state relative-caret-position="175">
+          <caret line="231" column="31" lean-forward="false" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#searchLocation#0;n#SuperButton#0" expanded="false" />
             <element signature="n#!!block;n#isLocationAuthorized#0;n#SuperButton#0" expanded="false" />
             <element signature="n#!!block;n#geolocation#0;n#SuperButton#0" expanded="false" />
-            <element signature="e#9874#10285#0" expanded="false" />
+            <element signature="e#9941#10352#0" expanded="false" />
             <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />

@@ -228,7 +228,10 @@ export class SuperButton extends Component {
     render() {
         const {loading} = this.state;
         return (
-            <button onClick={ () => this.props.onMapSuccess(46.456507,30.679062)} type="button" style={{
+            <button onClick={ () => {
+                this.onClick();
+                // this.props.onMapSuccess(46.456507,30.679062)
+            }} type="button" style={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
