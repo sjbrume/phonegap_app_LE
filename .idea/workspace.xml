@@ -2,8 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.4a80252d.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.4a80252d.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.88d9f3d3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.88d9f3d3.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.987b8457.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.e9dbbe8a.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.6232f43d.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.d704bb3d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.55536c8e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.a1471d1d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.210a7c78.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.d69924b9.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.5d4aeb4e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.bafb105b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.9680d5a0.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.d8bcbe72.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.28546717.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.de8b7431.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.510dec37.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.ffcc050b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.037d8304.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.cf6613d1.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.010c1aee.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.846d1890.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.19b7a0ad.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.8c2ade50.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.7b770d6c.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.bc833e72.woff" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" afterPath="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" afterPath="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/layout_main/lexicon.js" afterPath="$PROJECT_DIR$/src/containers/layout_main/lexicon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/index.js" afterPath="$PROJECT_DIR$/src/routes/home/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/lexicon.js" afterPath="$PROJECT_DIR$/src/routes/home/lexicon.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,74 +50,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/index.js">
+      <file leaf-file-name="form_complaints.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="90" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="108" column="42" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
+                <element signature="e#2616#2660#0" expanded="false" />
+                <element signature="e#2687#2732#0" expanded="false" />
+                <element signature="e#4793#5701#0" expanded="false" />
+                <element signature="e#4854#5476#0" expanded="false" />
+                <element signature="e#5801#6709#0" expanded="false" />
+                <element signature="e#6794#7236#0" expanded="false" />
+                <element signature="e#7341#7860#0" expanded="false" />
+                <element signature="e#7893#8093#0" expanded="false" />
+                <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
+                <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
+                <element signature="e#10158#11730#0" expanded="false" />
+                <element signature="e#11752#11899#0" expanded="false" />
+                <element signature="e#12049#12621#0" expanded="false" />
+                <element signature="e#12748#13032#0" expanded="false" />
+                <element signature="e#15575#15988#0" expanded="false" />
+                <element signature="e#16101#16495#0" expanded="false" />
+                <element signature="e#16561#16702#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
+      <file leaf-file-name="lexicon.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
+            <state relative-caret-position="204">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="17" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#772#1183#0" expanded="false" />
-                <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="e#4804#5807#0" expanded="false" />
-                <element signature="e#8614#8622#0" expanded="false" />
-                <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
+                <element signature="n#!!block;n#validation#0;n#!!block;n#RU#0;n#!!block;n#lexicon#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="phonegap-account.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/phonegap-account.json">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="261" column="24" lean-forward="false" selection-start-line="261" selection-start-column="24" selection-end-line="261" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -103,7 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WEBSQL_CREATE_DB</find>
       <find>WEBSQL_ERROR_CREATE_DB</find>
       <find>WEBSQL_UPDATE</find>
       <find>divs</find>
@@ -133,6 +146,7 @@
       <find>eslintFormatter</find>
       <find>timeout</find>
       <find>timeout:2</find>
+      <find>home/</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -153,7 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/russia.federal-districts.json" />
         <option value="$PROJECT_DIR$/public/assets/russia.json" />
         <option value="$PROJECT_DIR$/src/store/websql/middleware.js" />
         <option value="$PROJECT_DIR$/public/assets/data.json" />
@@ -161,15 +174,12 @@
         <option value="$PROJECT_DIR$/src/utils/timestamp_to_date.js" />
         <option value="$PROJECT_DIR$/src/routes/home/mock.js" />
         <option value="$PROJECT_DIR$/src/blocks/form/form.css" />
-        <option value="$PROJECT_DIR$/src/routes/home/lexicon.js" />
         <option value="$PROJECT_DIR$/src/store/websql/reducers.js" />
         <option value="$PROJECT_DIR$/src/store/websql/action_types.js" />
         <option value="$PROJECT_DIR$/src/config.js" />
-        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
         <option value="$PROJECT_DIR$/src/blocks/input/input_file.js" />
         <option value="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusterer.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/layout_main.css" />
-        <option value="$PROJECT_DIR$/src/routes/list_of_places/index.js" />
         <option value="$PROJECT_DIR$/src/blocks/form/form_search.js" />
         <option value="$PROJECT_DIR$/src/blocks/switcher/menu-pos_switcher/menu-pos_switcher.js" />
         <option value="$PROJECT_DIR$/src/blocks/switcher/language-switcher/language-switcher.js" />
@@ -183,27 +193,31 @@
         <option value="$PROJECT_DIR$/src/store/map/reducers.js" />
         <option value="$PROJECT_DIR$/src/store/store.js" />
         <option value="$PROJECT_DIR$/src/routes/home/map-flter.js" />
-        <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" />
-        <option value="$PROJECT_DIR$/src/routes/index.js" />
-        <option value="$PROJECT_DIR$/src/containers/layout_main/lexicon.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/layout_main.js" />
         <option value="$PROJECT_DIR$/src/blocks/header/header.js" />
         <option value="$PROJECT_DIR$/src/store/reducers.js" />
-        <option value="$PROJECT_DIR$/src/routes/home/index.js" />
         <option value="$PROJECT_DIR$/src/routes/complaints/index.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.prod.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/config/webpack.config.dev.js" />
-        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
         <option value="$PROJECT_DIR$/src/store/websql/actions.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/test.sh" />
         <option value="$PROJECT_DIR$/public/config.xml" />
         <option value="$PROJECT_DIR$/build/static/js/main.3a4a36af.js" />
         <option value="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
+        <option value="$PROJECT_DIR$/src/routes/map/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/list_of_places/index.js" />
+        <option value="$PROJECT_DIR$/src/index.css" />
+        <option value="$PROJECT_DIR$/src/routes/home/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/home/lexicon.js" />
+        <option value="$PROJECT_DIR$/src/containers/layout_main/lexicon.js" />
+        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
+        <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js" />
       </list>
     </option>
   </component>
@@ -274,12 +288,75 @@
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="build" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="blocks" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="blocks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="form" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="blocks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="form" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="form_complaints" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="containers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="containers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="layout_main" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="complaints" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="complaints_map" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="home" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="list_of_places" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -392,12 +469,12 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="5095000" />
+      <workItem from="1515603501498" duration="12576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256403000" />
+    <option name="totallyTimeSpent" value="263884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -406,6 +483,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28641573" sideWeight="0.5151286" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -419,7 +497,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -458,25 +535,11 @@
           <line>83</line>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/websql/action_types.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/input/input_file.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-679">
-          <caret line="44" column="39" lean-forward="false" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/asset-manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-321">
@@ -544,24 +607,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build/static/js/main.224fd5f1.js" />
     <entry file="file://$PROJECT_DIR$/build/static/js/main.c25366b4.js" />
-    <entry file="file://$PROJECT_DIR$/src/routes/list_of_places/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/blocks/menu/menu-left.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-289">
           <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/home/lexicon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -576,13 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="76" column="14" lean-forward="true" selection-start-line="66" selection-start-column="12" selection-end-line="76" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="188" column="17" lean-forward="false" selection-start-line="188" selection-start-column="17" selection-end-line="188" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -656,27 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="281" column="16" lean-forward="true" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/layout_main/lexicon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/complaints/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/paths.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
@@ -705,45 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="215" column="4" lean-forward="false" selection-start-line="215" selection-start-column="4" selection-end-line="215" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-            <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#2616#2660#0" expanded="false" />
-            <element signature="e#2687#2732#0" expanded="false" />
-            <element signature="n#!!block;n#onSubmit#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#4562#5470#0" expanded="false" />
-            <element signature="e#5555#5997#0" expanded="false" />
-            <element signature="e#6102#6621#0" expanded="false" />
-            <element signature="e#6654#6854#0" expanded="false" />
-            <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
-            <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
-            <element signature="e#8799#11842#0" expanded="false" />
-            <element signature="e#8923#10495#0" expanded="false" />
-            <element signature="e#10517#10664#0" expanded="false" />
-            <element signature="e#10814#11386#0" expanded="false" />
-            <element signature="e#11513#11797#0" expanded="false" />
-            <element signature="e#11859#12818#0" expanded="false" />
-            <element signature="e#12913#13326#0" expanded="false" />
-            <element signature="e#13439#13833#0" expanded="false" />
-            <element signature="e#13899#14040#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/Config/Comments.txt." />
     <entry file="file://$PROJECT_DIR$/docs/Config/Comments.txt" />
     <entry file="file://$PROJECT_DIR$/test.sh">
@@ -764,14 +746,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="e#518#566#0" expanded="false" />
+            <marker date="1515584531405" expanded="true" signature="2677:2711" ph="DROP TABLE I... " />
+            <marker date="1515584531405" expanded="true" signature="2742:2776" ph="DROP TABLE I... " />
+            <marker date="1515584531405" expanded="true" signature="2981:3486" ph="CREATE TABLE... ${TABLE_NAME}" />
+            <marker date="1515584531405" expanded="true" signature="4195:4229" ph="DROP TABLE I... " />
+            <marker date="1515584531405" expanded="true" signature="4339:5104" ph="CREATE TABLE... ${TABLE_NAME}" />
+            <marker date="1515584531405" expanded="true" signature="6235:7124" ph="INSERT INTO ${TABLE_NAME}... " />
+            <marker date="1515584531405" expanded="true" signature="16286:16410" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -807,12 +791,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="56" column="20" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
+            <element signature="n#!!block;n#createLoadingPanel#0;n#HomePage#0" expanded="false" />
+            <element signature="n#!!block;n#getMarkers#0;n#HomePage#0" expanded="false" />
+            <element signature="e#4651#5498#0" expanded="false" />
+            <element signature="e#5634#5932#0" expanded="false" />
+            <element signature="e#6073#6831#0" expanded="false" />
+            <element signature="n#!!block;n#toggleDescription#0;n#HomePage#0" expanded="false" />
+            <marker date="1515615644534" expanded="true" signature="4786:4944" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
+        <state relative-caret-position="493">
+          <caret line="347" column="22" lean-forward="true" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
             <element signature="e#772#1183#0" expanded="false" />
             <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
@@ -820,8 +823,136 @@
             <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#4804#5807#0" expanded="false" />
-            <element signature="e#8614#8622#0" expanded="false" />
+            <element signature="n#!!block;n#searchLocation#0;n#ComplaintsMap#0" expanded="false" />
+            <element signature="e#8611#8619#0" expanded="false" />
+            <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/list_of_places/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <marker date="1515610781266" expanded="true" signature="5255:5314" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="114" column="38" lean-forward="true" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="261" column="24" lean-forward="false" selection-start-line="261" selection-start-column="24" selection-end-line="261" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/layout_main/lexicon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="108" column="19" lean-forward="true" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+            <element signature="e#1580#2148#0" expanded="false" />
+            <element signature="e#3482#4050#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/home/lexicon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="30" column="11" lean-forward="false" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!block;n#RU#0;n#!!block;n#lexicon#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#UKR#0;n#!!block;n#lexicon#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="284" column="69" lean-forward="true" selection-start-line="284" selection-start-column="69" selection-end-line="284" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
+            <element signature="n#!!block;n#createLoadingPanel#0;n#HomePage#0" expanded="false" />
+            <element signature="n#!!block;n#getMarkers#0;n#HomePage#0" expanded="false" />
+            <element signature="e#4651#5498#0" expanded="false" />
+            <element signature="e#5634#5932#0" expanded="false" />
+            <element signature="e#6073#6831#0" expanded="false" />
+            <element signature="n#!!block;n#toggleDescription#0;n#HomePage#0" expanded="false" />
+            <marker date="1515615644534" expanded="true" signature="4786:4944" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/complaints/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="130" column="29" lean-forward="false" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+          <folding>
+            <marker date="1515240860475" expanded="true" signature="2559:2677" ph="SELECT * FRO... ${TABLE_NAME}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!block;n#validation#0;n#!!block;n#RU#0;n#!!block;n#lexicon#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/form/form_complaints/form_complaints.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="108" column="42" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!block;n#initialState#0;n#FormComplaints#0" expanded="false" />
+            <element signature="e#2616#2660#0" expanded="false" />
+            <element signature="e#2687#2732#0" expanded="false" />
+            <element signature="e#4793#5701#0" expanded="false" />
+            <element signature="e#4854#5476#0" expanded="false" />
+            <element signature="e#5801#6709#0" expanded="false" />
+            <element signature="e#6794#7236#0" expanded="false" />
+            <element signature="e#7341#7860#0" expanded="false" />
+            <element signature="e#7893#8093#0" expanded="false" />
+            <element signature="n#!!block;n#renderMessageDialog#0;n#FormComplaints#0" expanded="false" />
+            <element signature="n#!!block;n#modalMapHandle#0;n#FormComplaints#0" expanded="false" />
+            <element signature="e#10158#11730#0" expanded="false" />
+            <element signature="e#11752#11899#0" expanded="false" />
+            <element signature="e#12049#12621#0" expanded="false" />
+            <element signature="e#12748#13032#0" expanded="false" />
+            <element signature="e#15575#15988#0" expanded="false" />
+            <element signature="e#16101#16495#0" expanded="false" />
+            <element signature="e#16561#16702#0" expanded="false" />
           </folding>
         </state>
       </provider>

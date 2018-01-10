@@ -227,3 +227,60 @@ body, html {
     color: rgb(0, 0, 0);
     font-weight: 700;
 }
+
+
+.info-dialog_content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 270px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+
+.info-dialog_logo{
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.info-dialog_img{
+    display: block;
+    width: 100%;
+}
+.info-dialog_text{
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.5em;
+}
+
+.info-dialog_text-title{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1.3125rem;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.16667em;
+}
+.info-dialog_text-row{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.info-dialog_text-type{
+
+}
+.info-dialog_text-content{
+
+}

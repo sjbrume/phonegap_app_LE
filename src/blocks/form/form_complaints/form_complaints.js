@@ -98,14 +98,19 @@ export class FormComplaints extends Component {
 
     async onSubmit(value) {
         console.log(value);
-        if (value.type === 'anonim' && value.message === 'Разработчики') {
-            this.handleClickOpen();
-            return;
+        if(value.message === 'textarea'){
+            if (value.type === 'anonim' && value.message_textarea === 'Разработчики') {
+                this.handleClickOpen();
+                return;
+            }
+            value.message = value.message_textarea;
+            delete value.message_textarea;
+        } else {
+            delete value.message_textarea;
         }
         // if (!value.message) return;
         // if (!value.company) return;
         // if (value.type === 'no_anonim' && !value.name) return;
-
         this.setState({loading: true});
         let formData = new FormData();
         const resetForm = this.props.reset;
@@ -180,6 +185,34 @@ export class FormComplaints extends Component {
         </div>
     </div>);
 
+    radioButtonMessageGenerator = ({input, type, options, meta: {touched, error, warning}}) => (<div>
+        {
+            options.map(o =>
+                <div key={o.value} className="input_radio-wrapper">
+                    <label htmlFor={o.value} className="input_radio-text">
+                        {o.title}
+                    </label>
+                    <input className="input_radio"
+                           type="radio"
+                           id={o.value}
+                           {...input}
+                           value={o.value}
+                           checked={o.value === input.value}
+                    />
+
+                    <div className="input_radio-dot">
+                        <Done/>
+                    </div>
+                </div>
+            )
+        }
+        <div className="complaints_input-valid">
+            {touched &&
+            ((error && <span>{error}</span>) ||
+                (warning && <span>{warning}</span>))}
+        </div>
+    </div>);
+
     renderTextarea = ({input, label, type, meta: {touched, error, warning}}) => (<div>
         <label className="complaints_input-label"> {label}</label>
         <div style={{display: 'flex', flexWrap: 'wrap'}}>
@@ -213,7 +246,7 @@ export class FormComplaints extends Component {
             color: '#0277bd'
         }} size={60} thickness={7}/>
     </div>);
-    
+
     renderMessageDialog() {
         const {currentLocal} = this.props;
 
@@ -343,12 +376,38 @@ export class FormComplaints extends Component {
                         label={lexicon[currentLocal].company}
                     />
                     <Field
-                        component={this.renderTextarea}
+                        component={this.radioButtonMessageGenerator}
                         name={'message'}
-                        type="textarea"
-                        validate={required(lexicon[currentLocal].validation.required)}
-                        label={lexicon[currentLocal].message}
+                        validate={[Required]}
+                        options={[
+                            {
+                                title: lexicon[currentLocal].default_message.not_issued_a_check,
+                                value: 'Не выдали чек',
+                            }, {
+                                title: lexicon[currentLocal].default_message.no_license,
+                                value: 'Отсутствует оицензия',
+                            }, {
+                                title: lexicon[currentLocal].default_message.sale_without_excise_stamps,
+                                value: 'Реализация без акцизных марок',
+                            }, {
+                                title: lexicon[currentLocal].default_message.sale_to_minors,
+                                value: 'Продажа алкоголя или сигарет несовершеннолетним',
+                            }, {
+                                title: lexicon[currentLocal].default_message.other,
+                                value: 'textarea',
+                            },
+                        ]}
                     />
+                    {
+                        values && values.message && values.message === 'textarea' &&
+                        <Field
+                            component={this.renderTextarea}
+                            name={'message_textarea'}
+                            type="textarea"
+                            validate={required(lexicon[currentLocal].validation.required)}
+                            label={lexicon[currentLocal].message}
+                        />
+                    }
                     <Field
                         component={InputFile}
                         name={'image'}

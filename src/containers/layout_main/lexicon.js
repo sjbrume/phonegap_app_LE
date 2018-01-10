@@ -4,6 +4,7 @@ import Warning from 'material-ui-icons/Warning';
 import ViewHeadline from 'material-ui-icons/ViewHeadline';
 import AccountBox from 'material-ui-icons/AccountBox';
 import Settings from 'material-ui-icons/Settings';
+import ExitToApp from 'material-ui-icons/ExitToApp';
 
 
 
@@ -62,7 +63,7 @@ export const lexicon = {
                         console.log(err);
                     }
                 },
-                icon: <Settings/>,
+                icon: <ExitToApp/>,
                 menu_hidden: false
             }
         }
@@ -121,7 +122,7 @@ export const lexicon = {
                         console.log(err);
                     }
                 },
-                icon: <Settings/>,
+                icon: <ExitToApp/>,
                 menu_hidden: false
             },
         }

@@ -12,7 +12,7 @@ import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
 import {Link} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
-
+import logo from './logo.png';
 
 function mapStateToProps(state) {
     return {
@@ -66,12 +66,14 @@ export class HomePage extends Component {
         this.renderLoading = this.renderLoading.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
         this.toggleDescription = this.toggleDescription.bind(this);
+        this.createInfoDialog = this.createInfoDialog.bind(this);
     }
 
     get initialState() {
         return {
             bottom: false,
             description: false,
+            createInfoDialog: true,
             markers: []
         }
     }
@@ -218,7 +220,8 @@ export class HomePage extends Component {
                         — {data.license_end_at}
                     </p>
                     <Button type="button" raised
-                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}} color="primary">
+                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
+                            color="primary">
                         <Link className={'fonts-white'} to={'/complaints/' + data.id}>
                             Сообщить о нарушении
                         </Link>
@@ -242,10 +245,57 @@ export class HomePage extends Component {
 
     }
 
+    createInfoDialog() {
+        const {currentLocal} = this.props;
+
+        const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
+        return (
+            <div className="loading-panel_wrapper">
+                <div className="info-dialog_content">
+                    <div className="info-dialog_logo">
+                        <img src={logo} alt="" className="info-dialog_img"/>
+                    </div>
+                    <div className="info-dialog_text">
+                        <div className="info-dialog_text-title">
+                            {lexicon[currentLocal].info_dialog.title}
+                        </div>
+                        <div style={{textAlign:'center',paddingBottom: 20}} className="info-dialog_text-title">
+                            {data}
+                        </div>
+                        <div className="info-dialog_text-row">
+                            <span className="info-dialog_text-type">
+                                {lexicon[currentLocal].info_dialog.alcohol}:
+                            </span>
+                            <span className="info-dialog_text-content">
+                                4164
+                            </span>
+                        </div>
+                        <div className="info-dialog_text-row">
+                            <span className="info-dialog_text-type">
+                                {lexicon[currentLocal].info_dialog.tobacco}:
+                            </span>
+                            <span className="info-dialog_text-content">
+                                3181
+                            </span>
+                        </div>
+                    </div>
+                    <div style={{textAlign: 'center'}}>
+                        <Button  onClick={()=>{this.setState({createInfoDialog: false})}} type="button" raised
+                                 style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                            {lexicon[currentLocal].info_dialog.close}
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     render() {
         const {db, data, set, version, currentLocal} = this.props;
         console.log('Home page index', this);
+        if (this.state.createInfoDialog) {
+            return this.createInfoDialog()
+        }
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
         }
@@ -258,6 +308,7 @@ export class HomePage extends Component {
         } else if (set.error) {
             return (<div>{lexicon[currentLocal].error.set}</div>)
         }
+        console.log(this.state.markers.length);
         return (
             <div>
                 {
