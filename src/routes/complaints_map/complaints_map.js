@@ -206,6 +206,7 @@ class SuperButton extends Component {
                     "signalStrength": false // Return cell signal strength data
                 });
         }).then((resolve)=>{
+            this.setState({loading: false});
             this.props.onMapSuccess(resolve.latitude, resolve.longitude);
             AdvancedGeolocation.stop();
         }).catch((error)=>{
@@ -281,24 +282,6 @@ const MapWithAMarkerClusters = compose(
         <SuperButton
             onMapSuccess={props.onMapSuccess}
         />
-        {/*<button onClick={() => {*/}
-            {/*console.log('CLICK!');*/}
-            {/*props.searchLocation();*/}
-        {/*}} type="button" style={{*/}
-            {/*position: 'absolute',*/}
-            {/*bottom: 0,*/}
-            {/*left: 0,*/}
-            {/*zIndex: 500,*/}
-            {/*border: 'none',*/}
-            {/*margin: '10px 10px 30px 10px',*/}
-            {/*backgroundColor: 'rgb(255, 255, 255)',*/}
-            {/*borderRadius: '2px',*/}
-            {/*padding: '8px',*/}
-            {/*lineHeight: 0,*/}
-            {/*boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px -1px'*/}
-        {/*}}>*/}
-            {/*<LocationSearching/>*/}
-        {/*</button>*/}
     </GoogleMap>
 );
 
@@ -429,7 +412,7 @@ export class ComplaintsMap extends Component {
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
                     }}
                     onClickMap={this.onClickMap}
-                    zoom={10}
+                    zoom={ this.state.markerPos.lat ? 15 : 10}
                     markerPos={{
                         lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
