@@ -57,8 +57,8 @@
       <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="223" column="23" lean-forward="false" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
+            <state relative-caret-position="65">
+              <caret line="241" column="70" lean-forward="true" selection-start-line="241" selection-start-column="70" selection-end-line="241" selection-end-column="70" />
               <folding>
                 <element signature="e#772#1183#0" expanded="false" />
                 <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
@@ -67,7 +67,7 @@
                 <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="e#4804#5807#0" expanded="false" />
-                <element signature="e#8727#8735#0" expanded="false" />
+                <element signature="e#9288#9296#0" expanded="false" />
                 <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
               </folding>
@@ -419,12 +419,12 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="13096000" />
+      <workItem from="1515603501498" duration="13345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264404000" />
+    <option name="totallyTimeSpent" value="264653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -888,8 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="223" column="23" lean-forward="false" selection-start-line="223" selection-start-column="23" selection-end-line="223" selection-end-column="23" />
+        <state relative-caret-position="65">
+          <caret line="241" column="70" lean-forward="true" selection-start-line="241" selection-start-column="70" selection-end-line="241" selection-end-column="70" />
           <folding>
             <element signature="e#772#1183#0" expanded="false" />
             <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
@@ -898,7 +898,7 @@
             <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#4804#5807#0" expanded="false" />
-            <element signature="e#8727#8735#0" expanded="false" />
+            <element signature="e#9288#9296#0" expanded="false" />
             <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
           </folding>
