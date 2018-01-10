@@ -40,7 +40,7 @@ const MapWithAMarkerClusters = compose(
         <Marker
             position={props.markerPos}
         />
-        <button onClick={()=>{
+        <button onClick={() => {
             console.log('CLICK!');
             props.searchLocation();
         }} type="button" style={{
@@ -87,9 +87,12 @@ export class ComplaintsMap extends Component {
         this.onCancel = this.onCancel.bind(this);
         this.searchLocation = this.searchLocation.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
-        this.onGeolocation = this.onGeolocation.bind(this);
+        this.AdvancedGeolocation = this.AdvancedGeolocation.bind(this);
         this.searchLocation = this.searchLocation.bind(this);
         this.isLocationAuthorized = this.isLocationAuthorized.bind(this);
+
+
+        this.geolocation = this.geolocation.bind(this);
     }
 
     get initialState() {
@@ -134,8 +137,60 @@ export class ComplaintsMap extends Component {
         this.props.toggleHandle(false)
     }
 
+    searchLocation() {
+        console.log('searchLocation');
+        // let count = 60;
+        // // let counter = setInterval(timer, 1000);
+        // function timer() {
+        //     if (count <= 0) {
+        //         clearInterval(counter);
+        //         console.info('done');
+        //     }
+        //     console.log(count, ' sec');
+        //     count -= 1;
+        // }
+        try {
+            let locationAccuracy = new Promise((resolve, reject) => {
+                cordova.plugins.locationAccuracy.canRequest(
+                    (canRequest) => {
+                        if (canRequest) {
+                            cordova.plugins.locationAccuracy.request(
+                                () => {
+                                    console.log("Request successful  locationAccuracy");
+                                    resolve(canRequest);
+                                },
+                                (error) => {
+                                    console.log("Request failed locationAccuracy:", error);
+                                    reject(error);
+                                    if (error) {
+                                        // Android only
+                                        console.error("error code=" + error.code + "; error message=" + error.message);
+                                        if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
+                                            if (window.confirm("Не удалось автоматически установить режим местоположения на «Высокая точность». Вы хотите перейти на страницу настроек местоположения и сделать это вручную?")) {
+                                                cordova.plugins.diagnostic.switchToLocationSettings();
+                                            }
+                                        }
+                                    }
+                                },
+                                cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
+                            );
+                        }
+                    });
+            }).then((res) => {
+                this.isLocationAuthorized();
+                console.log('response:', res)
+            }).catch((error) => {
+                console.log('error:', error)
+            })
+
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
     isLocationAuthorized() {
-        const onGeolocation = this.onGeolocation;
         cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
             console.log("Location is " + (enabled ? "enabled" : "disabled"));
 
@@ -146,7 +201,7 @@ export class ComplaintsMap extends Component {
                     console.error(error);
                 });
             } else {
-                onGeolocation()
+                this.geolocation()
             }
         }, (error) => {
             console.error("The following error occurred: " + error);
@@ -154,13 +209,47 @@ export class ComplaintsMap extends Component {
 
     }
 
-    onGeolocation() {
+    geolocation() {
+        let timeout = 20 * 1000;
+
+        let gps = new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition((position) => {
+                    alert('Latitude: ' + position.coords.latitude + '\n' +
+                        'Longitude: ' + position.coords.longitude + '\n' +
+                        'Altitude: ' + position.coords.altitude + '\n' +
+                        'Accuracy: ' + position.coords.accuracy + '\n' +
+                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+                        'Heading: ' + position.coords.heading + '\n' +
+                        'Speed: ' + position.coords.speed + '\n' +
+                        'Timestamp: ' + position.timestamp + '\n');
+                    resolve(position);
+                    // onMapSuccess(position.coords.latitude,position.coords.longitude);
+                },
+                (error) => {
+                    alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+                    reject(error);
+                }, {
+                    timeout: timeout,
+                    enableHighAccuracy: true
+                });
+        }).then(values => {
+            console.log(values);
+            this.onMapSuccess(values.coords.latitude, values.coords.longitude);
+        }).catch((error) => {
+            this.AdvancedGeolocation();
+            console.log('error:', error)
+        });
+
+    }
+
+    AdvancedGeolocation() {
         const onMapSuccess = this.onMapSuccess;
         AdvancedGeolocation.start(function (success) {
-
                 try {
                     let jsonObject = JSON.parse(success);
-
+                    alert(success);
+                    console.log(jsonObject);
                     switch (jsonObject.provider) {
                         case "gps":
                             //TODO
@@ -197,13 +286,6 @@ export class ComplaintsMap extends Component {
             function (error) {
                 console.log("ERROR! " + JSON.stringify(error));
             },
-            ////////////////////////////////////////////
-            //
-            // REQUIRED:
-            // These are required Configuration options!
-            // See API Reference for additional details.
-            //
-            ////////////////////////////////////////////
             {
                 "minTime": 0,         // Min time interval between updates (ms)
                 "minDistance": 0,       // Min distance between updates (meters)
@@ -217,95 +299,10 @@ export class ComplaintsMap extends Component {
             });
     }
 
-    searchLocation() {
-        console.log('searchLocation');
 
-
-        let count = 60;
-        let timeout = 60 * 1000;
-        let counter = setInterval(timer, 1000);
-
-        function timer() {
-            if (count <= 0) {
-                clearInterval(counter);
-                console.info('done');
-            }
-            console.log(count, ' sec');
-            count -= 1;
-        }
-
-        const onMapSuccess = this.onMapSuccess;
-        try {
-            navigator.geolocation.getCurrentPosition((position) => {
-                clearInterval(counter);
-                console.log('navigator.geolocation.getCurrentPosition: ',this);
-                alert('Latitude: ' + position.coords.latitude + '\n' +
-                    'Longitude: ' + position.coords.longitude + '\n' +
-                    'Altitude: ' + position.coords.altitude + '\n' +
-                    'Accuracy: ' + position.coords.accuracy + '\n' +
-                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                    'Heading: ' + position.coords.heading + '\n' +
-                    'Speed: ' + position.coords.speed + '\n' +
-                    'Timestamp: ' + position.timestamp + '\n');
-                console.log('Latitude: ' + position.coords.latitude + '\n' +
-                    'Longitude: ' + position.coords.longitude + '\n' +
-                    'Altitude: ' + position.coords.altitude + '\n' +
-                    'Accuracy: ' + position.coords.accuracy + '\n' +
-                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                    'Heading: ' + position.coords.heading + '\n' +
-                    'Speed: ' + position.coords.speed + '\n' +
-                    'Timestamp: ' + position.timestamp + '\n');
-
-                onMapSuccess(position.coords.latitude,position.coords.longitude);
-            }, (error) => {
-                clearInterval(counter);
-                alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
-            },{
-                timeout: timeout,
-                enableHighAccuracy: true
-            });
-
-        } catch (err) {
-            clearInterval(counter);
-            console.log(err);
-        }
-
-        // try {
-        //     const isLocationAuthorized = this.isLocationAuthorized;
-        //
-        //     cordova.plugins.locationAccuracy.canRequest((canRequest) => {
-        //         if (canRequest) {
-        //             cordova.plugins.locationAccuracy.request(() => {
-        //                     console.log("Request successful");
-        //
-        //                     isLocationAuthorized()
-        //
-        //                 }, (error) => {
-        //                     console.error("Request failed");
-        //                     if (error) {
-        //                         // Android only
-        //                         console.error("error code=" + error.code + "; error message=" + error.message);
-        //                         if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
-        //                             if (window.confirm("Failed to automatically set Location Mode to 'High Accuracy'. Would you like to switch to the Location Settings page and do this manually?")) {
-        //                                 cordova.plugins.diagnostic.switchToLocationSettings();
-        //                             }
-        //                         }
-        //                     }
-        //                 }, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
-        //             );
-        //         }
-        //     });
-        //
-        //
-        // } catch (err) {
-        //     console.log(err)
-        // }
-    }
-
-    onMapSuccess(Latitude,Longitude) {
-        console.log('onMapSuccess - Latitude:',Latitude);
-        console.log('onMapSuccess - Longitude:',Longitude);
+    onMapSuccess(Latitude, Longitude) {
+        console.log('onMapSuccess - Latitude:', Latitude);
+        console.log('onMapSuccess - Longitude:', Longitude);
 
         this.setState({
             markerPos: {

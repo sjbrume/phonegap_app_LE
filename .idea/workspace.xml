@@ -57,20 +57,29 @@
       <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="241" column="70" lean-forward="true" selection-start-line="241" selection-start-column="70" selection-end-line="241" selection-end-column="70" />
+            <state relative-caret-position="-1720">
+              <caret line="251" column="44" lean-forward="true" selection-start-line="251" selection-start-column="44" selection-end-line="251" selection-end-column="44" />
               <folding>
                 <element signature="e#772#1183#0" expanded="false" />
                 <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
+                <element signature="n#!!block;n#searchLocation#0;n#ComplaintsMap#0" expanded="false" />
+                <element signature="e#4108#4126#0" expanded="false" />
                 <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
-                <element signature="e#4804#5807#0" expanded="false" />
-                <element signature="e#9288#9296#0" expanded="false" />
                 <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -272,6 +281,11 @@
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -419,17 +433,17 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="13345000" />
+      <workItem from="1515603501498" duration="15384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264653000" />
+    <option name="totallyTimeSpent" value="266692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18229954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28641573" sideWeight="0.5151286" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -725,14 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/static/js/main.3a4a36af.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -886,19 +892,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="241" column="70" lean-forward="true" selection-start-line="241" selection-start-column="70" selection-end-line="241" selection-end-column="70" />
+        <state relative-caret-position="-1720">
+          <caret line="251" column="44" lean-forward="true" selection-start-line="251" selection-start-column="44" selection-end-line="251" selection-end-column="44" />
           <folding>
             <element signature="e#772#1183#0" expanded="false" />
             <element signature="n#!!block;n#onClickMap#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onSave#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onCancel#0;n#ComplaintsMap#0" expanded="false" />
+            <element signature="n#!!block;n#searchLocation#0;n#ComplaintsMap#0" expanded="false" />
+            <element signature="e#4108#4126#0" expanded="false" />
             <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
-            <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
-            <element signature="e#4804#5807#0" expanded="false" />
-            <element signature="e#9288#9296#0" expanded="false" />
             <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
           </folding>
