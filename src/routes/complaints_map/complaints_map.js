@@ -222,7 +222,7 @@ export class ComplaintsMap extends Component {
 
 
         let count = 50;
-        let timeout = count * 1000;
+        let timeout = 50 * 1000;
         let counter = setInterval(timer, 1000);
 
         function timer() {
