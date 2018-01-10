@@ -40,11 +40,14 @@ const MapWithAMarkerClusters = compose(
         <Marker
             position={props.markerPos}
         />
-        <button onClick={props.searchLocation} type="button" style={{
+        <button onClick={()=>{
+            console.log('CLICK!');
+            props.searchLocation();
+        }} type="button" style={{
             position: 'absolute',
             bottom: 0,
             left: 0,
-            zIndex: 100,
+            zIndex: 500,
             border: 'none',
             margin: '10px 10px 30px 10px',
             backgroundColor: 'rgb(255, 255, 255)',
@@ -215,26 +218,26 @@ export class ComplaintsMap extends Component {
     }
 
     searchLocation() {
-       const onMapSuccess = this.onMapSuccess;
-        try{
+        console.log('searchLocation');
+        const onMapSuccess = this.onMapSuccess;
+        try {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position);
                 onMapSuccess(position);
-                alert('Latitude: '          + position.coords.latitude          + '\n' +
-                    'Longitude: '         + position.coords.longitude         + '\n' +
-                    'Altitude: '          + position.coords.altitude          + '\n' +
-                    'Accuracy: '          + position.coords.accuracy          + '\n' +
-                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                    'Heading: '           + position.coords.heading           + '\n' +
-                    'Speed: '             + position.coords.speed             + '\n' +
-                    'Timestamp: '         + position.timestamp                + '\n');
+                console.log('Latitude: ' + position.coords.latitude + '\n' +
+                    'Longitude: ' + position.coords.longitude + '\n' +
+                    'Altitude: ' + position.coords.altitude + '\n' +
+                    'Accuracy: ' + position.coords.accuracy + '\n' +
+                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+                    'Heading: ' + position.coords.heading + '\n' +
+                    'Speed: ' + position.coords.speed + '\n' +
+                    'Timestamp: ' + position.timestamp + '\n');
 
             }, (error) => {
-                alert('code: '    + error.code    + '\n' +
+                alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
             });
 
-        } catch(err){
+        } catch (err) {
 
         }
 
@@ -271,7 +274,7 @@ export class ComplaintsMap extends Component {
     }
 
     onMapSuccess(position) {
-        console.log(position);
+        console.log('onMapSuccess:',position);
         const Latitude = position.latitude;
         const Longitude = position.longitude;
         this.setState({
