@@ -4,7 +4,7 @@ import Drawer from 'material-ui/Drawer';
 import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {lexicon} from './lexicon';
-import {WEBSQL_SEARCH_REMOVE} from "../../store/websql/action_types";
+import {WEBSQL_SEARCH_REMOVE, WEBSQL_SEARCH_SET} from "../../store/websql/action_types";
 import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
@@ -13,11 +13,13 @@ import {Link} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 import logo from './logo.png';
+import {FORM_ADD_LATLNG} from "../../store/reducers";
 
 function mapStateToProps(state) {
     return {
         clustering: state.map.clustering,
         filter: state.map.filter,
+        my_location: state.my_location,
         currentLocal: state.intl,
         search_result: state.websql.search_result,
         db: {
@@ -67,6 +69,7 @@ export class HomePage extends Component {
         this.getMarkers = this.getMarkers.bind(this);
         this.toggleDescription = this.toggleDescription.bind(this);
         this.createInfoDialog = this.createInfoDialog.bind(this);
+        this.onMapSuccess = this.onMapSuccess.bind(this);
     }
 
     get initialState() {
@@ -74,7 +77,11 @@ export class HomePage extends Component {
             bottom: false,
             description: false,
             createInfoDialog: true,
-            markers: []
+            markers: [],
+            markerPos: {
+                lat: null,
+                lng: null,
+            }
         }
     }
 
@@ -259,7 +266,7 @@ export class HomePage extends Component {
                         <div className="info-dialog_text-title">
                             {lexicon[currentLocal].info_dialog.title}
                         </div>
-                        <div style={{textAlign:'center',paddingBottom: 20}} className="info-dialog_text-title">
+                        <div style={{textAlign: 'center', paddingBottom: 20}} className="info-dialog_text-title">
                             {data}
                         </div>
                         <div className="info-dialog_text-row">
@@ -280,8 +287,10 @@ export class HomePage extends Component {
                         </div>
                     </div>
                     <div style={{textAlign: 'center'}}>
-                        <Button  onClick={()=>{this.setState({createInfoDialog: false})}} type="button" raised
-                                 style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+                        <Button onClick={() => {
+                            this.setState({createInfoDialog: false})
+                        }} type="button" raised
+                                style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                             {lexicon[currentLocal].info_dialog.close}
                         </Button>
                     </div>
@@ -290,8 +299,24 @@ export class HomePage extends Component {
         )
     }
 
+    onMapSuccess(Latitude, Longitude) {
+        console.log('onMapSuccess - Latitude:', Latitude);
+        console.log('onMapSuccess - Longitude:', Longitude);
+
+        this.setState({
+            markerPos: {
+                lat: Latitude,
+                lng: Longitude,
+            }
+        });
+        this.props.dispatch('MY_LOCATION', {
+            lat: Latitude,
+            lng: Longitude,
+        });
+    }
+
     render() {
-        const {db, data, set, version, currentLocal} = this.props;
+        const {db, data, set, version, currentLocal, search_result, my_location} = this.props;
         console.log('Home page index', this);
         if (this.state.createInfoDialog) {
             return this.createInfoDialog()
@@ -308,7 +333,7 @@ export class HomePage extends Component {
         } else if (set.error) {
             return (<div>{lexicon[currentLocal].error.set}</div>)
         }
-        console.log(this.state.markers.length);
+
         return (
             <div>
                 {
@@ -320,13 +345,19 @@ export class HomePage extends Component {
                         dispatch={this.props.dispatch}
 
                         center={{
-                            lat: this.props.search_result ? this.props.search_result.lat : 46.484583,
-                            lng: this.props.search_result ? this.props.search_result.lng : 30.7326,
+                            lat: search_result.lat || my_location.lat ? search_result.lat || my_location.lat : 46.484583,
+                            lng: search_result.lng || my_location.lng ? search_result.lng || my_location.lng : 30.7326,
                         }}
 
-                        zoom={this.props.search_result ? 14 : 10}
+                        zoom={search_result.lat || my_location.lat ? 14 : 10}
 
-                        toggleDescription={this.toggleDescription} markers={this.state.markers}/>
+                        MyLocation={my_location.lat}
+
+                        onMapSuccess={this.onMapSuccess}
+
+                        toggleDescription={this.toggleDescription} markers={this.state.markers}
+                    />
+
                 }
                 <MapFilter/>
 

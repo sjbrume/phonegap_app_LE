@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {withScriptjs, withGoogleMap, GoogleMap} from "react-google-maps"
+import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer"
 import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
-
+import {SuperButton} from "../complaints_map/complaints_map";
+import MyLocation from '../complaints_map/my_location_icon.png';
 export const MapWithAMarkerClusters = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
@@ -63,6 +64,18 @@ export const MapWithAMarkerClusters = compose(
 
             </MarkerClusterer>
         }
+
+        {
+            props.MyLocation && <Marker
+                icon={props.MyLocation ? MyLocation : ''}
+
+                position={props.center}
+            />
+        }
+
+        <SuperButton
+            onMapSuccess={props.onMapSuccess}
+        />
 
     </GoogleMap>
 );

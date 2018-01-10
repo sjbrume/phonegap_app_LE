@@ -43,6 +43,16 @@ export const rootReducer = combineReducers({
             }
         }
     }),
+    my_location: (state = {}, action) => {
+        switch (action.type) {
+            case 'MY_LOCATION': {
+                console.log('MY_LOCATION',action);
+                return action.payload
+            }
+            default:
+                return state;
+        }
+    },
     intl,
     menuPosition,
     websql,

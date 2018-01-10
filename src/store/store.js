@@ -11,6 +11,10 @@ const initialState = localStorage.getItem('reduxState') ?
     Object.assign({},
         JSON.parse(localStorage.getItem('reduxState')), {
             form: {},
+            my_location: {
+                lat: null,
+                lng: null,
+            },
             map: {
                 clustering: true,
                 filter: 'alcohol'
@@ -18,12 +22,19 @@ const initialState = localStorage.getItem('reduxState') ?
         }) : {
         intl: UKR,
         menuPosition: MENU_LEFT,
+        my_location: {
+            lat: null,
+            lng: null,
+        },
         map: {
             clustering: true,
             filter: 'alcohol'
         },
         websql: {
-            search_result: null,
+            search_result: {
+                lat: null,
+                lng: null,
+            },
             list_of_places: [],
             db: {
                 db: null,

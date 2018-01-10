@@ -11,11 +11,12 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import ArrowBack from 'material-ui-icons/ArrowBack';
 import Loop from 'material-ui-icons/Loop';
+import MyLocation from './my_location_icon.png';
 import {FORM_ADD_LATLNG, FORM_REMOVE_LATLNG} from "../../store/reducers";
 
 import LocationSearching from 'material-ui-icons/LocationSearching';
 
-class SuperButton extends Component {
+export class SuperButton extends Component {
 
     static propTypes = {};
 
@@ -155,7 +156,7 @@ class SuperButton extends Component {
     AdvancedGeolocation() {
         const onMapSuccess = this.props.onMapSuccess;
         let result = new Promise((resolve, reject) => {
-            AdvancedGeolocation.start( (success) => {
+            AdvancedGeolocation.start((success) => {
                     try {
                         let jsonObject = JSON.parse(success);
                         console.log(jsonObject);
@@ -205,11 +206,11 @@ class SuperButton extends Component {
                     "bufferSize": 0,        // Max elements in buffer
                     "signalStrength": false // Return cell signal strength data
                 });
-        }).then((resolve)=>{
+        }).then((resolve) => {
             this.setState({loading: false});
             this.props.onMapSuccess(resolve.latitude, resolve.longitude);
             AdvancedGeolocation.stop();
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error);
             this.setState({loading: false});
             AdvancedGeolocation.stop();
@@ -227,7 +228,7 @@ class SuperButton extends Component {
     render() {
         const {loading} = this.state;
         return (
-            <button onClick={this.onClick} type="button" style={{
+            <button onClick={ () => this.props.onMapSuccess(46.456507,30.679062)} type="button" style={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
@@ -246,7 +247,7 @@ class SuperButton extends Component {
                 }
                 {
                     loading &&
-                    <Loop  className="loading"/>
+                    <Loop className="loading"/>
                 }
             </button>
         )
@@ -277,6 +278,8 @@ const MapWithAMarkerClusters = compose(
         onClick={props.onClickMap}
     >
         <Marker
+            icon={props.MyLocation ? MyLocation : ''}
+
             position={props.markerPos}
         />
         <SuperButton
@@ -355,7 +358,6 @@ export class ComplaintsMap extends Component {
     }
 
 
-
     onMapSuccess(Latitude, Longitude) {
         console.log('onMapSuccess - Latitude:', Latitude);
         console.log('onMapSuccess - Longitude:', Longitude);
@@ -411,8 +413,9 @@ export class ComplaintsMap extends Component {
                         lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
                     }}
+                    MyLocation={this.state.markerPos.lng}
                     onClickMap={this.onClickMap}
-                    zoom={ this.state.markerPos.lat ? 15 : 10}
+                    zoom={this.state.markerPos.lat ? 15 : 10}
                     markerPos={{
                         lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
