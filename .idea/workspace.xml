@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.4a80252d.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.4a80252d.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.3a4a36af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.3a4a36af.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.987b8457.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.e9dbbe8a.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.6232f43d.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.d704bb3d.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.55536c8e.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.a1471d1d.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.210a7c78.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.d69924b9.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.5d4aeb4e.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.bafb105b.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.9680d5a0.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.d8bcbe72.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.28546717.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.de8b7431.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.510dec37.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.ffcc050b.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.037d8304.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.cf6613d1.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.010c1aee.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.846d1890.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.19b7a0ad.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.8c2ade50.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.7b770d6c.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.bc833e72.woff" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,8 +39,8 @@
       <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="237" column="26" lean-forward="false" selection-start-line="237" selection-start-column="26" selection-end-line="237" selection-end-column="26" />
+            <state relative-caret-position="235">
+              <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#772#1183#0" expanded="false" />
@@ -80,7 +50,7 @@
                 <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="e#4804#5807#0" expanded="false" />
-                <element signature="e#8233#8241#0" expanded="false" />
+                <element signature="e#8614#8622#0" expanded="false" />
                 <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
               </folding>
             </state>
@@ -422,12 +392,12 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="4175000" />
+      <workItem from="1515603501498" duration="5095000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255483000" />
+    <option name="totallyTimeSpent" value="256403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -839,8 +809,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="237" column="26" lean-forward="false" selection-start-line="237" selection-start-column="26" selection-end-line="237" selection-end-column="26" />
+        <state relative-caret-position="235">
+          <caret line="224" column="35" lean-forward="true" selection-start-line="224" selection-start-column="35" selection-end-line="224" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#772#1183#0" expanded="false" />
@@ -850,7 +820,7 @@
             <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#4804#5807#0" expanded="false" />
-            <element signature="e#8233#8241#0" expanded="false" />
+            <element signature="e#8614#8622#0" expanded="false" />
             <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
           </folding>
         </state>

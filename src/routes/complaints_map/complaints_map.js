@@ -219,6 +219,21 @@ export class ComplaintsMap extends Component {
 
     searchLocation() {
         console.log('searchLocation');
+
+
+        let count = 50;
+        let timeout = count * 1000;
+        let counter = setInterval(timer, 1000);
+
+        function timer() {
+            if (count <= 0) {
+                clearInterval(counter);
+                console.info('done');
+            }
+            console.log(count, ' sec');
+            count -= 1;
+        }
+
         const onMapSuccess = this.onMapSuccess;
         try {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -235,7 +250,10 @@ export class ComplaintsMap extends Component {
             }, (error) => {
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
-            },{ timeout: 40000, enableHighAccuracy: true });
+            },{
+                timeout: timeout,
+                enableHighAccuracy: true
+            });
 
         } catch (err) {
             console.log(err);
