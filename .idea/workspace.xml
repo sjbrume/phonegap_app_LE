@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" afterPath="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +39,8 @@
       <file leaf-file-name="complaints_map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="224" column="34" lean-forward="false" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+            <state relative-caret-position="67">
+              <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#772#1183#0" expanded="false" />
@@ -49,8 +50,7 @@
                 <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
                 <element signature="e#4804#5807#0" expanded="false" />
-                <element signature="e#8101#8109#0" expanded="false" />
-                <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
+                <element signature="e#8188#8196#0" expanded="false" />
                 <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
               </folding>
             </state>
@@ -387,12 +387,12 @@
       <workItem from="1515581745281" duration="1085000" />
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
-      <workItem from="1515603501498" duration="2951000" />
+      <workItem from="1515603501498" duration="3463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254259000" />
+    <option name="totallyTimeSpent" value="254771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -803,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="224" column="34" lean-forward="false" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+        <state relative-caret-position="67">
+          <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#772#1183#0" expanded="false" />
@@ -814,8 +814,7 @@
             <element signature="n#!!block;n#isLocationAuthorized#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="n#!!block;n#onGeolocation#0;n#ComplaintsMap#0" expanded="false" />
             <element signature="e#4804#5807#0" expanded="false" />
-            <element signature="e#8101#8109#0" expanded="false" />
-            <element signature="n#!!block;n#onMapSuccess#0;n#ComplaintsMap#0" expanded="false" />
+            <element signature="e#8188#8196#0" expanded="false" />
             <element signature="n#!!block;n#onMapError#0;n#ComplaintsMap#0" expanded="false" />
           </folding>
         </state>

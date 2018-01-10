@@ -222,7 +222,7 @@ export class ComplaintsMap extends Component {
         const onMapSuccess = this.onMapSuccess;
         try {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(this);
+                console.log('navigator.geolocation.getCurrentPosition: ',this);
                 console.log('Latitude: ' + position.coords.latitude + '\n' +
                     'Longitude: ' + position.coords.longitude + '\n' +
                     'Altitude: ' + position.coords.altitude + '\n' +
@@ -231,7 +231,7 @@ export class ComplaintsMap extends Component {
                     'Heading: ' + position.coords.heading + '\n' +
                     'Speed: ' + position.coords.speed + '\n' +
                     'Timestamp: ' + position.timestamp + '\n');
-                onMapSuccess(position);
+                onMapSuccess(position.coords.latitude,position.coords.longitude);
             }, (error) => {
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
@@ -273,10 +273,10 @@ export class ComplaintsMap extends Component {
         // }
     }
 
-    onMapSuccess(position) {
-        console.log('onMapSuccess:',position);
-        const Latitude = position.latitude;
-        const Longitude = position.longitude;
+    onMapSuccess(Latitude,Longitude) {
+        console.log('onMapSuccess - Latitude:',Latitude);
+        console.log('onMapSuccess - Longitude:',Longitude);
+
         this.setState({
             markerPos: {
                 lat: Latitude,
