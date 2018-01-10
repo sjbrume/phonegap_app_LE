@@ -221,8 +221,8 @@ export class ComplaintsMap extends Component {
         console.log('searchLocation');
 
 
-        let count = 50;
-        let timeout = 50 * 1000;
+        let count = 60;
+        let timeout = 60 * 1000;
         let counter = setInterval(timer, 1000);
 
         function timer() {
@@ -237,6 +237,7 @@ export class ComplaintsMap extends Component {
         const onMapSuccess = this.onMapSuccess;
         try {
             navigator.geolocation.getCurrentPosition((position) => {
+                clearInterval(counter);
                 console.log('navigator.geolocation.getCurrentPosition: ',this);
                 console.log('Latitude: ' + position.coords.latitude + '\n' +
                     'Longitude: ' + position.coords.longitude + '\n' +
@@ -248,6 +249,7 @@ export class ComplaintsMap extends Component {
                     'Timestamp: ' + position.timestamp + '\n');
                 onMapSuccess(position.coords.latitude,position.coords.longitude);
             }, (error) => {
+                clearInterval(counter);
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
             },{
@@ -256,6 +258,7 @@ export class ComplaintsMap extends Component {
             });
 
         } catch (err) {
+            clearInterval(counter);
             console.log(err);
         }
 
