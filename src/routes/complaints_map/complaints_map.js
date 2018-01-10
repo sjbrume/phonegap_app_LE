@@ -235,7 +235,7 @@ export class ComplaintsMap extends Component {
             }, (error) => {
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
-            });
+            },{ maximumAge: 10000, timeout: 20000, enableHighAccuracy: true });
 
         } catch (err) {
             console.log(err);
