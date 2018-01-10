@@ -10,70 +10,12 @@ import {Dialog} from "material-ui";
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import ArrowBack from 'material-ui-icons/ArrowBack';
+import Loop from 'material-ui-icons/Loop';
 import {FORM_ADD_LATLNG, FORM_REMOVE_LATLNG} from "../../store/reducers";
 
 import LocationSearching from 'material-ui-icons/LocationSearching';
 
-
-const MapWithAMarkerClusters = compose(
-    withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
-        loadingElement: (<div></div>),
-        containerElement: <div style={{
-            height: `calc(100vh - 118px)`,
-            marginTop: '64px',
-            position: 'relative'
-        }}/>,
-        mapElement: <div style={{height: `100%`}}/>,
-    }),
-    withHandlers({}),
-    withScriptjs,
-    withGoogleMap
-)(props =>
-    <GoogleMap
-        defaultZoom={props.zoom}
-        defaultCenter={props.center}
-        center={props.center}
-        zoom={props.zoom}
-        onClick={props.onClickMap}
-    >
-        <Marker
-            position={props.markerPos}
-        />
-        <button onClick={() => {
-            console.log('CLICK!');
-            props.searchLocation();
-        }} type="button" style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            zIndex: 500,
-            border: 'none',
-            margin: '10px 10px 30px 10px',
-            backgroundColor: 'rgb(255, 255, 255)',
-            borderRadius: '2px',
-            padding: '8px',
-            lineHeight: 0,
-            boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px -1px'
-        }}>
-            <LocationSearching/>
-        </button>
-    </GoogleMap>
-);
-
-@connect(
-    state => ({ // получаем данные из store
-        currentLocal: state.intl,
-        values: getFormValues('FormComplaints')(state),
-        state: state.form.FormComplaints,
-    }),
-    dispatch => ({
-        dispatch: (type, payload) => {
-            dispatch({type, payload})
-        }
-    })
-)
-export class ComplaintsMap extends Component {
+class SuperButton extends Component {
 
     static propTypes = {};
 
@@ -82,59 +24,17 @@ export class ComplaintsMap extends Component {
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.onClickMap = this.onClickMap.bind(this);
-        this.onSave = this.onSave.bind(this);
-        this.onCancel = this.onCancel.bind(this);
-        this.searchLocation = this.searchLocation.bind(this);
-        this.onMapSuccess = this.onMapSuccess.bind(this);
-        this.AdvancedGeolocation = this.AdvancedGeolocation.bind(this);
+        this.onClick = this.onClick.bind(this);
         this.searchLocation = this.searchLocation.bind(this);
         this.isLocationAuthorized = this.isLocationAuthorized.bind(this);
-
-
         this.geolocation = this.geolocation.bind(this);
+        this.AdvancedGeolocation = this.AdvancedGeolocation.bind(this);
     }
 
     get initialState() {
         return {
-            markerPos: {
-                lat: null,
-                lng: null,
-            }
+            loading: false
         }
-    }
-
-    onClickMap(event) {
-        this.setState({
-            markerPos: {
-                lat: event.latLng.lat(),
-                lng: event.latLng.lng(),
-            }
-        });
-
-        this.props.dispatch(FORM_ADD_LATLNG, {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng(),
-        });
-        return event
-    }
-
-    onSave() {
-
-        this.props.toggleHandle(false)
-    }
-
-    onCancel() {
-        delete this.props.values.lat;
-        delete this.props.values.lng;
-        this.props.dispatch(FORM_REMOVE_LATLNG, this.props.values);
-        this.setState({
-            markerPos: {
-                lat: null,
-                lng: null,
-            }
-        });
-        this.props.toggleHandle(false)
     }
 
     searchLocation() {
@@ -180,11 +80,15 @@ export class ComplaintsMap extends Component {
                 this.isLocationAuthorized();
                 console.log('response:', res)
             }).catch((error) => {
+                this.setState({loading: false});
+
                 console.log('error:', error)
             })
 
 
         } catch (err) {
+            this.setState({loading: false});
+
             console.log(err);
         }
 
@@ -198,12 +102,16 @@ export class ComplaintsMap extends Component {
                 cordova.plugins.diagnostic.requestLocationAuthorization((status) => {
                     console.log("Authorization status is now: " + status);
                 }, (error) => {
+                    this.setState({loading: false});
+
                     console.error(error);
                 });
             } else {
                 this.geolocation()
             }
         }, (error) => {
+            this.setState({loading: false});
+
             console.error("The following error occurred: " + error);
         });
 
@@ -214,7 +122,7 @@ export class ComplaintsMap extends Component {
 
         let gps = new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition((position) => {
-                    alert('Latitude: ' + position.coords.latitude + '\n' +
+                    console.log('Latitude: ' + position.coords.latitude + '\n' +
                         'Longitude: ' + position.coords.longitude + '\n' +
                         'Altitude: ' + position.coords.altitude + '\n' +
                         'Accuracy: ' + position.coords.accuracy + '\n' +
@@ -223,10 +131,9 @@ export class ComplaintsMap extends Component {
                         'Speed: ' + position.coords.speed + '\n' +
                         'Timestamp: ' + position.timestamp + '\n');
                     resolve(position);
-                    // onMapSuccess(position.coords.latitude,position.coords.longitude);
                 },
                 (error) => {
-                    alert('code: ' + error.code + '\n' +
+                    console.log('code: ' + error.code + '\n' +
                         'message: ' + error.message + '\n');
                     reject(error);
                 }, {
@@ -235,8 +142,10 @@ export class ComplaintsMap extends Component {
                 });
         }).then(values => {
             console.log(values);
-            this.onMapSuccess(values.coords.latitude, values.coords.longitude);
+            this.setState({loading: false});
+            this.props.onMapSuccess(values.coords.latitude, values.coords.longitude);
         }).catch((error) => {
+
             this.AdvancedGeolocation();
             console.log('error:', error)
         });
@@ -244,60 +153,224 @@ export class ComplaintsMap extends Component {
     }
 
     AdvancedGeolocation() {
-        const onMapSuccess = this.onMapSuccess;
-        AdvancedGeolocation.start(function (success) {
-                try {
-                    let jsonObject = JSON.parse(success);
-                    alert(success);
-                    console.log(jsonObject);
-                    switch (jsonObject.provider) {
-                        case "gps":
-                            //TODO
-                            break;
+        const onMapSuccess = this.props.onMapSuccess;
+        let result = new Promise((resolve, reject) => {
+            AdvancedGeolocation.start( (success) => {
+                    try {
+                        let jsonObject = JSON.parse(success);
+                        console.log(jsonObject);
+                        switch (jsonObject.provider) {
+                            case "gps":
+                                //TODO
+                                break;
 
-                        case "network":
-                            if ('latitude' in jsonObject) {
-                                onMapSuccess(jsonObject);
-                                AdvancedGeolocation.stop();
-                            }
-                            break;
+                            case "network":
+                                if ('latitude' in jsonObject) {
+                                    resolve(jsonObject);
+                                }
+                                break;
 
-                        case "satellite":
-                            //TODO
-                            break;
+                            case "satellite":
+                                //TODO
+                                break;
 
-                        case "cell_info":
-                            //TODO
-                            break;
+                            case "cell_info":
+                                //TODO
+                                break;
 
-                        case "cell_location":
-                            //TODO
-                            break;
+                            case "cell_location":
+                                //TODO
+                                break;
 
-                        case "signal_strength":
-                            //TODO
-                            break;
+                            case "signal_strength":
+                                //TODO
+                                break;
+                        }
                     }
-                }
-                catch (exc) {
-                    console.log("Invalid JSON: " + exc);
-                }
-            },
-            function (error) {
-                console.log("ERROR! " + JSON.stringify(error));
-            },
-            {
-                "minTime": 0,         // Min time interval between updates (ms)
-                "minDistance": 0,       // Min distance between updates (meters)
-                "noWarn": true,         // Native location provider warnings
-                "providers": "all",     // Return GPS, NETWORK and CELL locations
-                "useCache": true,       // Return GPS and NETWORK cached locations
-                "satelliteData": false, // Return of GPS satellite info
-                "buffer": false,        // Buffer location data
-                "bufferSize": 0,        // Max elements in buffer
-                "signalStrength": false // Return cell signal strength data
-            });
+                    catch (exc) {
+                        console.log("Invalid JSON: " + exc);
+                    }
+                },
+                function (error) {
+                    console.log("ERROR! " + JSON.stringify(error));
+                },
+                {
+                    "minTime": 0,         // Min time interval between updates (ms)
+                    "minDistance": 0,       // Min distance between updates (meters)
+                    "noWarn": true,         // Native location provider warnings
+                    "providers": "all",     // Return GPS, NETWORK and CELL locations
+                    "useCache": true,       // Return GPS and NETWORK cached locations
+                    "satelliteData": false, // Return of GPS satellite info
+                    "buffer": false,        // Buffer location data
+                    "bufferSize": 0,        // Max elements in buffer
+                    "signalStrength": false // Return cell signal strength data
+                });
+        }).then((resolve)=>{
+            this.props.onMapSuccess(resolve.latitude, resolve.longitude);
+            AdvancedGeolocation.stop();
+        }).catch((error)=>{
+            console.log(error);
+            this.setState({loading: false});
+            AdvancedGeolocation.stop();
+        })
     }
+
+
+    onClick() {
+        if (!this.state.loading) {
+            this.setState({loading: true});
+            this.searchLocation();
+        }
+    }
+
+    render() {
+        const {loading} = this.state;
+        return (
+            <button onClick={this.onClick} type="button" style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                zIndex: 500,
+                border: 'none',
+                margin: '10px 10px 30px 10px',
+                backgroundColor: 'rgb(255, 255, 255)',
+                borderRadius: '2px',
+                padding: '8px',
+                lineHeight: 0,
+                boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px -1px'
+            }}>
+                {
+                    !loading &&
+                    <LocationSearching/>
+                }
+                {
+                    loading &&
+                    <Loop  className="loading"/>
+                }
+            </button>
+        )
+    }
+
+}
+
+const MapWithAMarkerClusters = compose(
+    withProps({
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
+        loadingElement: (<div></div>),
+        containerElement: <div style={{
+            height: `calc(100vh - 118px)`,
+            marginTop: '64px',
+            position: 'relative'
+        }}/>,
+        mapElement: <div style={{height: `100%`}}/>,
+    }),
+    withHandlers({}),
+    withScriptjs,
+    withGoogleMap
+)(props =>
+    <GoogleMap
+        defaultZoom={props.zoom}
+        defaultCenter={props.center}
+        center={props.center}
+        zoom={props.zoom}
+        onClick={props.onClickMap}
+    >
+        <Marker
+            position={props.markerPos}
+        />
+        <SuperButton
+            onMapSuccess={props.onMapSuccess}
+        />
+        {/*<button onClick={() => {*/}
+            {/*console.log('CLICK!');*/}
+            {/*props.searchLocation();*/}
+        {/*}} type="button" style={{*/}
+            {/*position: 'absolute',*/}
+            {/*bottom: 0,*/}
+            {/*left: 0,*/}
+            {/*zIndex: 500,*/}
+            {/*border: 'none',*/}
+            {/*margin: '10px 10px 30px 10px',*/}
+            {/*backgroundColor: 'rgb(255, 255, 255)',*/}
+            {/*borderRadius: '2px',*/}
+            {/*padding: '8px',*/}
+            {/*lineHeight: 0,*/}
+            {/*boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px -1px'*/}
+        {/*}}>*/}
+            {/*<LocationSearching/>*/}
+        {/*</button>*/}
+    </GoogleMap>
+);
+
+@connect(
+    state => ({ // получаем данные из store
+        currentLocal: state.intl,
+        values: getFormValues('FormComplaints')(state),
+        state: state.form.FormComplaints,
+    }),
+    dispatch => ({
+        dispatch: (type, payload) => {
+            dispatch({type, payload})
+        }
+    })
+)
+export class ComplaintsMap extends Component {
+
+    static propTypes = {};
+
+    static defaultProps = {};
+
+    constructor(props) {
+        super(props);
+        this.state = this.initialState;
+        this.onClickMap = this.onClickMap.bind(this);
+        this.onSave = this.onSave.bind(this);
+        this.onCancel = this.onCancel.bind(this);
+        this.onMapSuccess = this.onMapSuccess.bind(this);
+    }
+
+    get initialState() {
+        return {
+            markerPos: {
+                lat: null,
+                lng: null,
+            }
+        }
+    }
+
+    onClickMap(event) {
+        this.setState({
+            markerPos: {
+                lat: event.latLng.lat(),
+                lng: event.latLng.lng(),
+            }
+        });
+
+        this.props.dispatch(FORM_ADD_LATLNG, {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng(),
+        });
+        return event
+    }
+
+    onSave() {
+
+        this.props.toggleHandle(false)
+    }
+
+    onCancel() {
+        delete this.props.values.lat;
+        delete this.props.values.lng;
+        this.props.dispatch(FORM_REMOVE_LATLNG, this.props.values);
+        this.setState({
+            markerPos: {
+                lat: null,
+                lng: null,
+            }
+        });
+        this.props.toggleHandle(false)
+    }
+
 
 
     onMapSuccess(Latitude, Longitude) {
@@ -314,11 +387,6 @@ export class ComplaintsMap extends Component {
             lat: Latitude,
             lng: Longitude,
         });
-    }
-
-    onMapError(error) {
-        console.log('code: ' + error.code + '\n' +
-            'message: ' + error.message + '\n');
     }
 
     render() {
@@ -366,7 +434,7 @@ export class ComplaintsMap extends Component {
                         lat: this.state.markerPos.lat ? this.state.markerPos.lat : 46.484583,
                         lng: this.state.markerPos.lng ? this.state.markerPos.lng : 30.7326,
                     }}
-                    searchLocation={this.searchLocation}
+                    onMapSuccess={this.onMapSuccess}
                 />
                 <div style={{padding: '8px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}
                      className="complaints_section">
