@@ -238,7 +238,7 @@ export class ComplaintsMap extends Component {
             });
 
         } catch (err) {
-
+            console.log(err);
         }
 
         // try {
