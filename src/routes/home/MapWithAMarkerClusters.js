@@ -7,6 +7,7 @@ import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
 import {SuperButton} from "../complaints_map/complaints_map";
 import MyLocation from '../complaints_map/my_location_icon.png';
+
 export const MapWithAMarkerClusters = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0",
@@ -33,7 +34,10 @@ export const MapWithAMarkerClusters = compose(
 )(props =>
     <GoogleMap
         defaultZoom={props.zoom}
-        defaultCenter={props.center}
+        defaultCenter={{
+            lat: 46.484583,
+            lng: 30.7326,
+        }}
         center={props.center}
         zoom={props.zoom}
         // onClick={(event) => {
