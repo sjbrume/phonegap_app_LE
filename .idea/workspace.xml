@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" afterPath="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" afterPath="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/home/index.js" afterPath="$PROJECT_DIR$/src/routes/home/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,9 +45,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="347" column="32" lean-forward="false" selection-start-line="347" selection-start-column="28" selection-end-line="347" selection-end-column="32" />
-              <caret line="348" column="32" lean-forward="false" selection-start-line="348" selection-start-column="28" selection-end-line="348" selection-end-column="32" />
+            <state relative-caret-position="289">
+              <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="36" selection-end-line="284" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
@@ -59,8 +56,7 @@
                 <element signature="e#5899#6197#0" expanded="false" />
                 <element signature="e#6338#7096#0" expanded="false" />
                 <element signature="n#!!block;n#toggleDescription#0;n#HomePage#0" expanded="false" />
-                <element signature="n#!!block;n#createInfoDialog#0;n#HomePage#0" expanded="false" />
-                <marker date="1515628543472" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
+                <marker date="1515663077369" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
               </folding>
             </state>
           </provider>
@@ -70,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+              <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -200,9 +196,9 @@
         <option value="$PROJECT_DIR$/src/store/store.js" />
         <option value="$PROJECT_DIR$/src/store/reducers.js" />
         <option value="$PROJECT_DIR$/src/routes/complaints_map/complaints_map.js" />
-        <option value="$PROJECT_DIR$/src/routes/home/index.js" />
         <option value="$PROJECT_DIR$/src/blocks/form/form_complaints/lexicon.js" />
         <option value="$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js" />
+        <option value="$PROJECT_DIR$/src/routes/home/index.js" />
       </list>
     </option>
   </component>
@@ -448,12 +444,12 @@
       <workItem from="1515583518534" duration="6077000" />
       <workItem from="1515599628362" duration="1310000" />
       <workItem from="1515603501498" duration="22573000" />
-      <workItem from="1515661458056" duration="354000" />
+      <workItem from="1515661458056" duration="998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274235000" />
+    <option name="totallyTimeSpent" value="274879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -736,8 +732,7 @@
             <element signature="e#5899#6197#0" expanded="false" />
             <element signature="e#6338#7096#0" expanded="false" />
             <element signature="n#!!block;n#toggleDescription#0;n#HomePage#0" expanded="false" />
-            <element signature="n#!!block;n#createInfoDialog#0;n#HomePage#0" expanded="false" />
-            <marker date="1515628543472" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
+            <marker date="1515663077369" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
           </folding>
         </state>
       </provider>
@@ -859,7 +854,7 @@
         <state relative-caret-position="17">
           <caret line="236" column="24" lean-forward="false" selection-start-line="236" selection-start-column="24" selection-end-line="236" selection-end-column="24" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
             <element signature="n#!!block;n#searchLocation#0;n#SuperButton#0" expanded="false" />
             <element signature="n#!!block;n#isLocationAuthorized#0;n#SuperButton#0" expanded="false" />
             <element signature="n#!!block;n#geolocation#0;n#SuperButton#0" expanded="false" />
@@ -901,16 +896,15 @@
     <entry file="file://$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/home/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="347" column="32" lean-forward="false" selection-start-line="347" selection-start-column="28" selection-end-line="347" selection-end-column="32" />
-          <caret line="348" column="32" lean-forward="false" selection-start-line="348" selection-start-column="28" selection-end-line="348" selection-end-column="32" />
+        <state relative-caret-position="289">
+          <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="36" selection-end-line="284" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#componentWillReceiveProps#0;n#HomePage#0" expanded="false" />
@@ -920,8 +914,7 @@
             <element signature="e#5899#6197#0" expanded="false" />
             <element signature="e#6338#7096#0" expanded="false" />
             <element signature="n#!!block;n#toggleDescription#0;n#HomePage#0" expanded="false" />
-            <element signature="n#!!block;n#createInfoDialog#0;n#HomePage#0" expanded="false" />
-            <marker date="1515628543472" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
+            <marker date="1515663077369" expanded="true" signature="5051:5209" ph="SELECT * FRO... ${TABLE_NAME}" />
           </folding>
         </state>
       </provider>

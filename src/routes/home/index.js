@@ -274,7 +274,7 @@ export class HomePage extends Component {
                                 {lexicon[currentLocal].info_dialog.alcohol}:
                             </span>
                             <span className="info-dialog_text-content">
-                                4164
+                                6884
                             </span>
                         </div>
                         <div className="info-dialog_text-row">
@@ -282,7 +282,7 @@ export class HomePage extends Component {
                                 {lexicon[currentLocal].info_dialog.tobacco}:
                             </span>
                             <span className="info-dialog_text-content">
-                                3181
+                                5801
                             </span>
                         </div>
                     </div>
