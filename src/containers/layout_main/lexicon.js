@@ -9,6 +9,7 @@ import Help from 'material-ui-icons/Help';
 import ArrowBack from 'material-ui-icons/ArrowBack';
 import {MENU_TOGGLE} from "../../store/menu_toggle/reducer";
 import {Store} from '../../store/store';
+import {exit_app} from "../../utils/exit_app";
 
 
 export const lexicon = {
@@ -74,13 +75,7 @@ export const lexicon = {
                     onClick: () => {
                         console.log('Выход');
                         try {
-                            let confirmed = function (buttonIndex) {
-                                if (buttonIndex === 1) {
-                                    console.log("navigator.app.exitApp");
-                                    navigator.app.exitApp();
-                                }
-                            };
-                            navigator.notification.confirm('', confirmed, 'Exit?');
+                            exit_app()
                         } catch (err) {
                             console.log(err);
                         }
@@ -150,13 +145,7 @@ export const lexicon = {
                     onClick: () => {
                         console.log('Выход');
                         try {
-                            let confirmed = function (buttonIndex) {
-                                if (buttonIndex === 1) {
-                                    console.log("navigator.app.exitApp");
-                                    navigator.app.exitApp();
-                                }
-                            };
-                            navigator.notification.confirm('', confirmed, 'Exit?');
+                            exit_app()
                         } catch (err) {
                             console.log(err);
                         }

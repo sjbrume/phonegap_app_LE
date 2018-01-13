@@ -19,25 +19,10 @@ import {ListOfPlacesPage} from "./list_of_places";
 import {ComplaintsMap} from "./complaints_map/complaints_map";
 import {HelpPage} from "./help/index";
 import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
+import {exit_app} from "../utils/exit_app";
 
 
-const lexicon = {
-        'RU': {
-            confirm_exit_app: {
-                message: 'Вы уверены что хотите покинуть приложение?',
-                title: 'Выход',
-                buttonName: ['Отмена', 'Ок'],
-            },
-        },
-        'UKR': {
-            confirm_exit_app: {
-                message: 'Ви впевнені що хочете залишити додаток?',
-                title: 'Вихід',
-                buttonName: ['Скасувати', 'Ок']
-            },
-        }
-    }
-;
+
 
 window.Store = Store;
 
@@ -52,18 +37,7 @@ document.addEventListener("backbutton", () => {
 
         try {
 
-            navigator.notification.confirm(
-                lexicon[ Store.getState().intl].confirm_exit_app.message,
-                (buttonIndex) => {
-                    console.log('buttonIndex: ', buttonIndex);
-                    if (buttonIndex === 2) {
-                        console.log("navigator.app.exitApp");
-                        navigator.app.exitApp();
-                    }
-                },
-                lexicon[ Store.getState().intl].confirm_exit_app.title,
-                lexicon[ Store.getState().intl].confirm_exit_app.buttonName,
-            )
+            exit_app()
 
 
         } catch (err) {
