@@ -21,29 +21,48 @@ import {HelpPage} from "./help/index";
 import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
 
 
+const lexicon = {
+        'RU': {
+            confirm_exit_app: {
+                message: 'Вы уверены что хотите покинуть приложение?',
+                title: 'Выход',
+                buttonName: ['Отмена', 'Ок'],
+            },
+        },
+        'UKR': {
+            confirm_exit_app: {
+                message: 'Ви впевнені що хочете залишити додаток?',
+                title: 'Вихід',
+                buttonName: ['Скасувати', 'Ок']
+            },
+        }
+    }
+;
+
+window.Store = Store;
+
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
     console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
     if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
-    }
-    console.log("backbutton", window.location.hash);
-    if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
+        return;
+    } else if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
 
         try {
 
             navigator.notification.confirm(
-                'You are the winner!',
+                lexicon[ Store.getState().intl].confirm_exit_app.message,
                 (buttonIndex) => {
-                    console.log(buttonIndex);
-                    if (buttonIndex === 1) {
+                    console.log('buttonIndex: ', buttonIndex);
+                    if (buttonIndex === 2) {
                         console.log("navigator.app.exitApp");
                         navigator.app.exitApp();
                     }
                 },
-                'Game Over',
-                ['Restart', 'Exit']
+                lexicon[ Store.getState().intl].confirm_exit_app.title,
+                lexicon[ Store.getState().intl].confirm_exit_app.buttonName,
             )
 
 
