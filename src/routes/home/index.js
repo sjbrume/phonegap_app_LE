@@ -17,6 +17,9 @@ import {FORM_ADD_LATLNG} from "../../store/reducers";
 import {SET_MY_LOCATION} from "../../store/my_location/action_types";
 import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
 
+import marker_license_active from './marker_license_active.svg';
+import marker_license_canceled from './marker_license_canceled.svg';
+
 function mapStateToProps(state) {
     return {
         info_dialog: state.info_dialog,
@@ -81,6 +84,7 @@ export class HomePage extends Component {
             description: false,
             createInfoDialog: true,
             markers: [],
+            markersCanceled: [],
             markerPos: {
                 lat: null,
                 lng: null,
@@ -143,6 +147,7 @@ export class HomePage extends Component {
     async getMarkers(filter = 'alcohol') {
         const {db} = this.props;
         const markers = [];
+        const markersCanceled = [];
         const data = await new Promise((resolve, reject) => {
             try {
 
@@ -169,15 +174,30 @@ export class HomePage extends Component {
 
         for (let i = 0; i < length; i++) {
             if (data[i].lng && data[i].lat) {
-                markers.push(<Marker
-                    key={i}
-                    position={{lat: data[i].lat, lng: data[i].lng}}
-                    onClick={() => this.toggleDescription(true, data[i])}
-                />)
+
+                if(data[i].status === 'active') {
+                    markers.push(<Marker
+                        key={i}
+                        icon={marker_license_active}
+                        position={{lat: data[i].lat, lng: data[i].lng}}
+                        onClick={() => this.toggleDescription(true, data[i])}
+                    />)
+                } else {
+                    markersCanceled.push(<Marker
+                        key={i}
+                        icon={marker_license_canceled}
+                        position={{lat: data[i].lat, lng: data[i].lng}}
+                        onClick={() => this.toggleDescription(true, data[i])}
+                    />)
+                }
+
+
+
+
             }
         }
 
-        this.setState({markers});
+        this.setState({markers, markersCanceled});
         this.props.dispatch(MAP_CLUSTERING_LOAD, false);
 
     }
@@ -358,7 +378,12 @@ export class HomePage extends Component {
 
                         onMapSuccess={this.onMapSuccess}
 
-                        toggleDescription={this.toggleDescription} markers={this.state.markers}
+                        toggleDescription={this.toggleDescription}
+
+                        markers={this.state.markers}
+
+                        markersCanceled={this.state.markersCanceled}
+
                     />
 
                 }

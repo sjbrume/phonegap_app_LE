@@ -25,6 +25,7 @@ import {exit_app} from "../utils/exit_app";
 
 
 window.Store = Store;
+window.BrowserHistory = BrowserHistory;
 
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
@@ -43,8 +44,10 @@ document.addEventListener("backbutton", () => {
         } catch (err) {
             console.log(err);
         }
+    } else {
+        BrowserHistory.push('/');
     }
-}, false);
+});
 
 
 const ChildrenRoute = ({component: Component, ...rest}) => {

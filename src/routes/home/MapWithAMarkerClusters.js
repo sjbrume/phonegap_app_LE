@@ -31,55 +31,87 @@ export const MapWithAMarkerClusters = compose(
     }),
     withScriptjs,
     withGoogleMap
-)(props =>
-    <GoogleMap
-        defaultZoom={props.zoom}
-        defaultCenter={{
-            lat: 46.484583,
-            lng: 30.7326,
-        }}
-        center={props.center}
-        zoom={props.zoom}
-        // onClick={(event) => {
-        //     console.log(event)
-        //     console.log('lng:',event.latLng.lng());
-        //     console.log('lat:',event.latLng.lat());
-        // }}
-    >
-        {
-            props.markers.length > 0 && <MarkerClusterer
-                onClick={props.onMarkerClusterClick}
-                onClusteringBegin={() => {
-                    // if(!props.clusteringStatus){
-                    //     props.dispatch(MAP_CLUSTERING_LOAD, true);
-                    // }
-                }}
-                onClusteringEnd={() => {
-                    // if(props.clusteringStatus){
-                    //     props.dispatch(MAP_CLUSTERING_LOAD, false);
-                    // }
-                }}
+)(props => {
+        console.log(props);
+        return (<GoogleMap
+            defaultZoom={props.zoom}
+            defaultCenter={{
+                lat: 46.484583,
+                lng: 30.7326,
+            }}
+            center={props.center.lat ? props.center : {
+                lat: 46.484583,
+                lng: 30.7326,
+            }}
 
-                averageCenter
-                enableRetinaIcons
-                gridSize={60}
-            >
-                {props.markers}
+            zoom={props.zoom}
+            // onClick={(event) => {
+            //     console.log(event)
+            //     console.log('lng:',event.latLng.lng());
+            //     console.log('lat:',event.latLng.lat());
+            // }}
+        >
+            {
+                props.markers.length > 0 &&
+                <MarkerClusterer
+                    onClick={props.onMarkerClusterClick}
+                    onClusteringBegin={() => {
+                        // if(!props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
+                        // }
+                    }}
+                    onClusteringEnd={() => {
+                        // if(props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
+                        // }
+                    }}
 
-            </MarkerClusterer>
-        }
+                    clusterClass={'cluster cluster_license--active'}
+                    averageCenter
+                    enableRetinaIcons
+                    gridSize={60}
+                >
+                    {props.markers}
 
-        {
-            props.MyLocation && <Marker
-                icon={props.MyLocation ? MyLocation : ''}
+                </MarkerClusterer>
+            }
+            {
+                props.markersCanceled.length > 0 &&
+                <MarkerClusterer
+                    onClick={props.onMarkerClusterClick}
+                    onClusteringBegin={() => {
+                        // if(!props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
+                        // }
+                    }}
+                    onClusteringEnd={() => {
+                        // if(props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
+                        // }
+                    }}
 
-                position={props.center}
+                    clusterClass={'cluster cluster_license--canceled'}
+                    averageCenter
+                    enableRetinaIcons
+                    gridSize={60}
+                >
+                    {props.markersCanceled}
+
+                </MarkerClusterer>
+            }
+
+            {
+                props.MyLocation && <Marker
+                    icon={props.MyLocation ? MyLocation : ''}
+
+                    position={props.center}
+                />
+            }
+
+            <GetGeolocationButton
+                onMapSuccess={props.onMapSuccess}
             />
-        }
 
-        <GetGeolocationButton
-            onMapSuccess={props.onMapSuccess}
-        />
-
-    </GoogleMap>
+        </GoogleMap>)
+    }
 );

@@ -1,0 +1,13 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <title/>
+ <desc/>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="map-location-pin-map-marker-glyph" fill="#00bf00" d="m8.5,23c0,0 7.5,-9.87228 7.5,-14.18718c0,-4.3149 -2.4812,-7.81282 -7.5,-7.81282c-5.0188,0 -7.5,3.49792 -7.5,7.81282c0,4.3149 7.5,14.18718 7.5,14.18718l0,0zm0,-11.5c2.20914,0 4,-1.79086 4,-4c0,-2.20914 -1.79086,-4 -4,-4c-2.20914,0 -4,1.79086 -4,4c0,2.20914 1.79086,4 4,4l0,0z"/>
+ </g>
+</svg>

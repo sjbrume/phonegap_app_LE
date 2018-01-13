@@ -13,9 +13,10 @@ import ArrowBack from 'material-ui-icons/ArrowBack';
 import MyLocation from './my_location_icon.png';
 import {FORM_ADD_LATLNG, FORM_REMOVE_LATLNG} from "../../store/reducers";
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
+import {GLOBAL_STYLE} from "../../config";
 
 
-
+import {lexicon} from './lexicon';
 
 const MapWithAMarkerClusters = compose(
     withProps({
@@ -138,6 +139,7 @@ export class ComplaintsMap extends Component {
 
     render() {
         console.log(this.props);
+        const {currentLocal} = this.props;
         return (
             <Dialog
                 fullScreen
@@ -152,6 +154,7 @@ export class ComplaintsMap extends Component {
             >
                 <div style={{
                     width: '100%',
+                    backgroundColor: GLOBAL_STYLE.menu.backgroundColor,
                     margin: '0'
                 }} className={'layout-children_header-wrapper'}>
                     <AppBar position="static" className={'layout-children_app-bar'}>
@@ -165,7 +168,7 @@ export class ComplaintsMap extends Component {
                                 <ArrowBack/>
                             </IconButton>
                             <Typography type="title" color="inherit" className={'layout-children_flex'}>
-                                Укажите координаты
+                                {lexicon[currentLocal].title}
                             </Typography>
                         </Toolbar>
                     </AppBar>
@@ -188,11 +191,11 @@ export class ComplaintsMap extends Component {
                      className="complaints_section">
                     <Button type="button" raised onClick={this.onCancel}
                             style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                        Отмена
+                        {lexicon[currentLocal].cancel}
                     </Button>
                     <Button type="button" raised onClick={this.onSave}
                             style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                        Ок
+                        {lexicon[currentLocal].ok}
                     </Button>
                 </div>
             </Dialog>

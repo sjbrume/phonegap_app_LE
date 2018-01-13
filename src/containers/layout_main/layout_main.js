@@ -88,6 +88,7 @@ export class LayoutMain extends Component {
                 } else {
                     menu.push(
                         <button
+                            key={index}
                             type="button"
                             style={{
                                 backgroundColor: 'transparent',
@@ -100,8 +101,8 @@ export class LayoutMain extends Component {
                             className={'fonts-white'}
                             onClick={lexicon[currentLocal].menu[prop].onClick}
                         >
-                            <ListItem key={index}
-                                      style={'style' in lexicon[currentLocal].menu[prop] ? lexicon[currentLocal].menu[prop].style.wrapper : {}}
+                            <ListItem
+                                style={'style' in lexicon[currentLocal].menu[prop] ? lexicon[currentLocal].menu[prop].style.wrapper : {}}
                             >
                                 <ListItemIcon
                                     style={{
