@@ -17,15 +17,18 @@ import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
 import {Header} from "../../blocks/header/header";
 
 import './layout_main.css';
+import {GLOBAL_STYLE} from "../../config";
+import {MENU_TOGGLE} from "../../store/menu_toggle/reducer";
 
 
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,
-        menuPosition: state.menuPosition
+        menuPosition: state.menuPosition,
+        menu_toggle: state.menu_toggle
     }), //
     dispatch => ({
-        changeLang: (type, value) => {
+        setStore: (type, value) => {
             dispatch({type: type, payload: value})
         }
     })
@@ -45,7 +48,7 @@ export class LayoutMain extends Component {
     }
 
     handleDrawerToggle = () => {
-        this.setState({mobileOpen: !this.state.mobileOpen});
+        this.props.setStore(MENU_TOGGLE, !this.props.menu_toggle);
     };
 
 
@@ -59,26 +62,61 @@ export class LayoutMain extends Component {
             if (!lexicon[currentLocal].menu[prop].menu_hidden) {
                 if ('href' in lexicon[currentLocal].menu[prop]) {
                     menu.push(
-                        <ListItem key={index}>
-                            <ListItemIcon className={'fonts-white'}>
-                                {lexicon[currentLocal].menu[prop].icon}
-                            </ListItemIcon>
-                            <Link className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
+                        <Link
+                            key={index}
+                            to={lexicon[currentLocal].menu[prop].href}
+                            style={{
+                                color: GLOBAL_STYLE.menu.fontColor,
+                                textDecoration: 'none'
+                            }}
+                        >
+
+                            <ListItem>
+                                <ListItemIcon style={{
+                                    color: GLOBAL_STYLE.menu.fontColor,
+                                    textDecoration: 'none !important'
+                                }}>
+                                    {lexicon[currentLocal].menu[prop].icon}
+                                </ListItemIcon>
+
                                 <Typography color="inherit">
                                     {lexicon[currentLocal].menu[prop].text}
                                 </Typography>
-                            </Link>
-                        </ListItem>
+                            </ListItem>
+                        </Link>
                     );
                 } else {
                     menu.push(
-                        <ListItem key={index}>
-                            <ListItemIcon className={'fonts-white'}>
+                        <ListItem key={index}
+                            style={'style' in lexicon[currentLocal].menu[prop]?lexicon[currentLocal].menu[prop].style.wrapper : {}}
+                        >
+                            <ListItemIcon
+                                style={{
+                                    color: GLOBAL_STYLE.menu.fontColor,
+                                    textDecoration: 'none'
+                                }}
+                            >
                                 {lexicon[currentLocal].menu[prop].icon}
                             </ListItemIcon>
-                            <button type="button" style={{backgroundColor: 'transparent', border: 'none'}}
-                                    className={'fonts-white'} onClick={lexicon[currentLocal].menu[prop].onClick}>
-                                <Typography color="inherit">
+                            <button
+                                type="button"
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: 'none',
+                                    padding: 0,
+                                    color: GLOBAL_STYLE.menu.fontColor,
+                                    textDecoration: 'none'
+                                }}
+                                className={'fonts-white'}
+                                onClick={lexicon[currentLocal].menu[prop].onClick}
+                            >
+                                <Typography
+                                    style={{
+                                        color: GLOBAL_STYLE.menu.fontColor,
+                                        textDecoration: 'none'
+                                    }}
+                                    color="inherit"
+                                >
                                     {lexicon[currentLocal].menu[prop].text}
                                 </Typography>
                             </button>
@@ -95,7 +133,7 @@ export class LayoutMain extends Component {
     }
 
     render() {
-        const {children, menuPosition} = this.props;
+        const {children, menuPosition,menu_toggle} = this.props;
 
         return (
             <div className={'layout-main_root'}>
@@ -108,16 +146,22 @@ export class LayoutMain extends Component {
                         <Drawer
                             type="temporary"
                             anchor={menuPosition}
-                            open={this.state.mobileOpen}
+                            open={menu_toggle}
                             classes={{
                                 paper: menuPosition === MENU_LEFT ? 'layout-main_drawer-paper' : 'layout-main_drawer-paper--bottom',
                             }}
+
                             onRequestClose={this.handleDrawerToggle}
                             ModalProps={{
                                 keepMounted: true, // Better open performance on mobile.
                             }}
                         >
-                            <List>
+                            <List
+                                style={{
+                                    backgroundColor: GLOBAL_STYLE.menu.backgroundColor,
+                                    paddingTop: '0'
+                                }}
+                            >
                                 {this.createMenu()}
                             </List>
                         </Drawer>
@@ -129,6 +173,11 @@ export class LayoutMain extends Component {
                             color="primary"
                             aria-label="add"
                             className={'layout-main_menu-button-bottom'}
+                            style={{
+                                backgroundColor: GLOBAL_STYLE.menu.backgroundColor,
+                                color: GLOBAL_STYLE.menu.fontColor,
+                                textDecoration: 'none'
+                            }}
                         >
                             <MenuIcon/>
                         </Button>

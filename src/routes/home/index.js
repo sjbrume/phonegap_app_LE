@@ -14,9 +14,12 @@ import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 import logo from './logo.png';
 import {FORM_ADD_LATLNG} from "../../store/reducers";
+import {SET_MY_LOCATION} from "../../store/my_location/action_types";
+import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
 
 function mapStateToProps(state) {
     return {
+        info_dialog: state.info_dialog,
         clustering: state.map.clustering,
         filter: state.map.filter,
         my_location: state.my_location,
@@ -257,7 +260,7 @@ export class HomePage extends Component {
 
         const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
         return (
-            <div className="loading-panel_wrapper">
+            <div className="loading-panel_wrapper" style={{zIndex: '100'}}>
                 <div className="info-dialog_content">
                     <div className="info-dialog_logo">
                         <img src={logo} alt="" className="info-dialog_img"/>
@@ -288,7 +291,7 @@ export class HomePage extends Component {
                     </div>
                     <div style={{textAlign: 'center'}}>
                         <Button onClick={() => {
-                            this.setState({createInfoDialog: false})
+                            this.props.dispatch(INFO_DIALOG_TOGGLE, false);
                         }} type="button" raised
                                 style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
                             {lexicon[currentLocal].info_dialog.close}
@@ -309,7 +312,7 @@ export class HomePage extends Component {
                 lng: Longitude,
             }
         });
-        this.props.dispatch('MY_LOCATION', {
+        this.props.dispatch(SET_MY_LOCATION, {
             lat: Latitude,
             lng: Longitude,
         });
@@ -318,7 +321,7 @@ export class HomePage extends Component {
     render() {
         const {db, data, set, version, currentLocal, search_result, my_location} = this.props;
         console.log('Home page index', this);
-        if (this.state.createInfoDialog) {
+        if (this.props.info_dialog) {
             return this.createInfoDialog()
         }
         if (this.createLoadingPanel()) {

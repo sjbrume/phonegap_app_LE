@@ -17,6 +17,7 @@ import List from 'material-ui/List';
 import {ListItem, ListItemIcon} from 'material-ui/List';
 import {lexicon} from "./lexicon";
 import '../layout_main/layout_main.css';
+import {GLOBAL_STYLE} from "../../config";
 
 @connect(
     state => ({ // получаем данные из store
@@ -36,7 +37,7 @@ export class LayoutChildren extends Component {
     }
 
     get initialState() {
-        return { }
+        return {}
     }
 
     createMenu() {
@@ -46,18 +47,19 @@ export class LayoutChildren extends Component {
         let index = 0;
 
         for (let prop in lexicon[currentLocal].menu) {
-            if('href' in lexicon[currentLocal].menu[prop]){
+            if ('href' in lexicon[currentLocal].menu[prop]) {
                 menu.push(
-                    <ListItem key={index}>
-                        <ListItemIcon className={'fonts-white'}>
-                            {lexicon[currentLocal].menu[prop].icon}
-                        </ListItemIcon>
-                        <Link className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
+                    <Link key={index} className={'fonts-white'} to={lexicon[currentLocal].menu[prop].href}>
+
+                        <ListItem>
+                            <ListItemIcon className={'fonts-white'}>
+                                {lexicon[currentLocal].menu[prop].icon}
+                            </ListItemIcon>
                             <Typography color="inherit">
                                 {lexicon[currentLocal].menu[prop].text}
                             </Typography>
-                        </Link>
-                    </ListItem>
+                        </ListItem>
+                    </Link>
                 );
             } else {
                 menu.push(
@@ -65,7 +67,8 @@ export class LayoutChildren extends Component {
                         <ListItemIcon className={'fonts-white'}>
                             {lexicon[currentLocal].menu[prop].icon}
                         </ListItemIcon>
-                        <button type="button" style={{backgroundColor: 'transparent', border: 'none'}} className={'fonts-white'} onClick={lexicon[currentLocal].menu[prop].onClick}>
+                        <button type="button" style={{backgroundColor: 'transparent', border: 'none', padding: 0}}
+                                className={'fonts-white'} onClick={lexicon[currentLocal].menu[prop].onClick}>
                             <Typography color="inherit">
                                 {lexicon[currentLocal].menu[prop].text}
                             </Typography>
@@ -80,7 +83,6 @@ export class LayoutChildren extends Component {
     }
 
 
-
     render() {
         const {title, children} = this.props;
         console.log(this);
@@ -88,12 +90,17 @@ export class LayoutChildren extends Component {
         return (
             <div className={'layout-main_root'}>
                 <div className={'layout-main_app-frame'}>
-                    <div className={'layout-children_header-wrapper'}>
+                    <div className={'layout-children_header-wrapper'} style={{
+                        backgroundColor: GLOBAL_STYLE.menu.backgroundColor
+                    }}>
                         <AppBar position="static" className={'layout-children_app-bar'}>
-                            <Toolbar className={'layout-children_tool-bar'}>
+                            <Toolbar className={'layout-children_tool-bar'}
+                                     style={{
+                                         color: GLOBAL_STYLE.menu.fontColor
+                                     }}>
 
                                 <IconButton
-                                    onClick={()=>{
+                                    onClick={() => {
                                         BrowserHistory.goBack()
                                     }}
                                     className={'layout-children_arrow-button'}

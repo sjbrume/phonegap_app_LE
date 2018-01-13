@@ -8,6 +8,7 @@ import {FormSearch} from "../form/form_search";
 import {connect} from "react-redux";
 import '../../containers/layout_main/layout_main.css';
 import {MENU_BOTTOM, MENU_LEFT} from "../../store/menu-position/action_types";
+import {GLOBAL_STYLE} from "../../config";
 
 
 @connect(
@@ -39,7 +40,9 @@ export class Header extends Component {
     render() {
         const {menuPosition,onClick} = this.props;
         return (
-            <div className={'layout-main_header-wrapper'}>
+            <div className={'layout-main_header-wrapper'} style={{
+                backgroundColor: GLOBAL_STYLE.menu.backgroundColor
+            }}>
                 <AppBar position="static" className={'layout-main_app-bar'} color="default">
                     <Toolbar className={'layout-children_tool-bar'}>
 

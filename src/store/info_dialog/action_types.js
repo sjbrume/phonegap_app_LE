@@ -1,0 +1,1 @@
+export const INFO_DIALOG_TOGGLE = 'INFO_DIALOG_TOGGLE';

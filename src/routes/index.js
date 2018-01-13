@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {BrowserHistory} from "../history";
+
+import {Store} from '../store/store';
+
 import {HomePage} from "./home";
 import {LayoutMain} from "../containers/layout_main/layout_main";
 import {LayoutChildren} from '../containers/layout_children/layout_children';
@@ -14,11 +17,19 @@ import {ContactsPage} from "./contacts";
 import {SettingsPage} from "./settings";
 import {ListOfPlacesPage} from "./list_of_places";
 import {ComplaintsMap} from "./complaints_map/complaints_map";
+import {HelpPage} from "./help/index";
+import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
 
 
 document.addEventListener("backbutton", () => {
-    if (window.location.pathname === '/') {
-        console.log('backbutton');
+    console.log('backbutton');
+    console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
+    if(Store.getState().menu_toggle){
+        Store.dispatch({type: MENU_TOGGLE, payload: false});
+    }
+    if (window.location.pathname === '/' && !Store.getState().menu_toggle) {
+        console.log('exit');
+
         try {
             let confirmed = function (buttonIndex) {
                 if (buttonIndex === 1) {
@@ -78,6 +89,11 @@ export class RouterWrapper extends Component {
                             path={MenuLexicon[currentLocal].menu.list_of_places.href}
                             title={MenuLexicon[currentLocal].menu.list_of_places.text}
                             component={ListOfPlacesPage}/>
+                        <ChildrenRoute
+                            exact
+                            path={MenuLexicon[currentLocal].menu.help.href}
+                            title={MenuLexicon[currentLocal].menu.help.text}
+                            component={HelpPage}/>
                         <ChildrenRoute
                             exact
                             path={MenuLexicon[currentLocal].menu.complaints.href}

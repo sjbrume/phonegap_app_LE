@@ -2,7 +2,7 @@ body, html {
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
-
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 #root {
@@ -231,9 +231,9 @@ body, html {
 
 .info-dialog_content{
     position: absolute;
-    top: 50%;
+    top: 5px;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     width: 270px;
     padding: 20px;
     background-color: #fff;
@@ -283,6 +283,12 @@ body, html {
 }
 .info-dialog_text-content{
 
+}
+
+.Select-placeholder{
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .loading {

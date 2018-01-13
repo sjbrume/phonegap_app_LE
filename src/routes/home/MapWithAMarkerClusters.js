@@ -5,8 +5,8 @@ import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClu
 import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
-import {SuperButton} from "../complaints_map/complaints_map";
 import MyLocation from '../complaints_map/my_location_icon.png';
+import {GetGeolocationButton} from "../../blocks/get-geolocation";
 
 export const MapWithAMarkerClusters = compose(
     withProps({
@@ -77,7 +77,7 @@ export const MapWithAMarkerClusters = compose(
             />
         }
 
-        <SuperButton
+        <GetGeolocationButton
             onMapSuccess={props.onMapSuccess}
         />
 

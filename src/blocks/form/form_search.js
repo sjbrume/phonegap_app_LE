@@ -124,6 +124,7 @@ export class FormSearch extends Component {
                     onChange={this.onChange}
                     onValueClick={this.addSearch}
                     loadOptions={this.getOptions}
+                    placeholder="Легальний Акциз"
                 />
             </div>
         )
