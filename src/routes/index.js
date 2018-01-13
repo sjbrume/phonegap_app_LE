@@ -32,6 +32,7 @@ document.addEventListener("backbutton", () => {
 
         try {
             let confirmed = function (buttonIndex) {
+                console.log(buttonIndex);
                 if (buttonIndex === 1) {
                     console.log("navigator.app.exitApp");
                     navigator.app.exitApp();
