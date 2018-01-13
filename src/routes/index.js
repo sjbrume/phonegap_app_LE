@@ -24,21 +24,29 @@ import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
     console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
-    if(Store.getState().menu_toggle){
+    if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
     }
-    if (window.location.pathname === '/' && !Store.getState().menu_toggle) {
+    console.log("backbutton", window.location.hash);
+    if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
 
         try {
-            let confirmed = function (buttonIndex) {
-                console.log(buttonIndex);
-                if (buttonIndex === 1) {
-                    console.log("navigator.app.exitApp");
-                    navigator.app.exitApp();
-                }
-            };
-            navigator.notification.confirm('', confirmed, 'Exit?');
+
+            navigator.notification.confirm(
+                'You are the winner!',
+                (buttonIndex) => {
+                    console.log(buttonIndex);
+                    if (buttonIndex === 1) {
+                        console.log("navigator.app.exitApp");
+                        navigator.app.exitApp();
+                    }
+                },
+                'Game Over',
+                ['Restart', 'Exit']
+            )
+
+
         } catch (err) {
             console.log(err);
         }

@@ -87,29 +87,30 @@ export class LayoutMain extends Component {
                     );
                 } else {
                     menu.push(
-                        <ListItem key={index}
-                            style={'style' in lexicon[currentLocal].menu[prop]?lexicon[currentLocal].menu[prop].style.wrapper : {}}
+                        <button
+                            type="button"
+                            style={{
+                                backgroundColor: 'transparent',
+                                border: 'none',
+                                padding: 0,
+                                color: GLOBAL_STYLE.menu.fontColor,
+                                textDecoration: 'none',
+                                width: '100%'
+                            }}
+                            className={'fonts-white'}
+                            onClick={lexicon[currentLocal].menu[prop].onClick}
                         >
-                            <ListItemIcon
-                                style={{
-                                    color: GLOBAL_STYLE.menu.fontColor,
-                                    textDecoration: 'none'
-                                }}
+                            <ListItem key={index}
+                                      style={'style' in lexicon[currentLocal].menu[prop] ? lexicon[currentLocal].menu[prop].style.wrapper : {}}
                             >
-                                {lexicon[currentLocal].menu[prop].icon}
-                            </ListItemIcon>
-                            <button
-                                type="button"
-                                style={{
-                                    backgroundColor: 'transparent',
-                                    border: 'none',
-                                    padding: 0,
-                                    color: GLOBAL_STYLE.menu.fontColor,
-                                    textDecoration: 'none'
-                                }}
-                                className={'fonts-white'}
-                                onClick={lexicon[currentLocal].menu[prop].onClick}
-                            >
+                                <ListItemIcon
+                                    style={{
+                                        color: GLOBAL_STYLE.menu.fontColor,
+                                        textDecoration: 'none'
+                                    }}
+                                >
+                                    {lexicon[currentLocal].menu[prop].icon}
+                                </ListItemIcon>
                                 <Typography
                                     style={{
                                         color: GLOBAL_STYLE.menu.fontColor,
@@ -119,8 +120,8 @@ export class LayoutMain extends Component {
                                 >
                                     {lexicon[currentLocal].menu[prop].text}
                                 </Typography>
-                            </button>
-                        </ListItem>
+                            </ListItem>
+                        </button>
                     );
                 }
 
@@ -133,7 +134,7 @@ export class LayoutMain extends Component {
     }
 
     render() {
-        const {children, menuPosition,menu_toggle} = this.props;
+        const {children, menuPosition, menu_toggle} = this.props;
 
         return (
             <div className={'layout-main_root'}>
