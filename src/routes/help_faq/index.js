@@ -42,11 +42,17 @@ class Accordion extends Component {
 
                 </button>
                 <div className={"accordion_content " + (open ? 'accordion_content--active' : '')}>
-                    <p className="places-description_text" style={{
-                        wordWrap: 'break-word'
-                    }}>
-                        {data.content}
-                    </p>
+                    {
+                        data.content.map((item, index) => {
+                            return (<p key={index} className="places-description_text" style={{
+                                wordWrap: 'break-word',
+                                whiteSpace: 'pre-line'
+                            }}>
+                                {item}
+                            </p>)
+                        })
+                    }
+
                 </div>
             </div>
         )
@@ -87,10 +93,11 @@ export class HelpFAQPage extends Component {
         const {currentLocal} = this.props;
         return (
             <div>
-                <Accordion data={{
-                    title: 'Заголовок',
-                    content: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem '
-                }}/>
+
+                {
+                    lexicon[currentLocal].map((item, index) => <Accordion key={index} data={item}/>)
+                }
+
             </div>
         )
     }

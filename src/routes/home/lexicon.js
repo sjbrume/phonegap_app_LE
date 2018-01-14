@@ -4,7 +4,8 @@ export const lexicon = {
             title: 'В одесской области на',
             alcohol: 'Алкогольных лицензий',
             tobacco: 'Табачных лицензий',
-            close: 'Закрыть'
+            close: 'Закрыть',
+            help: 'Помощь'
         },
         company_desc: {
             company: 'Название',
@@ -33,7 +34,8 @@ export const lexicon = {
             title: 'В одеській області на',
             alcohol: 'Алкогольних ліцензій',
             tobacco: 'Тютюнових ліцензій',
-            close: 'Закрити'
+            close: 'Закрити',
+            help: 'Допомога'
         },
         company_desc: {
             company: 'Назва',

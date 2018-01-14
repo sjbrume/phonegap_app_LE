@@ -175,13 +175,13 @@ export class HomePage extends Component {
         for (let i = 0; i < length; i++) {
             if (data[i].lng && data[i].lat) {
 
-                if(data[i].status === 'active') {
+                if (data[i].status === 'active') {
                     markers.push(<Marker
                         key={i}
                         icon={marker_license_active}
                         position={{lat: data[i].lat, lng: data[i].lng}}
                         data={data[i]}
-                        title={data[i].id}
+                        title={data[i].id.toString()}
                         onClick={() => this.toggleDescription(true, data[i])}
                     />)
                 } else {
@@ -190,12 +190,11 @@ export class HomePage extends Component {
                         icon={marker_license_canceled}
                         position={{lat: data[i].lat, lng: data[i].lng}}
                         data={data[i]}
-                        title={data[i].id}
+                        title={data[i].id.toString()}
+
                         onClick={() => this.toggleDescription(true, data[i])}
                     />)
                 }
-
-
 
 
             }
@@ -284,10 +283,16 @@ export class HomePage extends Component {
 
         const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
         return (
-            <div className="loading-panel_wrapper" style={{zIndex: '100'}}>
+            <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
                 <div className="info-dialog_content">
                     <div className="info-dialog_logo">
                         <img src={logo} alt="" className="info-dialog_img"/>
+                    </div>
+                    <div className="info-dialog_text">
+                        <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
+                            С помощью Приложения Легальний акциз каждый может обезопасить себя и окружающих, сделаем
+                            Украину Безопасней.
+                        </div>
                     </div>
                     <div className="info-dialog_text">
                         <div className="info-dialog_text-title">
@@ -313,7 +318,22 @@ export class HomePage extends Component {
                             </span>
                         </div>
                     </div>
-                    <div style={{textAlign: 'center'}}>
+                    <div style={{textAlign: 'center',
+                        display: 'flex',
+                        justifyContent: 'space-between',}}>
+                        <Link to="/help" style={{
+                            textDecoration: 'none'
+                        }}>
+                            <Button type="button" onClick={() => {
+                                this.props.dispatch(INFO_DIALOG_TOGGLE, false);
+                            }}  raised style={{
+                                backgroundColor: '#b3e5fc',
+                                color: '#334148',
+                            }}
+                                    color="primary">
+                                {lexicon[currentLocal].info_dialog.help}
+                            </Button>
+                        </Link>
                         <Button onClick={() => {
                             this.props.dispatch(INFO_DIALOG_TOGGLE, false);
                         }} type="button" raised
