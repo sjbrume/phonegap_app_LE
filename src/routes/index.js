@@ -21,6 +21,8 @@ import {HelpPage} from "./help/index";
 import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
 import {exit_app} from "../utils/exit_app";
 import {COMPLAINTS_MAP_TOGGLE} from "../store/complaints_map/reducer";
+import {HelpConventionsPage} from "./help_conventions/index";
+import {HelpFAQPage} from "./help_faq/index";
 
 
 
@@ -94,16 +96,31 @@ export class RouterWrapper extends Component {
                 <Route>
                     <Switch>
                         <MainRoute exact path="/" title="Главная" component={HomePage}/>
+
                         <ChildrenRoute
                             exact
                             path={MenuLexicon[currentLocal].menu.list_of_places.href}
                             title={MenuLexicon[currentLocal].menu.list_of_places.text}
                             component={ListOfPlacesPage}/>
+
                         <ChildrenRoute
                             exact
                             path={MenuLexicon[currentLocal].menu.help.href}
                             title={MenuLexicon[currentLocal].menu.help.text}
                             component={HelpPage}/>
+
+                        <ChildrenRoute
+                            exact
+                            path={MenuLexicon[currentLocal].menu.help_conventions.href}
+                            title={MenuLexicon[currentLocal].menu.help_conventions.text}
+                            component={HelpConventionsPage}/>
+
+                        <ChildrenRoute
+                            exact
+                            path={MenuLexicon[currentLocal].menu.help_faq.href}
+                            title={MenuLexicon[currentLocal].menu.help_faq.text}
+                            component={HelpFAQPage}/>
+
                         <ChildrenRoute
                             exact
                             path={MenuLexicon[currentLocal].menu.complaints.href}

@@ -249,15 +249,14 @@ body, html {
 
 .info-dialog_content {
     position: absolute;
-    top: 5px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 270px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 20px;
     background-color: #fff;
     border-radius: 2px;
     box-sizing: border-box;
-    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 }
 
 .info-dialog_logo {
@@ -286,10 +285,11 @@ body, html {
 
 .info-dialog_text-title {
     color: rgba(0, 0, 0, 0.87);
-    font-size: 1.3125rem;
+    font-size: 1.3rem;
     font-weight: 500;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.16667em;
+    text-align: center;
 }
 
 .info-dialog_text-row {

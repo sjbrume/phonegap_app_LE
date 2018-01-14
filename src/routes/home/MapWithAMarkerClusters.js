@@ -26,7 +26,15 @@ export const MapWithAMarkerClusters = compose(
         onMarkerClusterClick: () => (markerCluster) => {
             const clickedMarkers = markerCluster.getMarkers();
             console.log(`Current clicked markers length: ${clickedMarkers.length}`);
-            console.log(clickedMarkers)
+            console.log('markerCluster:', markerCluster);
+            console.log('clickedMarkers:', clickedMarkers);
+            if (clickedMarkers.length) {
+                clickedMarkers.map((item) => {
+                    console.log(`title: ${item.getTitle()},lat: ${item.position.lat()}, lng: ${item.position.lng()}`);
+                    console.log(item);
+
+                })
+            }
         },
     }),
     withScriptjs,

@@ -40,6 +40,16 @@ export const lexicon = {
                     icon: <Help/>,
                     menu_hidden: false,
                 },
+                help_conventions: {
+                    text: 'Условные обозначения',
+                    href: '/help_conventions',
+                    menu_hidden: true,
+                },
+                help_faq: {
+                    text: 'Часто задаваемые вопросы',
+                    href: '/help_faq',
+                    menu_hidden: true,
+                },
                 complaints: {
                     text: 'Жалобы',
                     href: '/complaints',
@@ -109,6 +119,16 @@ export const lexicon = {
                     href: '/help',
                     icon: <Help/>,
                     menu_hidden: false,
+                },
+                help_conventions: {
+                    text: "Умовні позначення",
+                    href: '/help_conventions',
+                    menu_hidden: true,
+                },
+                help_faq: {
+                    text: 'Поширені запитання',
+                    href: '/help_faq',
+                    menu_hidden: true,
                 },
                 complaints: {
                     text: 'Скарги',

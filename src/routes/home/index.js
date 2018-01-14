@@ -180,6 +180,8 @@ export class HomePage extends Component {
                         key={i}
                         icon={marker_license_active}
                         position={{lat: data[i].lat, lng: data[i].lng}}
+                        data={data[i]}
+                        title={data[i].id}
                         onClick={() => this.toggleDescription(true, data[i])}
                     />)
                 } else {
@@ -187,6 +189,8 @@ export class HomePage extends Component {
                         key={i}
                         icon={marker_license_canceled}
                         position={{lat: data[i].lat, lng: data[i].lng}}
+                        data={data[i]}
+                        title={data[i].id}
                         onClick={() => this.toggleDescription(true, data[i])}
                     />)
                 }
