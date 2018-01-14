@@ -20,6 +20,7 @@ import {ComplaintsMap} from "./complaints_map/complaints_map";
 import {HelpPage} from "./help/index";
 import {MENU_TOGGLE} from "../store/menu_toggle/reducer";
 import {exit_app} from "../utils/exit_app";
+import {COMPLAINTS_MAP_TOGGLE} from "../store/complaints_map/reducer";
 
 
 
@@ -33,7 +34,11 @@ document.addEventListener("backbutton", () => {
     if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
         return;
-    } else if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
+    } else if (Store.getState().complaints_map) {
+        Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
+        return;
+    }
+    else if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
 
         try {

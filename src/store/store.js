@@ -15,6 +15,7 @@ const initialState = localStorage.getItem('reduxState') ?
                 lat: null,
                 lng: null,
             },
+            complaints_map: false,
             info_dialog: true,
             menu_toggle: false,
             map: {
@@ -28,6 +29,7 @@ const initialState = localStorage.getItem('reduxState') ?
             lat: null,
             lng: null,
         },
+        complaints_map: false,
         info_dialog: true,
         menu_toggle: false,
         map: {

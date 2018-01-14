@@ -22,11 +22,11 @@ import marker_license_canceled from './marker_license_canceled.svg';
 
 function mapStateToProps(state) {
     return {
+        currentLocal: state.intl,
         info_dialog: state.info_dialog,
         clustering: state.map.clustering,
         filter: state.map.filter,
         my_location: state.my_location,
-        currentLocal: state.intl,
         search_result: state.websql.search_result,
         db: {
             db: state.websql.db.db,

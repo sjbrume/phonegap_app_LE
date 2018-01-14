@@ -10,7 +10,24 @@ import marker_license_canceled from '../home/marker_license_canceled.svg'
 import cluster_marker_active from '../../cluster_marker_active.png'
 import cluster_marker_canceled from '../../cluster_marker_canceled.png'
 import my_location from '../complaints_map/my_location_icon.png';
+import {connect} from "react-redux";
+import {lexicon} from './lexicon';
 
+function mapStateToProps(state) {
+    return {
+        currentLocal: state.intl,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch: (type, payload) => {
+            dispatch({type, payload})
+        }
+    }
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export class HelpPage extends Component {
 
     static propTypes = {};
@@ -27,6 +44,7 @@ export class HelpPage extends Component {
     }
 
     render() {
+        const {currentLocal} = this.props;
         return (
             <div>
                 <ul className="articles__list help_list">
@@ -38,7 +56,10 @@ export class HelpPage extends Component {
                         }}>
                             <img src={filter_places} alt=""/>
                         </div>
-                        <div className="help_description"> выбор типа лицензии
+                        <div className="help_description">
+                            {
+                                lexicon[currentLocal].interface.filter_places
+                            }
                         </div>
                     </li>
 
@@ -50,8 +71,8 @@ export class HelpPage extends Component {
                             <img src={find_geolication_inactive} alt=""/>
                         </div>
                         <div className="help_description">
-                            поиск вашего места вашего местоположения
-                        </div>
+                            {lexicon[currentLocal].interface.find_geolication_inactive}
+                            </div>
                     </li>
 
                     <li className="help_item">
@@ -62,7 +83,7 @@ export class HelpPage extends Component {
                             <img src={find_geolication_loading} alt=""/>
                         </div>
                         <div className="help_description">
-                            приложение в процессе поиска вашего местоположения
+                            {lexicon[currentLocal].interface.find_geolication_loading}
                         </div>
                     </li>
 
@@ -74,7 +95,7 @@ export class HelpPage extends Component {
                             <img src={marker_license_active} alt=""/>
                         </div>
                         <div className="help_description">
-                            заведение с лицензией
+                            {lexicon[currentLocal].interface.marker_license_active}
                         </div>
                     </li>
 
@@ -86,7 +107,7 @@ export class HelpPage extends Component {
                             <img src={marker_license_canceled} alt=""/>
                         </div>
                         <div className="help_description">
-                            заведение без лицензии
+                            {lexicon[currentLocal].interface.marker_license_canceled}
                         </div>
                     </li>
 
@@ -98,7 +119,7 @@ export class HelpPage extends Component {
                             <img src={cluster_marker_active} alt=""/>
                         </div>
                         <div className="help_description">
-                            группа заведений с лицензией
+                            {lexicon[currentLocal].interface.cluster_marker_active}
                         </div>
                     </li>
 
@@ -110,7 +131,7 @@ export class HelpPage extends Component {
                             <img src={cluster_marker_canceled} alt=""/>
                         </div>
                         <div className="help_description">
-                            группа заведений без лицензии
+                            {lexicon[currentLocal].interface.cluster_marker_canceled}
                         </div>
                     </li>
 
@@ -122,7 +143,7 @@ export class HelpPage extends Component {
                             <img src={my_location} alt=""/>
                         </div>
                         <div className="help_description">
-                            ваше место расположения на карте
+                            {lexicon[currentLocal].interface.my_location}
                         </div>
                     </li>
 

@@ -54,6 +54,7 @@ const MapWithAMarkerClusters = compose(
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,
+        complaints_map: state.complaints_map,
         values: getFormValues('FormComplaints')(state),
         state: state.form.FormComplaints,
     }),

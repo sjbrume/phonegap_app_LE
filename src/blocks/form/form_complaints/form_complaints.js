@@ -24,6 +24,7 @@ import {Store} from '../../../store/store';
 import {Link} from "react-router-dom";
 import {ComplaintsMap} from "../../../routes/complaints_map/complaints_map";
 import {FORM_REMOVE_LATLNG} from "../../../store/reducers";
+import {COMPLAINTS_MAP_TOGGLE} from "../../../store/complaints_map/reducer";
 
 const required = message => value => {
     console.log(value);
@@ -55,6 +56,7 @@ const COMPLAINTS_URL = 'http://185.25.117.8/complaint';
 @connect(
     state => ({ // получаем данные из store
         currentLocal: state.intl,
+        complaints_map: state.complaints_map,
         values: getFormValues('FormComplaints')(state),
     }),
     dispatch => ({
@@ -98,7 +100,7 @@ export class FormComplaints extends Component {
 
     async onSubmit(value) {
         console.log(value);
-        if(value.message === 'textarea'){
+        if (value.message === 'textarea') {
             if (value.type === 'anonim' && value.message_textarea === 'Разработчики') {
                 this.handleClickOpen();
                 return;
@@ -281,7 +283,7 @@ export class FormComplaints extends Component {
     }
 
     modalMapHandle(isOpen) {
-        this.setState({modalMap: isOpen})
+        this.props.dispatch(COMPLAINTS_MAP_TOGGLE, isOpen);
     }
 
     disabledSubmit() {
@@ -295,7 +297,7 @@ export class FormComplaints extends Component {
     }
 
     render() {
-        const {params, currentLocal, error, handleSubmit, pristine, submitting, values} = this.props;
+        const {params, currentLocal, error, handleSubmit, pristine, complaints_map, values} = this.props;
         const Required = required(lexicon[currentLocal].validation.required);
         return (
             <form onSubmit={handleSubmit(this.onSubmit)} required>
@@ -334,7 +336,7 @@ export class FormComplaints extends Component {
                     </Dialog>
 
                     <ComplaintsMap
-                        open={this.state.modalMap}
+                        open={complaints_map}
                         toggleHandle={this.modalMapHandle}
                     />
 
@@ -470,7 +472,7 @@ export class FormComplaints extends Component {
 
                     <Button type="button" raised
                             onClick={() => {
-                                this.setState({modalMap: true})
+                                this.props.dispatch(COMPLAINTS_MAP_TOGGLE, true);
                             }}
                             style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 0 0'}}
                             color="primary">
