@@ -192,12 +192,21 @@ export class LayoutMain extends Component {
                         <Drawer
                             type="permanent"
                             open
+                            style={{
+                                backgroundColor: GLOBAL_STYLE.menu.backgroundColor,
+                                color: GLOBAL_STYLE.menu.fontColor,
+                                textDecoration: 'none'
+                            }}
                             classes={{
                                 docked: 'layout-main_drawer-docked',
                                 paper: 'layout-main_drawer-paper',
                             }}
                         >
-                            <List>
+                            <List style={{
+                                backgroundColor: GLOBAL_STYLE.menu.backgroundColor,
+                                color: GLOBAL_STYLE.menu.fontColor,
+                                textDecoration: 'none'
+                            }}>
                                 {this.createMenu()}
                             </List>
                         </Drawer>

@@ -16,6 +16,10 @@ const initialState = localStorage.getItem('reduxState') ?
                 lng: null,
             },
             complaints_map: false,
+            drawer_places_description: {
+                isOpen: false,
+                description: null
+            },
             info_dialog: true,
             menu_toggle: false,
             map: {
@@ -30,6 +34,10 @@ const initialState = localStorage.getItem('reduxState') ?
             lng: null,
         },
         complaints_map: false,
+        drawer_places_description: {
+            isOpen: false,
+            description: null
+        },
         info_dialog: true,
         menu_toggle: false,
         map: {

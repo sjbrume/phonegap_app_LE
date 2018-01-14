@@ -19,10 +19,12 @@ import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
 
 import marker_license_active from './marker_license_active.svg';
 import marker_license_canceled from './marker_license_canceled.svg';
+import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../../store/drawer_places_description/reducers";
 
 function mapStateToProps(state) {
     return {
         currentLocal: state.intl,
+        drawer_places_description: state.drawer_places_description,
         info_dialog: state.info_dialog,
         clustering: state.map.clustering,
         filter: state.map.filter,
@@ -262,13 +264,13 @@ export class HomePage extends Component {
 
                 </div>
             );
-            this.setState({
-                'bottom': open,
-                description
-            });
+            this.props.dispatch(DRAWER_PLACES_DESCRIPTION_TOGGLE, {
+                isOpen: true,
+                description: description
+            })
         } else {
-            this.setState({
-                'bottom': open,
+            this.props.dispatch(DRAWER_PLACES_DESCRIPTION_TOGGLE, {
+                isOpen: open,
                 description: null
             });
             if (this.props.search_result) {
@@ -318,15 +320,17 @@ export class HomePage extends Component {
                             </span>
                         </div>
                     </div>
-                    <div style={{textAlign: 'center',
+                    <div style={{
+                        textAlign: 'center',
                         display: 'flex',
-                        justifyContent: 'space-between',}}>
+                        justifyContent: 'space-between',
+                    }}>
                         <Link to="/help" style={{
                             textDecoration: 'none'
                         }}>
                             <Button type="button" onClick={() => {
                                 this.props.dispatch(INFO_DIALOG_TOGGLE, false);
-                            }}  raised style={{
+                            }} raised style={{
                                 backgroundColor: '#b3e5fc',
                                 color: '#334148',
                             }}
@@ -363,7 +367,7 @@ export class HomePage extends Component {
     }
 
     render() {
-        const {db, data, set, version, currentLocal, search_result, my_location} = this.props;
+        const {db, data, set, version, currentLocal, search_result, my_location, drawer_places_description} = this.props;
         console.log('Home page index', this);
         if (this.props.info_dialog) {
             return this.createInfoDialog()
@@ -412,17 +416,18 @@ export class HomePage extends Component {
 
                 }
                 <MapFilter/>
+                {
+                    drawer_places_description.isOpen && drawer_places_description.description && <Drawer
+                        onClick={() => this.toggleDescription(false, null)}
+                        onKeyDown={() => this.toggleDescription(false, null)}
+                        anchor="bottom"
+                        open={drawer_places_description.isOpen}
+                        onClose={() => this.toggleDescription(false, null)}
+                    >
+                        {drawer_places_description.description}
+                    </Drawer>
+                }
 
-                <Drawer
-                    onClick={() => this.toggleDescription(false, null)}
-                    onKeyDown={() => this.toggleDescription(false, null)}
-                    anchor="bottom"
-                    open={this.state.bottom}
-                    onClose={() => this.toggleDescription(false, null)}
-                >
-                    {this.state.description}
-
-                </Drawer>
                 {
                     this.props.clustering &&
                     <div className="loading-panel_wrapper">

@@ -23,8 +23,8 @@ import {exit_app} from "../utils/exit_app";
 import {COMPLAINTS_MAP_TOGGLE} from "../store/complaints_map/reducer";
 import {HelpConventionsPage} from "./help_conventions/index";
 import {HelpFAQPage} from "./help_faq/index";
-
-
+import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../store/drawer_places_description/reducers";
+import {WEBSQL_SEARCH_REMOVE} from "../store/websql/action_types";
 
 
 window.Store = Store;
@@ -35,12 +35,24 @@ document.addEventListener("backbutton", () => {
     console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
     if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
-        return;
-    } else if (Store.getState().complaints_map) {
-        Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
-        return;
+        return true;
     }
-    else if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
+    if (Store.getState().complaints_map) {
+        Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
+        return true;
+    }
+    if (Store.getState().drawer_places_description.isOpen) {
+        Store.dispatch({type: DRAWER_PLACES_DESCRIPTION_TOGGLE, payload: {
+            isOpen: false,
+            description: null
+        }});
+
+        if (Store.getState().search_result) {
+            this.props.dispatch(WEBSQL_SEARCH_REMOVE, null)
+        }
+        return true;
+    }
+    if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
 
         try {
@@ -51,9 +63,12 @@ document.addEventListener("backbutton", () => {
         } catch (err) {
             console.log(err);
         }
+        return true;
     } else {
-        BrowserHistory.push('/');
+        BrowserHistory.goBack();
     }
+
+    return true;
 });
 
 
