@@ -51,7 +51,15 @@ export const MapWithAMarkerClusters = compose(
                 lat: 46.484583,
                 lng: 30.7326,
             }}
+            options={{
+                mapTypeControl: true,
+                zoomControl: true,
+                zoomControlOptions : {
 
+                },
+                fullscreenControl: false,
+                streetViewControl : false,
+            }}
             zoom={props.zoom}
             // onClick={(event) => {
             //     console.log(event)

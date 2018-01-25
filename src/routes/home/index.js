@@ -156,7 +156,7 @@ export class HomePage extends Component {
                 ('db' in db) && db.db.transaction((tx) => {
                     let sqlResultSet = tx.executeSql(`SELECT *
                                                       FROM ${TABLE_NAME}
-                                                      WHERE license_type = ?`, [filter],
+                                                      WHERE license_type = ? OR license_type = 'mixed'`, [filter],
                         (sqlTransaction, sqlResultSet) => {
                             console.log(sqlTransaction, sqlResultSet);
                             resolve(sqlResultSet.rows)
@@ -177,7 +177,7 @@ export class HomePage extends Component {
         for (let i = 0; i < length; i++) {
             if (data[i].lng && data[i].lat) {
 
-                if (data[i].status === 'active') {
+                if (data[i].license_type !== 'mixed') {
                     markers.push(<Marker
                         key={i}
                         icon={marker_license_active}
@@ -258,7 +258,7 @@ export class HomePage extends Component {
                             style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
                             color="primary">
                         <Link className={'fonts-white'} to={'/complaints/' + data.id}>
-                            Сообщить о нарушении
+                            {lexicon[currentLocal].company_desc.report_abuse}
                         </Link>
                     </Button>
 
@@ -292,8 +292,7 @@ export class HomePage extends Component {
                     </div>
                     <div className="info-dialog_text">
                         <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
-                            С помощью Приложения Легальний акциз каждый может обезопасить себя и окружающих, сделаем
-                            Украину Безопасней.
+                            {lexicon[currentLocal].info_dialog.introtext}
                         </div>
                     </div>
                     <div className="info-dialog_text">
@@ -303,22 +302,18 @@ export class HomePage extends Component {
                         <div style={{textAlign: 'center', paddingBottom: 20}} className="info-dialog_text-title">
                             {data}
                         </div>
-                        <div className="info-dialog_text-row">
+
+                        {
+                            lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type} className="info-dialog_text-row">
                             <span className="info-dialog_text-type">
-                                {lexicon[currentLocal].info_dialog.alcohol}:
+                                {item.title}:
                             </span>
-                            <span className="info-dialog_text-content">
-                                6884
+                                <span className="info-dialog_text-content">
+                                {item.number}
                             </span>
-                        </div>
-                        <div className="info-dialog_text-row">
-                            <span className="info-dialog_text-type">
-                                {lexicon[currentLocal].info_dialog.tobacco}:
-                            </span>
-                            <span className="info-dialog_text-content">
-                                5801
-                            </span>
-                        </div>
+                            </div>)
+                        }
+
                     </div>
                     <div style={{
                         textAlign: 'center',
@@ -438,8 +433,8 @@ export class HomePage extends Component {
                                 margin: '0 auto'
                             }} size={60} thickness={7}/>
                             <div className="loading-panel_content">
-                                Загрузка карты...
-                            </div>
+                                {lexicon[currentLocal].load_map}
+                                </div>
                         </div>
                     </div>
                 }

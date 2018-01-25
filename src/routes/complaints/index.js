@@ -5,6 +5,18 @@ import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {TABLE_NAME} from "../../config";
 
+
+const lexicon = {
+    'RU':{
+        load_map: ' Загрузка карты...'
+
+    },
+    'UKR':{
+        load_map: 'Завантаження карти ...'
+
+    }
+}
+
 function mapStateToProps(state) {
     return {
         currentLocal: state.intl,
@@ -110,6 +122,7 @@ export class ComplaintsPage extends Component {
     }
 
     render() {
+        const {currentLocal} = this.props;
         return (
             <div className="complaints_wrapper">
                 {
@@ -121,7 +134,7 @@ export class ComplaintsPage extends Component {
                                 margin: '0 auto'
                             }} size={60} thickness={7}/>
                             <div className="loading-panel_content">
-                                Загрузка карты...
+                                {lexicon[currentLocal].load_map}
                             </div>
                         </div>
                     </div>

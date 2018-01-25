@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import {BrowserHistory} from "../history";
 
 import {Store} from '../store/store';
@@ -110,6 +110,7 @@ export class RouterWrapper extends Component {
             <Router history={BrowserHistory}>
                 <Route>
                     <Switch>
+
                         <MainRoute exact path="/" title="Главная" component={HomePage}/>
 
                         <ChildrenRoute
