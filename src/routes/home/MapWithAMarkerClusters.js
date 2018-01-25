@@ -4,9 +4,26 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer"
 import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
-import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
+import {MAP_DUPLICATE_POSITION} from "../../store/map/action_types";
 import MyLocation from '../complaints_map/my_location_icon.png';
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
+
+import {Store} from '../../store/store';
+import {getDuplicateAddress} from "../../store/map/action";
+
+function positionCheck(clickedMarkers) {
+    const length = clickedMarkers.length;
+    const searchParam = {
+        lng: clickedMarkers[0].position.lng(),
+        lat: clickedMarkers[0].position.lat(),
+    };
+    for (let i = 1; i < length; i++) {
+        if (searchParam.lng !== clickedMarkers[i].position.lng() && searchParam.lat !== clickedMarkers[i].position.lat()) {
+            return false
+        }
+    }
+    return searchParam
+}
 
 export const MapWithAMarkerClusters = compose(
     withProps({
@@ -28,13 +45,26 @@ export const MapWithAMarkerClusters = compose(
             console.log(`Current clicked markers length: ${clickedMarkers.length}`);
             console.log('markerCluster:', markerCluster);
             console.log('clickedMarkers:', clickedMarkers);
-            if (clickedMarkers.length) {
-                clickedMarkers.map((item) => {
-                    console.log(`title: ${item.getTitle()},lat: ${item.position.lat()}, lng: ${item.position.lng()}`);
-                    console.log(item);
 
-                })
+            if (clickedMarkers.length < 20) {
+
+
+                if (positionCheck(clickedMarkers)) {
+                    const arrayID = [];
+                    clickedMarkers.map((item, index) => {
+                        arrayID.push(item.title);
+                        console.log(`item-${index}`, item);
+                        console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                    })
+                    Store.dispatch(getDuplicateAddress(Store.getState(), arrayID));
+
+                }
+
             }
+
+
         },
     }),
     withScriptjs,
@@ -54,11 +84,9 @@ export const MapWithAMarkerClusters = compose(
             options={{
                 mapTypeControl: true,
                 zoomControl: true,
-                zoomControlOptions : {
-
-                },
+                zoomControlOptions: {},
                 fullscreenControl: false,
-                streetViewControl : false,
+                streetViewControl: false,
             }}
             zoom={props.zoom}
             // onClick={(event) => {

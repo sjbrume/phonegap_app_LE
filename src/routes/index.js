@@ -25,6 +25,7 @@ import {HelpConventionsPage} from "./help_conventions/index";
 import {HelpFAQPage} from "./help_faq/index";
 import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../store/drawer_places_description/reducers";
 import {WEBSQL_SEARCH_REMOVE} from "../store/websql/action_types";
+import {MAP_DUPLICATE_POSITION} from "../store/map/action_types";
 
 
 window.Store = Store;
@@ -39,6 +40,10 @@ document.addEventListener("backbutton", () => {
     }
     if (Store.getState().complaints_map) {
         Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
+        return true;
+    }
+    if (Store.getState().map.duplicate_position) {
+        Store.dispatch({type: MAP_DUPLICATE_POSITION, payload: null});
         return true;
     }
     if (Store.getState().drawer_places_description.isOpen) {

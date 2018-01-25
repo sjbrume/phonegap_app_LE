@@ -1,4 +1,6 @@
-import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD} from "./action_types";
+import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD,MAP_DUPLICATE_POSITION} from "./action_types";
+
+
 
 export const map = (state = {}, action) => {
     switch (action.type) {
@@ -12,6 +14,13 @@ export const map = (state = {}, action) => {
             console.log(MAP_CLUSTERING_FILTER,action);
             return Object.assign({}, state, {
                 filter: action.payload
+            })
+        }
+
+        case MAP_DUPLICATE_POSITION: {
+            console.log(MAP_CLUSTERING_FILTER,action);
+            return Object.assign({}, state, {
+                duplicate_position: action.payload
             })
         }
         default:

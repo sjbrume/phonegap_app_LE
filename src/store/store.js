@@ -24,7 +24,8 @@ const initialState = localStorage.getItem('reduxState') ?
             menu_toggle: false,
             map: {
                 clustering: true,
-                filter: 'alcohol'
+                filter: 'alcohol',
+                duplicate_position: null,
             },
         }) : {
         intl: UKR,
@@ -42,7 +43,8 @@ const initialState = localStorage.getItem('reduxState') ?
         menu_toggle: false,
         map: {
             clustering: true,
-            filter: 'alcohol'
+            filter: 'alcohol',
+            duplicate_position: null,
         },
         websql: {
             search_result: {

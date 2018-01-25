@@ -8,19 +8,15 @@ export const lexicon = {
                 {
                     type: 'number_of_license_types',
                     title: `Количество субъектов хозяйствования`,
-                    number: 2
+                    number: 4193
                 }, {
                     type: 'number_of_licenses',
                     title: `Всеобщность лицензий`,
                     number: 13149
                 }, {
                     type: 'with_license_number',
-                    title: `Количество объектов с лицензиями`,
+                    title: `бъект с лицензией`,
                     number: 13028
-                }, {
-                    type: 'number_without_a_license',
-                    title: `Количество объектов без лицензий`,
-                    number: 121
                 }, {
                     type: 'alcohol',
                     title: `Алкогольных лицензий`,
@@ -29,9 +25,13 @@ export const lexicon = {
                     type: 'tobacco',
                     title: `Табачных лицензий`,
                     number: 5801
-                }
+                },  {
+                    type: 'number_without_a_license',
+                    title: `Объект без соответствующих разрешительных документов`,
+                    number: 121
+                },
             ],
-            close: 'Закрыть',
+            close: 'Продолжить',
             help: 'Помощь'
         },
         company_desc: {
@@ -71,19 +71,15 @@ export const lexicon = {
                 {
                     type: 'number_of_license_types',
                     title: `Кількість суб'єктів господарювання`,
-                    number: 2
+                    number: 4193
                 }, {
                     type: 'number_of_licenses',
                     title: `Загальність ліцензій`,
                     number: 13149
                 }, {
                     type: 'with_license_number',
-                    title: `Кількість об'єктів з ліцензіями`,
+                    title: `Об'єкт с лицензией`,
                     number: 13028
-                }, {
-                    type: 'number_without_a_license',
-                    title: `Кількість об\`єктів без ліцензій`,
-                    number: 121
                 }, {
                     type: 'alcohol',
                     title: `Алкогольних ліцензій`,
@@ -92,9 +88,13 @@ export const lexicon = {
                     type: 'tobacco',
                     title: `Тютюнових ліцензій`,
                     number: 5801
-                }
+                },  {
+                    type: 'number_without_a_license',
+                    title: `Об’єкт без відповідних безвільних документів`,
+                    number: 121
+                },
             ],
-            close: 'Закрити',
+            close: 'Продовжити',
             help: 'Допомога'
         },
         company_desc: {

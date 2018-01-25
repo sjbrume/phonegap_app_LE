@@ -16,13 +16,18 @@ import logo from './logo.png';
 import {FORM_ADD_LATLNG} from "../../store/reducers";
 import {SET_MY_LOCATION} from "../../store/my_location/action_types";
 import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
+import {ListItem, ListItemIcon} from 'material-ui/List';
+import Typography from 'material-ui/Typography';
 
 import marker_license_active from './marker_license_active.svg';
 import marker_license_canceled from './marker_license_canceled.svg';
 import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../../store/drawer_places_description/reducers";
+import {AddressSelectionDialog} from "./address_selection_dialog";
+import ArrowBack from 'material-ui-icons/ArrowBack';
 
 function mapStateToProps(state) {
     return {
+        duplicate_position: state.map.duplicate_position,
         currentLocal: state.intl,
         drawer_places_description: state.drawer_places_description,
         info_dialog: state.info_dialog,
@@ -284,6 +289,7 @@ export class HomePage extends Component {
         const {currentLocal} = this.props;
 
         const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
+
         return (
             <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
                 <div className="info-dialog_content">
@@ -343,6 +349,11 @@ export class HomePage extends Component {
                 </div>
             </div>
         )
+
+    }
+
+    addressSelectionDialog() {
+
     }
 
     onMapSuccess(Latitude, Longitude) {
@@ -362,7 +373,7 @@ export class HomePage extends Component {
     }
 
     render() {
-        const {db, data, set, version, currentLocal, search_result, my_location, drawer_places_description} = this.props;
+        const {db, data, set, version, currentLocal, search_result, my_location, duplicate_position,drawer_places_description} = this.props;
         console.log('Home page index', this);
         if (this.props.info_dialog) {
             return this.createInfoDialog()
@@ -382,6 +393,7 @@ export class HomePage extends Component {
 
         return (
             <div>
+                <AddressSelectionDialog/>
                 {
                     !this.props.clustering &&
                     <MapWithAMarkerClusters
@@ -395,7 +407,7 @@ export class HomePage extends Component {
                             lng: search_result || my_location.lng ? my_location.lng || search_result.lng : 30.7326,
                         }}
 
-                        zoom={search_result || my_location.lat ? 14 : 10}
+                        zoom={search_result || my_location.lat || duplicate_position ? 14 : 10}
 
                         MyLocation={my_location.lat}
 
@@ -419,6 +431,42 @@ export class HomePage extends Component {
                         open={drawer_places_description.isOpen}
                         onClose={() => this.toggleDescription(false, null)}
                     >
+                        <button
+                            type="button"
+                            style={{
+                                backgroundColor: 'transparent',
+                                border: 'none',
+                                padding: 0,
+                                textDecoration: 'none',
+                                width: '100%'
+                            }}
+                            className={'fonts-white'}
+                            onClick={() => this.toggleDescription(false, null)}
+                        >
+                            <ListItem
+                                style={{
+                                    borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
+                                }}
+                            >
+                                <ListItemIcon
+                                    style={{
+                                        color: '#424242',
+                                        textDecoration: 'none'
+                                    }}
+                                >
+                                    <ArrowBack/>
+                                </ListItemIcon>
+                                <Typography
+                                    style={{
+                                        color: '#424242',
+                                        textDecoration: 'none'
+                                    }}
+                                    color="inherit"
+                                >
+                                    Назад
+                                </Typography>
+                            </ListItem>
+                        </button>
                         {drawer_places_description.description}
                     </Drawer>
                 }

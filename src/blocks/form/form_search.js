@@ -12,6 +12,7 @@ import {TABLE_NAME} from "../../config";
 function mapStateToProps(state) {
     return {
         currentLocal: state.intl,
+        info_dialog: state.info_dialog,
         list_of_places: state.websql.list_of_places,
 
         db: {
@@ -29,6 +30,12 @@ function mapStateToProps(state) {
             loading: state.websql.set.loading,
             error: state.websql.set.error,
             success: state.websql.set.success,
+        },
+        version: {
+            version: state.websql.version.version,
+            loading: state.websql.version.loading,
+            error: state.websql.version.error,
+            success: state.websql.version.success,
         }
     }
 }
@@ -110,6 +117,8 @@ export class FormSearch extends Component {
 
     render() {
         const {value} = this.state;
+        const {db, data, set, version, info_dialog} = this.props;
+
         return (
             <div style={{
                 width: '100%',
@@ -126,6 +135,7 @@ export class FormSearch extends Component {
                     loadOptions={this.getOptions}
                     placeholder="Легальний Акциз"
                     searchPromptText="Нет результатов"
+                    disabled={set.loading || version.loading || data.loading || db.loading || info_dialog}
                 />
             </div>
         )
