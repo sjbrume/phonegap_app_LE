@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
-
+import {lexicon} from './lexicon';
 
 function mapStateToProps(state) {
     return {
         clustering: state.map.clustering,
         filter: state.map.filter,
+        currentLocal: state.currentLocal,
     }
 }
 
@@ -38,22 +39,24 @@ export class MapFilter extends Component {
 
     onChange(event) {
         console.log(event.target.value);
-        const value = event.target.value? event.target.value : 'alcohol';
+        const value = event.target.value ? event.target.value : 'alcohol';
         this.props.setStore(MAP_CLUSTERING_FILTER, value);
         this.props.setStore(MAP_CLUSTERING_LOAD, true);
     }
 
     render() {
-        console.log('MapFilter: ',this.props);
+        const {currentLocal} = this.props;
         return (
             <div className="map-filter_wrapper">
-                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'alcohol'} id="filter-alco" type="radio" name="filter"  value={'alcohol'}/>
+                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'alcohol'}
+                       id="filter-alco" type="radio" name="filter" value={'alcohol'}/>
                 <label htmlFor="filter-alco" className="map-filter_toggle">
-                    Алкоголь
+                    {lexicon[currentLocal].filter.alcohol}
                 </label>
-                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'tobacco'} id="filter-tobac" type="radio" name="filter"  value={'tobacco'}/>
+                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'tobacco'}
+                       id="filter-tobac" type="radio" name="filter" value={'tobacco'}/>
                 <label htmlFor="filter-tobac" className="map-filter_toggle">
-                    Табак
+                    {lexicon[currentLocal].filter.tobacco}
                 </label>
             </div>
         )

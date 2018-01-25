@@ -56,7 +56,11 @@ export const lexicon = {
             data: 'Получение данных.',
             set: 'Запись данных.'
         },
-        load_map: ' Загрузка карты...'
+        load_map: ' Загрузка карты...',
+        filter: {
+            alcohol: 'Алкоголь',
+            tobacco: 'Табак',
+        }
     },
     'UKR': {
         info_dialog: {
@@ -115,6 +119,10 @@ export const lexicon = {
             data: 'Отримання даних.',
             set: 'Запис даних.'
         },
-        load_map: 'Завантаження карти ...'
+        load_map: 'Завантаження карти ...',
+        filter: {
+            alcohol: 'Алкоголь',
+            tobacco: 'Тютюн',
+        },
     }
 }
