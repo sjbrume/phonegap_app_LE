@@ -4,11 +4,13 @@ import {connect} from "react-redux";
 import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
 import {lexicon} from './lexicon';
 
+
+
 function mapStateToProps(state) {
     return {
         clustering: state.map.clustering,
         filter: state.map.filter,
-        currentLocal: state.currentLocal,
+        currentLocal: state.intl,
     }
 }
 
@@ -46,6 +48,7 @@ export class MapFilter extends Component {
 
     render() {
         const {currentLocal} = this.props;
+        console.log(this.props);
         return (
             <div className="map-filter_wrapper">
                 <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'alcohol'}
