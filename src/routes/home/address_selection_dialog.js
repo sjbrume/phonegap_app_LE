@@ -117,14 +117,34 @@ export class AddressSelectionDialog extends Component {
 
     createPlacesDescription(duplicate_position) {
         const {currentLocal} = this.props;
-
+        console.log(duplicate_position);
         let array = [];
-        for (let key in duplicate_position) {
-            console.log(key);
-            if (parseInt(key) === 0 || typeof parseInt(key) === 'number' && parseInt(key)){
-                let item = duplicate_position[key];
-                console.log(item);
-                array.push(<div key={item.id_code.toString()} className="places-description_wrapper" style={{
+
+        for (let i = 0; i <duplicate_position.length; i++){
+            let item = duplicate_position[i];
+            console.log(item);
+            if(item.license_type === 'mixed') {
+                array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
+                    padding: '0 15px',
+                    borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
+                }}>
+                    <h3 className="places-description_title">
+                        {lexicon[currentLocal].company_desc.company}: {item.company}
+                    </h3>
+                    <p className="places-description_text">
+                        {lexicon[currentLocal].company_desc.measures} <br/>
+                    </p>
+                    <Button type="button" raised
+                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
+                            color="primary">
+                        <Link className={'fonts-white'} to={'/complaints/' + item.id}>
+                            {lexicon[currentLocal].company_desc.report_abuse}
+                        </Link>
+                    </Button>
+
+                </div>)
+            } else {
+                array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
                     padding: '0 15px',
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
@@ -147,9 +167,10 @@ export class AddressSelectionDialog extends Component {
                     </Button>
 
                 </div>)
-
             }
+
         }
+
         return array;
     }
 

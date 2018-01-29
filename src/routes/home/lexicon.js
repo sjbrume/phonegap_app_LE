@@ -40,6 +40,7 @@ export const lexicon = {
             license_number: 'Номер лицензии',
             license_start_at: 'Дата начала',
             license_end_at: 'окончания',
+            measures: 'Принятые меры',
             alcohol: 'Алкогольная',
             tobacco: 'Табачная',
             report_abuse: 'Сообщить о нарушении',
@@ -78,7 +79,7 @@ export const lexicon = {
                     number: 13149
                 }, {
                     type: 'with_license_number',
-                    title: `Об'єкт с лицензией`,
+                    title: `Об ектiв з лiцензiями`,
                     number: 13028
                 }, {
                     type: 'alcohol',
@@ -90,7 +91,7 @@ export const lexicon = {
                     number: 5801
                 },  {
                     type: 'number_without_a_license',
-                    title: `Об’єкт без відповідних безвільних документів`,
+                    title: `Об’єкт без відповідних дозвильных документів`,
                     number: 121
                 },
             ],
@@ -102,6 +103,7 @@ export const lexicon = {
             license_type: 'Тип ліцензії',
             license_number: 'Номер ліцензії',
             license_start_at: 'Дата початку',
+            measures: 'Вжиті заходи',
             license_end_at: 'закінчення',
             alcohol: 'Алкогольна',
             tobacco: 'Тютюнова',
