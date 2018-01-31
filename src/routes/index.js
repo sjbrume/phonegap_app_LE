@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {BrowserHistory} from "../history";
 
 import {Store} from '../store/store';
@@ -23,9 +23,7 @@ import {exit_app} from "../utils/exit_app";
 import {COMPLAINTS_MAP_TOGGLE} from "../store/complaints_map/reducer";
 import {HelpConventionsPage} from "./help_conventions/index";
 import {HelpFAQPage} from "./help_faq/index";
-import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../store/drawer_places_description/reducers";
-import {WEBSQL_SEARCH_REMOVE} from "../store/websql/action_types";
-import {MAP_DUPLICATE_POSITION} from "../store/map/action_types";
+import {MAP_GET_ADDRESS_INFO} from "../store/map/action_types";
 
 
 window.Store = Store;
@@ -42,21 +40,11 @@ document.addEventListener("backbutton", () => {
         Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
         return true;
     }
-    if (Store.getState().map.duplicate_position) {
-        Store.dispatch({type: MAP_DUPLICATE_POSITION, payload: null});
+    if (Store.getState().map.address_info) {
+        Store.dispatch({type: MAP_GET_ADDRESS_INFO, payload: []});
         return true;
     }
-    if (Store.getState().drawer_places_description.isOpen) {
-        Store.dispatch({type: DRAWER_PLACES_DESCRIPTION_TOGGLE, payload: {
-            isOpen: false,
-            description: null
-        }});
 
-        if (Store.getState().search_result) {
-            this.props.dispatch(WEBSQL_SEARCH_REMOVE, null)
-        }
-        return true;
-    }
     if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
 

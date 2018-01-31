@@ -3,10 +3,10 @@
 
 
 import {TABLE_NAME} from "../../config";
-import {MAP_DUPLICATE_POSITION} from "./action_types";
+import {MAP_GET_ADDRESS_INFO} from "./action_types";
 
-export const getDuplicateAddress = (store, arrayID) => {
-    console.log('getDuplicateAddress: ',store);
+export const getAddressInfo = (store, arrayID) => {
+    console.log('getAddressInfo: ',store);
     console.log(arrayID);
     return (dispatch) => {
         let searchParam = '';
@@ -26,7 +26,7 @@ export const getDuplicateAddress = (store, arrayID) => {
                 [],
                 (sqlTransaction, sqlResultSet) => {
                     console.log(sqlResultSet.rows);
-                    dispatch({type: MAP_DUPLICATE_POSITION, payload: sqlResultSet.rows});
+                    dispatch({type: MAP_GET_ADDRESS_INFO, payload: sqlResultSet.rows});
 
                 }, (sqlTransaction, sqlEerror) => {
                     console.log(sqlTransaction, sqlEerror);

@@ -1,7 +1,5 @@
 
 
-export const WEBSQL_SEARCH_SET              = 'WEBSQL_SEARCH_SET';
-export const WEBSQL_SEARCH_REMOVE           = 'WEBSQL_SEARCH_REMOVE';
 
 export const WEBSQL_DB_CREATE               = 'WEBSQL_DB_CREATE';
 export const WEBSQL_DB_LOADING              = 'WEBSQL_DB_LOADING';
@@ -19,7 +17,6 @@ export const WEBSQL_VERSION_DB_SUCCESS      = 'WEBSQL_VERSION_DB_SUCCESS';
 export const WEBSQL_VERSION_DB_ERROR        = 'WEBSQL_VERSION_DB_ERROR';
 export const WEBSQL_VERSION_DB_SET          = 'WEBSQL_VERSION_DB_SET';
 
-export const WEBSQL_SEARCH                  = 'WEBSQL_SEARCH_DB';
 
 
 export const WEBSQL_DOWNLOAD_DATA_LOADING   = 'WEBSQL_DOWNLOAD_DATA_LOADING';

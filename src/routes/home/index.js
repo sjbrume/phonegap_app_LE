@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {Marker} from "react-google-maps"
-import Drawer from 'material-ui/Drawer';
 import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import {lexicon} from './lexicon';
-import {WEBSQL_SEARCH_REMOVE, WEBSQL_SEARCH_SET} from "../../store/websql/action_types";
 import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
@@ -13,28 +11,25 @@ import {Link} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 import logo from './logo.png';
-import {FORM_ADD_LATLNG} from "../../store/reducers";
+import {Store} from '../../store/store';
 import {SET_MY_LOCATION} from "../../store/my_location/action_types";
 import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
-import {ListItem, ListItemIcon} from 'material-ui/List';
-import Typography from 'material-ui/Typography';
 
 import marker_license_active from './marker_license_active.svg';
 import marker_license_canceled from './marker_license_canceled.svg';
-import {DRAWER_PLACES_DESCRIPTION_TOGGLE} from "../../store/drawer_places_description/reducers";
 import {AddressSelectionDialog} from "./address_selection_dialog";
-import ArrowBack from 'material-ui-icons/ArrowBack';
+
+import {getAddressInfo} from "../../store/map/action";
 
 function mapStateToProps(state) {
     return {
-        duplicate_position: state.map.duplicate_position,
-        currentLocal: state.intl,
-        drawer_places_description: state.drawer_places_description,
-        info_dialog: state.info_dialog,
+        address_info: state.map.address_info,
         clustering: state.map.clustering,
         filter: state.map.filter,
+        map_center: state.map.center,
+        currentLocal: state.intl,
+        info_dialog: state.info_dialog,
         my_location: state.my_location,
-        search_result: state.websql.search_result,
         db: {
             db: state.websql.db.db,
             loading: state.websql.db.loading,
@@ -80,7 +75,6 @@ export class HomePage extends Component {
         this.createLoadingPanel = this.createLoadingPanel.bind(this);
         this.renderLoading = this.renderLoading.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
-        this.toggleDescription = this.toggleDescription.bind(this);
         this.createInfoDialog = this.createInfoDialog.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
     }
@@ -104,13 +98,9 @@ export class HomePage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const {db, set, search_result, filter} = nextProps;
+        const {db, set, filter} = nextProps;
         console.log(nextProps);
-        if (search_result !== this.props.search_result) {
-            console.log(this.props.search_result);
-            this.toggleDescription(true, search_result);
-            return true
-        }
+
         if (db !== this.props.db.db && set.success) {
             if (this.state.markers.length === 0) {
                 let result = this.getMarkers();
@@ -152,7 +142,7 @@ export class HomePage extends Component {
     }
 
     async getMarkers(filter = 'alcohol') {
-        const {db} = this.props;
+        const {db, dispatch} = this.props;
         const markers = [];
         const markersCanceled = [];
         const data = await new Promise((resolve, reject) => {
@@ -189,7 +179,7 @@ export class HomePage extends Component {
                         position={{lat: data[i].lat, lng: data[i].lng}}
                         data={data[i]}
                         title={data[i].id.toString()}
-                        onClick={() => this.toggleDescription(true, data[i])}
+                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data[i].id]))}
                     />)
                 } else {
                     markersCanceled.push(<Marker
@@ -199,7 +189,7 @@ export class HomePage extends Component {
                         data={data[i]}
                         title={data[i].id.toString()}
 
-                        onClick={() => this.toggleDescription(true, data[i])}
+                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data[i].id]))}
                     />)
                 }
 
@@ -241,54 +231,11 @@ export class HomePage extends Component {
         </div>
     </div>);
 
-    toggleDescription(open, data) {
-        console.log('openDescription', data);
-        const {currentLocal} = this.props;
-        if (data) {
-            const description = (
-                <div className="places-description_wrapper" style={{
-                    padding: '0 15px'
-                }}>
-                    <h3 className="places-description_title">
-                        {lexicon[currentLocal].company_desc.company}: {data.company}
-                    </h3>
-                    <p className="places-description_text">
-                        {lexicon[currentLocal].company_desc.license_type}: {data.license_type === 'alcohol' ? lexicon[currentLocal].company_desc.alcohol : lexicon[currentLocal].company_desc.tobacco}
-                        <br/>
-                        {lexicon[currentLocal].company_desc.license_number}: {data.license} <br/>
-                        {lexicon[currentLocal].company_desc.license_start_at}/{lexicon[currentLocal].company_desc.license_end_at}: {data.license_start_at}
-                        — {data.license_end_at}
-                    </p>
-                    <Button type="button" raised
-                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
-                            color="primary">
-                        <Link className={'fonts-white'} to={'/complaints/' + data.id}>
-                            {lexicon[currentLocal].company_desc.report_abuse}
-                        </Link>
-                    </Button>
-
-                </div>
-            );
-            this.props.dispatch(DRAWER_PLACES_DESCRIPTION_TOGGLE, {
-                isOpen: true,
-                description: description
-            })
-        } else {
-            this.props.dispatch(DRAWER_PLACES_DESCRIPTION_TOGGLE, {
-                isOpen: open,
-                description: null
-            });
-            if (this.props.search_result) {
-                this.props.dispatch(WEBSQL_SEARCH_REMOVE, null)
-            }
-        }
-
-    }
-
     createInfoDialog() {
         const {currentLocal} = this.props;
 
-        const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
+        // const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
+        const data = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear();
 
         return (
             <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
@@ -310,7 +257,8 @@ export class HomePage extends Component {
                         </div>
 
                         {
-                            lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type} className="info-dialog_text-row">
+                            lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type}
+                                                                                                className="info-dialog_text-row">
                             <span className="info-dialog_text-type">
                                 {item.title}:
                             </span>
@@ -352,9 +300,6 @@ export class HomePage extends Component {
 
     }
 
-    addressSelectionDialog() {
-
-    }
 
     onMapSuccess(Latitude, Longitude) {
         console.log('onMapSuccess - Latitude:', Latitude);
@@ -373,7 +318,7 @@ export class HomePage extends Component {
     }
 
     render() {
-        const {db, data, set, version, currentLocal, search_result, my_location, duplicate_position,drawer_places_description} = this.props;
+        const {db, data, set, version, currentLocal, my_location, map_center, address_info} = this.props;
         console.log('Home page index', this);
         if (this.props.info_dialog) {
             return this.createInfoDialog()
@@ -403,17 +348,15 @@ export class HomePage extends Component {
                         dispatch={this.props.dispatch}
 
                         center={{
-                            lat: search_result || my_location.lat ? my_location.lat || search_result.lat : 46.484583,
-                            lng: search_result || my_location.lng ? my_location.lng || search_result.lng : 30.7326,
+                            lat: my_location || map_center ? my_location.lat || map_center.lat : 46.484583,
+                            lng: my_location || map_center ? my_location.lng || map_center.lng : 30.7326,
                         }}
 
-                        zoom={search_result || my_location.lat || duplicate_position ? 14 : 10}
+                        zoom={my_location.lat || map_center.lat  ? 14 : 10}
 
                         MyLocation={my_location.lat}
 
                         onMapSuccess={this.onMapSuccess}
-
-                        toggleDescription={this.toggleDescription}
 
                         markers={this.state.markers}
 
@@ -423,53 +366,7 @@ export class HomePage extends Component {
 
                 }
                 <MapFilter/>
-                {
-                    drawer_places_description.isOpen && drawer_places_description.description && <Drawer
-                        onClick={() => this.toggleDescription(false, null)}
-                        onKeyDown={() => this.toggleDescription(false, null)}
-                        anchor="bottom"
-                        open={drawer_places_description.isOpen}
-                        onClose={() => this.toggleDescription(false, null)}
-                    >
-                        <button
-                            type="button"
-                            style={{
-                                backgroundColor: 'transparent',
-                                border: 'none',
-                                padding: 0,
-                                textDecoration: 'none',
-                                width: '100%'
-                            }}
-                            className={'fonts-white'}
-                            onClick={() => this.toggleDescription(false, null)}
-                        >
-                            <ListItem
-                                style={{
-                                    borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
-                                }}
-                            >
-                                <ListItemIcon
-                                    style={{
-                                        color: '#424242',
-                                        textDecoration: 'none'
-                                    }}
-                                >
-                                    <ArrowBack/>
-                                </ListItemIcon>
-                                <Typography
-                                    style={{
-                                        color: '#424242',
-                                        textDecoration: 'none'
-                                    }}
-                                    color="inherit"
-                                >
-                                    Назад
-                                </Typography>
-                            </ListItem>
-                        </button>
-                        {drawer_places_description.description}
-                    </Drawer>
-                }
+
 
                 {
                     this.props.clustering &&
@@ -482,7 +379,7 @@ export class HomePage extends Component {
                             }} size={60} thickness={7}/>
                             <div className="loading-panel_content">
                                 {lexicon[currentLocal].load_map}
-                                </div>
+                            </div>
                         </div>
                     </div>
                 }

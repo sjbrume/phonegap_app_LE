@@ -8,7 +8,6 @@ import {
     WEBSQL_DOWNLOAD_DATA_LOADING,
     WEBSQL_DOWNLOAD_DATA_SUCCESS,
 
-    WEBSQL_SEARCH,
 
     WEBSQL_SET_DATA_ERROR,
     WEBSQL_SET_DATA_LOADING,
@@ -17,24 +16,13 @@ import {
     WEBSQL_VERSION_DB_ERROR,
     WEBSQL_VERSION_DB_LOADING,
     WEBSQL_VERSION_DB_SET,
-    WEBSQL_VERSION_DB_SUCCESS, WEBSQL_LIST_OF_PLACES_GET, WEBSQL_SEARCH_SET, WEBSQL_SEARCH_REMOVE
+    WEBSQL_VERSION_DB_SUCCESS,
+    WEBSQL_LIST_OF_PLACES_GET,
 } from "./action_types";
 
 export const websql = (state = {}, action) => {
     switch (action.type) {
 
-        case WEBSQL_SEARCH_SET: {
-            console.log(WEBSQL_SEARCH_SET, action.payload);
-            return Object.assign({}, state, {
-                search_result: action.payload
-            })
-        }
-        case WEBSQL_SEARCH_REMOVE: {
-                console.log(WEBSQL_SEARCH_REMOVE, action.payload);
-                return Object.assign({}, state, {
-                    search_result: null
-                })
-            }
         case WEBSQL_LIST_OF_PLACES_GET: {
             console.log(WEBSQL_LIST_OF_PLACES_GET, action.payload);
             return Object.assign({}, state, {
@@ -144,12 +132,7 @@ export const websql = (state = {}, action) => {
                 },
             })
         }
-        
-        
-        case WEBSQL_SEARCH: {
-            console.log(WEBSQL_SEARCH, action.payload);
-            return state
-        }
+
         
         case WEBSQL_DOWNLOAD_DATA_LOADING: {
             console.log(WEBSQL_DOWNLOAD_DATA_LOADING, action.payload);

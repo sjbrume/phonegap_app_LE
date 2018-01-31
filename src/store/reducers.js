@@ -8,7 +8,6 @@ import {my_location} from "./my_location/reducers";
 import {info_dialog} from "./info_dialog/reducers";
 import {menu_toggle} from "./menu_toggle/reducer";
 import {complaints_map} from "./complaints_map/reducer";
-import {drawer_places_description} from "./drawer_places_description/reducers";
 
 
 export const FORM_ADD_LATLNG = 'FORM_ADD_LATLNG';
@@ -52,7 +51,6 @@ export const rootReducer = combineReducers({
     info_dialog,
     menu_toggle,
     complaints_map,
-    drawer_places_description,
     intl,
     menuPosition,
     websql,

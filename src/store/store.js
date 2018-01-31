@@ -16,16 +16,17 @@ const initialState = localStorage.getItem('reduxState') ?
                 lng: null,
             },
             complaints_map: false,
-            drawer_places_description: {
-                isOpen: false,
-                description: null
-            },
+
             info_dialog: true,
             menu_toggle: false,
             map: {
                 clustering: true,
                 filter: 'alcohol',
-                duplicate_position: null,
+                address_info: [],
+                center: {
+                    lat: null,
+                    lng: null,
+                },
             },
         }) : {
         intl: UKR,
@@ -35,16 +36,17 @@ const initialState = localStorage.getItem('reduxState') ?
             lng: null,
         },
         complaints_map: false,
-        drawer_places_description: {
-            isOpen: false,
-            description: null
-        },
+
         info_dialog: true,
         menu_toggle: false,
         map: {
             clustering: true,
             filter: 'alcohol',
-            duplicate_position: null,
+            address_info: [],
+            center: {
+                lat: null,
+                lng: null,
+            },
         },
         websql: {
             search_result: {

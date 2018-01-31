@@ -75,11 +75,11 @@ export const lexicon = {
                     number: 4193
                 }, {
                     type: 'number_of_licenses',
-                    title: `Загальність ліцензій`,
+                    title: `Загальна кількість ліцензій`,
                     number: 13149
                 }, {
                     type: 'with_license_number',
-                    title: `Об ектiв з лiцензiями`,
+                    title: `Об\`ектiв з лiцензiями`,
                     number: 13028
                 }, {
                     type: 'alcohol',
@@ -91,7 +91,7 @@ export const lexicon = {
                     number: 5801
                 },  {
                     type: 'number_without_a_license',
-                    title: `Об’єкт без відповідних дозвильных документів`,
+                    title: `Об’єктив без відповідних дозвiльных документів`,
                     number: 121
                 },
             ],

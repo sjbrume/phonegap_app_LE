@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Drawer from 'material-ui/Drawer';
-import {MAP_DUPLICATE_POSITION} from "../../store/map/action_types";
+import { MAP_GET_ADDRESS_INFO, MAP_SET_CENTER} from "../../store/map/action_types";
 import {lexicon} from './lexicon';
 import {Button} from "material-ui";
 import {ListItem, ListItemIcon} from 'material-ui/List';
@@ -14,7 +14,9 @@ import {GLOBAL_STYLE} from "../../config";
 function mapStateToProps(state) {
     return {
         currentLocal: state.intl,
-        duplicate_position: state.map.duplicate_position,
+        my_location: state.my_location,
+        address_info: state.map.address_info,
+        map_center: state.map.center,
         db: {
             db: state.websql.db.db,
             loading: state.websql.db.loading,
@@ -48,7 +50,7 @@ export class AddressSelectionDialog extends Component {
 
     get initialState() {
         return {
-            duplicate_position: {
+            address_info: {
                 '0': {
                     id: 3662,
                     region_id: 0,
@@ -111,17 +113,22 @@ export class AddressSelectionDialog extends Component {
 
     toggleDescription(open, data) {
         if (!open) {
-            this.props.dispatch(MAP_DUPLICATE_POSITION, null);
+            this.props.dispatch(MAP_GET_ADDRESS_INFO, []);
         }
     }
 
-    createPlacesDescription(duplicate_position) {
-        const {currentLocal} = this.props;
-        console.log(duplicate_position);
+    createPlacesDescription(address_info) {
+        const {currentLocal, map_center} = this.props;
+        console.log(address_info);
         let array = [];
-
-        for (let i = 0; i <duplicate_position.length; i++){
-            let item = duplicate_position[i];
+        if(map_center.lat !== address_info[0].lat) {
+            this.props.dispatch(MAP_SET_CENTER, {
+                lat: address_info[0].lat,
+                lng: address_info[0].lng,
+            })
+        }
+        for (let i = 0; i <address_info.length; i++){
+            let item = address_info[i];
             console.log(item);
             if(item.license_type === 'mixed') {
                 array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
@@ -175,11 +182,11 @@ export class AddressSelectionDialog extends Component {
     }
 
     render() {
-        // const {duplicate_position} = this.state;
-        const {currentLocal, duplicate_position} = this.props;
+        // const {address_info} = this.state;
+        const {address_info} = this.props;
         console.log(this);
         // console.log(this.props);
-        if (!duplicate_position) {
+        if (!address_info.length) {
             return null
         }
 
@@ -189,7 +196,7 @@ export class AddressSelectionDialog extends Component {
                 onClick={() => this.toggleDescription(false, null)}
                 onKeyDown={() => this.toggleDescription(false, null)}
                 anchor="bottom"
-                open={duplicate_position !== null}
+                open={address_info !== null}
                 onClose={() => this.toggleDescription(false, null)}
             >
                 <div>
@@ -231,19 +238,13 @@ export class AddressSelectionDialog extends Component {
                         </ListItem>
                     </button>
                     {
-                        duplicate_position && this.createPlacesDescription(duplicate_position)
+                        address_info && this.createPlacesDescription(address_info)
                     }
                 </div>
             </Drawer>
         )
 
-        // return (
-        //     <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
-        //         <div className="loading-panel_content">
-        //             AddressSelectionDialog
-        //         </div>
-        //     </div>
-        // )
+
     }
 }
 

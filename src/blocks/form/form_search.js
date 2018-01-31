@@ -5,8 +5,8 @@ import Select from 'react-select';
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
 import './form.css';
-import {WEBSQL_SEARCH_REMOVE, WEBSQL_SEARCH_SET} from "../../store/websql/action_types";
 import {TABLE_NAME} from "../../config";
+import {MAP_GET_ADDRESS_INFO} from "../../store/map/action_types";
 
 
 function mapStateToProps(state) {
@@ -75,15 +75,15 @@ export class FormSearch extends Component {
                 tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE id = ?;`,
                     [value.id],
                     (sqlTransaction, sqlResultSet) => {
-                        console.log(sqlResultSet.rows);
-                        // this.props.dispatch(WEBSQL_SEARCH_SET,sqlResultSet.rows[0])
-                        this.props.dispatch(WEBSQL_SEARCH_SET,sqlResultSet.rows[0])
-                    }, (sqlTransaction, sqlEerror) => {
-                        console.log(sqlTransaction, sqlEerror);
+
+                        this.props.dispatch(MAP_GET_ADDRESS_INFO ,  [sqlResultSet.rows[0]]);
+                    }, (sqlTransaction, sqlError) => {
+                        console.log(sqlTransaction, sqlError);
                     })
             })
         } else {
-            this.props.dispatch(WEBSQL_SEARCH_REMOVE,null)
+            this.props.dispatch(MAP_GET_ADDRESS_INFO , null);
+
         }
     }
 

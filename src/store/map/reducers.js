@@ -1,4 +1,4 @@
-import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD,MAP_DUPLICATE_POSITION} from "./action_types";
+import {MAP_CLUSTERING_FILTER, MAP_CLUSTERING_LOAD,MAP_GET_ADDRESS_INFO,MAP_SET_CENTER} from "./action_types";
 
 
 
@@ -17,10 +17,16 @@ export const map = (state = {}, action) => {
             })
         }
 
-        case MAP_DUPLICATE_POSITION: {
-            console.log(MAP_CLUSTERING_FILTER,action);
+        case MAP_GET_ADDRESS_INFO: {
+            console.log(MAP_GET_ADDRESS_INFO,action);
             return Object.assign({}, state, {
-                duplicate_position: action.payload
+                address_info: action.payload
+            })
+        }
+        case MAP_SET_CENTER: {
+            console.log(MAP_SET_CENTER,action);
+            return Object.assign({}, state, {
+                center: action.payload
             })
         }
         default:

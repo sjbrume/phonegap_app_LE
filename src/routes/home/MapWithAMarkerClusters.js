@@ -4,12 +4,11 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 import {MarkerClusterer} from "react-google-maps/lib/components/addons/MarkerClusterer"
 import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
-import {MAP_DUPLICATE_POSITION} from "../../store/map/action_types";
 import MyLocation from '../complaints_map/my_location_icon.png';
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
 
 import {Store} from '../../store/store';
-import {getDuplicateAddress} from "../../store/map/action";
+import {getAddressInfo} from "../../store/map/action";
 
 function positionCheck(clickedMarkers) {
     const length = clickedMarkers.length;
@@ -42,10 +41,6 @@ export const MapWithAMarkerClusters = compose(
     withHandlers({
         onMarkerClusterClick: () => (markerCluster) => {
             const clickedMarkers = markerCluster.getMarkers();
-            console.log(`Current clicked markers length: ${clickedMarkers.length}`);
-            console.log('markerCluster:', markerCluster);
-            console.log('clickedMarkers:', clickedMarkers);
-
             if (clickedMarkers.length < 20) {
 
 
@@ -58,7 +53,7 @@ export const MapWithAMarkerClusters = compose(
                              lat: ${item.position.lat()}
                              lng: ${item.position.lng()}`);
                     })
-                    Store.dispatch(getDuplicateAddress(Store.getState(), arrayID));
+                    Store.dispatch(getAddressInfo(Store.getState(), arrayID));
 
                 }
 
