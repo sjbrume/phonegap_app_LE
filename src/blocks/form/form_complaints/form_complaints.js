@@ -476,7 +476,7 @@ export class FormComplaints extends Component {
                             }}
                             style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 0 0'}}
                             color="primary">
-                        Прикрепить координаты
+                        {lexicon[currentLocal].attach_coordinates}
                     </Button>
                     {
                         (values && values.lng) &&

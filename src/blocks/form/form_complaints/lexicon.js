@@ -15,7 +15,7 @@ export const lexicon = {
         photo: 'Добавить фото',
         phone: 'Телефон',
         send: 'Отправить',
-
+        attach_coordinates:'Прикрепить координаты',
         submitMessage: {
             success: 'Сообщение доставлено',
             error: 'Во время отправки сообщения произошла ошибка'
@@ -52,6 +52,7 @@ export const lexicon = {
         photo: 'Додати фото',
         phone: 'Телефон',
         send: 'Відправити',
+        attach_coordinates:'Прикріпити координати',
         submitMessage: {
             success: 'Повідомлення доставлено\n',
             error: 'Під час відправки повідомлення сталася помилка'
