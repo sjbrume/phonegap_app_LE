@@ -72,7 +72,11 @@
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
     </platform>
     <splash src="splash.png" />
+
+    <preference name="SplashScreen" value="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
+    <preference name="AutoHideSplashScreen" value="true" />
+
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
