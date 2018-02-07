@@ -21,9 +21,8 @@
     <plugin name="cordova-plugin-geolocation" source="npm" spec="4.0.1" />
     <plugin name="cordova-plugin-request-location-accuracy" source="npm" spec="2.2.2" />
     <plugin name="cordova-plugin-advanced-geolocation" source="npm" spec="1.6.1" />
-    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
 
-    <!--<plugin name="cordova-plugin-splashscreen" source="npm" spec="~5.0.1" />-->
+    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~5.0.1" />
     <plugin name="cordova.custom.plugins.exitapp" spec="https://github.com/gaqzi/cordova-plugin-exitapp.git" />
 
     <platform name="android">
@@ -89,7 +88,6 @@
     <!--</platform>-->
     <preference name="SplashScreen" value="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
-    <preference name="AutoHideSplashScreen" value="true" />
 
     <access origin="*" />
     <allow-intent href="http://*/*" />
