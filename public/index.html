@@ -16,6 +16,12 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+        navigator.splashscreen.show();
+        setTimeout(function() {
+            navigator.splashscreen.hide();
+        }, 7000);
+    </script>
 </head>
 <body>
 <noscript>
