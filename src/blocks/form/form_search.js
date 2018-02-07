@@ -12,7 +12,7 @@ import {MAP_GET_ADDRESS_INFO} from "../../store/map/action_types";
 function mapStateToProps(state) {
     return {
         currentLocal: state.intl,
-        info_dialog: state.info_dialog,
+        info_dialog: state.info_dialog.toggle,
         list_of_places: state.websql.list_of_places,
 
         db: {

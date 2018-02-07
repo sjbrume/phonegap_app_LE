@@ -135,6 +135,10 @@ export class AddressSelectionDialog extends Component {
                     padding: '0 15px',
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
+                    {item.company_type &&  <p className="places-description_text">
+                        {lexicon[currentLocal].company_desc.type}: {item.company_type}
+                    </p>}
+
                     <h3 className="places-description_title">
                         {lexicon[currentLocal].company_desc.company}: {item.company}
                     </h3>
@@ -155,6 +159,9 @@ export class AddressSelectionDialog extends Component {
                     padding: '0 15px',
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
+                    {item.company_type &&  <p className="places-description_text">
+                        {lexicon[currentLocal].company_desc.type}: {item.company_type}
+                    </p>}
                     <h3 className="places-description_title">
                         {lexicon[currentLocal].company_desc.company}: {item.company}
                     </h3>

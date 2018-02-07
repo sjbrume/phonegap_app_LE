@@ -7,7 +7,7 @@ import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
 import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 import logo from './logo.png';
@@ -28,7 +28,7 @@ function mapStateToProps(state) {
         filter: state.map.filter,
         map_center: state.map.center,
         currentLocal: state.intl,
-        info_dialog: state.info_dialog,
+        info_dialog: state.info_dialog.toggle,
         my_location: state.my_location,
         db: {
             db: state.websql.db.db,
@@ -75,7 +75,7 @@ export class HomePage extends Component {
         this.createLoadingPanel = this.createLoadingPanel.bind(this);
         this.renderLoading = this.renderLoading.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
-        this.createInfoDialog = this.createInfoDialog.bind(this);
+        // this.createInfoDialog = this.createInfoDialog.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
     }
 
@@ -231,74 +231,74 @@ export class HomePage extends Component {
         </div>
     </div>);
 
-    createInfoDialog() {
-        const {currentLocal} = this.props;
-
-        // const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
-        const data = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear();
-
-        return (
-            <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
-                <div className="info-dialog_content">
-                    <div className="info-dialog_logo">
-                        <img src={logo} alt="" className="info-dialog_img"/>
-                    </div>
-                    <div className="info-dialog_text">
-                        <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
-                            {lexicon[currentLocal].info_dialog.introtext}
-                        </div>
-                    </div>
-                    <div className="info-dialog_text">
-                        <div className="info-dialog_text-title">
-                            {lexicon[currentLocal].info_dialog.title}
-                        </div>
-                        <div style={{textAlign: 'center', paddingBottom: 20}} className="info-dialog_text-title">
-                            {data}
-                        </div>
-
-                        {
-                            lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type}
-                                                                                                className="info-dialog_text-row">
-                            <span className="info-dialog_text-type">
-                                {item.title}:
-                            </span>
-                                <span className="info-dialog_text-content">
-                                {item.number}
-                            </span>
-                            </div>)
-                        }
-
-                    </div>
-                    <div style={{
-                        textAlign: 'center',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}>
-                        <Link to="/help" style={{
-                            textDecoration: 'none'
-                        }}>
-                            <Button type="button" onClick={() => {
-                                this.props.dispatch(INFO_DIALOG_TOGGLE, false);
-                            }} raised style={{
-                                backgroundColor: '#b3e5fc',
-                                color: '#334148',
-                            }}
-                                    color="primary">
-                                {lexicon[currentLocal].info_dialog.help}
-                            </Button>
-                        </Link>
-                        <Button onClick={() => {
-                            this.props.dispatch(INFO_DIALOG_TOGGLE, false);
-                        }} type="button" raised
-                                style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-                            {lexicon[currentLocal].info_dialog.close}
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        )
-
-    }
+    // createInfoDialog() {
+    //     const {currentLocal} = this.props;
+    //
+    //     // const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
+    //     const data = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear();
+    //
+    //     return (
+    //         <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
+    //             <div className="info-dialog_content">
+    //                 <div className="info-dialog_logo">
+    //                     <img src={logo} alt="" className="info-dialog_img"/>
+    //                 </div>
+    //                 <div className="info-dialog_text">
+    //                     <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
+    //                         {lexicon[currentLocal].info_dialog.introtext}
+    //                     </div>
+    //                 </div>
+    //                 <div className="info-dialog_text">
+    //                     <div className="info-dialog_text-title">
+    //                         {lexicon[currentLocal].info_dialog.title}
+    //                     </div>
+    //                     <div style={{textAlign: 'center', paddingBottom: 20}} className="info-dialog_text-title">
+    //                         {data}
+    //                     </div>
+    //
+    //                     {
+    //                         lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type}
+    //                                                                                             className="info-dialog_text-row">
+    //                         <span className="info-dialog_text-type">
+    //                             {item.title}:
+    //                         </span>
+    //                             <span className="info-dialog_text-content">
+    //                             {item.number}
+    //                         </span>
+    //                         </div>)
+    //                     }
+    //
+    //                 </div>
+    //                 <div style={{
+    //                     textAlign: 'center',
+    //                     display: 'flex',
+    //                     justifyContent: 'space-between',
+    //                 }}>
+    //                     <Link to="/help" style={{
+    //                         textDecoration: 'none'
+    //                     }}>
+    //                         <Button type="button" onClick={() => {
+    //                             this.props.dispatch(INFO_DIALOG_TOGGLE, false);
+    //                         }} raised style={{
+    //                             backgroundColor: '#b3e5fc',
+    //                             color: '#334148',
+    //                         }}
+    //                                 color="primary">
+    //                             {lexicon[currentLocal].info_dialog.help}
+    //                         </Button>
+    //                     </Link>
+    //                     <Button onClick={() => {
+    //                         this.props.dispatch(INFO_DIALOG_TOGGLE, false);
+    //                     }} type="button" raised
+    //                             style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
+    //                         {lexicon[currentLocal].info_dialog.close}
+    //                     </Button>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    //
+    // }
 
 
     onMapSuccess(Latitude, Longitude) {
@@ -321,7 +321,8 @@ export class HomePage extends Component {
         const {db, data, set, version, currentLocal, my_location, map_center, address_info} = this.props;
         console.log('Home page index', this);
         if (this.props.info_dialog) {
-            return this.createInfoDialog()
+            return (<Redirect to="/statistic-page"/>)
+            // return this.createInfoDialog()
         }
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()

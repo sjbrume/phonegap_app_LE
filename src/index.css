@@ -249,11 +249,12 @@ body, html {
 
 .info-dialog_content {
     position: absolute;
-    top: 0;
+    top: -64px;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20px;
+    padding-top: 64px;
     background-color: #fff;
     border-radius: 2px;
     box-sizing: border-box;

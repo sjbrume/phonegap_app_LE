@@ -24,6 +24,7 @@ import {COMPLAINTS_MAP_TOGGLE} from "../store/complaints_map/reducer";
 import {HelpConventionsPage} from "./help_conventions/index";
 import {HelpFAQPage} from "./help_faq/index";
 import {MAP_GET_ADDRESS_INFO} from "../store/map/action_types";
+import {StatisticPage} from "./statistic_page/index";
 
 
 window.Store = Store;
@@ -111,6 +112,12 @@ export class RouterWrapper extends Component {
                             path={MenuLexicon[currentLocal].menu.list_of_places.href}
                             title={MenuLexicon[currentLocal].menu.list_of_places.text}
                             component={ListOfPlacesPage}/>
+
+                        <ChildrenRoute
+                            exact
+                            path={'/statistic-page'}
+                            title={''}
+                            component={StatisticPage}/>
 
                         <ChildrenRoute
                             exact

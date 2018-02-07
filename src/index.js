@@ -6,9 +6,12 @@ import {Store} from './store/store'
 import {RouterWrapper} from "./routes/index";
 import './index.css'
 import {init_db} from "./store/websql/actions";
+import {getStatistic} from "./store/info_dialog/actions";
 
-
+Store.dispatch(getStatistic());
 Store.dispatch(init_db(Store.getState().websql));
+
+
 
 
 ReactDOM.render(

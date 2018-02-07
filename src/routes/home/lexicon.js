@@ -35,6 +35,7 @@ export const lexicon = {
             help: 'Помощь'
         },
         company_desc: {
+            type: 'Тип',
             company: 'Название',
             license_type: 'Тип лицензии',
             license_number: 'Номер лицензии',
@@ -99,6 +100,7 @@ export const lexicon = {
             help: 'Допомога'
         },
         company_desc: {
+            type: 'Тип',
             company: 'Назва',
             license_type: 'Тип ліцензії',
             license_number: 'Номер ліцензії',

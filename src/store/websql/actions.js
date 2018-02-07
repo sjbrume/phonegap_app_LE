@@ -89,6 +89,7 @@ const create_table_db = (DB) => {
               lat              REAL,
               license          TEXT,
               company          TEXT,
+              company_type     TEXT,
               license_start_at TEXT,
               license_end_at   TEXT,
               license_type     TEXT,
@@ -131,6 +132,7 @@ const set_db = (DB, data) => {
                                   lat              REAL,
                                   license          TEXT,
                                   company          TEXT,
+                                  company_type     TEXT,
                                   license_start_at TEXT,
                                   license_end_at   TEXT,
                                   license_type     TEXT,
@@ -148,6 +150,7 @@ const set_db = (DB, data) => {
                                             lat,
                                             license,
                                             company,
+                                            company_type,
                                             license_start_at,
                                             license_end_at,
                                             license_type,
@@ -164,11 +167,12 @@ const set_db = (DB, data) => {
                                                       lat,
                                                       license,
                                                       company,
+                                                      company_type,
                                                       license_start_at,
                                                       license_end_at,
                                                       license_type,
                                                       status
-                                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                     [id,
                                                         region_id,
                                                         id_code,
@@ -177,6 +181,7 @@ const set_db = (DB, data) => {
                                                         lat,
                                                         license,
                                                         company,
+                                                        company_type,
                                                         license_start_at,
                                                         license_end_at,
                                                         license_type,
@@ -232,7 +237,8 @@ const update_db = () => {
         dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: true});
         return new Promise((resolve, reject) => {
             if (HARD_CODE_MODE) {
-                dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false})
+                dispatch({type: WEBSQL_VERSION_DB_LOADING, payload: false});
+
                 resolve(1514451431)
             } else {
                 let xhr = new XMLHttpRequest;

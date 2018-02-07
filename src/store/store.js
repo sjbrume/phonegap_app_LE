@@ -17,7 +17,12 @@ const initialState = localStorage.getItem('reduxState') ?
             },
             complaints_map: false,
 
-            info_dialog: true,
+            info_dialog: {
+                toggle: true,
+                loading: false,
+                success: false,
+                error: false
+            },
             menu_toggle: false,
             map: {
                 clustering: true,
@@ -37,7 +42,12 @@ const initialState = localStorage.getItem('reduxState') ?
         },
         complaints_map: false,
 
-        info_dialog: true,
+        info_dialog: {
+            toggle: true,
+            loading: false,
+            success: false,
+            error: false
+        },
         menu_toggle: false,
         map: {
             clustering: true,
