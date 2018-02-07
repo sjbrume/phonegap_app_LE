@@ -73,7 +73,7 @@
         <splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
     </platform>
-    <splash src="splash.png" />
+    <splash src="res/screen/android/drawable-port-xhdpi-screen.png" />
     <preference name="SplashScreenDelay" value="7000" />
 
     <access origin="*" />
