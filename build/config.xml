@@ -74,19 +74,6 @@
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
     </platform>
     <splash src="splash.png" />
-    <!--<platform name="android">-->
-        <!--&lt;!&ndash; you can use any density that exists in the Android project &ndash;&gt;-->
-        <!--<splash src="res/screen/android/drawable-port-xhdpi-screen.png" density="land-hdpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-xhdpi-screen.png" density="land-ldpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-mdpi.png" density="land-mdpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-xhdpi.png" density="land-xhdpi"/>-->
-
-        <!--<splash src="res/screen/android/drawable-port-hdpi.png" density="port-hdpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-ldpi.png" density="port-ldpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-mdpi.png" density="port-mdpi"/>-->
-        <!--<splash src="res/screen/android/drawable-port-xhdpi.png" density="port-xhdpi"/>-->
-    <!--</platform>-->
-    <preference name="SplashScreen" value="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
 
     <access origin="*" />
