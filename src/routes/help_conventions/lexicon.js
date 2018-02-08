@@ -14,9 +14,9 @@ export const lexicon = {
         find_geolication_loading:'додаток в процесі пошуку вашого місцезнаходження\n',
         find_geolication_inactive:'пошук вашого місцезнаходження \n',
         marker_license_active:'об’єкт з ліцензією ',
-        marker_license_canceled:'об’єкт без відповідних дозвiльнiх документів',
+        marker_license_canceled:'об’єкт без відповідних дозвiльних документів',
         cluster_marker_active:'группа об’єктів з ліцензією ',
-        cluster_marker_canceled:'группа об’єктiв без відповідних дозвiльнiх документів',
+        cluster_marker_canceled:'группа об’єктiв без відповідних дозвiльних документів',
         my_location:'ваше місцезнаходження на карті',
     }
 }
