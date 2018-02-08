@@ -13,10 +13,10 @@ export const lexicon = {
         filter_places: 'вибір типу ліцензії',
         find_geolication_loading:'додаток в процесі пошуку вашого місцезнаходження\n',
         find_geolication_inactive:'пошук вашого місцезнаходження \n',
-        marker_license_active:'Об’єкт з ліцензією ',
-        marker_license_canceled:'Об’єкт дозвiльнiх безвільних документів',
+        marker_license_active:'об’єкт з ліцензією ',
+        marker_license_canceled:'об’єкт без відповідних дозвiльнiх документів',
         cluster_marker_active:'группа об’єктів з ліцензією ',
-        cluster_marker_canceled:'группа об’єктів дозвiльнiх безвільних документів',
+        cluster_marker_canceled:'группа об’єкт без відповідних дозвiльнiх документів',
         my_location:'ваше місцезнаходження на карті',
     }
 }
