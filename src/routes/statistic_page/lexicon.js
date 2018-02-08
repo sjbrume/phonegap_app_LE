@@ -63,7 +63,7 @@ export const lexicon = {
                     number: 5801
                 },  {
                     type: 'without_license_count',
-                    title: `Об’єктив без відповідних дозвiльнiх документів`,
+                    title: `Об’єктiв без відповідних дозвiльнiх документів`,
                     number: 121
                 },
             ],
