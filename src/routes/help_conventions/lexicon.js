@@ -16,7 +16,7 @@ export const lexicon = {
         marker_license_active:'об’єкт з ліцензією ',
         marker_license_canceled:'об’єкт без відповідних дозвiльнiх документів',
         cluster_marker_active:'группа об’єктів з ліцензією ',
-        cluster_marker_canceled:'группа об’єкт без відповідних дозвiльнiх документів',
+        cluster_marker_canceled:'группа об’єктiв без відповідних дозвiльнiх документів',
         my_location:'ваше місцезнаходження на карті',
     }
 }
