@@ -39,8 +39,8 @@ export const lexicon = {
     'UKR': {
         anonim: 'Без надання персональних даних',
         no_anonim: 'З надання персональних даних',
-        fio: 'ФІО',
-        company: 'Компания',
+        fio: 'ПIБ',
+        company: 'Суб\'ект господорования',
         message: 'Суть скарги',
         default_message: {
             not_issued_a_check: 'Не видали чек ',

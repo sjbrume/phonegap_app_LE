@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Drawer from 'material-ui/Drawer';
-import { MAP_GET_ADDRESS_INFO, MAP_SET_CENTER} from "../../store/map/action_types";
+import {MAP_GET_ADDRESS_INFO, MAP_SET_CENTER} from "../../store/map/action_types";
 import {lexicon} from './lexicon';
 import {Button} from "material-ui";
 import {ListItem, ListItemIcon} from 'material-ui/List';
@@ -38,7 +38,9 @@ function mapDispatchToProps(dispatch) {
 export class AddressSelectionDialog extends Component {
     static propTypes = {};
 
-    static defaultProps = {};
+    static defaultProps = {
+        address_info: []
+    };
 
 
     constructor(props) {
@@ -114,6 +116,10 @@ export class AddressSelectionDialog extends Component {
     toggleDescription(open, data) {
         if (!open) {
             this.props.dispatch(MAP_GET_ADDRESS_INFO, []);
+            this.props.dispatch(MAP_SET_CENTER, {
+                lat: null,
+                lng: null,
+            })
         }
     }
 
@@ -121,21 +127,21 @@ export class AddressSelectionDialog extends Component {
         const {currentLocal, map_center} = this.props;
         console.log(address_info);
         let array = [];
-        if(map_center.lat !== address_info[0].lat) {
+        if (map_center.lat !== address_info[0].lat) {
             this.props.dispatch(MAP_SET_CENTER, {
                 lat: address_info[0].lat,
                 lng: address_info[0].lng,
             })
         }
-        for (let i = 0; i <address_info.length; i++){
+        for (let i = 0; i < address_info.length; i++) {
             let item = address_info[i];
             console.log(item);
-            if(item.license_type === 'mixed') {
+            if (item.license_type === 'mixed') {
                 array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
                     padding: '0 15px',
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
-                    {item.company_type &&  <p className="places-description_text">
+                    {item.company_type && <p className="places-description_text">
                         {lexicon[currentLocal].company_desc.type}: {item.company_type}
                     </p>}
 
@@ -159,7 +165,7 @@ export class AddressSelectionDialog extends Component {
                     padding: '0 15px',
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
-                    {item.company_type &&  <p className="places-description_text">
+                    {item.company_type && <p className="places-description_text">
                         {lexicon[currentLocal].company_desc.type}: {item.company_type}
                     </p>}
                     <h3 className="places-description_title">
@@ -189,11 +195,10 @@ export class AddressSelectionDialog extends Component {
     }
 
     render() {
-        // const {address_info} = this.state;
         const {address_info} = this.props;
         console.log(this);
         // console.log(this.props);
-        if (!address_info.length) {
+        if (address_info && !address_info.length) {
             return null
         }
 

@@ -75,7 +75,6 @@ export class HomePage extends Component {
         this.createLoadingPanel = this.createLoadingPanel.bind(this);
         this.renderLoading = this.renderLoading.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
-        // this.createInfoDialog = this.createInfoDialog.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
     }
 
@@ -97,14 +96,20 @@ export class HomePage extends Component {
         // this.createWebSQL();
     }
 
+    componentWillUnmount() {
+        const {db, data, set, version, currentLocal, clustering, filter} = this.props;
+        if(!clustering) {
+            this.props.dispatch(MAP_CLUSTERING_LOAD, true);
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         const {db, set, filter} = nextProps;
-        console.log(nextProps);
+        console.log('componentWillReceiveProps', nextProps);
 
         if (db !== this.props.db.db && set.success) {
             if (this.state.markers.length === 0) {
                 let result = this.getMarkers();
-                console.log(result);
             }
         }
         if (filter !== this.props.filter && set.success) {
@@ -114,7 +119,7 @@ export class HomePage extends Component {
     };
 
     createLoadingPanel() {
-        const {db, data, set, version, currentLocal} = this.props;
+        const {db, data, set, version, currentLocal, clustering, filter} = this.props;
 
         if (version.loading) {
             return this.renderLoading(lexicon[currentLocal].loading.version, true)
@@ -138,10 +143,17 @@ export class HomePage extends Component {
         } else if (!set.loading && set.error) {
             return this.renderLoading(lexicon[currentLocal].error.set, false)
         }
+
+        if (clustering) {
+            console.log('clustering = true');
+            let result = this.getMarkers(filter);
+        }
+
         return null
     }
 
     async getMarkers(filter = 'alcohol') {
+        console.log('getMarkers');
         const {db, dispatch} = this.props;
         const markers = [];
         const markersCanceled = [];
@@ -231,75 +243,6 @@ export class HomePage extends Component {
         </div>
     </div>);
 
-    // createInfoDialog() {
-    //     const {currentLocal} = this.props;
-    //
-    //     // const data = new Date().getFullYear() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getDate();
-    //     const data = new Date().getDate() + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear();
-    //
-    //     return (
-    //         <div className="loading-panel_wrapper" style={{zIndex: '10000'}}>
-    //             <div className="info-dialog_content">
-    //                 <div className="info-dialog_logo">
-    //                     <img src={logo} alt="" className="info-dialog_img"/>
-    //                 </div>
-    //                 <div className="info-dialog_text">
-    //                     <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
-    //                         {lexicon[currentLocal].info_dialog.introtext}
-    //                     </div>
-    //                 </div>
-    //                 <div className="info-dialog_text">
-    //                     <div className="info-dialog_text-title">
-    //                         {lexicon[currentLocal].info_dialog.title}
-    //                     </div>
-    //                     <div style={{textAlign: 'center', paddingBottom: 20}} className="info-dialog_text-title">
-    //                         {data}
-    //                     </div>
-    //
-    //                     {
-    //                         lexicon[currentLocal].info_dialog.content.map((item, index) => <div key={index + item.type}
-    //                                                                                             className="info-dialog_text-row">
-    //                         <span className="info-dialog_text-type">
-    //                             {item.title}:
-    //                         </span>
-    //                             <span className="info-dialog_text-content">
-    //                             {item.number}
-    //                         </span>
-    //                         </div>)
-    //                     }
-    //
-    //                 </div>
-    //                 <div style={{
-    //                     textAlign: 'center',
-    //                     display: 'flex',
-    //                     justifyContent: 'space-between',
-    //                 }}>
-    //                     <Link to="/help" style={{
-    //                         textDecoration: 'none'
-    //                     }}>
-    //                         <Button type="button" onClick={() => {
-    //                             this.props.dispatch(INFO_DIALOG_TOGGLE, false);
-    //                         }} raised style={{
-    //                             backgroundColor: '#b3e5fc',
-    //                             color: '#334148',
-    //                         }}
-    //                                 color="primary">
-    //                             {lexicon[currentLocal].info_dialog.help}
-    //                         </Button>
-    //                     </Link>
-    //                     <Button onClick={() => {
-    //                         this.props.dispatch(INFO_DIALOG_TOGGLE, false);
-    //                     }} type="button" raised
-    //                             style={{backgroundColor: '#b3e5fc', color: '#334148'}} color="primary">
-    //                         {lexicon[currentLocal].info_dialog.close}
-    //                     </Button>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     )
-    //
-    // }
-
 
     onMapSuccess(Latitude, Longitude) {
         console.log('onMapSuccess - Latitude:', Latitude);
@@ -326,6 +269,8 @@ export class HomePage extends Component {
         }
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
+        } else {
+            // this.getMarkers();
         }
         if (version.error) {
             return (<div>{lexicon[currentLocal].error.version}</div>)
@@ -353,7 +298,7 @@ export class HomePage extends Component {
                             lng: my_location || map_center ? my_location.lng || map_center.lng : 30.7326,
                         }}
 
-                        zoom={my_location.lat || map_center.lat  ? 14 : 10}
+                        zoom={my_location.lat || map_center.lat ? 14 : 10}
 
                         MyLocation={my_location.lat}
 
