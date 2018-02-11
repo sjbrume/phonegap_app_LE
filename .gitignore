@@ -7,6 +7,8 @@ phonegap-account.json
 # testing
 /coverage
 
+
+/keyStore
 # production
 
 
