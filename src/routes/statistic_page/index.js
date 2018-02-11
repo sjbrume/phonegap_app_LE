@@ -168,7 +168,7 @@ export class StatisticPage extends Component {
                         display: 'block',
                         width: '100%',
                         minHeight: '215px',
-                        position: 'fixed',
+                        position: 'absolute',
                         left: 0,
                         top: 0,
                         right: 0,

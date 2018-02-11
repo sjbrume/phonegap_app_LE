@@ -43,8 +43,9 @@ export const lexicon = {
             license_start_at: 'Дата начала',
             license_end_at: 'окончания',
             measures: 'Принятые меры',
-            alcohol: 'Алкогольная',
+            alcohol: 'Алкоголь',
             tobacco: 'Табачная',
+            beer: 'Алкоголь (только пиво)',
             report_abuse: 'Сообщить о нарушении',
         },
         error: {
@@ -111,6 +112,7 @@ export const lexicon = {
             license_end_at: 'закінчення',
             alcohol: 'Алкогольна',
             tobacco: 'Тютюнова',
+            beer: 'Алкоголь (тільки пиво)',
             report_abuse: 'Повідомити про порушення',
         },
         error: {
@@ -129,6 +131,7 @@ export const lexicon = {
         filter: {
             alcohol: 'Алкоголь',
             tobacco: 'Тютюн',
+            beer: 'Алкоголь (тільки пиво)',
         },
     }
 }

@@ -159,18 +159,24 @@ export class HomePage extends Component {
         return null
     }
 
-    async getMarkers(filter = 'alcohol') {
+    async getMarkers(filter = 'alcohol, beer') {
         console.log('getMarkers');
         const {db, dispatch} = this.props;
         const markers = [];
         const markersCanceled = [];
         const data = await new Promise((resolve, reject) => {
             try {
+                let array       = filter.split(', '); // разбираю строку на массив параметров фильтра
+                let newFilter   = ''; // фильтр для запроса
+                array.map((item, index) => {
+                    newFilter += `license_type = '${item}' OR `;
+                });
+                console.log('newFilter: ',newFilter);
 
                 ('db' in db) && db.db.transaction((tx) => {
                     let sqlResultSet = tx.executeSql(`SELECT *
                                                       FROM ${TABLE_NAME}
-                                                      WHERE license_type = ? OR license_type = 'mixed'`, [filter],
+                                                      WHERE ${newFilter} license_type = 'mixed'`, [],
                         (sqlTransaction, sqlResultSet) => {
                             console.log(sqlTransaction, sqlResultSet);
                             resolve(sqlResultSet.rows)
@@ -178,7 +184,7 @@ export class HomePage extends Component {
                             console.log(sqlTransaction, sqlEerror);
                             reject(sqlEerror);
                         });
-                    console.log(sqlResultSet);
+                    // console.log(sqlResultSet);
                 });
             } catch (err) {
                 console.log(err);

@@ -26,7 +26,7 @@ const initialState = localStorage.getItem('reduxState') ?
             menu_toggle: false,
             map: {
                 clustering: true,
-                filter: 'alcohol',
+                filter: 'alcohol, beer',
                 address_info: [],
                 center: {
                     lat: null,
@@ -51,7 +51,7 @@ const initialState = localStorage.getItem('reduxState') ?
         menu_toggle: false,
         map: {
             clustering: true,
-            filter: 'alcohol',
+            filter: 'alcohol, beer',
             address_info: [],
             center: {
                 lat: null,

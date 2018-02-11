@@ -41,7 +41,7 @@ export class MapFilter extends Component {
 
     onChange(event) {
         console.log(event.target.value);
-        const value = event.target.value ? event.target.value : 'alcohol';
+        const value = event.target.value ? event.target.value : 'alcohol, beer';
         this.props.setStore(MAP_CLUSTERING_FILTER, value);
         this.props.setStore(MAP_CLUSTERING_LOAD, true);
     }
@@ -51,16 +51,24 @@ export class MapFilter extends Component {
         console.log(this.props);
         return (
             <div className="map-filter_wrapper">
-                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'alcohol'}
-                       id="filter-alco" type="radio" name="filter" value={'alcohol'}/>
-                <label htmlFor="filter-alco" className="map-filter_toggle">
-                    {lexicon[currentLocal].filter.alcohol}
-                </label>
+
                 <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'tobacco'}
                        id="filter-tobac" type="radio" name="filter" value={'tobacco'}/>
                 <label htmlFor="filter-tobac" className="map-filter_toggle">
                     {lexicon[currentLocal].filter.tobacco}
                 </label>
+
+                <input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'alcohol'}
+                       id="filter-alco" type="radio" name="filter" value={'alcohol, beer'}/>
+                <label htmlFor="filter-alco" className="map-filter_toggle">
+                    {lexicon[currentLocal].filter.alcohol}
+                </label>
+
+                {/*<input onChange={this.onChange} className="map-filter_input" checked={this.props.filter === 'tobacco'}*/}
+                       {/*id="filter-beer" type="radio" name="filter" value={'beer'}/>*/}
+                {/*<label htmlFor="filter-beer" className="map-filter_toggle">*/}
+                    {/*{lexicon[currentLocal].filter.beer}*/}
+                {/*</label>*/}
             </div>
         )
     }
