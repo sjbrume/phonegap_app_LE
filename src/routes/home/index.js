@@ -6,7 +6,7 @@ import {lexicon} from './lexicon';
 import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
-import {MAP_CLUSTERING_LOAD} from "../../store/map/action_types";
+import {MAP_CLUSTERING_LOAD, MAP_SET_CENTER} from "../../store/map/action_types";
 import {Link, Redirect} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
@@ -102,6 +102,10 @@ export class HomePage extends Component {
         if (!clustering) {
             this.props.dispatch(MAP_CLUSTERING_LOAD, true);
         }
+        this.props.dispatch(MAP_SET_CENTER, {
+            lat: null,
+            lng: null,
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -146,8 +150,10 @@ export class HomePage extends Component {
         }
 
         if (clustering) {
-            console.log('clustering = true');
-            let result = this.getMarkers(filter);
+            if(!this.state.markers.length) {
+                console.log('clustering = true');
+                let result = this.getMarkers(filter);
+            }
         }
 
         return null

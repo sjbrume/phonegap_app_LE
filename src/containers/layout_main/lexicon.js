@@ -29,7 +29,7 @@ export const lexicon = {
                     }
                 },
                 list_of_places: {
-                    text: 'Список заведений',
+                    text: 'Перечень субьектов',
                     href: '/list_of_places',
                     icon: <Error/>,
                     menu_hidden: false
@@ -109,7 +109,7 @@ export const lexicon = {
                     }
                 },
                 list_of_places: {
-                    text: 'Список закладів',
+                    text: 'Перелiк суб\'ектiв господарювання',
                     href: '/list_of_places',
                     icon: <Error/>,
                     menu_hidden: false,

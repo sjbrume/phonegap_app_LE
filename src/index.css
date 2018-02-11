@@ -262,8 +262,8 @@ body, html {
 }
 
 .info-dialog_logo {
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     margin: 0 auto 20px;
     -webkit-border-radius: 50%;

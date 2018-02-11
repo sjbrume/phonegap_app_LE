@@ -116,10 +116,7 @@ export class AddressSelectionDialog extends Component {
     toggleDescription(open, data) {
         if (!open) {
             this.props.dispatch(MAP_GET_ADDRESS_INFO, []);
-            this.props.dispatch(MAP_SET_CENTER, {
-                lat: null,
-                lng: null,
-            })
+
         }
     }
 
