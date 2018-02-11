@@ -12,14 +12,16 @@ export const lexicon = {
                     title: `Количество субъектов хозяйствования`,
                     number: 4193
                 }, {
-                    type: 'number_of_licenses',
+                    type: 'alcohol_tobacco_count',
                     title: `Всеобщность лицензий`,
                     number: 13149
-                }, {
-                    type: 'alcohol_tobacco_count',
-                    title: `Объект с лицензией`,
-                    number: 13028
-                }, {
+                },
+                // {
+                //     type: 'alcohol_tobacco_count',
+                //     title: `Объект с лицензией`,
+                //     number: 13028
+                // },
+                {
                     type: 'alcohol_count',
                     title: `Алкогольных лицензий`,
                     number: 6884
@@ -51,14 +53,16 @@ export const lexicon = {
                     title: `Кількість суб'єктів господарювання`,
                     number: 4193
                 }, {
-                    type: 'number_of_licenses',
+                    type: 'alcohol_tobacco_count',
                     title: `Загальна кількість ліцензій`,
                     number: 13149
-                }, {
-                    type: 'alcohol_tobacco_count',
-                    title: `Об\`ектiв з лiцензiями`,
-                    number: 13028
-                }, {
+                },
+                // {
+                //     type: 'alcohol_tobacco_count',
+                //     title: `Об\`ектiв з лiцензiями`,
+                //     number: 13028
+                // },
+                {
                     type: 'alcohol_count',
                     title: `Алкогольних ліцензій`,
                     number: 6884

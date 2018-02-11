@@ -109,7 +109,7 @@ export const lexicon = {
                     }
                 },
                 list_of_places: {
-                    text: 'Перелiк суб\'ектiв господарювання',
+                    text: 'Перелiк суб\'єктiв господарювання',
                     href: '/list_of_places',
                     icon: <Error/>,
                     menu_hidden: false,

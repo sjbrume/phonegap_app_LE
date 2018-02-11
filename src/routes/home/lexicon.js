@@ -81,11 +81,13 @@ export const lexicon = {
                     type: 'number_of_licenses',
                     title: `Загальна кількість ліцензій`,
                     number: 13149
-                }, {
-                    type: 'with_license_number',
-                    title: `Об\`ектiв з лiцензiями`,
-                    number: 13028
-                }, {
+                },
+                // {
+                //     type: 'with_license_number',
+                //     title: `Об\`єктiв з лiцензiями`,
+                //     number: 13028
+                // },
+                {
                     type: 'alcohol',
                     title: `Алкогольних ліцензій`,
                     number: 6884
