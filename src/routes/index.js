@@ -30,7 +30,7 @@ import {StatisticPage} from "./statistic_page/index";
 window.Store = Store;
 window.BrowserHistory = BrowserHistory;
 
-let countClick = 0;
+var countClick = 0;
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
     console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
@@ -60,12 +60,14 @@ document.addEventListener("backbutton", () => {
         }
         return true;
     }
-    if (window.location.hash === '#/StatisticPage') {
+    if (window.location.hash === "#/statistic-page") {
+        console.log('countClick', countClick);
         countClick = countClick + 1;
         if(countClick === 2) {
             console.log('double click');
             navigator.app.exitApp();
         } else {
+            console.log('countClick else', countClick);
             setTimeout(()=>{
                 console.log('click reset');
                 countClick = 0;
