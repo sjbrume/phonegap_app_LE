@@ -76,6 +76,7 @@ export class HomePage extends Component {
         this.renderLoading = this.renderLoading.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
+        this.networkInfo = this.networkInfo.bind(this);
     }
 
     get initialState() {
@@ -98,7 +99,7 @@ export class HomePage extends Component {
 
     componentWillUnmount() {
         const {db, data, set, version, currentLocal, clustering, filter} = this.props;
-        if(!clustering) {
+        if (!clustering) {
             this.props.dispatch(MAP_CLUSTERING_LOAD, true);
         }
     }
@@ -243,6 +244,44 @@ export class HomePage extends Component {
         </div>
     </div>);
 
+    networkInfo() {
+        const {currentLocal} = this.props;
+
+        try {
+            if (navigator && navigator.hasOwnProperty('network') && navigator.network.connection.type === 'none') {
+                return (<div className="loading-panel_wrapper">
+                    <div style={{
+                        maxWidth: '300px',
+                        padding: '40px 20px',
+                        textAlign: 'center',
+                        backgroundColor: '#fff',
+                        boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)'
+                    }}>
+                        <Error style={{
+                            color: '#F44336',
+                            display: 'block',
+                            width: '60px',
+                            height: '60px',
+                            margin: '0 auto'
+                        }}/>
+                        <div
+                            style={{
+                                color: '#222',
+                            }}
+                            className="loading-panel_content">
+                            {lexicon[currentLocal].network_info}
+                        </div>
+                    </div>
+                </div>)
+            } else {
+                return null
+            }
+        } catch (err) {
+            console.error('networkInfo():', err);
+        }
+
+
+    }
 
     onMapSuccess(Latitude, Longitude) {
         console.log('onMapSuccess - Latitude:', Latitude);
@@ -266,6 +305,9 @@ export class HomePage extends Component {
         if (this.props.info_dialog) {
             return (<Redirect to="/statistic-page"/>)
             // return this.createInfoDialog()
+        }
+        if (this.networkInfo()) {
+            return this.networkInfo()
         }
         if (this.createLoadingPanel()) {
             return this.createLoadingPanel()
