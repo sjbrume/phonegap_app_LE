@@ -59,7 +59,8 @@ document.addEventListener("backbutton", () => {
             console.log(err);
         }
         return true;
-    } else if (window.location.hash === '#/StatisticPage') {
+    }
+    if (window.location.hash === '#/StatisticPage') {
         countClick = countClick + 1;
         if(countClick === 2) {
             console.log('double click');
@@ -70,6 +71,7 @@ document.addEventListener("backbutton", () => {
                 countClick = 0;
             },1000)
         }
+        return true;
     } else {
         BrowserHistory.goBack();
     }
