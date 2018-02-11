@@ -2,6 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/asset-manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/service-worker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.8fbd3199.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/css/main.8fbd3199.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.b2f42872.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/js/main.b2f42872.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/1-flag-ukraini-b.89f564f4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/marker_license_active.99cfe5e3.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/marker_license_canceled.66bf4619.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.987b8457.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100.e9dbbe8a.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.6232f43d.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-100italic.d704bb3d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.55536c8e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300.a1471d1d.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.210a7c78.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-300italic.d69924b9.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.5d4aeb4e.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400.bafb105b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.9680d5a0.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-400italic.d8bcbe72.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.28546717.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500.de8b7431.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.510dec37.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-500italic.ffcc050b.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.037d8304.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700.cf6613d1.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.010c1aee.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-700italic.846d1890.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.19b7a0ad.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900.8c2ade50.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.7b770d6c.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/static/media/roboto-latin-900italic.bc833e72.woff" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -55,6 +90,16 @@
                 <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
                 <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -175,7 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/containers/layout_children/layout_children.js" />
         <option value="$PROJECT_DIR$/src/containers/layout_main/layout_main.css" />
         <option value="$PROJECT_DIR$/src/blocks/get_geolocation.js" />
         <option value="$PROJECT_DIR$/src/store/menu_toggle/reducer.js" />
@@ -226,6 +270,7 @@
         <option value="$PROJECT_DIR$/src/routes/home/lexicon.js" />
         <option value="$PROJECT_DIR$/src/routes/statistic_page/lexicon.js" />
         <option value="$PROJECT_DIR$/public/config.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -248,7 +293,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -292,11 +337,6 @@
             <path>
               <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
               <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="LegalExcise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LegalExcise" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -446,16 +486,15 @@
       <workItem from="1518080194818" duration="459000" />
       <workItem from="1518297044643" duration="12503000" />
       <workItem from="1518338368111" duration="13652000" />
-      <workItem from="1518384994914" duration="1839000" />
+      <workItem from="1518384994914" duration="2664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="405371000" />
+    <option name="totallyTimeSpent" value="406196000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -465,7 +504,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47790506" sideWeight="0.48184568" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47790506" sideWeight="0.48184568" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -518,13 +557,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/routes/help/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/contacts/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-903">
@@ -885,6 +917,14 @@
             <element signature="n#platform#0;n#widget#0;n#!!top" expanded="false" />
             <element signature="n#platform#1;n#widget#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

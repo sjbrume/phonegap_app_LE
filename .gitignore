@@ -8,7 +8,6 @@ phonegap-account.json
 /coverage
 
 
-/keyStore
 # production
 
 
@@ -23,3 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /phonegap-account.json
+src/data/
+/keyStore/
