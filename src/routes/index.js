@@ -65,7 +65,7 @@ document.addEventListener("backbutton", () => {
         return true;
     }
     console.log('Store.getState().map.address_info');
-    if (Store.getState().map.address_info) {
+    if (Store.getState().map.address_info.length) {
         Store.dispatch({type: MAP_GET_ADDRESS_INFO, payload: []});
         return true;
     }
