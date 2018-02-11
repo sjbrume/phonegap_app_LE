@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="491866ef-39ea-4f45-8b52-87618ae1de3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index.js" afterPath="$PROJECT_DIR$/src/routes/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,10 +34,10 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+            <state relative-caret-position="153">
+              <caret line="71" column="43" lean-forward="false" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
               <folding>
-                <element signature="e#1458#1971#0" expanded="false" />
+                <element signature="e#1518#1915#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -412,12 +411,12 @@
       <workItem from="1518077191985" duration="1430000" />
       <workItem from="1518080194818" duration="459000" />
       <workItem from="1518297044643" duration="12503000" />
-      <workItem from="1518338368111" duration="5732000" />
+      <workItem from="1518338368111" duration="6655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395612000" />
+    <option name="totallyTimeSpent" value="396535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -734,6 +733,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="55" column="20" lean-forward="false" selection-start-line="55" selection-start-column="20" selection-end-line="58" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -849,10 +849,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+        <state relative-caret-position="153">
+          <caret line="71" column="43" lean-forward="false" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
           <folding>
-            <element signature="e#1458#1971#0" expanded="false" />
+            <element signature="e#1518#1915#0" expanded="false" />
           </folding>
         </state>
       </provider>

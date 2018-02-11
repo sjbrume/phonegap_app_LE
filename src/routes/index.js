@@ -33,6 +33,7 @@ window.BrowserHistory = BrowserHistory;
 var countClick = 0;
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
+
     if (window.location.hash === "#/statistic-page") {
         console.log('countClick', countClick);
        try{
@@ -51,35 +52,37 @@ document.addEventListener("backbutton", () => {
            console.log(err);
        }
     }
+    console.log('Store.getState().menu_toggle');
 
     if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
         return true;
     }
+    console.log('Store.getState().complaints_map');
+
     if (Store.getState().complaints_map) {
         Store.dispatch({type: COMPLAINTS_MAP_TOGGLE, payload: false});
         return true;
     }
+    console.log('Store.getState().map.address_info');
     if (Store.getState().map.address_info) {
         Store.dispatch({type: MAP_GET_ADDRESS_INFO, payload: []});
         return true;
     }
-
+    console.log('window.location.hash === # && !Store.getState().menu_toggle;');
     if (window.location.hash === '#/' && !Store.getState().menu_toggle) {
         console.log('exit');
-
         try {
-
             exit_app()
-
-
         } catch (err) {
             console.log(err);
         }
         return true;
-    }
+    } else {
+        console.log('BrowserHistory.goBack();');
 
-    BrowserHistory.goBack();
+        BrowserHistory.goBack();
+    }
 
     return true;
 });
