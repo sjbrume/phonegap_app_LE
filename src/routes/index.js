@@ -33,7 +33,25 @@ window.BrowserHistory = BrowserHistory;
 var countClick = 0;
 document.addEventListener("backbutton", () => {
     console.log('backbutton');
-    console.log('Store.getState().menu_toggle', Store.getState().menu_toggle);
+    if (window.location.hash === "#/statistic-page") {
+        console.log('countClick', countClick);
+       try{
+           countClick = countClick + 1;
+           if(countClick === 2) {
+               console.log('double click');
+               navigator.app.exitApp();
+           } else {
+               console.log('countClick else', countClick);
+               setTimeout(()=>{
+                   console.log('click reset');
+                   countClick = 0;
+               },1000)
+           }
+       } catch (err){
+           console.log(err);
+       }
+    }
+
     if (Store.getState().menu_toggle) {
         Store.dispatch({type: MENU_TOGGLE, payload: false});
         return true;
@@ -57,21 +75,6 @@ document.addEventListener("backbutton", () => {
 
         } catch (err) {
             console.log(err);
-        }
-        return true;
-    }
-    if (window.location.hash === "#/statistic-page") {
-        console.log('countClick', countClick);
-        countClick = countClick + 1;
-        if(countClick === 2) {
-            console.log('double click');
-            navigator.app.exitApp();
-        } else {
-            console.log('countClick else', countClick);
-            setTimeout(()=>{
-                console.log('click reset');
-                countClick = 0;
-            },1000)
         }
         return true;
     } else {
