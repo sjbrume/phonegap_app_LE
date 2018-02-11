@@ -1,1 +1,0 @@
-https://iandevlin.com/blog/2012/11/phonegap/building-an-ios-signing-key-for-phonegap-in-windows/
