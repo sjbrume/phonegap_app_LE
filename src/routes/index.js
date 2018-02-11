@@ -77,9 +77,9 @@ document.addEventListener("backbutton", () => {
             console.log(err);
         }
         return true;
-    } else {
-        BrowserHistory.goBack();
     }
+
+    BrowserHistory.goBack();
 
     return true;
 });
