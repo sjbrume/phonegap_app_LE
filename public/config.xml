@@ -8,6 +8,7 @@
         Fedor Makarev, Alexandra Bobrova, Artur Ragimov
     </author>/>
     <content src="index.html" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="21" />
     <preference name="orientation" value="portrait" />
@@ -81,7 +82,6 @@
     </platform>
     <splash src="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
-    <preference name="phonegap-version" value="cli-7.1.0" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
