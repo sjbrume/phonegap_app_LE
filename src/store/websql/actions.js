@@ -307,51 +307,51 @@ const init_db = (store) => {
 
         const currentVersion = store && 'version' in store && 'version' in store.version ? store.version.version : null;
         const db = store && store.db ? store.db : null;
-        first_init(dispatch);
-        // if (currentVersion) {
-        //
-        //     console.log(`ВЕРСИЯ БАЗЫ ДАННЫХ: ${currentVersion}`);
-        //     // TODO шаг 1: Получаю версию базы на бэкэнде
-        //     dispatch(update_db()).then((version) => {
-        //         console.log(version);
-        //         // TODO шаг 2: Запрос прошел
-        //         dispatch({type: WEBSQL_VERSION_DB_SUCCESS, payload: true});
-        //         // TODO шаг 3: Если версия базы на бэкэнде равна версии в приложении
-        //         if (version === currentVersion) {
-        //             // TODO шаг 4: создаю базу
-        //             dispatch(create_db(currentVersion))
-        //                 .then((DB) => {
-        //                     // TODO шаг 5: база создана и таблица созданы
-        //                     dispatch({type: WEBSQL_DB_SUCCESS_CREATE, payload: true});
-        //                 })
-        //                 .catch((error) => {
-        //                     console.error(error);
-        //                     // TODO шаг 5: база не создана
-        //                     dispatch({type: WEBSQL_DB_ERROR_CREATE, payload: true});
-        //                 })
-        //         } else {
-        //             first_init(dispatch);
-        //         }
-        //     }).catch((error) => {
-        //         // TODO шаг 2: Ошибка
-        //         console.error(error);
-        //         // TODO шаг 3: Инициализируем БД
-        //         dispatch(create_db(currentVersion))
-        //             .then((DB) => {
-        //                 // TODO шаг 4: база создана и таблица созданы
-        //                 dispatch({type: WEBSQL_DB_SUCCESS_CREATE, payload: true});
-        //             })
-        //             .catch((error) => {
-        //                 console.error(error);
-        //                 // TODO шаг 4: база не создана
-        //                 dispatch({type: WEBSQL_DB_ERROR_CREATE, payload: true});
-        //             })
-        //         // dispatch({type: WEBSQL_VERSION_DB_ERROR, payload: true});
-        //     })
-        //
-        // } else {
-        //     first_init(dispatch);
-        // }
+
+        if (currentVersion) {
+
+            console.log(`ВЕРСИЯ БАЗЫ ДАННЫХ: ${currentVersion}`);
+            // TODO шаг 1: Получаю версию базы на бэкэнде
+            dispatch(update_db()).then((version) => {
+                console.log(version);
+                // TODO шаг 2: Запрос прошел
+                dispatch({type: WEBSQL_VERSION_DB_SUCCESS, payload: true});
+                // TODO шаг 3: Если версия базы на бэкэнде равна версии в приложении
+                if (version === currentVersion) {
+                    // TODO шаг 4: создаю базу
+                    dispatch(create_db(currentVersion))
+                        .then((DB) => {
+                            // TODO шаг 5: база создана и таблица созданы
+                            dispatch({type: WEBSQL_DB_SUCCESS_CREATE, payload: true});
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            // TODO шаг 5: база не создана
+                            dispatch({type: WEBSQL_DB_ERROR_CREATE, payload: true});
+                        })
+                } else {
+                    first_init(dispatch);
+                }
+            }).catch((error) => {
+                // TODO шаг 2: Ошибка
+                console.error(error);
+                // TODO шаг 3: Инициализируем БД
+                dispatch(create_db(currentVersion))
+                    .then((DB) => {
+                        // TODO шаг 4: база создана и таблица созданы
+                        dispatch({type: WEBSQL_DB_SUCCESS_CREATE, payload: true});
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        // TODO шаг 4: база не создана
+                        dispatch({type: WEBSQL_DB_ERROR_CREATE, payload: true});
+                    })
+                // dispatch({type: WEBSQL_VERSION_DB_ERROR, payload: true});
+            })
+
+        } else {
+            first_init(dispatch);
+        }
 
 
     }
