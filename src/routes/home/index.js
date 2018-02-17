@@ -77,6 +77,7 @@ export class HomePage extends Component {
         this.getMarkers = this.getMarkers.bind(this);
         this.onMapSuccess = this.onMapSuccess.bind(this);
         this.networkInfo = this.networkInfo.bind(this);
+        this.createMarkerCluster = this.createMarkerCluster.bind(this);
     }
 
     get initialState() {
@@ -162,8 +163,6 @@ export class HomePage extends Component {
     async getMarkers(filter = 'alcohol, beer') {
         console.log('getMarkers');
         const {db, dispatch} = this.props;
-        const markers = [];
-        const markersCanceled = [];
         const data = await new Promise((resolve, reject) => {
             try {
                 let array       = filter.split(', '); // разбираю строку на массив параметров фильтра
@@ -181,7 +180,7 @@ export class HomePage extends Component {
                             console.log(sqlTransaction, sqlResultSet);
                             resolve(sqlResultSet.rows)
                         }, (sqlTransaction, sqlEerror) => {
-                            console.log(sqlTransaction, sqlEerror);
+                            console.log('sqlEerror: ',sqlTransaction, sqlEerror);
                             reject(sqlEerror);
                         });
                     // console.log(sqlResultSet);
@@ -191,40 +190,51 @@ export class HomePage extends Component {
             }
         });
 
-        console.log(data[0]);
-        let length = data && data.length ? data.length : 0;
+        console.log('193: data[0]:',data);
+        this.createMarkerCluster(data);
 
+    }
+
+    createMarkerCluster(data = []){
+        const {db, dispatch} = this.props;
+
+        const markers = [];
+        const markersCanceled = [];
+        console.log('203: data:',data.item(0));
+        let length = data.length;
+
+        console.log('197: length:',length);
         for (let i = 0; i < length; i++) {
-            if (data[i].lng && data[i].lat) {
-
-                if (data[i].license_type !== 'mixed') {
+            // console.log('207: data[i]:',data.item(i));
+            if (data.item(i).lng && data.item(i).lat) {
+                if (data.item(i).license_type !== 'mixed') {
                     markers.push(<Marker
                         key={i}
                         icon={marker_license_active}
-                        position={{lat: data[i].lat, lng: data[i].lng}}
-                        data={data[i]}
-                        title={data[i].id.toString()}
-                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data[i].id]))}
+                        position={{lat: data.item(i).lat, lng: data.item(i).lng}}
+                        data={data.item(i)}
+                        title={data.item(i).id.toString()}
+                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
                     />)
                 } else {
                     markersCanceled.push(<Marker
                         key={i}
                         icon={marker_license_canceled}
-                        position={{lat: data[i].lat, lng: data[i].lng}}
-                        data={data[i]}
-                        title={data[i].id.toString()}
+                        position={{lat: data.item(i).lat, lng: data.item(i).lng}}
+                        data={data.item(i)}
+                        title={data.item(i).id.toString()}
 
-                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data[i].id]))}
+                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
                     />)
                 }
 
 
             }
         }
+        console.log('224: markers:',markers);
 
         this.setState({markers, markersCanceled});
-        this.props.dispatch(MAP_CLUSTERING_LOAD, false);
-
+        dispatch(MAP_CLUSTERING_LOAD, false);
     }
 
     renderLoading = (content, load) => (<div className="loading-panel_wrapper">

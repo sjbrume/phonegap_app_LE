@@ -192,7 +192,7 @@ export class ListOfPlacesPage extends Component {
         });
 
         for(let i = 0; i < Data.length; i++) {
-            moreDivs.push(<Accordion key={Data[i].id} currentLocal={currentLocal} data={Data[i]}/>)
+            moreDivs.push(<Accordion key={Data.item(i).id} currentLocal={currentLocal} data={Data.item(i)}/>)
         }
 
         this.setState({
@@ -227,7 +227,15 @@ export class ListOfPlacesPage extends Component {
                     refreshFunction={this.refresh}
                     next={this.generateDivs}
                     hasMore={true}
-                    loader={<h1>Loading...</h1>}>
+                    loader={<div className="loading-panel_wrapper">
+                        <div>
+                            <CircularProgress style={{
+                                display: 'block',
+                                color: '#0277bd',
+                                margin: '0 auto'
+                            }} size={60} thickness={7}/>
+                        </div>
+                    </div>}>
                     {this.state.places}
                 </InfiniteScroll>
             );
