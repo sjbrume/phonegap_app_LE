@@ -52,64 +52,64 @@ export class AddressSelectionDialog extends Component {
 
     get initialState() {
         return {
-            address_info: {
-                '0': {
-                    id: 3662,
-                    region_id: 0,
-                    id_code: '1988022708',
-                    address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, Торгівельний комплекс',
-                    lng: 30.665517,
-                    lat: 46.522461,
-                    license: '171511640081',
-                    company: 'Руденко Надія Іванівна',
-                    license_start_at: '2017-04-09',
-                    license_end_at: '2018-04-09',
-                    license_type: 'alcohol',
-                    status: 'active'
-                },
-                '1': {
-                    id: 11737,
-                    region_id: 0,
-                    id_code: '2704401738',
-                    address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
-                    lng: 30.665517,
-                    lat: 46.522461,
-                    license: '171511640331',
-                    company: 'Бабак Олег Пилипович',
-                    license_start_at: '2017-11-15',
-                    license_end_at: '2018-11-15',
-                    license_type: 'alcohol',
-                    status: 'active'
-                },
-                '2': {
-                    id: 11737,
-                    region_id: 0,
-                    id_code: '2704401738',
-                    address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
-                    lng: 30.665517,
-                    lat: 46.522461,
-                    license: '171511640331',
-                    company: 'Бабак Олег Пилипович',
-                    license_start_at: '2017-11-15',
-                    license_end_at: '2018-11-15',
-                    license_type: 'alcohol',
-                    status: 'active'
-                },
-                '3': {
-                    id: 11737,
-                    region_id: 0,
-                    id_code: '2704401738',
-                    address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
-                    lng: 30.665517,
-                    lat: 46.522461,
-                    license: '171511640331',
-                    company: 'Бабак Олег Пилипович',
-                    license_start_at: '2017-11-15',
-                    license_end_at: '2018-11-15',
-                    license_type: 'alcohol',
-                    status: 'active'
-                }
-            }
+            // address_info: {
+            //     '0': {
+            //         id: 3662,
+            //         region_id: 0,
+            //         id_code: '1988022708',
+            //         address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, Торгівельний комплекс',
+            //         lng: 30.665517,
+            //         lat: 46.522461,
+            //         license: '171511640081',
+            //         company: 'Руденко Надія Іванівна',
+            //         license_start_at: '2017-04-09',
+            //         license_end_at: '2018-04-09',
+            //         license_type: 'alcohol',
+            //         status: 'active'
+            //     },
+            //     '1': {
+            //         id: 11737,
+            //         region_id: 0,
+            //         id_code: '2704401738',
+            //         address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
+            //         lng: 30.665517,
+            //         lat: 46.522461,
+            //         license: '171511640331',
+            //         company: 'Бабак Олег Пилипович',
+            //         license_start_at: '2017-11-15',
+            //         license_end_at: '2018-11-15',
+            //         license_type: 'alcohol',
+            //         status: 'active'
+            //     },
+            //     '2': {
+            //         id: 11737,
+            //         region_id: 0,
+            //         id_code: '2704401738',
+            //         address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
+            //         lng: 30.665517,
+            //         lat: 46.522461,
+            //         license: '171511640331',
+            //         company: 'Бабак Олег Пилипович',
+            //         license_start_at: '2017-11-15',
+            //         license_end_at: '2018-11-15',
+            //         license_type: 'alcohol',
+            //         status: 'active'
+            //     },
+            //     '3': {
+            //         id: 11737,
+            //         region_id: 0,
+            //         id_code: '2704401738',
+            //         address: 'Біляївський р-н, с. Усатове, вул. Гагаріна, 2-В, магазин',
+            //         lng: 30.665517,
+            //         lat: 46.522461,
+            //         license: '171511640331',
+            //         company: 'Бабак Олег Пилипович',
+            //         license_start_at: '2017-11-15',
+            //         license_end_at: '2018-11-15',
+            //         license_type: 'alcohol',
+            //         status: 'active'
+            //     }
+            // }
         }
     }
 
@@ -124,14 +124,14 @@ export class AddressSelectionDialog extends Component {
         const {currentLocal, map_center} = this.props;
         console.log(address_info);
         let array = [];
-        if (map_center.lat !== address_info[0].lat) {
+        if (map_center.lat !== address_info.item(0).lat) {
             this.props.dispatch(MAP_SET_CENTER, {
-                lat: address_info[0].lat,
-                lng: address_info[0].lng,
+                lat: address_info.item(0).lat,
+                lng: address_info.item(0).lng,
             })
         }
         for (let i = 0; i < address_info.length; i++) {
-            let item = address_info[i];
+            let item = address_info.item(i);
             console.log(item);
             if (item.license_type === 'mixed') {
                 array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
