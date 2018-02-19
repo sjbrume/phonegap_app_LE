@@ -103,9 +103,9 @@ export class ComplaintsPage extends Component {
                                        WHERE id = ?;`,
                             [this.props.match.params.id],
                             (sqlTransaction, sqlResultSet) => {
-                                console.log(sqlResultSet.rows);
-                                this.setState({company: sqlResultSet.rows[0], loading: false});
-                                resolve(sqlResultSet.rows[0])
+                                console.log(sqlResultSet.rows.item(0));
+                                this.setState({company: sqlResultSet.rows.item(0), loading: false});
+                                resolve(sqlResultSet.rows.item(0))
                             }, (sqlTransaction, sqlEerror) => {
                                 console.log(sqlTransaction, sqlEerror);
                             })
