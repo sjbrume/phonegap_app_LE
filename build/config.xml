@@ -81,6 +81,17 @@
         <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />
 
     </platform>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+        <string>need location access to find things nearby</string>
+    </edit-config>
+
+    <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge">
+        <string>need location access to find things nearby</string>
+    </edit-config>
+
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
         <string>need location access to find things nearby</string>
     </edit-config>
