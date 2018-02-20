@@ -348,7 +348,10 @@ export class HomePage extends Component {
 
         return (
             <div>
-                <AddressSelectionDialog/>
+                {
+                    address_info && <AddressSelectionDialog/>
+                }
+
                 {
                     !this.props.clustering &&
                     <MapWithAMarkerClusters
