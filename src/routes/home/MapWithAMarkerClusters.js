@@ -6,7 +6,7 @@ import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import MyLocation from '../complaints_map/my_location_icon.png';
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
-
+import data from './data.json';
 import {Store} from '../../store/store';
 import {getAddressInfo} from "../../store/map/action";
 
@@ -88,60 +88,58 @@ export const MapWithAMarkerClusters = compose(
                 streetViewControl: false,
             }}
             zoom={props.zoom}
-            // onClick={(event) => {
-            //     console.log(event)
-            //     console.log('lng:',event.latLng.lng());
-            //     console.log('lat:',event.latLng.lat());
-            // }}
+            onClick={(event) => {
+                console.log(event);
+                console.log('lng:', event.latLng.lng());
+                console.log('lat:', event.latLng.lat());
+            }}
         >
-            {
-                props.markers.length > 0 &&
-                <MarkerClusterer
-                    onClick={props.onMarkerClustererClick}
-                    onClusteringBegin={() => {
-                        // if(!props.clusteringStatus){
-                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
-                        // }
-                    }}
-                    onClusteringEnd={() => {
-                        // if(props.clusteringStatus){
-                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
-                        // }
-                    }}
 
-                    clusterClass={'cluster cluster_license--active'}
-                    averageCenter
-                    enableRetinaIcons
-                    gridSize={60}
-                >
-                    {props.markers}
 
-                </MarkerClusterer>
-            }
-            {
-                props.markersCanceled.length > 0 &&
-                <MarkerClusterer
-                    onClick={props.onMarkerClustererClick}
-                    onClusteringBegin={() => {
-                        // if(!props.clusteringStatus){
-                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
-                        // }
-                    }}
-                    onClusteringEnd={() => {
-                        // if(props.clusteringStatus){
-                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
-                        // }
-                    }}
+            <MarkerClusterer
+                onClick={props.onMarkerClustererClick}
+                onClusteringBegin={() => {
+                }}
+                onClusteringEnd={() => {
+                }}
+                clusterClass={'cluster cluster_license--active'}
+                averageCenter
+                enableRetinaIcons
+                gridSize={60}
+            >
+                {/*{props.markers}*/}
+                {data.photos.map(marker => (
+                    <Marker
+                        key={marker.photo_id}
+                        position={{lat: marker.latitude, lng: marker.longitude}}
+                    />
+                ))}
+            </MarkerClusterer>
 
-                    clusterClass={'cluster cluster_license--canceled'}
-                    averageCenter
-                    enableRetinaIcons
-                    gridSize={60}
-                >
-                    {props.markersCanceled}
+            {/*{*/}
+            {/*props.markersCanceled.length > 0 &&*/}
+            {/*<MarkerClusterer*/}
+            {/*onClick={props.onMarkerClustererClick}*/}
+            {/*onClusteringBegin={() => {*/}
+            {/*// if(!props.clusteringStatus){*/}
+            {/*//     props.dispatch(MAP_CLUSTERING_LOAD, true);*/}
+            {/*// }*/}
+            {/*}}*/}
+            {/*onClusteringEnd={() => {*/}
+            {/*// if(props.clusteringStatus){*/}
+            {/*//     props.dispatch(MAP_CLUSTERING_LOAD, false);*/}
+            {/*// }*/}
+            {/*}}*/}
 
-                </MarkerClusterer>
-            }
+            {/*clusterClass={'cluster cluster_license--canceled'}*/}
+            {/*averageCenter*/}
+            {/*enableRetinaIcons*/}
+            {/*gridSize={60}*/}
+            {/*>*/}
+            {/*{props.markersCanceled}*/}
+
+            {/*</MarkerClusterer>*/}
+            {/*}*/}
 
             {
                 props.MyLocation && <Marker
