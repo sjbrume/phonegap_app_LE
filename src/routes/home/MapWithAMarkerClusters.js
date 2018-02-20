@@ -40,14 +40,14 @@ export const MapWithAMarkerClusters = compose(
     }),
     withHandlers({
         onMarkerClusterClick: () => (markerCluster) => {
-            console.log('onMarkerClusterClick: ',markerCluster);
+            console.log('onMarkerClusterClick: ', markerCluster);
             const clickedMarkers = markerCluster.getMarkers();
             if (clickedMarkers.length < 20) {
-                console.log('onMarkerClusterClick: ',clickedMarkers);
+                console.log('onMarkerClusterClick: ', clickedMarkers);
 
 
                 if (positionCheck(clickedMarkers)) {
-                    console.log('onMarkerClusterClick positionCheck: ',clickedMarkers);
+                    console.log('onMarkerClusterClick positionCheck: ', clickedMarkers);
                     const arrayID = [];
                     clickedMarkers.map((item, index) => {
                         arrayID.push(item.title);
@@ -56,7 +56,7 @@ export const MapWithAMarkerClusters = compose(
                              lat: ${item.position.lat()}
                              lng: ${item.position.lng()}`);
                     })
-                    console.log('onMarkerClusterClick arrayID: ',arrayID);
+                    console.log('onMarkerClusterClick arrayID: ', arrayID);
                     Store.dispatch(getAddressInfo(Store.getState(), arrayID));
 
                 }
@@ -97,7 +97,32 @@ export const MapWithAMarkerClusters = compose(
             {
                 props.markers.length > 0 &&
                 <MarkerClusterer
-                    onClick={props.onMarkerClusterClick}
+                    onClick={(markerCluster) => {
+                        console.log('onMarkerClusterClick: ', markerCluster);
+                        const clickedMarkers = markerCluster.getMarkers();
+                        if (clickedMarkers.length < 20) {
+                            console.log('onMarkerClusterClick: ', clickedMarkers);
+
+
+                            if (positionCheck(clickedMarkers)) {
+                                console.log('onMarkerClusterClick positionCheck: ', clickedMarkers);
+                                const arrayID = [];
+                                clickedMarkers.map((item, index) => {
+                                    arrayID.push(item.title);
+                                    console.log(`item-${index}`, item);
+                                    console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                                })
+                                console.log('onMarkerClusterClick arrayID: ', arrayID);
+                                Store.dispatch(getAddressInfo(Store.getState(), arrayID));
+
+                            }
+
+                        }
+
+
+                    }}
                     onClusteringBegin={() => {
                         // if(!props.clusteringStatus){
                         //     props.dispatch(MAP_CLUSTERING_LOAD, true);
@@ -121,7 +146,32 @@ export const MapWithAMarkerClusters = compose(
             {
                 props.markersCanceled.length > 0 &&
                 <MarkerClusterer
-                    onClick={props.onMarkerClusterClick}
+                    onClick={(markerCluster) => {
+                        console.log('onMarkerClusterClick: ',markerCluster);
+                        const clickedMarkers = markerCluster.getMarkers();
+                        if (clickedMarkers.length < 20) {
+                            console.log('onMarkerClusterClick: ',clickedMarkers);
+
+
+                            if (positionCheck(clickedMarkers)) {
+                                console.log('onMarkerClusterClick positionCheck: ',clickedMarkers);
+                                const arrayID = [];
+                                clickedMarkers.map((item, index) => {
+                                    arrayID.push(item.title);
+                                    console.log(`item-${index}`, item);
+                                    console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                                })
+                                console.log('onMarkerClusterClick arrayID: ',arrayID);
+                                Store.dispatch(getAddressInfo(Store.getState(), arrayID));
+
+                            }
+
+                        }
+
+
+                    }}
                     onClusteringBegin={() => {
                         // if(!props.clusteringStatus){
                         //     props.dispatch(MAP_CLUSTERING_LOAD, true);
