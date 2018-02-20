@@ -40,11 +40,14 @@ export const MapWithAMarkerClusters = compose(
     }),
     withHandlers({
         onMarkerClusterClick: () => (markerCluster) => {
+            console.log('onMarkerClusterClick: ',markerCluster);
             const clickedMarkers = markerCluster.getMarkers();
             if (clickedMarkers.length < 20) {
+                console.log('onMarkerClusterClick: ',clickedMarkers);
 
 
                 if (positionCheck(clickedMarkers)) {
+                    console.log('onMarkerClusterClick positionCheck: ',clickedMarkers);
                     const arrayID = [];
                     clickedMarkers.map((item, index) => {
                         arrayID.push(item.title);
@@ -53,6 +56,7 @@ export const MapWithAMarkerClusters = compose(
                              lat: ${item.position.lat()}
                              lng: ${item.position.lng()}`);
                     })
+                    console.log('onMarkerClusterClick arrayID: ',arrayID);
                     Store.dispatch(getAddressInfo(Store.getState(), arrayID));
 
                 }
