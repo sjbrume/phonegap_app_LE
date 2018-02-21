@@ -98,11 +98,11 @@ export const MapWithAMarkerClusters = compose(
 
             <MarkerClusterer
                 onClick={props.onMarkerClustererClick}
-                onClusteringBegin={() => {
-                }}
-                onClusteringEnd={() => {
-                }}
-                clusterClass={'cluster cluster_license--active'}
+                // onClusteringBegin={() => {
+                // }}
+                // onClusteringEnd={() => {
+                // }}
+                // clusterClass={'cluster cluster_license--active'}
                 averageCenter
                 enableRetinaIcons
                 gridSize={60}
@@ -141,17 +141,17 @@ export const MapWithAMarkerClusters = compose(
             {/*</MarkerClusterer>*/}
             {/*}*/}
 
-            {
-                props.MyLocation && <Marker
-                    icon={props.MyLocation ? MyLocation : ''}
+            {/*{*/}
+                {/*props.MyLocation && <Marker*/}
+                    {/*icon={props.MyLocation ? MyLocation : ''}*/}
 
-                    position={props.center}
-                />
-            }
+                    {/*position={props.center}*/}
+                {/*/>*/}
+            {/*}*/}
 
-            <GetGeolocationButton
-                onMapSuccess={props.onMapSuccess}
-            />
+            {/*<GetGeolocationButton*/}
+                {/*onMapSuccess={props.onMapSuccess}*/}
+            {/*/>*/}
 
         </GoogleMap>)
     }
