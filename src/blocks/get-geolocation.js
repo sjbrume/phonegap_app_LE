@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import LocationSearching from 'material-ui-icons/LocationSearching';
 import Loop from 'material-ui-icons/Loop';
@@ -199,14 +198,33 @@ export class GetGeolocationButton extends Component {
     onClick() {
         if (!this.state.loading) {
             this.setState({loading: true});
-            this.searchLocation();
+            const {onMapSuccess} = this.props;
+            const {searchLocation} = this;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    let pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    console.log(position);
+                    onMapSuccess(position.coords.latitude, position.coords.longitude);
+
+                }, function () {
+                    searchLocation();
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                searchLocation();
+            }
         }
+
+
     }
 
     render() {
         const {loading} = this.state;
         return (
-            <button onClick={ () => {
+            <button onClick={() => {
                 this.onClick();
                 // this.props.onMapSuccess(46.456507,30.679062)
             }} type="button" style={{
