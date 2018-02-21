@@ -176,7 +176,7 @@ export class ListOfPlacesPage extends Component {
         const Data = await new Promise((resolve, reject) => {
            try {
                db.db.transaction((tx) => {
-                   tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ?`,
+                   tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ? AND license_type = 'mixed'`,
                        [MIN, MAX],
                        (sqlTransaction, sqlResultSet) => {
                            console.log(sqlTransaction, sqlResultSet);
