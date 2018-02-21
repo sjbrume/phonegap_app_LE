@@ -58,8 +58,8 @@
       <file leaf-file-name="MapWithAMarkerClusters.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1408">
-              <caret line="153" column="17" lean-forward="false" selection-start-line="143" selection-start-column="9" selection-end-line="153" selection-end-column="17" />
+            <state relative-caret-position="34">
+              <caret line="104" column="64" lean-forward="true" selection-start-line="104" selection-start-column="64" selection-end-line="104" selection-end-column="64" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -455,15 +455,16 @@
       <workItem from="1519035510628" duration="90000" />
       <workItem from="1519114585701" duration="7116000" />
       <workItem from="1519161381958" duration="3144000" />
-      <workItem from="1519234383012" duration="1856000" />
+      <workItem from="1519234383012" duration="2389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="444432000" />
+    <option name="totallyTimeSpent" value="444965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22087745" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -473,7 +474,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30932897" sideWeight="0.47881997" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30932897" sideWeight="0.47881997" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -892,8 +893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/home/MapWithAMarkerClusters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1408">
-          <caret line="153" column="17" lean-forward="false" selection-start-line="143" selection-start-column="9" selection-end-line="153" selection-end-column="17" />
+        <state relative-caret-position="34">
+          <caret line="104" column="64" lean-forward="true" selection-start-line="104" selection-start-column="64" selection-end-line="104" selection-end-column="64" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

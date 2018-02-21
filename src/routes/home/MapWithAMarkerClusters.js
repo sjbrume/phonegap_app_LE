@@ -6,7 +6,7 @@ import {compose, withProps, withHandlers} from "recompose";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
 import MyLocation from '../complaints_map/my_location_icon.png';
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
-import data from './data.json';
+
 import {Store} from '../../store/store';
 import {getAddressInfo} from "../../store/map/action";
 
@@ -39,7 +39,7 @@ export const MapWithAMarkerClusters = compose(
         mapElement: <div style={{height: `100%`}}/>,
     }),
     withHandlers({
-        onMarkerClustererClick: () => (markerCluster) => {
+        onMarkerClusterClick: () => (markerCluster) => {
             console.log('onMarkerClusterClick: ', markerCluster);
             const clickedMarkers = markerCluster.getMarkers();
             if (clickedMarkers.length < 20) {
@@ -88,70 +88,122 @@ export const MapWithAMarkerClusters = compose(
                 streetViewControl: false,
             }}
             zoom={props.zoom}
-            onClick={(event) => {
-                console.log(event);
-                console.log('lng:', event.latLng.lng());
-                console.log('lat:', event.latLng.lat());
-            }}
+            // onClick={(event) => {
+            //     console.log(event)
+            //     console.log('lng:',event.latLng.lng());
+            //     console.log('lat:',event.latLng.lat());
+            // }}
         >
+            {
+                props.markers.length > 0 &&
+                <MarkerClusterer
+                    onClick={(markerCluster) => {
+                        console.log('onMarkerClusterClick: ', markerCluster);
+                        const clickedMarkers = markerCluster.getMarkers();
+                        if (clickedMarkers.length < 20) {
+                            console.log('onMarkerClusterClick: ', clickedMarkers);
 
 
-            <MarkerClusterer
-                onClick={props.onMarkerClustererClick}
-                // onClusteringBegin={() => {
-                // }}
-                // onClusteringEnd={() => {
-                // }}
-                // clusterClass={'cluster cluster_license--active'}
-                averageCenter
-                enableRetinaIcons
-                gridSize={60}
-            >
-                {/*{props.markers}*/}
-                {data.photos.map(marker => (
-                    <Marker
-                        key={marker.photo_id}
-                        position={{lat: marker.latitude, lng: marker.longitude}}
-                    />
-                ))}
-            </MarkerClusterer>
+                            if (positionCheck(clickedMarkers)) {
+                                console.log('onMarkerClusterClick positionCheck: ', clickedMarkers);
+                                const arrayID = [];
+                                clickedMarkers.map((item, index) => {
+                                    arrayID.push(item.title);
+                                    console.log(`item-${index}`, item);
+                                    console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                                })
+                                console.log('onMarkerClusterClick arrayID: ', arrayID);
+                                Store.dispatch(getAddressInfo(Store.getState(), arrayID));
 
-            {/*{*/}
-            {/*props.markersCanceled.length > 0 &&*/}
-            {/*<MarkerClusterer*/}
-            {/*onClick={props.onMarkerClustererClick}*/}
-            {/*onClusteringBegin={() => {*/}
-            {/*// if(!props.clusteringStatus){*/}
-            {/*//     props.dispatch(MAP_CLUSTERING_LOAD, true);*/}
-            {/*// }*/}
-            {/*}}*/}
-            {/*onClusteringEnd={() => {*/}
-            {/*// if(props.clusteringStatus){*/}
-            {/*//     props.dispatch(MAP_CLUSTERING_LOAD, false);*/}
-            {/*// }*/}
-            {/*}}*/}
+                            }
 
-            {/*clusterClass={'cluster cluster_license--canceled'}*/}
-            {/*averageCenter*/}
-            {/*enableRetinaIcons*/}
-            {/*gridSize={60}*/}
-            {/*>*/}
-            {/*{props.markersCanceled}*/}
+                        }
 
-            {/*</MarkerClusterer>*/}
-            {/*}*/}
 
-            {/*{*/}
-                {/*props.MyLocation && <Marker*/}
-                    {/*icon={props.MyLocation ? MyLocation : ''}*/}
+                    }}
+                    onClusteringBegin={() => {
+                        // if(!props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
+                        // }
+                    }}
+                    onClusteringEnd={() => {
+                        // if(props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
+                        // }
+                    }}
 
-                    {/*position={props.center}*/}
-                {/*/>*/}
-            {/*}*/}
+                    clusterClass={'cluster cluster_license--active'}
+                    averageCenter
+                    enableRetinaIcons
+                    gridSize={60}
+                >
+                    {props.markers}
 
-            {/*<GetGeolocationButton*/}
-                {/*onMapSuccess={props.onMapSuccess}*/}
-            {/*/>*/}
+                </MarkerClusterer>
+            }
+            {
+                props.markersCanceled.length > 0 &&
+                <MarkerClusterer
+                    onClick={(markerCluster) => {
+                        console.log('onMarkerClusterClick: ',markerCluster);
+                        const clickedMarkers = markerCluster.getMarkers();
+                        if (clickedMarkers.length < 20) {
+                            console.log('onMarkerClusterClick: ',clickedMarkers);
+
+
+                            if (positionCheck(clickedMarkers)) {
+                                console.log('onMarkerClusterClick positionCheck: ',clickedMarkers);
+                                const arrayID = [];
+                                clickedMarkers.map((item, index) => {
+                                    arrayID.push(item.title);
+                                    console.log(`item-${index}`, item);
+                                    console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                                })
+                                console.log('onMarkerClusterClick arrayID: ',arrayID);
+                                Store.dispatch(getAddressInfo(Store.getState(), arrayID));
+
+                            }
+
+                        }
+
+
+                    }}
+                    onClusteringBegin={() => {
+                        // if(!props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, true);
+                        // }
+                    }}
+                    onClusteringEnd={() => {
+                        // if(props.clusteringStatus){
+                        //     props.dispatch(MAP_CLUSTERING_LOAD, false);
+                        // }
+                    }}
+
+                    clusterClass={'cluster cluster_license--canceled'}
+                    averageCenter
+                    enableRetinaIcons
+                    gridSize={60}
+                >
+                    {props.markersCanceled}
+
+                </MarkerClusterer>
+            }
+
+            {
+                props.MyLocation && <Marker
+                    icon={props.MyLocation ? MyLocation : ''}
+
+                    position={props.center}
+                />
+            }
+
+            <GetGeolocationButton
+                onMapSuccess={props.onMapSuccess}
+            />
 
         </GoogleMap>)
     }
