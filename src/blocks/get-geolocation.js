@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import LocationSearching from 'material-ui-icons/LocationSearching';
 import Loop from 'material-ui-icons/Loop';
@@ -59,14 +58,14 @@ export class GetGeolocationButton extends Component {
                 this.isLocationAuthorized();
                 console.log('response:', res)
             }).catch((error) => {
-                this.setState({loading: false});
+                this.isLocationAuthorized();
 
                 console.log('error:', error)
             })
 
 
         } catch (err) {
-            this.setState({loading: false});
+            this.isLocationAuthorized();
 
             console.log(err);
         }
@@ -74,26 +73,32 @@ export class GetGeolocationButton extends Component {
     }
 
     isLocationAuthorized() {
-        cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
-            console.log("Location is " + (enabled ? "enabled" : "disabled"));
+        try {
+            cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
+                console.log("Location is " + (enabled ? "enabled" : "disabled"));
 
-            if (!enabled) {
-                cordova.plugins.diagnostic.requestLocationAuthorization((status) => {
-                    console.log("Authorization status is now: " + status);
-                }, (error) => {
-                    this.setState({loading: false});
+                if (!enabled) {
+                    cordova.plugins.diagnostic.requestLocationAuthorization((status) => {
+                        console.log("Authorization status is now: " + status);
+                    }, (error) => {
+                        this.setState({loading: false});
 
-                    console.error(error);
-                });
-            } else {
-                this.geolocation()
-            }
-        }, (error) => {
-            this.setState({loading: false});
+                        console.error(error);
+                    });
+                } else {
+                    this.AdvancedGeolocation();
+                }
+            }, (error) => {
+                this.AdvancedGeolocation();
 
-            console.error("The following error occurred: " + error);
-        });
+                console.error("The following error occurred: " + error);
+            });
 
+
+        } catch (err) {
+            console.error(err);
+            this.AdvancedGeolocation();
+        }
     }
 
     geolocation() {
@@ -124,75 +129,79 @@ export class GetGeolocationButton extends Component {
             this.setState({loading: false});
             this.props.onMapSuccess(values.coords.latitude, values.coords.longitude);
         }).catch((error) => {
-
-            this.AdvancedGeolocation();
+            this.setState({loading: false});
             console.log('error:', error)
         });
 
     }
 
     AdvancedGeolocation() {
-        const onMapSuccess = this.props.onMapSuccess;
-        let result = new Promise((resolve, reject) => {
-            AdvancedGeolocation.start((success) => {
-                    try {
-                        let jsonObject = JSON.parse(success);
-                        console.log(jsonObject);
-                        switch (jsonObject.provider) {
-                            case "gps":
-                                //TODO
-                                break;
+        try {
+            const onMapSuccess = this.props.onMapSuccess;
+            let result = new Promise((resolve, reject) => {
+                AdvancedGeolocation.start((success) => {
+                        try {
+                            let jsonObject = JSON.parse(success);
+                            console.log(jsonObject);
+                            switch (jsonObject.provider) {
+                                case "gps":
+                                    //TODO
+                                    break;
 
-                            case "network":
-                                if ('latitude' in jsonObject) {
-                                    resolve(jsonObject);
-                                }
-                                break;
+                                case "network":
+                                    if ('latitude' in jsonObject) {
+                                        resolve(jsonObject);
+                                    }
+                                    break;
 
-                            case "satellite":
-                                //TODO
-                                break;
+                                case "satellite":
+                                    //TODO
+                                    break;
 
-                            case "cell_info":
-                                //TODO
-                                break;
+                                case "cell_info":
+                                    //TODO
+                                    break;
 
-                            case "cell_location":
-                                //TODO
-                                break;
+                                case "cell_location":
+                                    //TODO
+                                    break;
 
-                            case "signal_strength":
-                                //TODO
-                                break;
+                                case "signal_strength":
+                                    //TODO
+                                    break;
+                            }
                         }
-                    }
-                    catch (exc) {
-                        console.log("Invalid JSON: " + exc);
-                    }
-                },
-                function (error) {
-                    console.log("ERROR! " + JSON.stringify(error));
-                },
-                {
-                    "minTime": 0,         // Min time interval between updates (ms)
-                    "minDistance": 0,       // Min distance between updates (meters)
-                    "noWarn": true,         // Native location provider warnings
-                    "providers": "all",     // Return GPS, NETWORK and CELL locations
-                    "useCache": true,       // Return GPS and NETWORK cached locations
-                    "satelliteData": false, // Return of GPS satellite info
-                    "buffer": false,        // Buffer location data
-                    "bufferSize": 0,        // Max elements in buffer
-                    "signalStrength": false // Return cell signal strength data
-                });
-        }).then((resolve) => {
-            this.setState({loading: false});
-            this.props.onMapSuccess(resolve.latitude, resolve.longitude);
-            AdvancedGeolocation.stop();
-        }).catch((error) => {
-            console.log(error);
-            this.setState({loading: false});
-            AdvancedGeolocation.stop();
-        })
+                        catch (exc) {
+                            console.log("Invalid JSON: " + exc);
+                        }
+                    },
+                    function (error) {
+                        console.log("ERROR! " + JSON.stringify(error));
+                    },
+                    {
+                        "minTime": 0,         // Min time interval between updates (ms)
+                        "minDistance": 0,       // Min distance between updates (meters)
+                        "noWarn": true,         // Native location provider warnings
+                        "providers": "all",     // Return GPS, NETWORK and CELL locations
+                        "useCache": true,       // Return GPS and NETWORK cached locations
+                        "satelliteData": false, // Return of GPS satellite info
+                        "buffer": false,        // Buffer location data
+                        "bufferSize": 0,        // Max elements in buffer
+                        "signalStrength": false // Return cell signal strength data
+                    });
+            }).then((resolve) => {
+                this.setState({loading: false});
+                this.props.onMapSuccess(resolve.latitude, resolve.longitude);
+                AdvancedGeolocation.stop();
+            }).catch((error) => {
+                console.log(error);
+                this.geolocation();
+            })
+
+        } catch (err) {
+            console.error(err);
+            this.geolocation();
+        }
     }
 
 
@@ -206,7 +215,7 @@ export class GetGeolocationButton extends Component {
     render() {
         const {loading} = this.state;
         return (
-            <button onClick={ () => {
+            <button onClick={() => {
                 this.onClick();
                 // this.props.onMapSuccess(46.456507,30.679062)
             }} type="button" style={{
