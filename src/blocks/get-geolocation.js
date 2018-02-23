@@ -103,10 +103,19 @@ export class GetGeolocationButton extends Component {
 
     geolocation() {
         let timeout = 20 * 1000;
+        let onMapSuccess = this.props.onMapSuccess;
 
         let gps = new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition((position) => {
                     console.log('Latitude: ' + position.coords.latitude + '\n' +
+                        'Longitude: ' + position.coords.longitude + '\n' +
+                        'Altitude: ' + position.coords.altitude + '\n' +
+                        'Accuracy: ' + position.coords.accuracy + '\n' +
+                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+                        'Heading: ' + position.coords.heading + '\n' +
+                        'Speed: ' + position.coords.speed + '\n' +
+                        'Timestamp: ' + position.timestamp + '\n');
+                    alert('Latitude: ' + position.coords.latitude + '\n' +
                         'Longitude: ' + position.coords.longitude + '\n' +
                         'Altitude: ' + position.coords.altitude + '\n' +
                         'Accuracy: ' + position.coords.accuracy + '\n' +
@@ -126,8 +135,9 @@ export class GetGeolocationButton extends Component {
                 });
         }).then(values => {
             console.log(values);
+            alert(values);
+            onMapSuccess(values.coords.latitude, values.coords.longitude);
             this.setState({loading: false});
-            this.props.onMapSuccess(values.coords.latitude, values.coords.longitude);
         }).catch((error) => {
             this.setState({loading: false});
             console.log('error:', error)
@@ -208,7 +218,8 @@ export class GetGeolocationButton extends Component {
     onClick() {
         if (!this.state.loading) {
             this.setState({loading: true});
-            this.searchLocation();
+            this.geolocation();
+            // this.searchLocation();
         }
     }
 
