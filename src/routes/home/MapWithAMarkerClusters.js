@@ -137,7 +137,7 @@ export const MapWithAMarkerClusters = compose(
                     clusterClass={'cluster cluster_license--active'}
                     averageCenter
                     enableRetinaIcons
-                    gridSize={60}
+                    gridSize={70}
                 >
                     {props.markers}
 
@@ -186,7 +186,7 @@ export const MapWithAMarkerClusters = compose(
                     clusterClass={'cluster cluster_license--canceled'}
                     averageCenter
                     enableRetinaIcons
-                    gridSize={60}
+                    gridSize={70}
                 >
                     {props.markersCanceled}
 

@@ -25,7 +25,7 @@ import {HelpConventionsPage} from "./help_conventions/index";
 import {HelpFAQPage} from "./help_faq/index";
 import {MAP_GET_ADDRESS_INFO} from "../store/map/action_types";
 import {StatisticPage} from "./statistic_page/index";
-
+import {TestMap} from './test_map';
 
 window.Store = Store;
 window.BrowserHistory = BrowserHistory;
@@ -198,6 +198,12 @@ export class RouterWrapper extends Component {
                             path={MenuLexicon[currentLocal].menu.settings.href}
                             title={MenuLexicon[currentLocal].menu.settings.text}
                             component={SettingsPage}
+                        />
+                        <ChildrenRoute
+                            exact
+                            path={'/test-map'}
+                            title={'Test Map'}
+                            component={TestMap}
                         />
                     </Switch>
                 </Route>

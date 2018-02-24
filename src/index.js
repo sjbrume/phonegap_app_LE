@@ -10,17 +10,17 @@ import {getStatistic} from "./store/info_dialog/actions";
 
 
 
-try{
-    Store.dispatch(getStatistic());
-    if (navigator && navigator.hasOwnProperty('network') && navigator.network.connection.type === 'none') {
-        console.log(`NETWORK STATUS: ${navigator.network.connection.type}`);
-    } else {
-        Store.dispatch(init_db(Store.getState().websql));
-    }
-} catch (err) {
-    console.log(err);
-    Store.dispatch(init_db(Store.getState().websql));
-}
+// try{
+//     Store.dispatch(getStatistic());
+//     if (navigator && navigator.hasOwnProperty('network') && navigator.network.connection.type === 'none') {
+//         console.log(`NETWORK STATUS: ${navigator.network.connection.type}`);
+//     } else {
+//         Store.dispatch(init_db(Store.getState().websql));
+//     }
+// } catch (err) {
+//     console.log(err);
+//     Store.dispatch(init_db(Store.getState().websql));
+// }
 
 ReactDOM.render(
     <Provider store={Store}>

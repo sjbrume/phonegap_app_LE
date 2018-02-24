@@ -85,7 +85,6 @@ export class LayoutChildren extends Component {
 
     render() {
         const {title, children} = this.props;
-        console.log(this);
 
         return (
             <div className={'layout-main_root'}>

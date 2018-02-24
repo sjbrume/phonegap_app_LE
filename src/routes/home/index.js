@@ -325,7 +325,8 @@ export class HomePage extends Component {
         const {db, data, set, version, currentLocal, my_location, map_center, address_info} = this.props;
         console.log('Home page index', this);
         if (this.props.info_dialog) {
-            return (<Redirect to="/statistic-page"/>)
+            return (<Redirect to="/test-map"/>)
+            // return (<Redirect to="/statistic-page"/>)
             // return this.createInfoDialog()
         }
         if (this.networkInfo()) {

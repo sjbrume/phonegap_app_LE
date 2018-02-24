@@ -6,7 +6,6 @@ import {
 } from "./action_types";
 
 export const info_dialog = (state = {}, action) => {
-    console.log('info_dialog:', state);
     switch (action.type) {
         case INFO_DIALOG_TOGGLE: {
             console.log(INFO_DIALOG_TOGGLE, action);
