@@ -97,6 +97,7 @@ export class TestMap extends Component {
         // markerCluster.addListener('click', function(event) {
         //     console.log('markerCluster click',event);
         // });
+
         google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
             let center = cluster.getCenter();
             let size = cluster.getSize();
