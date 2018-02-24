@@ -48,13 +48,16 @@ export class TestMap extends Component {
 
     componentDidMount() {
         try {
-            this.initialize();
+            setTimeout(() => {
+                this.initialize();
+            }, 10000);
         } catch (error) {
             console.log(error);
+            setTimeout(() => {
+                this.initialize();
+            }, 10000);
         }
-        // setTimeout(() => {
-        //
-        // }, 5000);
+
 
     }
 
