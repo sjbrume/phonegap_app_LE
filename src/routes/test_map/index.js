@@ -106,7 +106,6 @@ export class TestMap extends Component {
             console.log('markerCluster click',cluster.getMarkers());
             cluster.getMarkers().map(item => {
                 console.log('markerCluster click',item);
-
             })
         });
 
