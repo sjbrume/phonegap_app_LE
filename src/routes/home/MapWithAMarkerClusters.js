@@ -123,6 +123,9 @@ export const MapWithAMarkerClusters = compose(
 
 
                     }}
+                    onTouchStart={() => {
+                        console.log('onTouchStart');
+                    }}
                     onClusteringBegin={() => {
                         // if(!props.clusteringStatus){
                         //     props.dispatch(MAP_CLUSTERING_LOAD, true);
@@ -146,6 +149,9 @@ export const MapWithAMarkerClusters = compose(
             {
                 props.markersCanceled.length > 0 &&
                 <MarkerClusterer
+                    onTouchStart={() => {
+                        console.log('onTouchStart');
+                    }}
                     onClick={(markerCluster) => {
                         console.log('onMarkerClusterClick: ',markerCluster);
                         const clickedMarkers = markerCluster.getMarkers();
