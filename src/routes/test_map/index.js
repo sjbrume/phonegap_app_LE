@@ -29,7 +29,12 @@ export class TestMap extends Component {
             {lat: -42.734358, lng: 147.501315},
             {lat: -42.735258, lng: 147.438000},
             {lat: -43.999792, lng: 170.463352}
-        ]
+        ],
+        center: {
+            lat: 46.484583,
+            lng: 30.7326,
+        },
+        zoom: 10,
     };
 
     constructor(props) {
@@ -47,44 +52,61 @@ export class TestMap extends Component {
     }
 
     componentDidMount() {
+
         try {
-            setTimeout(() => {
-                this.initialize();
-            }, 10000);
+            const initialize = this.initialize;
+            let count = 0;
+            let initTimer = setTimeout(function initCallback() {
+                console.log("тик");
+                if (initialize() || count === 4) {
+
+                    return;
+                }
+                ++count;
+
+                initTimer = setTimeout(initCallback, 2000);
+            }, 2000);
+
+            // setTimeout(() => {
+            //     this.initialize();
+            // }, 10000);
         } catch (error) {
             console.log(error);
-            setTimeout(() => {
-                this.initialize();
-            }, 10000);
+
         }
 
 
     }
 
     initialize() {
-
+        if (!google) return false;
         let map = new google.maps.Map(this.refs["map-container"], {
-            zoom: 3,
-            center: {lat: -28.024, lng: 140.887}
+            zoom: this.props.zoom,
+            center: this.props.center.lat ? this.props.center : {
+                lat: 46.484583,
+                lng: 30.7326,
+            }
         });
-
         this.setState({
             map
         });
-
-        map.addListener('click', function(event) {
-            console.log('click',event);
-            console.log('click',this);
-        });
-        this.createClusters(map);
+        this.createClusters(map,this.props.markers);
+        this.createClusters(map,this.props.markersCanceled);
+        return true;
     }
 
-    createClusters(map) {
-        let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let markers = this.props.locations.map(function (location, i) {
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate:', nextProps, nextState);
+        return false;
+    }
+
+    createClusters(map, data) {
+        console.log('createClusters');
+
+        let markers =  data.map(function (location, i) {
             return new google.maps.Marker({
                 position: location,
-                label: labels[i % labels.length]
+                // label: location.company
             });
         });
         let markerCluster = new MarkerClusterer(map, markers,
@@ -93,19 +115,15 @@ export class TestMap extends Component {
                 gridSize: 50,
                 maxZoom: 15
             });
-        console.log(markerCluster);
-        // markerCluster.addListener('click', function(event) {
-        //     console.log('markerCluster click',event);
-        // });
 
-        google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
+        google.maps.event.addListener(markerCluster, 'clusterclick', function (cluster) {
             let center = cluster.getCenter();
             let size = cluster.getSize();
             let markers = cluster.getMarkers();
-            console.log('markerCluster click',cluster);
-            console.log('markerCluster click',cluster.getMarkers());
+            console.log('markerCluster click', cluster);
+            console.log('markerCluster click', cluster.getMarkers());
             cluster.getMarkers().map(item => {
-                console.log('markerCluster click',item);
+                console.log('markerCluster click', item);
             })
         });
 
@@ -114,12 +132,13 @@ export class TestMap extends Component {
 
 
     render() {
+        console.log('TEST MAP:', this.props);
         return (
             <div id="map-container" ref="map-container" style={{
                 width: '100%',
-                height: 'calc(100vh - 60px)',
+                height: 'calc(100vh - 64px)',
             }}>
-                TestMap
+
             </div>
         )
     }

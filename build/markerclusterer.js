@@ -1078,16 +1078,16 @@ ClusterIcon.prototype.onAdd = function () {
 
     var that = this;
     var isDragging = false;
-    console.log(this.div_);
+    // console.log(this.div_);
     google.maps.event.addDomListener(this.div_, 'click', function (event) {
         // Only perform click when not preceded by a drag
-        console.log('click',event);
+        // console.log('click',event);
         that.triggerClusterClick(event);
 
     });
     google.maps.event.addDomListener(this.div_, 'touchstart', function (event) {
         // Only perform click when not preceded by a drag
-        console.log('touchstart',event);
+        // console.log('touchstart',event);
         that.triggerClusterClick(event);
 
     });

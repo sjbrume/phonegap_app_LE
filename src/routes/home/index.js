@@ -20,6 +20,7 @@ import marker_license_canceled from './marker_license_canceled.svg';
 import {AddressSelectionDialog} from "./address_selection_dialog";
 
 import {getAddressInfo} from "../../store/map/action";
+import {TestMap} from "../test_map/index";
 
 function mapStateToProps(state) {
     return {
@@ -208,24 +209,26 @@ export class HomePage extends Component {
             // console.log('207: data[i]:',data.item(i));
             if (data.item(i).lng && data.item(i).lat) {
                 if (data.item(i).license_type !== 'mixed') {
-                    markers.push(<Marker
-                        key={i}
-                        icon={marker_license_active}
-                        position={{lat: data.item(i).lat, lng: data.item(i).lng}}
-                        data={data.item(i)}
-                        title={data.item(i).id.toString()}
-                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
-                    />)
+                    markers.push(data.item(i));
+                    // markers.push(<Marker
+                    //     key={i}
+                    //     icon={marker_license_active}
+                    //     position={{lat: data.item(i).lat, lng: data.item(i).lng}}
+                    //     data={data.item(i)}
+                    //     title={data.item(i).id.toString()}
+                    //     onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
+                    // />)
                 } else {
-                    markersCanceled.push(<Marker
-                        key={i}
-                        icon={marker_license_canceled}
-                        position={{lat: data.item(i).lat, lng: data.item(i).lng}}
-                        data={data.item(i)}
-                        title={data.item(i).id.toString()}
-
-                        onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
-                    />)
+                    markersCanceled.push(data.item(i));
+                    // markersCanceled.push(<Marker
+                    //     key={i}
+                    //     icon={marker_license_canceled}
+                    //     position={{lat: data.item(i).lat, lng: data.item(i).lng}}
+                    //     data={data.item(i)}
+                    //     title={data.item(i).id.toString()}
+                    //
+                    //     onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
+                    // />)
                 }
 
 
@@ -355,7 +358,7 @@ export class HomePage extends Component {
 
                 {
                     !this.props.clustering &&
-                    <MapWithAMarkerClusters
+                    <TestMap
 
                         clusteringStatus={this.props.clustering}
 
