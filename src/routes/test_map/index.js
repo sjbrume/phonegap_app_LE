@@ -11,6 +11,7 @@ import {connect} from "react-redux";
 function mapStateToProps(state) {
     return {
         db: state.websql.db.db,
+        filter: state.map.filter,
     }
 }
 
@@ -212,11 +213,20 @@ export class TestMap extends Component {
     }
 
     onClickMarker(map, location) {
+        const {} = this.props;
         return (event) => {
             console.log('click', location);
-            const {db} = this.props;
+            const {db,filter} = this.props;
+            console.log(this.props);
+            let array       = filter.split(', '); // разбираю строку на массив параметров фильтра
+            let newFilter   = ''; // фильтр для запроса
+            array.map((item, index) => {
+                newFilter += `license_type = '${item}' OR `;
+            });
+
             if(map.getZoom() > 15) {
-                const query = `SELECT * FROM 'places_list' WHERE lng == ${location.lng} AND lat == ${location.lat}`;
+                const WHERE = `(lng = ${location.lng} AND lat = ${location.lat}) AND (${newFilter} license_type = 'mixed')`;
+                const query = `SELECT * FROM 'places_list' WHERE ${WHERE}`;
 
 
                 db.transaction((tx) => {
