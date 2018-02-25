@@ -24,156 +24,156 @@ export class GetGeolocationButton extends Component {
             loading: false
         }
     }
-    //
-    // searchLocation() {
-    //     console.log('searchLocation');
-    //     try {
-    //         let locationAccuracy = new Promise((resolve, reject) => {
-    //             cordova.plugins.locationAccuracy.canRequest(
-    //                 (canRequest) => {
-    //                     if (canRequest) {
-    //                         cordova.plugins.locationAccuracy.request(
-    //                             () => {
-    //                                 console.log("Request successful  locationAccuracy");
-    //                                 resolve(canRequest);
-    //                             },
-    //                             (error) => {
-    //                                 console.log("Request failed locationAccuracy:", error);
-    //                                 reject(error);
-    //                                 if (error) {
-    //                                     // Android only
-    //                                     console.error("error code=" + error.code + "; error message=" + error.message);
-    //                                     if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
-    //                                         if (window.confirm("Не удалось автоматически установить режим местоположения на «Высокая точность». Вы хотите перейти на страницу настроек местоположения и сделать это вручную?")) {
-    //                                             cordova.plugins.diagnostic.switchToLocationSettings();
-    //                                         }
-    //                                     }
-    //                                 }
-    //                             },
-    //                             cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
-    //                         );
-    //                     }
-    //                 });
-    //         }).then((res) => {
-    //             this.isLocationAuthorized();
-    //             console.log('response:', res)
-    //         }).catch((error) => {
-    //             this.isLocationAuthorized();
-    //
-    //             console.log('error:', error)
-    //         })
-    //
-    //
-    //     } catch (err) {
-    //         this.isLocationAuthorized();
-    //
-    //         console.log(err);
-    //     }
-    //
-    // }
-    //
-    // isLocationAuthorized() {
-    //     try {
-    //         cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
-    //             console.log("Location is " + (enabled ? "enabled" : "disabled"));
-    //
-    //             if (!enabled) {
-    //                 cordova.plugins.diagnostic.requestLocationAuthorization((status) => {
-    //                     console.log("Authorization status is now: " + status);
-    //                 }, (error) => {
-    //                     this.setState({loading: false});
-    //
-    //                     console.error(error);
-    //                 });
-    //             } else {
-    //                 this.AdvancedGeolocation();
-    //             }
-    //         }, (error) => {
-    //             this.AdvancedGeolocation();
-    //
-    //             console.error("The following error occurred: " + error);
-    //         });
-    //
-    //
-    //     } catch (err) {
-    //         console.error(err);
-    //         this.AdvancedGeolocation();
-    //     }
-    // }
-    //
-    // AdvancedGeolocation() {
-    //     try {
-    //         const onMapSuccess = this.props.onMapSuccess;
-    //         let result = new Promise((resolve, reject) => {
-    //             AdvancedGeolocation.start((success) => {
-    //                     try {
-    //                         let jsonObject = JSON.parse(success);
-    //                         console.log(jsonObject);
-    //                         switch (jsonObject.provider) {
-    //                             case "gps":
-    //                                 //TODO
-    //                                 break;
-    //
-    //                             case "network":
-    //                                 if ('latitude' in jsonObject) {
-    //                                     resolve(jsonObject);
-    //                                 }
-    //                                 break;
-    //
-    //                             case "satellite":
-    //                                 //TODO
-    //                                 break;
-    //
-    //                             case "cell_info":
-    //                                 //TODO
-    //                                 break;
-    //
-    //                             case "cell_location":
-    //                                 //TODO
-    //                                 break;
-    //
-    //                             case "signal_strength":
-    //                                 //TODO
-    //                                 break;
-    //                         }
-    //                     }
-    //                     catch (exc) {
-    //                         console.log("Invalid JSON: " + exc);
-    //                     }
-    //                 },
-    //                 function (error) {
-    //                     console.log("ERROR! " + JSON.stringify(error));
-    //                 },
-    //                 {
-    //                     "minTime": 0,         // Min time interval between updates (ms)
-    //                     "minDistance": 0,       // Min distance between updates (meters)
-    //                     "noWarn": true,         // Native location provider warnings
-    //                     "providers": "all",     // Return GPS, NETWORK and CELL locations
-    //                     "useCache": true,       // Return GPS and NETWORK cached locations
-    //                     "satelliteData": false, // Return of GPS satellite info
-    //                     "buffer": false,        // Buffer location data
-    //                     "bufferSize": 0,        // Max elements in buffer
-    //                     "signalStrength": false // Return cell signal strength data
-    //                 });
-    //         }).then((resolve) => {
-    //             this.setState({loading: false});
-    //             this.props.onMapSuccess(resolve.latitude, resolve.longitude);
-    //             AdvancedGeolocation.stop();
-    //         }).catch((error) => {
-    //             console.log(error);
-    //             this.geolocation();
-    //         })
-    //
-    //     } catch (err) {
-    //         console.error(err);
-    //         this.geolocation();
-    //     }
-    // }
+
+    searchLocation() {
+        console.log('searchLocation');
+        try {
+            let locationAccuracy = new Promise((resolve, reject) => {
+                cordova.plugins.locationAccuracy.canRequest(
+                    (canRequest) => {
+                        if (canRequest) {
+                            cordova.plugins.locationAccuracy.request(
+                                () => {
+                                    console.log("Request successful  locationAccuracy");
+                                    resolve(canRequest);
+                                },
+                                (error) => {
+                                    console.log("Request failed locationAccuracy:", error);
+                                    reject(error);
+                                    if (error) {
+                                        // Android only
+                                        console.error("error code=" + error.code + "; error message=" + error.message);
+                                        if (error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
+                                            if (window.confirm("Не удалось автоматически установить режим местоположения на «Высокая точность». Вы хотите перейти на страницу настроек местоположения и сделать это вручную?")) {
+                                                cordova.plugins.diagnostic.switchToLocationSettings();
+                                            }
+                                        }
+                                    }
+                                },
+                                cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY // iOS will ignore this
+                            );
+                        }
+                    });
+            }).then((res) => {
+                this.isLocationAuthorized();
+                console.log('response:', res)
+            }).catch((error) => {
+                this.isLocationAuthorized();
+
+                console.log('error:', error)
+            })
+
+
+        } catch (err) {
+            this.isLocationAuthorized();
+
+            console.log(err);
+        }
+
+    }
+
+    isLocationAuthorized() {
+        try {
+            cordova.plugins.diagnostic.isLocationAuthorized((enabled) => {
+                console.log("Location is " + (enabled ? "enabled" : "disabled"));
+
+                if (!enabled) {
+                    cordova.plugins.diagnostic.requestLocationAuthorization((status) => {
+                        console.log("Authorization status is now: " + status);
+                    }, (error) => {
+                        this.setState({loading: false});
+
+                        console.error(error);
+                    });
+                } else {
+                    this.AdvancedGeolocation();
+                }
+            }, (error) => {
+                this.AdvancedGeolocation();
+
+                console.error("The following error occurred: " + error);
+            });
+
+
+        } catch (err) {
+            console.error(err);
+            this.AdvancedGeolocation();
+        }
+    }
+
+    AdvancedGeolocation() {
+        try {
+            const onMapSuccess = this.props.onMapSuccess;
+            let result = new Promise((resolve, reject) => {
+                AdvancedGeolocation.start((success) => {
+                        try {
+                            let jsonObject = JSON.parse(success);
+                            console.log(jsonObject);
+                            switch (jsonObject.provider) {
+                                case "gps":
+                                    //TODO
+                                    break;
+
+                                case "network":
+                                    if ('latitude' in jsonObject) {
+                                        resolve(jsonObject);
+                                    }
+                                    break;
+
+                                case "satellite":
+                                    //TODO
+                                    break;
+
+                                case "cell_info":
+                                    //TODO
+                                    break;
+
+                                case "cell_location":
+                                    //TODO
+                                    break;
+
+                                case "signal_strength":
+                                    //TODO
+                                    break;
+                            }
+                        }
+                        catch (exc) {
+                            console.log("Invalid JSON: " + exc);
+                        }
+                    },
+                    function (error) {
+                        console.log("ERROR! " + JSON.stringify(error));
+                    },
+                    {
+                        "minTime": 0,         // Min time interval between updates (ms)
+                        "minDistance": 0,       // Min distance between updates (meters)
+                        "noWarn": true,         // Native location provider warnings
+                        "providers": "all",     // Return GPS, NETWORK and CELL locations
+                        "useCache": true,       // Return GPS and NETWORK cached locations
+                        "satelliteData": false, // Return of GPS satellite info
+                        "buffer": false,        // Buffer location data
+                        "bufferSize": 0,        // Max elements in buffer
+                        "signalStrength": false // Return cell signal strength data
+                    });
+            }).then((resolve) => {
+                this.setState({loading: false});
+                this.props.onMapSuccess(resolve.latitude, resolve.longitude);
+                AdvancedGeolocation.stop();
+            }).catch((error) => {
+                console.log(error);
+                this.geolocation();
+            })
+
+        } catch (err) {
+            console.error(err);
+            this.geolocation();
+        }
+    }
 
     geolocation() {
         let timeout = 20 * 1000;
         let onMapSuccess = this.props.onMapSuccess;
-
+        const searchLocation = this.searchLocation;
         let gps = new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition((position) => {
                     console.log('Latitude: ' + position.coords.latitude + '\n' +
@@ -188,8 +188,10 @@ export class GetGeolocationButton extends Component {
                     resolve(position);
                 },
                 (error) => {
+
                     console.log('code: ' + error.code + '\n' +
                         'message: ' + error.message + '\n');
+                    searchLocation();
                     reject(error);
                 }, {
                     timeout: timeout,
@@ -200,7 +202,7 @@ export class GetGeolocationButton extends Component {
             onMapSuccess(values.coords.latitude, values.coords.longitude);
             this.setState({loading: false});
         }).catch((error) => {
-            this.setState({loading: false});
+            searchLocation();
             console.log('error:', error)
         });
 

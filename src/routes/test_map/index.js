@@ -109,7 +109,9 @@ export class TestMap extends Component {
         console.log('shouldComponentUpdate:', nextProps, nextState);
 
         if(nextProps.center.lng !== this.props.center.lng) {
-            this.createMyLocation(nextProps.center);
+            if(nextProps.MyLocation) {
+                this.createMyLocation(nextProps.center);
+            }
             this.state.map.setCenter(nextProps.center);
             this.state.map.setZoom(nextProps.zoom);
         }
