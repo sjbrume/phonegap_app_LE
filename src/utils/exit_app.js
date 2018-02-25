@@ -24,6 +24,11 @@ export const exit_app = () => {
             if (buttonIndex === 2) {
                 console.log("navigator.app.exitApp");
                 navigator.app.exitApp();
+                if (navigator.app && navigator.app.exitApp) {
+                    navigator.app.exitApp();
+                } else if (navigator.device && navigator.device.exitApp) {
+                    navigator.device.exitApp();
+                }
             }
         },
         lexicon[ Store.getState().intl].confirm_exit_app.title,
