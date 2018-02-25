@@ -5,7 +5,24 @@ import {Store} from '../../store/store';
 import {getAddressInfo} from "../../store/map/action";
 import {GetGeolocationButton} from "../../blocks/get-geolocation";
 import MyLocation from '../complaints_map/my_location_icon.png';
+import {connect} from "react-redux";
 
+
+function mapStateToProps(state) {
+    return {
+        db: state.websql.db.db,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch: (type, payload) => {
+            dispatch({type, payload})
+        }
+    }
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export class TestMap extends Component {
 
     static propTypes = {};
@@ -50,6 +67,8 @@ export class TestMap extends Component {
         this.initialize = this.initialize.bind(this);
         this.onClickCluster = this.onClickCluster.bind(this);
         this.createMyLocation = this.createMyLocation.bind(this);
+        this.searchPlaces = this.searchPlaces.bind(this);
+        this.onClickMarker = this.onClickMarker.bind(this);
 
     }
 
@@ -88,17 +107,29 @@ export class TestMap extends Component {
     }
 
     initialize() {
+        // lat: 46.39593493567351;
+        // lng: 30.69601575056072;
         if (!google) return false;
         let map = new google.maps.Map(this.refs["map-container"], {
             zoom: this.props.zoom,
+            // zoom: 16,
             center: this.props.center.lat ? this.props.center : {
                 lat: 46.484583,
                 lng: 30.7326,
+                // lat: 46.39593493567351,
+                // lng:  30.69601575056072,
             }
         });
         console.log(map);
         this.setState({
             map
+        });
+        map.addListener('zoom_changed', function() {
+            // 3 seconds after the center of the map has changed, pan back to the
+            // marker.
+            console.log(`lat: ${map.center.lat()};
+                            lng: ${map.center.lng()};`);
+            console.log(map.getZoom());
         });
         this.createClusters(map, this.props.markers, 'cluster_license--active', marker_license_active);
         this.createClusters(map, this.props.markersCanceled, 'cluster_license--canceled', marker_license_canceled);
@@ -163,6 +194,9 @@ export class TestMap extends Component {
         })
     }
 
+    /*
+    * @param {object} pos
+    * @description Createmarker you location*/
     createMyLocation(pos) {
         if(this.state.my_location_marker) {
             this.state.my_location_marker.setMap(null);
@@ -173,15 +207,48 @@ export class TestMap extends Component {
             icon: MyLocation,
         });
         console.log('my_location_marker:',my_location_marker);
-        my_location_marker.addListener('click', (event) => {
-            console.log('click', location);
-            Store.dispatch(getAddressInfo(Store.getState(), [location.id]))
-        });
+
         this.setState({my_location_marker});
     }
+
+    onClickMarker(map, location) {
+        return (event) => {
+            console.log('click', location);
+            const {db} = this.props;
+            if(map.getZoom() > 15) {
+                const query = `SELECT * FROM 'places_list' WHERE lng == ${location.lng} AND lat == ${location.lat}`;
+
+
+                db.transaction((tx) => {
+                    tx.executeSql(query,
+                        [],
+                        (sqlTransaction, sqlResultSet) => {
+                            console.log(sqlResultSet.rows);
+                            let arrayId = [];
+                            for(let i = 0; i < sqlResultSet.rows.length; i++) {
+                                arrayId.push(sqlResultSet.rows.item(i).id)
+                            }
+                            Store.dispatch(getAddressInfo(Store.getState(), arrayId))
+                        }, (sqlTransaction, sqlEerror) => {
+                            console.log(sqlTransaction, sqlEerror);
+                        })
+                })
+            } else {
+
+                Store.dispatch(getAddressInfo(Store.getState(), [location.id]))
+            }
+
+
+        }
+    }
+
+    searchPlaces(){
+
+    }
+
     createClusters(map, data, className, icon) {
         console.log('createClusters');
-
+        let onClickMarker = this.onClickMarker;
         let markers = data.map(function (location, i) {
 
             let marker = new google.maps.Marker({
@@ -190,16 +257,13 @@ export class TestMap extends Component {
                 data: location,
             });
 
-            marker.addListener('click', (event) => {
-                console.log('click', location);
-                Store.dispatch(getAddressInfo(Store.getState(), [location.id]))
-            });
+            marker.addListener('click', onClickMarker(map, location));
 
             return marker;
         });
         let markerCluster = new MarkerClusterer(map, markers,
             {
-                gridSize: 50,
+                gridSize: 60,
                 maxZoom: 15,
                 className: className
             });
