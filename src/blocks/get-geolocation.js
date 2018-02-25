@@ -14,9 +14,9 @@ export class GetGeolocationButton extends Component {
         this.state = this.initialState;
         this.onClick = this.onClick.bind(this);
         this.geolocation = this.geolocation.bind(this);
-        // this.searchLocation = this.searchLocation.bind(this);
-        // this.isLocationAuthorized = this.isLocationAuthorized.bind(this);
-        // this.AdvancedGeolocation = this.AdvancedGeolocation.bind(this);
+        this.searchLocation = this.searchLocation.bind(this);
+        this.isLocationAuthorized = this.isLocationAuthorized.bind(this);
+        this.AdvancedGeolocation = this.AdvancedGeolocation.bind(this);
     }
 
     get initialState() {
