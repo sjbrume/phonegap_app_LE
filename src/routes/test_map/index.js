@@ -1,4 +1,10 @@
 import React, {Component} from 'react';
+import marker_license_active from '../home/marker_license_active.svg';
+import marker_license_canceled from '../home/marker_license_canceled.svg';
+import {Store} from '../../store/store';
+import {getAddressInfo} from "../../store/map/action";
+import {GetGeolocationButton} from "../../blocks/get-geolocation";
+import MyLocation from '../complaints_map/my_location_icon.png';
 
 export class TestMap extends Component {
 
@@ -42,12 +48,15 @@ export class TestMap extends Component {
         this.state = this.initialState;
         this.createClusters = this.createClusters.bind(this);
         this.initialize = this.initialize.bind(this);
+        this.onClickCluster = this.onClickCluster.bind(this);
+        this.createMyLocation = this.createMyLocation.bind(this);
 
     }
 
     get initialState() {
         return {
-            map: null
+            map: null,
+            my_location_marker: null,
         }
     }
 
@@ -87,45 +96,113 @@ export class TestMap extends Component {
                 lng: 30.7326,
             }
         });
+        console.log(map);
         this.setState({
             map
         });
-        this.createClusters(map,this.props.markers);
-        this.createClusters(map,this.props.markersCanceled);
+        this.createClusters(map, this.props.markers, 'cluster_license--active', marker_license_active);
+        this.createClusters(map, this.props.markersCanceled, 'cluster_license--canceled', marker_license_canceled);
         return true;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate:', nextProps, nextState);
+
+        if(nextProps.center.lng !== this.props.center.lng) {
+            this.createMyLocation(nextProps.center);
+            this.state.map.setCenter(nextProps.center);
+            this.state.map.setZoom(nextProps.zoom);
+        }
+
         return false;
     }
 
-    createClusters(map, data) {
+    positionCheck(clickedMarkers) {
+        const length = clickedMarkers.length;
+        const searchParam = {
+            lng: clickedMarkers[0].position.lng(),
+            lat: clickedMarkers[0].position.lat(),
+        };
+        for (let i = 1; i < length; i++) {
+            if (searchParam.lng !== clickedMarkers[i].position.lng() && searchParam.lat !== clickedMarkers[i].position.lat()) {
+                return false
+            }
+        }
+        return searchParam
+    }
+
+    onClickCluster(cluster) {
+        let markers = cluster.getMarkers();
+        console.log('onClickCluster cluster', cluster);
+        console.log('onClickCluster markers', markers);
+
+        if (markers.length < 20) {
+            console.log('onMarkerClusterClick: ', markers);
+
+
+            if (this.positionCheck(markers)) {
+                console.log('onMarkerClusterClick positionCheck: ', markers);
+                const arrayID = [];
+                markers.map((item, index) => {
+                    arrayID.push(item.data.id);
+                    console.log(`item-${index}`, item);
+                    console.log(`
+                             lat: ${item.position.lat()}
+                             lng: ${item.position.lng()}`);
+                });
+                console.log('onMarkerClusterClick arrayID: ', arrayID);
+                Store.dispatch(getAddressInfo(Store.getState(), arrayID));
+            }
+
+        }
+
+        markers.map(item => {
+            console.log('markerCluster click', item);
+        })
+    }
+
+    createMyLocation(pos) {
+        if(this.state.my_location_marker) {
+            this.state.my_location_marker.setMap(null);
+        }
+        let my_location_marker = new google.maps.Marker({
+            position: pos,
+            map: this.state.map,
+            icon: MyLocation,
+        });
+        console.log('my_location_marker:',my_location_marker);
+        my_location_marker.addListener('click', (event) => {
+            console.log('click', location);
+            Store.dispatch(getAddressInfo(Store.getState(), [location.id]))
+        });
+        this.setState({my_location_marker});
+    }
+    createClusters(map, data, className, icon) {
         console.log('createClusters');
 
-        let markers =  data.map(function (location, i) {
-            return new google.maps.Marker({
+        let markers = data.map(function (location, i) {
+
+            let marker = new google.maps.Marker({
                 position: location,
-                // label: location.company
+                icon: icon,
+                data: location,
             });
+
+            marker.addListener('click', (event) => {
+                console.log('click', location);
+                Store.dispatch(getAddressInfo(Store.getState(), [location.id]))
+            });
+
+            return marker;
         });
         let markerCluster = new MarkerClusterer(map, markers,
             {
-                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
                 gridSize: 50,
-                maxZoom: 15
+                maxZoom: 15,
+                className: className
             });
-
-        google.maps.event.addListener(markerCluster, 'clusterclick', function (cluster) {
-            let center = cluster.getCenter();
-            let size = cluster.getSize();
-            let markers = cluster.getMarkers();
-            console.log('markerCluster click', cluster);
-            console.log('markerCluster click', cluster.getMarkers());
-            cluster.getMarkers().map(item => {
-                console.log('markerCluster click', item);
-            })
-        });
+        console.log(markerCluster);
+        google.maps.event.addListener(markerCluster, 'clusterclick', this.onClickCluster);
 
 
     }
@@ -134,12 +211,24 @@ export class TestMap extends Component {
     render() {
         console.log('TEST MAP:', this.props);
         return (
-            <div id="map-container" ref="map-container" style={{
+            <div style={{
                 width: '100%',
                 height: 'calc(100vh - 64px)',
             }}>
+                <div id="map-container" ref="map-container" style={{
+                    width: '100%',
+                    height: 'calc(100vh - 64px)',
+                }}>
+
+                </div>
+                {
+                    this.props.onMapSuccess && <GetGeolocationButton
+                        onMapSuccess={this.props.onMapSuccess}
+                    />
+                }
 
             </div>
+
         )
     }
 }

@@ -129,6 +129,12 @@ function MarkerClusterer(map, opt_markers, opt_options) {
      * @type {string}
      * @private
      */
+    this.className = options['className'] || 'testClassName';
+
+    /**
+     * @type {string}
+     * @private
+     */
     this.imageExtension_ = options['imageExtension'] ||
         this.MARKER_CLUSTER_IMAGE_EXTENSION_;
 
@@ -249,7 +255,8 @@ MarkerClusterer.prototype.setupStyles_ = function () {
         this.styles_.push({
             url: this.imagePath_ + (i + 1) + '.' + this.imageExtension_,
             height: size,
-            width: size
+            width: size,
+            className: this.className,
         });
     }
 };
@@ -1028,7 +1035,6 @@ Cluster.prototype.updateIcon = function () {
  */
 function ClusterIcon(cluster, styles, opt_padding) {
     cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
-
     this.styles_ = styles;
     this.padding_ = opt_padding || 0;
     this.cluster_ = cluster;
@@ -1065,12 +1071,13 @@ ClusterIcon.prototype.triggerClusterClick = function (event) {
  * @ignore
  */
 ClusterIcon.prototype.onAdd = function () {
-    console.log('ClusterIcon.prototype.onAdd = function() {')
+    // console.log('ClusterIcon.prototype.onAdd = function() {', this)
     this.div_ = document.createElement('DIV');
     if (this.visible_) {
         var pos = this.getPosFromLatLng_(this.center_);
         this.div_.style.cssText = this.createCss(pos);
         this.div_.innerHTML = this.sums_.text;
+        this.div_.classList.add(this.styles_["0"].className)
     }
 
     var panes = this.getPanes();
@@ -1085,9 +1092,9 @@ ClusterIcon.prototype.onAdd = function () {
         that.triggerClusterClick(event);
 
     });
-    google.maps.event.addDomListener(this.div_, 'touchstart', function (event) {
+    google.maps.event.addDomListener(this.div_, 'touchend', function (event) {
         // Only perform click when not preceded by a drag
-        // console.log('touchstart',event);
+        console.log('touchend',event);
         that.triggerClusterClick(event);
 
     });
@@ -1236,9 +1243,9 @@ ClusterIcon.prototype.setCenter = function (center) {
  */
 ClusterIcon.prototype.createCss = function (pos) {
     var style = [];
-    style.push('background-image:url(' + this.url_ + ');');
-    var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
-    style.push('background-position:' + backgroundPosition + ';');
+    // style.push('background-image:url(' + this.url_ + ');');
+    // var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
+    // style.push('background-position:' + backgroundPosition + ';');
 
     if (typeof this.anchor_ === 'object') {
         if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&

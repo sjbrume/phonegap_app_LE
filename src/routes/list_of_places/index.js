@@ -165,18 +165,17 @@ export class ListOfPlacesPage extends Component {
     }
 
     async generateDivs() {
-        console.log('generateDivs', this.props);
         const {db,currentLocal} = this.props;
 
-
         let moreDivs = [];
+        const setState = this.setState;
         const MIN = this.state.min;
         const MAX = this.state.min + this.state.step;
 
         const Data = await new Promise((resolve, reject) => {
            try {
                db.db.transaction((tx) => {
-                   tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ? AND license_type = 'mixed'`,
+                   tx.executeSql(`SELECT * FROM ${TABLE_NAME} WHERE rowid >= ? AND rowid <= ? AND license_type != 'mixed'`,
                        [MIN, MAX],
                        (sqlTransaction, sqlResultSet) => {
                            console.log(sqlTransaction, sqlResultSet);
@@ -190,15 +189,22 @@ export class ListOfPlacesPage extends Component {
                console.error ('generateDivs: ',err);
            }
         });
+        console.log(Data);
+        if(Data.length){
+            for(let i = 0; i < Data.length; i++) {
+                moreDivs.push(<Accordion key={Data.item(i).id} currentLocal={currentLocal} data={Data.item(i)}/>)
+            }
 
-        for(let i = 0; i < Data.length; i++) {
-            moreDivs.push(<Accordion key={Data.item(i).id} currentLocal={currentLocal} data={Data.item(i)}/>)
+            this.setState({
+                places: [...this.state.places, ...moreDivs],
+                min: this.state.min + this.state.step
+            });
+        } else {
+            this.setState({
+                min: this.state.min + this.state.step
+            });
+            this.generateDivs();
         }
-
-        this.setState({
-            places: [...this.state.places, ...moreDivs],
-            min: this.state.min + this.state.step
-        });
 
 
     }
