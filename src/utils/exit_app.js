@@ -23,7 +23,7 @@ export const exit_app = () => {
             console.log('buttonIndex: ', buttonIndex);
             if (buttonIndex === 2) {
                 console.log("navigator.app.exitApp");
-                navigator.app.exitApp();
+                // navigator.app.exitApp();
                 if (navigator.app && navigator.app.exitApp) {
                     navigator.app.exitApp();
                 } else if (navigator.device && navigator.device.exitApp) {

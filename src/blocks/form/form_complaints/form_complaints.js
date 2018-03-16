@@ -25,6 +25,8 @@ import {Link} from "react-router-dom";
 import {ComplaintsMap} from "../../../routes/complaints_map/complaints_map";
 import {FORM_REMOVE_LATLNG} from "../../../store/reducers";
 import {COMPLAINTS_MAP_TOGGLE} from "../../../store/complaints_map/reducer";
+import {radioButtonMessageGenerator} from "./radioButtonMessageGenerator";
+import {checkboxButtonMessageGenerator} from "./checkboxButtonMessageGenerator";
 
 const required = message => value => {
     console.log(value);
@@ -100,16 +102,19 @@ export class FormComplaints extends Component {
 
     async onSubmit(value) {
         console.log(value);
-        if (value.message === 'textarea') {
+        if (value.message.find((item) => item === 'textarea')) {
             if (value.type === 'anonim' && value.message_textarea === 'Разработчики') {
                 this.handleClickOpen();
                 return;
             }
-            value.message = value.message_textarea;
+            value.message = value.message.filter(word =>  word !== 'textarea');
+            value.message.push(value.message_textarea);
             delete value.message_textarea;
         } else {
             delete value.message_textarea;
         }
+        value.message = value.message.join(' ');
+        console.log(value);
         // if (!value.message) return;
         // if (!value.company) return;
         // if (value.type === 'no_anonim' && !value.name) return;
@@ -160,34 +165,6 @@ export class FormComplaints extends Component {
     }
 
     radioButtonGenerator = ({input, type, options, meta: {touched, error, warning}}) => (<div>
-        {
-            options.map(o =>
-                <div key={o.value} className="input_radio-wrapper">
-                    <label htmlFor={o.value} className="input_radio-text">
-                        {o.title}
-                    </label>
-                    <input className="input_radio"
-                           type="radio"
-                           id={o.value}
-                           {...input}
-                           value={o.value}
-                           checked={o.value === input.value}
-                    />
-
-                    <div className="input_radio-dot">
-                        <Done/>
-                    </div>
-                </div>
-            )
-        }
-        <div className="complaints_input-valid">
-            {touched &&
-            ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))}
-        </div>
-    </div>);
-
-    radioButtonMessageGenerator = ({input, type, options, meta: {touched, error, warning}}) => (<div>
         {
             options.map(o =>
                 <div key={o.value} className="input_radio-wrapper">
@@ -378,22 +355,22 @@ export class FormComplaints extends Component {
                         label={lexicon[currentLocal].company}
                     />
                     <Field
-                        component={this.radioButtonMessageGenerator}
+                        component={checkboxButtonMessageGenerator}
                         name={'message'}
                         validate={[Required]}
                         options={[
                             {
                                 title: lexicon[currentLocal].default_message.not_issued_a_check,
-                                value: 'Не выдали чек',
+                                value: lexicon[currentLocal].default_message.not_issued_a_check,
                             }, {
                                 title: lexicon[currentLocal].default_message.no_license,
-                                value: 'Отсутствует оицензия',
+                                value: lexicon[currentLocal].default_message.no_license,
                             }, {
                                 title: lexicon[currentLocal].default_message.sale_without_excise_stamps,
-                                value: 'Реализация без акцизных марок',
+                                value: lexicon[currentLocal].default_message.sale_without_excise_stamps,
                             }, {
                                 title: lexicon[currentLocal].default_message.sale_to_minors,
-                                value: 'Продажа алкоголя или сигарет несовершеннолетним',
+                                value: lexicon[currentLocal].default_message.sale_to_minors,
                             }, {
                                 title: lexicon[currentLocal].default_message.other,
                                 value: 'textarea',
@@ -401,7 +378,7 @@ export class FormComplaints extends Component {
                         ]}
                     />
                     {
-                        values && values.message && values.message === 'textarea' &&
+                        values && values.message && Array.isArray(values.message) && values.message.find((item) => item === 'textarea') &&
                         <Field
                             component={this.renderTextarea}
                             name={'message_textarea'}

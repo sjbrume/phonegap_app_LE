@@ -93,7 +93,8 @@ const create_table_db = (DB) => {
               license_start_at TEXT,
               license_end_at   TEXT,
               license_type     TEXT,
-              status           TEXT
+              status           TEXT,
+              public_notices   NONE
             )`, [],
             (sqlTransaction, sqlResultSet) => {
                 console.log(sqlResultSet);
@@ -136,7 +137,8 @@ const set_db = (DB, data) => {
                                   license_start_at TEXT,
                                   license_end_at   TEXT,
                                   license_type     TEXT,
-                                  status           TEXT
+                                  status           TEXT,
+                                  public_notices   NONE
                                 )`, [],
                                 (sqlTransaction, sqlResultSet) => {
                                     console.log(sqlResultSet);
@@ -155,6 +157,7 @@ const set_db = (DB, data) => {
                                             license_end_at,
                                             license_type,
                                             status,
+                                            public_notices,
                                         } = item;
                                         promises.push(
                                             new Promise((resolve, reject) => {
@@ -171,8 +174,9 @@ const set_db = (DB, data) => {
                                                       license_start_at,
                                                       license_end_at,
                                                       license_type,
-                                                      status
-                                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                      status,
+                                                      public_notices
+                                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                     [id,
                                                         region_id,
                                                         id_code,
@@ -185,7 +189,14 @@ const set_db = (DB, data) => {
                                                         license_start_at,
                                                         license_end_at,
                                                         license_type,
-                                                        status],
+                                                        status,
+                                                        // JSON.stringify({
+                                                        //     confiscated_goods: 'вилучена продукція',
+                                                        //     protocol_drawn_up: 'складено протокол від',
+                                                        //     financial_sanctions: 'застосовані фінансови санкції'
+                                                        // })
+                                                        JSON.stringify(public_notices)
+                                                    ],
                                                     (sqlTransaction, sqlResultSet) => {
                                                         resolve(sqlResultSet)
                                                     },

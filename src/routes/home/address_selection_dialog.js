@@ -147,6 +147,15 @@ export class AddressSelectionDialog extends Component {
                     </h3>
                     <p className="places-description_text">
                         {lexicon[currentLocal].company_desc.measures} <br/>
+
+                        {lexicon[currentLocal].company_desc.confiscated_goods}:
+                        {item.public_notices && JSON.parse(item.public_notices).confiscated_goods}<br/>
+
+                        {lexicon[currentLocal].company_desc.protocol_drawn_up}:
+                        {item.public_notices && JSON.parse(item.public_notices).protocol_drawn_up} <br/>
+
+                        {lexicon[currentLocal].company_desc.financial_sanctions}:
+                        {item.public_notices && JSON.parse(item.public_notices).financial_sanctions}<br/>
                     </p>
                     <Button type="button" raised
                             style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
