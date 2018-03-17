@@ -9,7 +9,8 @@ phonegap-account.json
 
 
 # production
-
+legal-excise.keystore
+android.txt
 
 # misc
 .DS_Store
