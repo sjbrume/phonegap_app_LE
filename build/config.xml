@@ -7,7 +7,6 @@
     <author email="fmakareev@gmail.com" href="">
         Fedor Makarev, Alexandra Bobrova, Artur Ragimov
     </author>/>
-
     <content src="index.html" />
     <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="DisallowOverscroll" value="true" />
