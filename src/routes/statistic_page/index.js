@@ -1,20 +1,21 @@
-import React, {Component}       from 'react';
-import {connect}                from "react-redux";
-import {lexicon}                from './lexicon';
-import logo                     from './logo.png';
-import {Button}                 from "material-ui";
-import {INFO_DIALOG_TOGGLE}     from "../../store/info_dialog/action_types";
-import {Link, Redirect}         from "react-router-dom";
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {lexicon} from './lexicon';
+import logo from './logo.png';
+import logo_ua from './logo_ua.svg';
+import {Button} from "material-ui";
+import {INFO_DIALOG_TOGGLE} from "../../store/info_dialog/action_types";
+import {Link, Redirect} from "react-router-dom";
 
-import CircularProgress         from 'material-ui/Progress/CircularProgress';
-import PriorityHigh             from 'material-ui-icons/PriorityHigh';
-import InfoOutline             from 'material-ui-icons/InfoOutline';
+import CircularProgress from 'material-ui/Progress/CircularProgress';
+import PriorityHigh from 'material-ui-icons/PriorityHigh';
+import InfoOutline from 'material-ui-icons/InfoOutline';
 import Dialog, {
     DialogActions,
     DialogContent,
-}                               from 'material-ui/Dialog';
+} from 'material-ui/Dialog';
 
-import Slide                    from 'material-ui/transitions/Slide';
+import Slide from 'material-ui/transitions/Slide';
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -62,11 +63,11 @@ export class StatisticPage extends Component {
     }
 
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({open: true});
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
 
 
@@ -109,7 +110,7 @@ export class StatisticPage extends Component {
 
 
         return (
-            <div className="loading-panel_wrapper" >
+            <div className="loading-panel_wrapper">
                 <div
 
                     className="info-dialog_content">
@@ -119,15 +120,15 @@ export class StatisticPage extends Component {
                         type="button"
                         raised
                         style={{
-                        backgroundColor: '#fff',
-                        color: 'rgb(58, 126, 206)',
-                        position: 'absolute',
-                        top: '20px',
-                        right: '20px',
-                        zIndex: 100,
-                        maxWidth: '40px',
-                        minWidth: 'inherit',
-                    }}
+                            backgroundColor: '#fff',
+                            color: 'rgb(58, 126, 206)',
+                            position: 'absolute',
+                            top: '20px',
+                            right: '20px',
+                            zIndex: 100,
+                            maxWidth: '40px',
+                            minWidth: 'inherit',
+                        }}
                         color="primary"
                     >
                         <InfoOutline/>
@@ -143,13 +144,29 @@ export class StatisticPage extends Component {
                         aria-describedby="alert-dialog-slide-description"
                     >
                         <DialogContent>
-                            <div
-                                style={{
-                                    width: '100px',
-                                    height: '100px',
-                                }}
-                                className="info-dialog_logo">
-                                <img src={logo} alt="" className="info-dialog_img"/>
+                            <div style={{
+                                display: 'flex',
+                                maxWidth: '220px',
+                                margin: '0 auto'
+                            }}>
+                                <div
+                                    style={{
+                                        width: '100px',
+                                        height: '100px',
+                                        display: 'inline-block'
+                                    }}
+                                    className="info-dialog_logo">
+                                    <img src={logo} alt="" className="info-dialog_img"/>
+                                </div>
+                                <div
+                                    style={{
+                                        width: '100px',
+                                        height: '100px',
+                                        display: 'inline-block'
+                                    }}
+                                    className="info-dialog_logo">
+                                    <img src={logo_ua} alt="" className="info-dialog_img"/>
+                                </div>
                             </div>
                             <div className="info-dialog_text">
                                 <div className="info-dialog_text-title" style={{fontSize: '1rem'}}>
@@ -188,11 +205,23 @@ export class StatisticPage extends Component {
                             src={BG} alt=""/>
                     </div>
 
-
                     <div style={{
-                        position: 'relative'
-                    }} className="info-dialog_logo">
-                        <img src={logo} alt="" className="info-dialog_img"/>
+                        display: 'flex',
+                        maxWidth: '220px',
+                        margin: '0 auto'
+                    }}>
+                        <div style={{
+                            position: 'relative',
+                            display: 'inline-block'
+                        }} className="info-dialog_logo">
+                            <img src={logo} alt="" className="info-dialog_img"/>
+                        </div>
+                        <div style={{
+                            position: 'relative',
+                            display: 'inline-block'
+                        }} className="info-dialog_logo">
+                            <img src={logo_ua} alt="" className="info-dialog_img"/>
+                        </div>
                     </div>
                     <div style={{
                         position: 'relative'

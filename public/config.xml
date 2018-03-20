@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.legalexcise.49CNEP9UXN" version="0.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.legalexcise.49CNEP9UXN" version="0.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Легальний Акциз</name>
     <description>
         Легальний Акциз
     </description>
     <author email="fmakareev@gmail.com" href="">
         Fedor Makarev, Alexandra Bobrova, Artur Ragimov
-    </author>/>
+    </author>
     <content src="index.html" />
     <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="DisallowOverscroll" value="true" />

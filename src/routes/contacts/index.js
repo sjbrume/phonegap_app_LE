@@ -27,20 +27,26 @@ export class ContactsPage extends Component {
         return {}
     }
 
-    createSection() {
+    createSection(currentLocal,type) {
         let sections = [];
         let index = 0;
-        const {currentLocal} = this.props;
-        for (let prop in lexicon[currentLocal]) {
+        // const {currentLocal} = this.props;
+        for (let prop in lexicon[currentLocal][type]) {
             sections.push((<div className="contact_section" key={index++}>
                 <div className="contact_title">
-                    {lexicon[currentLocal][prop].title}
+                    {lexicon[currentLocal][type][prop].title}
                 </div>
                 <ul className="contact_list">
-                    {lexicon[currentLocal][prop].list.map((item, index) => {
-                        return (<li className="contact_item" key={lexicon[currentLocal][prop].title + '-' + index}>
-                            {item}
-                        </li>)
+                    {lexicon[currentLocal][type][prop].list.map((item, index) => {
+                        if(lexicon[currentLocal][type][prop].hasOwnProperty('type')){
+                            return (<li className="contact_item" key={lexicon[currentLocal][type][prop].title + '-' + index}>
+                                <a href={lexicon[currentLocal][type][prop].type+item}>{item}</a>
+                            </li>)
+                        } else {
+                            return (<li className="contact_item" key={lexicon[currentLocal][type][prop].title + '-' + index}>
+                                {item}
+                            </li>)
+                        }
                     })}
                 </ul>
             </div>))
@@ -49,24 +55,28 @@ export class ContactsPage extends Component {
     }
 
     render() {
+        const {currentLocal} = this.props;
         return (
             <div>
                 {
-                    this.createSection()
+                    this.createSection(currentLocal, 'tax')
+                }
+                {
+                    this.createSection(currentLocal, 'police')
                 }
                 <div className="contact_social-list">
                     <div className="contact_social-item">
-                        <a href="" className="contact_social-link">
+                        <a href="https://www.facebook.com/sfs.odesa/" className="contact_social-link">
                             <LogoFacebook/>
                         </a>
                     </div>
                     <div className="contact_social-item">
-                        <a href="" className="contact_social-link">
+                        <a href="https://twitter.com/SFSofUkraine" className="contact_social-link">
                             <LogoTwitter/>
                         </a>
                     </div>
                     <div className="contact_social-item">
-                        <a href="" className="contact_social-link">
+                        <a href="https://www.youtube.com/user/SFSofUkraine" className="contact_social-link">
                             <LogoYoutube/>
                         </a>
                     </div>
