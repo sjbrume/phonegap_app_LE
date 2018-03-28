@@ -36,7 +36,7 @@ const required = message => value => {
 const sync_validate = values => {
     const errors = {};
     console.log(values);
-    if (!values.type) {
+    if (!values.form_type) {
         errors.type = lexicon[Store.getState().intl].validation.required
     }
     if (!values.company) {
@@ -46,9 +46,11 @@ const sync_validate = values => {
         errors.message = lexicon[Store.getState().intl].validation.required
     }
     return errors
-}
+};
 
 
+const NOT_ANONYMOUSLY = 'NOT_ANONYMOUSLY';
+const ANONYMOUSLY = 'ANONYMOUSLY';
 const COMPLAINTS_URL = 'http://185.25.117.8/complaint';
 
 @reduxForm({
@@ -68,6 +70,7 @@ const COMPLAINTS_URL = 'http://185.25.117.8/complaint';
     })
 )
 export class FormComplaints extends Component {
+
 
     static propTypes = {};
 
@@ -103,11 +106,11 @@ export class FormComplaints extends Component {
     async onSubmit(value) {
         console.log(value);
         if (value.message.find((item) => item === 'textarea')) {
-            if (value.type === 'anonim' && value.message_textarea === 'Разработчики') {
+            if (value.form_type === ANONYMOUSLY && value.message_textarea === 'Разработчики') {
                 this.handleClickOpen();
                 return;
             }
-            value.message = value.message.filter(word =>  word !== 'textarea');
+            value.message = value.message.filter(word => word !== 'textarea');
             value.message.push(value.message_textarea);
             delete value.message_textarea;
         } else {
@@ -117,7 +120,7 @@ export class FormComplaints extends Component {
         console.log(value);
         // if (!value.message) return;
         // if (!value.company) return;
-        // if (value.type === 'no_anonim' && !value.name) return;
+        // if (value.form_type === NO_ANONYMOUSLY && !value.name) return;
         this.setState({loading: true});
         let formData = new FormData();
         const resetForm = this.props.reset;
@@ -265,10 +268,10 @@ export class FormComplaints extends Component {
 
     disabledSubmit() {
         const {pristine, submitting, values} = this.props;
-        if (values && values.type && values.type === 'no_anonim') {
-            return !(values && ('type' in values) && ('message' in values) && ('company' in values) && ('name' in values));
+        if (values && values.form_type && values.form_type === NOT_ANONYMOUSLY) {
+            return !(values && ('form_type' in values) && ('message' in values) && ('company' in values) && ('name' in values));
         } else {
-            return !(values && ('type' in values) && ('message' in values) && ('company' in values));
+            return !(values && ('form_type' in values) && ('message' in values) && ('company' in values));
         }
 
     }
@@ -324,20 +327,20 @@ export class FormComplaints extends Component {
 
                     <Field
                         component={this.radioButtonGenerator}
-                        name={'type'}
+                        name={'form_type'}
                         validate={[Required]}
                         options={[
                             {
                                 title: lexicon[currentLocal].anonim,
-                                value: 'anonim',
+                                value: ANONYMOUSLY,
                             }, {
                                 title: lexicon[currentLocal].no_anonim,
-                                value: 'no_anonim',
+                                value: NOT_ANONYMOUSLY,
                             }
                         ]}
                     />
                     {
-                        values && values.type && values.type === 'no_anonim' &&
+                        values && values.form_type && values.form_type === NOT_ANONYMOUSLY &&
                         <Field
                             component={this.renderField}
                             name={'name'}
@@ -396,7 +399,7 @@ export class FormComplaints extends Component {
                     />
                 </div>
                 {
-                    values && values.type && values.type === 'no_anonim' && <div className="complaints_section">
+                    values && values.form_type && values.form_type === NOT_ANONYMOUSLY && <div className="complaints_section">
                         <Field
                             component={this.renderField}
                             name={'phone'}
@@ -408,7 +411,7 @@ export class FormComplaints extends Component {
                     </div>
                 }
                 {
-                    values && values.type && values.type === 'no_anonim' && <div className="complaints_section">
+                    values && values.form_type && values.form_type === NOT_ANONYMOUSLY && <div className="complaints_section">
                         <Field
                             component={this.renderField}
                             name={'email'}
@@ -448,7 +451,7 @@ export class FormComplaints extends Component {
                         />
                     }
                     {
-                        values && !values.id && !values.company &&
+                        values && !values.address_id &&
                         <Button type="button" raised
                                 onClick={() => {
                                     this.props.dispatch(COMPLAINTS_MAP_TOGGLE, true);
