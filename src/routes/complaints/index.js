@@ -123,6 +123,7 @@ export class ComplaintsPage extends Component {
 
     render() {
         const {currentLocal} = this.props;
+        console.log(this);
         return (
             <div className="complaints_wrapper">
                 {
@@ -142,7 +143,8 @@ export class ComplaintsPage extends Component {
                 {
                     !this.state.loading &&
                     <FormComplaints params={this.props.match.params} initialValues={{
-                        company: this.state.company && this.state.company.company ? this.state.company.company : ''
+                        company: this.state.company && this.state.company.company ? this.state.company.company : '',
+                        id: this.state.company && this.state.company.id ? this.state.company.id : '',
                     }}/>
                 }
             </div>

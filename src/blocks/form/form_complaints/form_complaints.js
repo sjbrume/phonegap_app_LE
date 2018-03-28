@@ -276,6 +276,7 @@ export class FormComplaints extends Component {
     render() {
         const {params, currentLocal, error, handleSubmit, pristine, complaints_map, values} = this.props;
         const Required = required(lexicon[currentLocal].validation.required);
+        console.log(this.props);
         return (
             <form onSubmit={handleSubmit(this.onSubmit)} required>
                 <div className="complaints_section">
@@ -446,15 +447,17 @@ export class FormComplaints extends Component {
                             disabled={true}
                         />
                     }
-
-                    <Button type="button" raised
-                            onClick={() => {
-                                this.props.dispatch(COMPLAINTS_MAP_TOGGLE, true);
-                            }}
-                            style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 0 0'}}
-                            color="primary">
-                        {lexicon[currentLocal].attach_coordinates}
-                    </Button>
+                    {
+                        values && !values.id && !values.company &&
+                        <Button type="button" raised
+                                onClick={() => {
+                                    this.props.dispatch(COMPLAINTS_MAP_TOGGLE, true);
+                                }}
+                                style={{backgroundColor: '#b3e5fc', color: '#334148', margin: '0 8px 0 0'}}
+                                color="primary">
+                            {lexicon[currentLocal].attach_coordinates}
+                        </Button>
+                    }
                     {
                         (values && values.lng) &&
                         <Button raised type="button"
