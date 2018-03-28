@@ -7,11 +7,11 @@ import {TABLE_NAME} from "../../config";
 
 
 const lexicon = {
-    'RU':{
+    'RU': {
         load_map: ' Загрузка карты...'
 
     },
-    'UKR':{
+    'UKR': {
         load_map: 'Завантаження карти ...'
 
     }
@@ -104,7 +104,7 @@ export class ComplaintsPage extends Component {
                             [this.props.match.params.id],
                             (sqlTransaction, sqlResultSet) => {
                                 console.log(sqlResultSet.rows.item);
-                                if(sqlResultSet.rows.item) {
+                                if (sqlResultSet.rows.item) {
                                     this.setState({company: sqlResultSet.rows.item(0), loading: false});
                                     resolve(sqlResultSet.rows.item(0))
                                 } else {
@@ -148,9 +148,17 @@ export class ComplaintsPage extends Component {
                 {
                     !this.state.loading &&
                     <FormComplaints params={this.props.match.params} initialValues={{
-                        company: this.state.company && this.state.company.company ? this.state.company.company : '',
-                        address_id: this.state.company && this.state.company.id ? this.state.company.id : '',
-                        address: this.state.company && this.state.company.address ? this.state.company.address : '',
+                        ...(this.state.company && this.state.company.company ? {
+                            company: this.state.company && this.state.company.company ? this.state.company.company : '',
+
+                        } : null),
+                        ...(this.state.company && this.state.company.id ? {
+                            address_id: this.state.company && this.state.company.id ? this.state.company.id : '',
+                        } : null),
+                        ...(this.state.company && this.state.company.address ? {
+                            address: this.state.company && this.state.company.address ? this.state.company.address : '',
+                        } : null),
+
                     }}/>
                 }
             </div>
