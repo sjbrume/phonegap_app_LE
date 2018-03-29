@@ -36,13 +36,13 @@ const required = message => value => {
 const sync_validate = values => {
     const errors = {};
     console.log(values);
-    if (!values.type) {
+    if (!values.is_anonymously) {
         errors.type = lexicon[Store.getState().intl].validation.required
     }
     if (!values.company) {
         errors.company = lexicon[Store.getState().intl].validation.required
     }
-    if (!values.message) {
+    if (!values.type) {
         errors.message = lexicon[Store.getState().intl].validation.required
     }
     return errors
@@ -105,22 +105,25 @@ export class FormComplaints extends Component {
 
     async onSubmit(value) {
         console.log(value);
-        if (value.message.find((item) => item === 'textarea')) {
-            if (value.type === ANONYMOUSLY && value.message_textarea === 'Разработчики') {
+        if (value.type.find((item) => item === 'textarea')) {
+            if (value.is_anonymously === ANONYMOUSLY && value.message === 'Разработчики') {
                 this.handleClickOpen();
                 return;
             }
-            value.message = value.message.filter(word => word !== 'textarea');
-            value.message.push(value.message_textarea);
-            delete value.message_textarea;
+            value.type = value.type.filter(word => word !== 'textarea');
+            // value.type.push(value.message);
+            // delete value.message;
         } else {
-            delete value.message_textarea;
+            // delete value.message;
         }
-        value.message = value.message.join(' ');
+        value.type = value.type.join(' ');
         console.log(value);
-        // if (!value.message) return;
+        // if (!value.type) return;
         // if (!value.company) return;
-        // if (value.type === NO_ANONYMOUSLY && !value.name) return;
+        // if (value.is_anonymously === NO_ANONYMOUSLY && !value.name) return;
+
+        value.is_anonymously = value.is_anonymously === ANONYMOUSLY ? true : false;
+        console.log('onSubmit:',value);
         this.setState({loading: true});
         let formData = new FormData();
         const resetForm = this.props.reset;
@@ -163,7 +166,6 @@ export class FormComplaints extends Component {
 
             this.setState({loading: false, openMessageDialog: true});
         }
-        // const data = fetch('', options).then()
 
     }
 
@@ -268,10 +270,10 @@ export class FormComplaints extends Component {
 
     disabledSubmit() {
         const {pristine, submitting, values} = this.props;
-        if (values && values.type && values.type === NOT_ANONYMOUSLY) {
-            return !(values && ('type' in values) && ('message' in values) && ('company' in values) && ('name' in values));
+        if (values && values.is_anonymously && values.is_anonymously === NOT_ANONYMOUSLY) {
+            return !(values && ('is_anonymously' in values) && ('type' in values) && ('company' in values) && ('name' in values));
         } else {
-            return !(values && ('type' in values) && ('message' in values) && ('company' in values));
+            return !(values && ('is_anonymously' in values) && ('type' in values) && ('company' in values));
         }
 
     }
@@ -327,7 +329,7 @@ export class FormComplaints extends Component {
 
                     <Field
                         component={this.radioButtonGenerator}
-                        name={'type'}
+                        name={'is_anonymously'}
                         validate={[Required]}
                         options={[
                             {
@@ -340,7 +342,7 @@ export class FormComplaints extends Component {
                         ]}
                     />
                     {
-                        values && values.type && values.type === NOT_ANONYMOUSLY &&
+                        values && values.is_anonymously && values.is_anonymously === NOT_ANONYMOUSLY &&
                         <Field
                             component={this.renderField}
                             name={'name'}
@@ -360,7 +362,7 @@ export class FormComplaints extends Component {
                     />
                     <Field
                         component={checkboxButtonMessageGenerator}
-                        name={'message'}
+                        name={'type'}
                         validate={[Required]}
                         options={[
                             {
@@ -382,10 +384,10 @@ export class FormComplaints extends Component {
                         ]}
                     />
                     {
-                        values && values.message && Array.isArray(values.message) && values.message.find((item) => item === 'textarea') &&
+                        values && values.type && Array.isArray(values.type) && values.type.find((item) => item === 'textarea') &&
                         <Field
                             component={this.renderTextarea}
-                            name={'message_textarea'}
+                            name={'message'}
                             type="textarea"
                             validate={required(lexicon[currentLocal].validation.required)}
                             label={lexicon[currentLocal].message}
@@ -399,10 +401,11 @@ export class FormComplaints extends Component {
                     />
                 </div>
                 {
-                    values && values.type && values.type === NOT_ANONYMOUSLY && <div className="complaints_section">
+                    values && values.is_anonymously && values.is_anonymously === NOT_ANONYMOUSLY &&
+                    <div className="complaints_section">
                         <Field
                             component={this.renderField}
-                            name={'phone'}
+                            name={'telephone'}
                             type="tel"
                             validate={isNumber(lexicon[currentLocal].validation.phone)}
                             label={lexicon[currentLocal].phone}
@@ -411,7 +414,8 @@ export class FormComplaints extends Component {
                     </div>
                 }
                 {
-                    values && values.type && values.type === NOT_ANONYMOUSLY && <div className="complaints_section">
+                    values && values.is_anonymously && values.is_anonymously === NOT_ANONYMOUSLY &&
+                    <div className="complaints_section">
                         <Field
                             component={this.renderField}
                             name={'email'}
