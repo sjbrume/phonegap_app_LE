@@ -7,11 +7,11 @@ import {TABLE_NAME} from "../../config";
 
 
 const lexicon = {
-    'RU':{
+    'RU': {
         load_map: ' Загрузка карты...'
 
     },
-    'UKR':{
+    'UKR': {
         load_map: 'Завантаження карти ...'
 
     }
@@ -103,9 +103,14 @@ export class ComplaintsPage extends Component {
                                        WHERE id = ?;`,
                             [this.props.match.params.id],
                             (sqlTransaction, sqlResultSet) => {
-                                console.log(sqlResultSet.rows.item(0));
-                                this.setState({company: sqlResultSet.rows.item(0), loading: false});
-                                resolve(sqlResultSet.rows.item(0))
+                                console.log(sqlResultSet.rows.item);
+                                if (sqlResultSet.rows.item) {
+                                    this.setState({company: sqlResultSet.rows.item(0), loading: false});
+                                    resolve(sqlResultSet.rows.item(0))
+                                } else {
+
+                                    resolve(false)
+                                }
                             }, (sqlTransaction, sqlEerror) => {
                                 console.log(sqlTransaction, sqlEerror);
                             })
@@ -123,6 +128,7 @@ export class ComplaintsPage extends Component {
 
     render() {
         const {currentLocal} = this.props;
+        console.log(this);
         return (
             <div className="complaints_wrapper">
                 {
@@ -142,7 +148,18 @@ export class ComplaintsPage extends Component {
                 {
                     !this.state.loading &&
                     <FormComplaints params={this.props.match.params} initialValues={{
-                        company: this.state.company && this.state.company.company ? this.state.company.company : ''
+                        is_anonymously: 'NOT_ANONYMOUSLY',
+                        ...(this.state.company && this.state.company.company ? {
+                            company: this.state.company && this.state.company.company ? this.state.company.company : '',
+
+                        } : null),
+                        ...(this.state.company && this.state.company.id ? {
+                            address_id: this.state.company && this.state.company.id ? this.state.company.id : '',
+                        } : null),
+                        ...(this.state.company && this.state.company.address ? {
+                            address: this.state.company && this.state.company.address ? this.state.company.address : '',
+                        } : null),
+
                     }}/>
                 }
             </div>

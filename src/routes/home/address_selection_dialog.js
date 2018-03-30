@@ -133,8 +133,9 @@ export class AddressSelectionDialog extends Component {
         for (let i = 0; i < address_info.length; i++) {
             let item = address_info.item(i);
             console.log(item);
+            let public_notices = item.public_notices && JSON.parse(item.public_notices);
             if (item.license_type === 'mixed') {
-                let public_notices = item.public_notices && JSON.parse(item.public_notices);
+
                 console.log('public_notices',public_notices);
                 array.push(<div key={item.id.toString()} className="places-description_wrapper" style={{
                     padding: '0 15px',
@@ -185,6 +186,17 @@ export class AddressSelectionDialog extends Component {
                         {lexicon[currentLocal].company_desc.license_number}: {item.license} <br/>
                         {lexicon[currentLocal].company_desc.license_start_at}/{lexicon[currentLocal].company_desc.license_end_at}: {item.license_start_at}
                         — {item.license_end_at}
+                        <br/>
+                        <br/>
+                        {lexicon[currentLocal].company_desc.measures} <br/>
+                        {lexicon[currentLocal].company_desc.confiscated_goods}:
+                        {public_notices && public_notices.confiscated_goods}<br/>
+
+                        {lexicon[currentLocal].company_desc.protocol_drawn_up}:
+                        {public_notices && public_notices.protocol_drawn_up} <br/>
+
+                        {lexicon[currentLocal].company_desc.financial_sanctions}:
+                        {public_notices && public_notices.financial_sanctions}<br/>
                     </p>
                     <Button type="button" raised
                             style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}

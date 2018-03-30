@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const phonegapBuild = require('gulp-phonegap-build');
-const config = require('./phonegap-account.json');
+// const config = require('./phonegap-account.json');
 
 // {dot: true} here to inlude .pgbomit file in zip
 gulp.task('phonegap-build', function () {
