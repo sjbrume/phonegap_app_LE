@@ -273,6 +273,7 @@ export class FormComplaints extends Component {
     }
 
     disabledSubmit() {
+
         const {pristine, submitting, values} = this.props;
         if (values && values.is_anonymously && values.is_anonymously === NOT_ANONYMOUSLY) {
             return !(values && ('is_anonymously' in values) && ('type' in values) && ('company' in values) && ('name' in values));
