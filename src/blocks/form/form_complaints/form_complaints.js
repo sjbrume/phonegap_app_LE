@@ -157,14 +157,18 @@ export class FormComplaints extends Component {
             .catch((err) => {
                 console.log(err);
                 return err
-            })
+            });
+
+
         console.log(data);
-        if (data.status >= 200 || data.status < 300) {
+
+        if (data.status >= 200 && data.status < 300) {
+            console.log(data);
             resetForm();
             this.setState({loading: false, openMessageDialog: true, submitSuccess: true});
-        } else {
-
-            this.setState({loading: false, openMessageDialog: true});
+        } else  {
+            console.log(data);
+            this.setState({loading: false, openMessageDialog: true, submitSuccess: false});
         }
 
     }
@@ -233,7 +237,7 @@ export class FormComplaints extends Component {
 
     renderMessageDialog() {
         const {currentLocal} = this.props;
-
+        console.log('renderMessageDialog:',this.state);
         return (<Dialog
             open={this.state.openMessageDialog}
             onClose={() => {
@@ -275,7 +279,6 @@ export class FormComplaints extends Component {
         } else {
             return !(values && ('is_anonymously' in values) && ('type' in values) && ('company' in values));
         }
-
     }
 
     render() {
