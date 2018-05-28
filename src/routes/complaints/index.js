@@ -148,7 +148,6 @@ export class ComplaintsPage extends Component {
                 {
                     !this.state.loading &&
                     <FormComplaints params={this.props.match.params} initialValues={{
-                        is_anonymously: 'NOT_ANONYMOUSLY',
                         ...(this.state.company && this.state.company.company ? {
                             company: this.state.company && this.state.company.company ? this.state.company.company : '',
 
