@@ -43,9 +43,19 @@ export const lexicon = {
             license_start_at: 'Дата начала',
             license_end_at: 'окончания',
             measures: 'Принятые меры',
-            confiscated_goods: "Конфискованная продукция",
+            confiscated_goods: {
+                label: "Конфискованная продукция",
+                value: [
+                    'изъятое',
+                ]
+            },
             protocol_drawn_up: "Составлен протокол от",
-            financial_sanctions: "Применена финансовая санкция",
+            financial_sanctions: {
+                label: "Применена финансовая санкция",
+                value: [
+                    'применена'
+                ]
+            },
             alcohol: 'Алкоголь',
             tobacco: 'Табачная',
             beer: 'Алкоголь (только пиво)',
@@ -114,9 +124,20 @@ export const lexicon = {
             license_number: 'Номер ліцензії',
             license_start_at: 'Дата початку',
             measures: 'Вжиті заходи',
-            confiscated_goods: 'Вилучена продукція',
+
+            confiscated_goods: {
+                label: 'Вилучена продукція',
+                value: [
+                    'Вилучена',
+                ]
+            },
             protocol_drawn_up: 'Складено протокол від',
-            financial_sanctions: 'Застосовані фінансови санкції',
+            financial_sanctions: {
+                label: 'Застосовані фінансови санкції',
+                value: [
+                    'застосовані',
+                ]
+            },
             license_end_at: 'закінчення',
             alcohol: 'Алкогольна',
             tobacco: 'Тютюнова',

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {Marker} from "react-google-maps"
 import {connect} from "react-redux";
 import CircularProgress from 'material-ui/Progress/CircularProgress';
@@ -6,8 +6,8 @@ import {lexicon} from './lexicon';
 import Error from 'material-ui-icons/Error';
 import {TABLE_NAME} from "../../config";
 import {MapWithAMarkerClusters} from "./MapWithAMarkerClusters";
-import {MAP_CLUSTERING_LOAD, MAP_SET_CENTER} from "../../store/map/action_types";
-import {Link, Redirect} from "react-router-dom";
+import {MAP_CLUSTERING_LOAD,MAP_SET_CENTER} from "../../store/map/action_types";
+import {Link,Redirect} from "react-router-dom";
 import {Button} from "material-ui";
 import {MapFilter} from "./map-flter";
 import logo from './logo.png';
@@ -58,13 +58,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        dispatch: (type, payload) => {
-            dispatch({type, payload})
+        dispatch: (type,payload) => {
+            dispatch({type,payload})
         }
     }
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps,mapDispatchToProps)
 export class HomePage extends Component {
 
     static API_KEY = 'AIzaSyApwO-qq_ruPB3MZ8yk1RsAFeucrb0mUX0';
@@ -100,19 +100,19 @@ export class HomePage extends Component {
     }
 
     componentWillUnmount() {
-        const {db, data, set, version, currentLocal, clustering, filter} = this.props;
+        const {db,data,set,version,currentLocal,clustering,filter} = this.props;
         if (!clustering) {
-            this.props.dispatch(MAP_CLUSTERING_LOAD, true);
+            this.props.dispatch(MAP_CLUSTERING_LOAD,true);
         }
-        this.props.dispatch(MAP_SET_CENTER, {
+        this.props.dispatch(MAP_SET_CENTER,{
             lat: null,
             lng: null,
         })
     }
 
     componentWillReceiveProps(nextProps) {
-        const {db, set, filter} = nextProps;
-        console.log('componentWillReceiveProps', nextProps);
+        const {db,set,filter} = nextProps;
+        console.log('componentWillReceiveProps',nextProps);
 
         if (db !== this.props.db.db && set.success) {
             if (this.state.markers.length === 0) {
@@ -120,39 +120,40 @@ export class HomePage extends Component {
             }
         }
         if (filter !== this.props.filter && set.success) {
-            console.log(nextProps, this.props);
+            console.log(nextProps,this.props);
             let result = this.getMarkers(nextProps.filter);
         }
     };
 
+    /** @desc метод для отображения панели прелоадера с статусами инициализации карты */
     createLoadingPanel() {
-        const {db, data, set, version, currentLocal, clustering, filter} = this.props;
+        const {db,data,set,version,currentLocal,clustering,filter} = this.props;
 
         if (version.loading) {
-            return this.renderLoading(lexicon[currentLocal].loading.version, true)
+            return this.renderLoading(lexicon[ currentLocal ].loading.version,true)
         } else if (!version.loading && version.error) {
-            return this.renderLoading(lexicon[currentLocal].error.version, false)
+            return this.renderLoading(lexicon[ currentLocal ].error.version,false)
         }
 
         if (db.loading) {
-            return this.renderLoading(lexicon[currentLocal].loading.db, true)
+            return this.renderLoading(lexicon[ currentLocal ].loading.db,true)
         } else if (!db.loading && db.error) {
-            return this.renderLoading(lexicon[currentLocal].error.db, false)
+            return this.renderLoading(lexicon[ currentLocal ].error.db,false)
         }
 
         if (data.loading) {
-            return this.renderLoading(lexicon[currentLocal].loading.data, true)
+            return this.renderLoading(lexicon[ currentLocal ].loading.data,true)
         } else if (!data.loading && data.error) {
-            return this.renderLoading(lexicon[currentLocal].error.data, false)
+            return this.renderLoading(lexicon[ currentLocal ].error.data,false)
         }
         if (set.loading) {
-            return this.renderLoading(lexicon[currentLocal].loading.set, true)
+            return this.renderLoading(lexicon[ currentLocal ].loading.set,true)
         } else if (!set.loading && set.error) {
-            return this.renderLoading(lexicon[currentLocal].error.set, false)
+            return this.renderLoading(lexicon[ currentLocal ].error.set,false)
         }
 
         if (clustering) {
-            if(!this.state.markers.length) {
+            if (!this.state.markers.length) {
                 console.log('clustering = true');
                 let result = this.getMarkers(filter);
             }
@@ -161,27 +162,39 @@ export class HomePage extends Component {
         return null
     }
 
+    /**
+     * @param {string} filter - строка с названиями фильтров по sql базе
+     * @desc вызов метода создания маркеров */
     async getMarkers(filter = 'alcohol, beer') {
         console.log('getMarkers');
-        const {db, dispatch} = this.props;
-        const data = await new Promise((resolve, reject) => {
+        const {db} = this.props;
+        const data = await new Promise((resolve,reject) => {
             try {
-                let array       = filter.split(', '); // разбираю строку на массив параметров фильтра
-                let newFilter   = ''; // фильтр для запроса
-                array.map((item, index) => {
+
+                /** @desc разбираю строку на массив параметров фильтра */
+                let array = filter.split(', ');
+                /** @desc sql фильтр для запроса */
+                let newFilter = ''; //
+                /** @desc формирую строку для sql запроса */
+                array.map((item,index) => {
                     newFilter += `license_type = '${item}' OR `;
                 });
                 console.log('newFilter: ',newFilter);
 
+
+                /** @desc подключаюсь к websql */
                 ('db' in db) && db.db.transaction((tx) => {
+                    /** @desc запрос на получение данных по ранее созданному фильтру из таблицы адресов */
                     let sqlResultSet = tx.executeSql(`SELECT *
                                                       FROM ${TABLE_NAME}
-                                                      WHERE ${newFilter} license_type = 'mixed'`, [],
-                        (sqlTransaction, sqlResultSet) => {
-                            console.log(sqlTransaction, sqlResultSet);
+                                                      WHERE ${newFilter} license_type = 'mixed'`,[],
+                        (sqlTransaction,sqlResultSet) => {
+                            console.log(sqlTransaction,sqlResultSet);
+                            /** @desc возвращаю полученные адреса */
                             resolve(sqlResultSet.rows)
-                        }, (sqlTransaction, sqlEerror) => {
-                            console.log('sqlEerror: ',sqlTransaction, sqlEerror);
+                        },(sqlTransaction,sqlEerror) => {
+                            console.log('sqlEerror: ',sqlTransaction,sqlEerror);
+                            /** @desc возвращаю ошибку */
                             reject(sqlEerror);
                         });
                     // console.log(sqlResultSet);
@@ -191,59 +204,48 @@ export class HomePage extends Component {
             }
         });
 
-        console.log('193: data[0]:',data);
+        /** @desc вызов метода создания маркеров */
         this.createMarkerCluster(data);
 
     }
 
-    createMarkerCluster(data = []){
-        const {db, dispatch} = this.props;
+    /**
+     *  @param {array} data - массив адресов из websql
+     *  @desc Метод получает массив с адресами из бд и сортирует по полю license_type в два отдельных массива:
+     *  markers - это
+     *  markersCanceled -
+     * */
+    createMarkerCluster(data = []) {
+        const {dispatch} = this.props;
 
+        /** @desc все маркеры с указаным типом лицензи */
         const markers = [];
+        /** @desc маркеры адресов с просроченно, без или не известной лицензии */
         const markersCanceled = [];
-        console.log('203: data:',data.item(0));
+        /** @desc длинна массива */
         let length = data.length;
 
-        console.log('197: length:',length);
-        for (let i = 0; i < length; i++) {
-            // console.log('207: data[i]:',data.item(i));
+        for (let i = 0 ; i < length ; i++) {
+            /** @desc на карту попадут только те адреса для которых заданы координаты */
             if (data.item(i).lng && data.item(i).lat) {
                 if (data.item(i).license_type !== 'mixed') {
                     markers.push(data.item(i));
-                    // markers.push(<Marker
-                    //     key={i}
-                    //     icon={marker_license_active}
-                    //     position={{lat: data.item(i).lat, lng: data.item(i).lng}}
-                    //     data={data.item(i)}
-                    //     title={data.item(i).id.toString()}
-                    //     onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
-                    // />)
                 } else {
                     markersCanceled.push(data.item(i));
-                    // markersCanceled.push(<Marker
-                    //     key={i}
-                    //     icon={marker_license_canceled}
-                    //     position={{lat: data.item(i).lat, lng: data.item(i).lng}}
-                    //     data={data.item(i)}
-                    //     title={data.item(i).id.toString()}
-                    //
-                    //     onClick={() => Store.dispatch(getAddressInfo(Store.getState(), [data.item(i).id]))}
-                    // />)
                 }
-
-
             }
         }
-        console.log('224: markers:',markers);
-
-        this.setState({markers, markersCanceled});
-        dispatch(MAP_CLUSTERING_LOAD, false);
+        /** @desc запись в state класса */
+        this.setState({markers,markersCanceled});
+        /** @desc смена статуса операции */
+        dispatch(MAP_CLUSTERING_LOAD,false);
     }
 
-    renderLoading = (content, load) => (<div className="loading-panel_wrapper">
+    renderLoading = (content,load) => (<div className="loading-panel_wrapper">
         <div>
 
             {
+                /** @desc вызов метода создания маркеров */
                 load &&
                 <CircularProgress style={{
                     display: 'block',
@@ -294,7 +296,7 @@ export class HomePage extends Component {
                                 color: '#222',
                             }}
                             className="loading-panel_content">
-                            {lexicon[currentLocal].network_info}
+                            {lexicon[ currentLocal ].network_info}
                         </div>
                     </div>
                 </div>)
@@ -302,15 +304,15 @@ export class HomePage extends Component {
                 return null
             }
         } catch (err) {
-            console.error('networkInfo():', err);
+            console.error('networkInfo():',err);
         }
 
 
     }
 
-    onMapSuccess(Latitude, Longitude) {
-        console.log('onMapSuccess - Latitude:', Latitude);
-        console.log('onMapSuccess - Longitude:', Longitude);
+    onMapSuccess(Latitude,Longitude) {
+        console.log('onMapSuccess - Latitude:',Latitude);
+        console.log('onMapSuccess - Longitude:',Longitude);
 
         this.setState({
             markerPos: {
@@ -318,15 +320,15 @@ export class HomePage extends Component {
                 lng: Longitude,
             }
         });
-        this.props.dispatch(SET_MY_LOCATION, {
+        this.props.dispatch(SET_MY_LOCATION,{
             lat: Latitude,
             lng: Longitude,
         });
     }
 
     render() {
-        const {db, data, set, version, currentLocal, my_location, map_center, address_info} = this.props;
-        console.log('Home page index', this);
+        const {db,data,set,version,currentLocal,my_location,map_center,address_info} = this.props;
+        console.log('Home page index',this);
         if (this.props.info_dialog) {
             return (<Redirect to="/statistic-page"/>)
             // return (<Redirect to="/statistic-page"/>)
@@ -341,13 +343,13 @@ export class HomePage extends Component {
             // this.getMarkers();
         }
         if (version.error) {
-            return (<div>{lexicon[currentLocal].error.version}</div>)
+            return (<div>{lexicon[ currentLocal ].error.version}</div>)
         } else if (db.error) {
-            return (<div>{lexicon[currentLocal].error.db}</div>)
+            return (<div>{lexicon[ currentLocal ].error.db}</div>)
         } else if (data.error) {
-            return (<div>{lexicon[currentLocal].error.data}</div>)
+            return (<div>{lexicon[ currentLocal ].error.data}</div>)
         } else if (set.error) {
-            return (<div>{lexicon[currentLocal].error.set}</div>)
+            return (<div>{lexicon[ currentLocal ].error.set}</div>)
         }
 
         return (
@@ -395,7 +397,7 @@ export class HomePage extends Component {
                                 margin: '0 auto'
                             }} size={60} thickness={7}/>
                             <div className="loading-panel_content">
-                                {lexicon[currentLocal].load_map}
+                                {lexicon[ currentLocal ].load_map}
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {connect} from "react-redux";
 import Drawer from 'material-ui/Drawer';
-import {MAP_GET_ADDRESS_INFO, MAP_SET_CENTER} from "../../store/map/action_types";
+import {MAP_GET_ADDRESS_INFO,MAP_SET_CENTER} from "../../store/map/action_types";
 import {lexicon} from './lexicon';
 import {Button} from "material-ui";
-import {ListItem, ListItemIcon} from 'material-ui/List';
+import {ListItem,ListItemIcon} from 'material-ui/List';
 import ArrowBack from 'material-ui-icons/ArrowBack';
 import Typography from 'material-ui/Typography';
 
@@ -28,13 +28,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        dispatch: (type, payload) => {
-            dispatch({type, payload})
+        dispatch: (type,payload) => {
+            dispatch({type,payload})
         }
     }
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps,mapDispatchToProps)
 export class AddressSelectionDialog extends Component {
     static propTypes = {};
 
@@ -113,27 +113,34 @@ export class AddressSelectionDialog extends Component {
         }
     }
 
-    toggleDescription(open, data) {
+    toggleDescription(open,data) {
         if (!open) {
-            this.props.dispatch(MAP_GET_ADDRESS_INFO, []);
+            this.props.dispatch(MAP_GET_ADDRESS_INFO,[]);
 
         }
     }
 
     createPlacesDescription(address_info) {
-        const {currentLocal, map_center} = this.props;
+        const {currentLocal,map_center} = this.props;
         console.log(address_info);
         let array = [];
-        if (map_center.lat !== address_info.item(0).lat) {
-            this.props.dispatch(MAP_SET_CENTER, {
+        if (Object.hasOwnProperty('item',address_info) && map_center.lat !== address_info.item(0).lat) {
+            this.props.dispatch(MAP_SET_CENTER,{
                 lat: address_info.item(0).lat,
                 lng: address_info.item(0).lng,
             })
+        } else if (map_center.lat !== address_info[0].lat) {
+            this.props.dispatch(MAP_SET_CENTER,{
+                lat: address_info[0].lat,
+                lng: address_info[0].lng,
+            })
         }
-        for (let i = 0; i < address_info.length; i++) {
-            let item = address_info.item(i);
+        for (let i = 0 ; i < address_info.length ; i++) {
+            let item = Object.hasOwnProperty('item', address_info) ? address_info.item(i) : address_info[i];
             console.log(item);
             let public_notices = item.public_notices && JSON.parse(item.public_notices);
+            console.log('public_notices: ',public_notices && public_notices.financial_sanctions);
+
             if (item.license_type === 'mixed') {
 
                 console.log('public_notices',public_notices);
@@ -142,29 +149,29 @@ export class AddressSelectionDialog extends Component {
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
                     {item.company_type && <p className="places-description_text">
-                        {lexicon[currentLocal].company_desc.type}: {item.company_type}
+                        {lexicon[ currentLocal ].company_desc.type}: {item.company_type}
                     </p>}
 
                     <h3 className="places-description_title">
-                        {lexicon[currentLocal].company_desc.company}: {item.company}
+                        {lexicon[ currentLocal ].company_desc.company}: {item.company}
                     </h3>
                     <p className="places-description_text">
-                        {lexicon[currentLocal].company_desc.measures} <br/>
+                        {lexicon[ currentLocal ].company_desc.measures} <br/>
 
-                        {lexicon[currentLocal].company_desc.confiscated_goods}:
-                        {public_notices && public_notices.confiscated_goods}<br/>
+                        {lexicon[ currentLocal ].company_desc.confiscated_goods.label}:
+                        {public_notices && public_notices.confiscated_goods ? lexicon[ currentLocal ].company_desc.confiscated_goods.value[ 0 ] : ''}<br/>
 
-                        {lexicon[currentLocal].company_desc.protocol_drawn_up}:
+                        {lexicon[ currentLocal ].company_desc.protocol_drawn_up}:
                         {public_notices && public_notices.protocol_drawn_up} <br/>
 
-                        {lexicon[currentLocal].company_desc.financial_sanctions}:
-                        {public_notices && public_notices.financial_sanctions}<br/>
+                        {lexicon[ currentLocal ].company_desc.financial_sanctions.label}:
+                        {public_notices && public_notices.financial_sanctions ? lexicon[ currentLocal ].company_desc.financial_sanctions.value[ 0 ] : ''}<br/>
                     </p>
                     <Button type="button" raised
-                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
+                            style={{backgroundColor: '#b3e5fc',color: '#334148',marginBottom: '15px'}}
                             color="primary">
                         <Link className={'fonts-white'} to={'/complaints/' + item.id}>
-                            {lexicon[currentLocal].company_desc.report_abuse}
+                            {lexicon[ currentLocal ].company_desc.report_abuse}
                         </Link>
                     </Button>
 
@@ -175,34 +182,34 @@ export class AddressSelectionDialog extends Component {
                     borderBottom: '1px solid rgba(102, 102, 102, 0.1)',
                 }}>
                     {item.company_type && <p className="places-description_text">
-                        {lexicon[currentLocal].company_desc.type}: {item.company_type}
+                        {lexicon[ currentLocal ].company_desc.type}: {item.company_type}
                     </p>}
                     <h3 className="places-description_title">
-                        {lexicon[currentLocal].company_desc.company}: {item.company}
+                        {lexicon[ currentLocal ].company_desc.company}: {item.company}
                     </h3>
                     <p className="places-description_text">
-                        {lexicon[currentLocal].company_desc.license_type}: {item.license_type === 'alcohol' ? lexicon[currentLocal].company_desc.alcohol : lexicon[currentLocal].company_desc.tobacco}
+                        {lexicon[ currentLocal ].company_desc.license_type}: {item.license_type === 'alcohol' ? lexicon[ currentLocal ].company_desc.alcohol : lexicon[ currentLocal ].company_desc.tobacco}
                         <br/>
-                        {lexicon[currentLocal].company_desc.license_number}: {item.license} <br/>
-                        {lexicon[currentLocal].company_desc.license_start_at}/{lexicon[currentLocal].company_desc.license_end_at}: {item.license_start_at}
+                        {lexicon[ currentLocal ].company_desc.license_number}: {item.license} <br/>
+                        {lexicon[ currentLocal ].company_desc.license_start_at}/{lexicon[ currentLocal ].company_desc.license_end_at}: {item.license_start_at}
                         — {item.license_end_at}
                         <br/>
                         <br/>
-                        {lexicon[currentLocal].company_desc.measures} <br/>
-                        {lexicon[currentLocal].company_desc.confiscated_goods}:
-                        {public_notices && public_notices.confiscated_goods}<br/>
+                        {lexicon[ currentLocal ].company_desc.measures} <br/>
+                        {lexicon[ currentLocal ].company_desc.confiscated_goods.label}:
+                        {public_notices && public_notices.confiscated_goods ? lexicon[ currentLocal ].company_desc.confiscated_goods.value[ 0 ] : ''}<br/>
 
-                        {lexicon[currentLocal].company_desc.protocol_drawn_up}:
+                        {lexicon[ currentLocal ].company_desc.protocol_drawn_up}:
                         {public_notices && public_notices.protocol_drawn_up} <br/>
 
-                        {lexicon[currentLocal].company_desc.financial_sanctions}:
-                        {public_notices && public_notices.financial_sanctions}<br/>
+                        {lexicon[ currentLocal ].company_desc.financial_sanctions.label}:
+                        {public_notices && public_notices.financial_sanctions ? lexicon[ currentLocal ].company_desc.financial_sanctions.value[ 0 ] : ''}<br/>
                     </p>
                     <Button type="button" raised
-                            style={{backgroundColor: '#b3e5fc', color: '#334148', marginBottom: '15px'}}
+                            style={{backgroundColor: '#b3e5fc',color: '#334148',marginBottom: '15px'}}
                             color="primary">
                         <Link className={'fonts-white'} to={'/complaints/' + item.id}>
-                            {lexicon[currentLocal].company_desc.report_abuse}
+                            {lexicon[ currentLocal ].company_desc.report_abuse}
                         </Link>
                     </Button>
 
@@ -225,11 +232,11 @@ export class AddressSelectionDialog extends Component {
 
         return (
             <Drawer
-                onClick={() => this.toggleDescription(false, null)}
-                onKeyDown={() => this.toggleDescription(false, null)}
+                onClick={() => this.toggleDescription(false,null)}
+                onKeyDown={() => this.toggleDescription(false,null)}
                 anchor="bottom"
                 open={address_info !== null}
-                onClose={() => this.toggleDescription(false, null)}
+                onClose={() => this.toggleDescription(false,null)}
             >
                 <div>
                     <button
@@ -243,7 +250,7 @@ export class AddressSelectionDialog extends Component {
                             width: '100%'
                         }}
                         className={'fonts-white'}
-                        onClick={() => this.toggleDescription(false, null)}
+                        onClick={() => this.toggleDescription(false,null)}
                     >
                         <ListItem
                             style={{

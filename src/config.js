@@ -21,4 +21,4 @@ export const GLOBAL_STYLE = {
     GetGeolocationButton: {
         backgroundColor: '#fce400'
     }
-}
+};
