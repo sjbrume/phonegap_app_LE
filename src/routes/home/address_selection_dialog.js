@@ -123,20 +123,17 @@ export class AddressSelectionDialog extends Component {
     createPlacesDescription(address_info) {
         const {currentLocal,map_center} = this.props;
         console.log(address_info);
+        console.log(address_info.item);
+        console.log(address_info.prototype);
         let array = [];
-        if (Object.hasOwnProperty('item',address_info) && map_center.lat !== address_info.item(0).lat) {
-            this.props.dispatch(MAP_SET_CENTER,{
+        if (map_center.lat !== address_info.item(0).lat) {
+            this.props.dispatch(MAP_SET_CENTER, {
                 lat: address_info.item(0).lat,
                 lng: address_info.item(0).lng,
             })
-        } else if (map_center.lat !== address_info[0].lat) {
-            this.props.dispatch(MAP_SET_CENTER,{
-                lat: address_info[0].lat,
-                lng: address_info[0].lng,
-            })
         }
         for (let i = 0 ; i < address_info.length ; i++) {
-            let item = Object.hasOwnProperty('item', address_info) ? address_info.item(i) : address_info[i];
+            let item = address_info.item ? address_info.item(i) : address_info[i];
             console.log(item);
             let public_notices = item.public_notices && JSON.parse(item.public_notices);
             console.log('public_notices: ',public_notices && public_notices.financial_sanctions);
