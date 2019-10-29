@@ -90,6 +90,13 @@ export class TestMap extends Component {
         // lng: 30.69601575056072;
         if (!google) return false;
         let map = new google.maps.Map(this.refs["map-container"], {
+            // disableDefaultUI: true,
+            zoomControl: true,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: false,
             zoom: this.props.zoom,
             // zoom: 16,
             center: this.props.center.lat ? this.props.center : {
