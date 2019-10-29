@@ -91,7 +91,7 @@ export class FormSearch extends Component {
         if (!substr || substr.length < 3) {
             return Promise.resolve({options: []});
         }
-        const query = `SELECT company, ID FROM ${TABLE_NAME} WHERE company LIKE '%${substr}%';`;
+        const query = `SELECT company_type, ID FROM ${TABLE_NAME} WHERE company_type LIKE '%${substr}%';`;
 
         return new Promise((resolve, reject) => {
             this.props.db.db.transaction((tx) => {
@@ -127,7 +127,7 @@ export class FormSearch extends Component {
             }}>
                 <Select.Async
                     value={value}
-                    labelKey="company"
+                    labelKey="company_type"
                     valueKey="ID"
                     autoload={false}
                     onChange={this.onChange}
