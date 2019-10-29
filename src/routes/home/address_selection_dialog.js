@@ -126,7 +126,7 @@ export class AddressSelectionDialog extends Component {
         console.log(address_info.item);
         console.log(address_info.prototype);
         let array = [];
-        if (map_center.lat !== address_info.item(0).lat) {
+        if ( address_info.item && map_center.lat !== address_info.item(0).lat) {
             this.props.dispatch(MAP_SET_CENTER, {
                 lat: address_info.item(0).lat,
                 lng: address_info.item(0).lng,
