@@ -56,7 +56,7 @@ export const websql = (state = {}, action) => {
                 }
             })
         }
-        
+
         case WEBSQL_DB_CREATE: {
             console.log(WEBSQL_DB_CREATE, action.payload);
             return Object.assign({}, state, {
@@ -93,8 +93,8 @@ export const websql = (state = {}, action) => {
                 }
             })
         }
-        
-        
+
+
         case WEBSQL_VERSION_DB_SET: {
             console.log(WEBSQL_VERSION_DB_SET, action.payload);
             return Object.assign({}, state, {
@@ -109,6 +109,7 @@ export const websql = (state = {}, action) => {
             return Object.assign({}, state, {
                 version: {
                     ...state.version,
+                    error: false,
                     success: action.payload
                 },
             })
@@ -133,7 +134,7 @@ export const websql = (state = {}, action) => {
             })
         }
 
-        
+
         case WEBSQL_DOWNLOAD_DATA_LOADING: {
             console.log(WEBSQL_DOWNLOAD_DATA_LOADING, action.payload);
             return Object.assign({}, state, {
