@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.legal.excise" version="0.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.legal.excise" version="0.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Легальний Акциз</name>
     <description>
         Легальний Акциз
@@ -86,15 +86,15 @@
         <param name="ios-package" value="CDVLocation" />
     </feature>
     <edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-        <string>need location access to find things nearby</string>
+        <string></string>
     </edit-config>
 
     <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge">
-        <string>need location access to find things nearby</string>
+        <string></string>
     </edit-config>
 
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-        <string>need location access to find things nearby</string>
+        <string></string>
     </edit-config>
     <splash src="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
