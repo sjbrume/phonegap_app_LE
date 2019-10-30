@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Field, getFormValues, reduxForm} from 'redux-form';
+import {Field, getFormValues, reduxForm, SubmissionError} from 'redux-form';
 import Done from 'material-ui-icons/Done';
 import Clear from 'material-ui-icons/Clear';
 import {lexicon} from './lexicon';
@@ -152,15 +152,15 @@ const sync_validate = (values, {currentLocal}) => {
 	}
 
 	console.log('values.type',values);
-	if (
-		values.type === undefined ||
-		(
-			Array.isArray(values.type) &&
-			values.type.length === 0
-		)
-	) {
-		errors.type = lexicon[currentLocal].validation.required;
-	}
+	// if (
+	// 	values.type === undefined ||
+	// 	(
+	// 		Array.isArray(values.type) &&
+	// 		values.type.length === 0
+	// 	)
+	// ) {
+	// 	errors.type = lexicon[currentLocal].validation.required;
+	// }
 
 	if (
 		values &&
@@ -299,6 +299,19 @@ export class FormComplaints extends Component {
 	async onSubmit(value) {
 		console.log('onSubmit: ', value);
 
+		if (
+			value.type === undefined ||
+			(
+				Array.isArray(value.type) &&
+				value.type.length === 0
+			)
+		) {
+			console.log('Я тут')
+			throw new SubmissionError({
+				type: lexicon[this.props.currentLocal].validation.required,
+			})
+
+		}
 
 		if (value.type.find(item => item === 'textarea')) {
 			if (

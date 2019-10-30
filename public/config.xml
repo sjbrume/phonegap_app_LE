@@ -90,12 +90,64 @@
     </edit-config>
 
     <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge">
-        <string></string>
+        <key>Приложению требуется доступ к геолокации для отображения вашей позиции на карте, это поможет вам быстрее определить какие магазины находятся радом.</key>
+        <array>
+            <string>ru</string>
+        </array>
+        <key>Додатку потрібно доступ до геолокації для відображення вашої позиції на карті, це допоможе вам швидше визначити які магазини знаходяться поруч.</key>
+        <array>
+            <string>uk</string>
+        </array>
+        <key>The application requires access to geolocation to display your position on the map, this will help you quickly determine which stores are nearby.</key>
+        <array>
+            <string>en</string>
+        </array>
     </edit-config>
 
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-        <string></string>
+        <key>Приложению требуется доступ к геолокации для отображения вашей позиции на карте, это поможет вам быстрее определить какие магазины находятся радом.</key>
+        <array>
+            <string>ru</string>
+        </array>
+        <key>Додатку потрібно доступ до геолокації для відображення вашої позиції на карті, це допоможе вам швидше визначити які магазини знаходяться поруч.</key>
+        <array>
+            <string>uk</string>
+        </array>
+        <key>The application requires access to geolocation to display your position on the map, this will help you quickly determine which stores are nearby.</key>
+        <array>
+            <string>en</string>
+        </array>
     </edit-config>
+    <config-file parent="NSBluetoothAlwaysUsageDescription" platform="ios" target="*-Info.plist">
+        <key>
+            приложение выполняет запросы к апи для:
+            получения данных для карты (http://185.25.117.8/map);
+            проверки версии базы данных (http://185.25.117.8/updated_at);
+            отправки жалобы пользователя (http://185.25.117.8/complaint);
+        </key>
+        <array>
+            <string>ru</string>
+        </array>
+        <key>
+            додаток виконує запити до апі для:
+            отримання даних для карти (http://185.25.117.8/map);
+            перевірки версії бази даних (http://185.25.117.8/updated_at);
+            відправки скарги користувача (http://185.25.117.8/complaint);
+        </key>
+        <array>
+            <string>uk</string>
+        </array>
+        <key>
+            The application executes api requests for:
+            receiving data for the card (http://185.25.117.8/map);
+            checking the database version (http://185.25.117.8/updated_at);
+            sending user complaints (http://185.25.117.8/complaint);
+        </key>
+        <array>
+            <string>en</string>
+        </array>
+    </config-file>
+
     <splash src="splash.png" />
     <preference name="SplashScreenDelay" value="7000" />
     <access origin="*" />
