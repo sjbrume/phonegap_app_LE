@@ -86,24 +86,15 @@
         <param name="ios-package" value="CDVLocation"/>
     </feature>
     <edit-config target="NSLocationAlwaysAndWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-        <string>Приложению требуется доступ к геолокации для отображения вашей позиции на карте, это поможет вам быстрее
-            определить какие магазины находятся радом.
-        </string>
-
+        <string>Нам нужно использовать геолокацию для правильного отображения карты</string>
     </edit-config>
 
     <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="merge">
-        <string>Приложению требуется доступ к геолокации для отображения вашей позиции на карте, это поможет вам быстрее
-            определить какие магазины находятся радом.
-        </string>
-
+        <string>Нам нужно использовать геолокацию для правильного отображения карты</string>
     </edit-config>
 
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-        <string>Приложению требуется доступ к геолокации для отображения вашей позиции на карте, это поможет вам быстрее
-            определить какие магазины находятся радом.
-        </string>
-
+        <string>Нам нужно использовать геолокацию для правильного отображения карты</string>
     </edit-config>
 
 
