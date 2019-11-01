@@ -37,8 +37,9 @@ svg {
 .layout-main_content {
     position: relative;
     width: 100%;
-    height: calc(100% - 64px);
-    margin-top: 64px;
+    height: 100%;
+    /*height: calc(100% - 64px);*/
+    /*margin-top: 64px;*/
     background-color: #fafafa;
 }
 

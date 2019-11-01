@@ -37,6 +37,9 @@ export class MenuPosSwitcher extends Component {
 
     render() {
         const {currentLocal,menuPosition} = this.props;
+
+        return  true;
+        /*
         return (
             <div>
                 <label style={{
@@ -71,6 +74,7 @@ export class MenuPosSwitcher extends Component {
                 />
             </div>
         )
+         */
     }
 
     // render() {

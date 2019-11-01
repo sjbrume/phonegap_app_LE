@@ -24,7 +24,9 @@ const MapWithAMarkerClusters = compose(
         loadingElement: (<div></div>),
         containerElement: <div style={{
             height: `calc(100vh - 118px)`,
-            marginTop: '64px',
+            paddingTop: '64px',
+            //height: `calc(100vh - 118px)`,
+            //marginTop: '64px',
             position: 'relative'
         }}/>,
         mapElement: <div style={{height: `100%`}}/>,

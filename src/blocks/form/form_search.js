@@ -119,6 +119,8 @@ export class FormSearch extends Component {
         const {value} = this.state;
         const {db, data, set, version, info_dialog} = this.props;
 
+        return true;
+        /*
         return (
             <div style={{
                 width: '100%',
@@ -139,5 +141,6 @@ export class FormSearch extends Component {
                 />
             </div>
         )
+        */
     }
 }

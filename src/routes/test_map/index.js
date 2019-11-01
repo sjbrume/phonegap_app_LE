@@ -274,11 +274,11 @@ export class TestMap extends Component {
         return (
             <div style={{
                 width: '100%',
-                height: 'calc(100vh - 64px)',
+                height: '100vh',
             }}>
                 <div id="map-container" ref="map-container" style={{
                     width: '100%',
-                    height: 'calc(100vh - 64px)',
+                    height: '100vh',
                 }}>
 
                 </div>

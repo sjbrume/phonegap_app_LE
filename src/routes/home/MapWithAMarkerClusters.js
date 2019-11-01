@@ -35,7 +35,7 @@ export const MapWithAMarkerClusters = compose(
                     margin: '0 auto'
                 }} size={60} thickness={7}/></div>
         </div>),
-        containerElement: <div style={{height: `calc(100vh - 64px)`}}/>,
+        containerElement: <div style={{height: `100vh`}}/>,
         mapElement: <div style={{height: `100%`}}/>,
     }),
     withHandlers({

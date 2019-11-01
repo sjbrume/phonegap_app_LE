@@ -39,6 +39,8 @@ export class Header extends Component {
 
     render() {
         const {menuPosition,onClick} = this.props;
+        return true;
+        /*
         return (
             <div className={'layout-main_header-wrapper'} style={{
                 backgroundColor: GLOBAL_STYLE.menu.backgroundColor
@@ -76,6 +78,6 @@ export class Header extends Component {
                     </Toolbar>
                 </AppBar>
             </div>
-        )
+        )*/
     }
 }
