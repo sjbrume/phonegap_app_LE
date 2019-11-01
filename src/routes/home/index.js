@@ -127,6 +127,8 @@ export class HomePage extends Component {
 
     /** @desc метод для отображения панели прелоадера с статусами инициализации карты */
     createLoadingPanel() {
+        document.getElementsByClassName('layout-main_content')[0].style.marginTop='0';
+
         const {db,data,set,version,currentLocal,clustering,filter} = this.props;
 
         if (version.loading) {

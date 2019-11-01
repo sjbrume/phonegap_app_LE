@@ -19,9 +19,7 @@ export class SettingsPage extends Component {
 
     render() {
         return (
-            <div style={{
-                marginTop: '64px'
-            }}>
+            <div>
                 <LanguageSwitcher/>
                 <MenuPosSwitcher/>
             </div>
