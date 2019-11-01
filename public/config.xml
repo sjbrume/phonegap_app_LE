@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.legal.excise" version="0.3.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.legal.excise" version="0.3.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Легальний Акциз</name>
     <description>
         Легальний Акциз
@@ -12,6 +12,7 @@
     <preference name="phonegap-version" value="cli-8.1.1" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-targetSdkVersion" value="28"/>
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
     <preference name="KeepRunning" value="false" />
